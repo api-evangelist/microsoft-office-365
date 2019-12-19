@@ -1,0 +1,1967 @@
+{
+    "id": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+    "name": "Microsoft Office 365",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "7ff57a77132dead82fe0203e6a9aaafe",
+            "name": "Get All Services",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/AllServices",
+            "description": "Get all services.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "6bb6e7bbef148ea572c526068babac7f",
+            "name": "Get Calendar",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Calendar",
+            "description": "Retrieve information about the default calendar by using the...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "daa9a72227a10dfdf7b0f320eee5bf6d",
+            "name": "Get Calendar Groups",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups",
+            "description": "You can request all the calendar groups in a mailbox (or a f...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "0ae4365b55679e969e9b3d826d50cb14",
+            "name": "Add Calendar Groups",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups",
+            "description": "You can create a calendar group by sending a POST request wi...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "003603ddf95a722118c42ccc5780b867",
+            "name": "Get Calendar Groups",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups{calendargroup_id}",
+            "description": "Get calendargroups calendargroup",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "ea5a63c718e053495387bf41ae8b7daf",
+            "name": "Add Calendar Groups",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups{calendargroup_id}",
+            "description": "Post calendargroups calendargroup",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "e5a7f7856c9d134a025a1a477890e06a",
+            "name": "Delete Calendar Groups",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups{calendargroup_id}",
+            "description": "Deleting a calendar group is as simple as sending a DELETE r...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "c89c88e6ff0eef781f92c552223b5092",
+            "name": "Patch Calendar Groups",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups{calendargroup_id}",
+            "description": "You can update a calendar group by sending a PATCH request w...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "f4c6e323896ff1ddb11f710b9130f292",
+            "name": "Parameters Calendar Groups",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups{calendargroup_id}",
+            "description": "Parameters calendargroups calendargroup",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "8dda9cab203b9dc05a468e98cf78ff9d",
+            "name": "Get Calendar Groups Calendars",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups{calendargroup_id}\/Calendars",
+            "description": "You can request all the user's calendars (or a filtered list...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "4ae7543bcd5bca327cbfa3158356d188",
+            "name": "Add Calendar Groups Calendars",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups{calendargroup_id}\/Calendars",
+            "description": "You can create a calendar by sending a POST request with a J...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "8e2cd5482cd43d8c05eb05aa17e8db8d",
+            "name": "Parameters Calendar Groups Calendars",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/CalendarGroups{calendargroup_id}\/Calendars",
+            "description": "Parameters calendargroups calendargroup  calendars",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "dbff0d98c764760404efa793608a174b",
+            "name": "Get Calendars Calendar",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Calendars{calendar_id}",
+            "description": "You can also retrieve information about a specific calendar ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "21ed468e6ca78eecd3d96a2e0b044ef9",
+            "name": "Delete Calendars Calendar",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Calendars{calendar_id}",
+            "description": "Deleting a calendar is as simple as sending a DELETE request...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "804e2768f59150693bc5f5b40676f5df",
+            "name": "Patch Calendars Calendar",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Calendars{calendar_id}",
+            "description": "You can update a calendar by sending a PATCH request with a ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "b1281b90619295553672efeea076230e",
+            "name": "Parameters Calendars Calendar",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Calendars{calendar_id}",
+            "description": "Parameters calendars calendar",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "79505bac8c7cd79b0df0f488850bd31a",
+            "name": "Get Calendars Calendar Events",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Calendars{calendar_id}\/Events",
+            "description": "You can request all the events across all calendars (or a fi...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "8142b0993e583aa6548a92a6e165c808",
+            "name": "Add Calendars Calendar Events",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Calendars{calendar_id}\/Events",
+            "description": "Post calendars calendar  events",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "af3973e802349bf249d196ed8ddc82f4",
+            "name": "Parameters Calendars Calendar Events",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Calendars{calendar_id}\/Events",
+            "description": "Parameters calendars calendar  events",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "2f1e67b008e63340f2ab97c260a6ea8f",
+            "name": "Get Contact Folders Contact Folder",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/ContactFolders{contact_folder_id}",
+            "description": "You can access the default contact folder by using the const...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "77ed62254dfce9f2d53d9aff4f79b263",
+            "name": "Parameters Contact Folders Contact Folder",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/ContactFolders{contact_folder_id}",
+            "description": "Parameters contactfolders contact folder",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "502a73afc1d04295e2c8f4c49113db96",
+            "name": "Get Contact Folders Contact Folder Childfolders",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/ContactFolders{contact_folder_id}\/ChildFolders",
+            "description": "All non-default contact folders are stored as children of th...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "40be9b27e9309cee532dfd7af39963b6",
+            "name": "Parameters Contact Folders Contact Folder Childfolders",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/ContactFolders{contact_folder_id}\/ChildFolders",
+            "description": "Parameters contactfolders contact folder  childfolders",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "ce98af24c81083bca5380ffff0e54060",
+            "name": "Get Contact Folders Contact Folder Contacts",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/ContactFolders{contact_folder_id}\/Contacts",
+            "description": "You can request all contacts (or a filtered set by using the...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "0c01406ea8839354706380bf8aaf3eaa",
+            "name": "Add Contact Folders Contact Folder Contacts",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/ContactFolders{contact_folder_id}\/Contacts",
+            "description": "You can create a contact by sending a POST request with a JS...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "dbf6ecbf94081665bd7eebec2fbefa99",
+            "name": "Parameters Contact Folders Contact Folder Contacts",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/ContactFolders{contact_folder_id}\/Contacts",
+            "description": "Parameters contactfolders contact folder  contacts",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "e28934efa900eb2fd6b9911588bbde0b",
+            "name": "Get Contacts Contact",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}",
+            "description": "You can retrieve information about a specific contact by usi...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "1395897ba8880e6872e30584dd0a9b52",
+            "name": "Add Contacts Contact",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}",
+            "description": "You can create a contact by sending a POST request with a JS...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "856c85e02553d26d985812c8c978bf0a",
+            "name": "Delete Contacts Contact",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}",
+            "description": "You can delete a contact by simply sending a DELETE request ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "7749b01448724ab439e56e68f4739b6b",
+            "name": "Patch Contacts Contact",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}",
+            "description": "To update a contact, send a PATCH request to the URL of the ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "7fc9ede280d6718dc0e6717c42b20108",
+            "name": "Parameters Contacts Contact",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}",
+            "description": "Parameters contacts contact",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "6ce6b16a73959f3854081f877c2203ca",
+            "name": "Get Contacts Contact Attachments",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}\/Attachments",
+            "description": "To get attachments, send a GET request to the Attachments pr...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "4f880e8816a5c8745e8b72362a9fa54b",
+            "name": "Add Contacts Contact Attachments",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}\/Attachments",
+            "description": "To add an attachment to an item, send a POST request to the ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "9ba39c44284751a205deda0dd8924e46",
+            "name": "Delete Contacts Contact Attachments",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}\/Attachments",
+            "description": "To delete an attachment, send a DELETE request to the URL of...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "575500d3d39a8d7c9ee98506c4623bee",
+            "name": "Parameters Contacts Contact Attachments",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Contacts{contact_id}\/Attachments",
+            "description": "Parameters contacts contact  attachments",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "ddd70d8ab8b7920cd62e4952c782764d",
+            "name": "Get Events Event",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}",
+            "description": "You can also retrieve information about a specific event by ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "d5737a0854c8f983411f7a070c326a58",
+            "name": "Delete Events Event",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}",
+            "description": "Upon success, the appointment is moved to the user's Deleted...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "bbacc724f6451b72f9ffe1ac413f758d",
+            "name": "Patch Events Event",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}",
+            "description": "To update an event, send a PATCH request to the URL of the e...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "b7df8ab17da9f99dc8482a04ed7e2c5d",
+            "name": "Parameters Events Event",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}",
+            "description": "Parameters events event",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "72368f36d31d588087bfdd63752caa05",
+            "name": "Add Events Event Accept",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}\/Accept",
+            "description": "Post events event  accept",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "dc13021ff319347a1f527f367a13aabb",
+            "name": "Parameters Events Event Accept",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}\/Accept",
+            "description": "Parameters events event  accept",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "1efed9e5d4df5f7a4d4b179815b79105",
+            "name": "Add Events Event Decline",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}\/Decline",
+            "description": "Post events event  decline",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "001a9a2487499d63ec0749d977e9c7b1",
+            "name": "Parameters Events Event Decline",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}\/Decline",
+            "description": "Parameters events event  decline",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "bc994bfded57068521fc917c6cee82ce",
+            "name": "Add Events Event Tentatively Accept",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}\/TentativelyAccept",
+            "description": "Post events event  tentativelyaccept",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "f42b4d0df1a91e8a7009e1b8b9efc42b",
+            "name": "Parameters Events Event Tentatively Accept",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Events{event_id}\/TentativelyAccept",
+            "description": "Parameters events event  tentativelyaccept",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "403cceb3dcee9a01a275612bdab6d475",
+            "name": "Get Firstsignin",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/FirstSignIn",
+            "description": "Get firstsignin",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "12fa63dde74f7dc0a414d3b15be6dc21",
+            "name": "Get Folders Folder",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Folders{folder_id}",
+            "description": "You can retrieve information about other folders by using th...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "ce8b135ee148b28106bf84f3508dbd1e",
+            "name": "Add Folders Folder",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Folders{folder_id}",
+            "description": "You can create a folder by sending a POST request with a JSO...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "6bfd324b796005572fb63e8c4e3d93be",
+            "name": "Delete Folders Folder",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Folders{folder_id}",
+            "description": "To delete a folder, send a DELETE request to the URL of the ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "6ce7dc7bf6b07d08c51905308cc6d8e1",
+            "name": "Patch Folders Folder",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Folders{folder_id}",
+            "description": "You can update a folder by sending a PATCH request with a JS...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "bb52c0c409af27bfa777404a740a79a4",
+            "name": "Parameters Folders Folder",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Folders{folder_id}",
+            "description": "Parameters folders folder",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "df5a0d755dd533ddf3c0ce8cfe69ac91",
+            "name": "Get Folders Folder Messages",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Folders{folder_id}\/Messages",
+            "description": "You can request all the emails and meeting requests in a fol...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "3cecf3b894ff0b078f2efe1aa82bee58",
+            "name": "Add Folders Folder Messages",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Folders{folder_id}\/Messages",
+            "description": "You can create an email by sending a POST request with a JSO...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "MessageDisposition",
+                    "description": "When sending a POST request to create an email, there is an optional MessageDisposition query parameter that controls what happens to the message as it is created. The behavior and the default value depends on whether you are sending the POST request to the Messages property on a Folder entity or on the User entity.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "403371350038aaad86b57797118ae7d8",
+            "name": "Parameters Folders Folder Messages",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Folders{folder_id}\/Messages",
+            "description": "Parameters folders folder  messages",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "8d18b9a2821f3db0144e019b8ec66b56",
+            "name": "Add Messages Event Send",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{event_id}\/Send",
+            "description": "You can send an existing email that has the IsDraft property...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "772fe290527c1175d2119222596d72af",
+            "name": "Parameters Messages Event Send",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{event_id}\/Send",
+            "description": "Parameters messages event  send",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "6178296a03e3db9b3f24369215fe107b",
+            "name": "Get Messages Message",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}",
+            "description": "You can request information about a specific email or meetin...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "d63bb415263bfefd0189bd66e691dbf9",
+            "name": "Delete Messages Message",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}",
+            "description": "You can delete email by simply sending a DELETE request to t...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "2354b43bfe5832db665d287ce77865bf",
+            "name": "Patch Messages Message",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}",
+            "description": "You can update an existing email by sending a PATCH request ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "patch",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "2e0cb6d2a7a0a7018484d9144899a411",
+            "name": "Parameters Messages Message",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}",
+            "description": "Parameters messages message",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "f14b6ac4bdff003274808c4bd03f4cde",
+            "name": "Add Messages Message Copy",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/Copy",
+            "description": "Post messages message  copy",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "1555c5cd46ab39b85f3f717255ce5d46",
+            "name": "Parameters Messages Message Copy",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/Copy",
+            "description": "Parameters messages message  copy",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "8e3f1a76ce9bc5b62b9c7627f67fdc97",
+            "name": "Add Messages Message Createforward",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/CreateForward",
+            "description": "Post messages message  createforward",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "b273d4ed52ef5b8f83868ba39648b504",
+            "name": "Parameters Messages Message Createforward",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/CreateForward",
+            "description": "Parameters messages message  createforward",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "e85a01a7e757396cee0ed27a89be1a5e",
+            "name": "Add Messages Message Createreply",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/CreateReply",
+            "description": "Post messages message  createreply",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "001a319bf4b4a30617f07f474d864795",
+            "name": "Parameters Messages Message Createreply",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/CreateReply",
+            "description": "Parameters messages message  createreply",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "83aec7a41340a254d0d318a21ab2e9e1",
+            "name": "Add Messages Message Create Reply All",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/CreateReplyAll",
+            "description": "Post messages message  createreplyall",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "f393c0724a504e47c921925ea737f6bb",
+            "name": "Parameters Messages Message Create Reply All",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/CreateReplyAll",
+            "description": "Parameters messages message  createreplyall",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "c761b74fb568d007dc82e539002b0330",
+            "name": "Add Messages Message Forward",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/Forward",
+            "description": "You can forward an email by using the Forward action on the ...",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "1e05fd7fb85172568ddb5d54980dffc8",
+            "name": "Parameters Messages Message Forward",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/Forward",
+            "description": "Parameters messages message  forward",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "262e1bb950677b5fb4d41aa5c6b845ba",
+            "name": "Add Messages Message Move",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/Move",
+            "description": "Post messages message  move",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "4047f23f92fc513820875c2b9c54e2a8",
+            "name": "Parameters Messages Message Move",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/Move",
+            "description": "Parameters messages message  move",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "819f873f4b3529f11069738e67a765f8",
+            "name": "Add Messages Message Reply",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/Reply",
+            "description": "Post messages message  reply",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "6aef78116e77de4c1ca617f0df49bde6",
+            "name": "Parameters Messages Message Reply",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/Reply",
+            "description": "Parameters messages message  reply",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "0c775994c3a6ae3d31483f05eb19bdbf",
+            "name": "Add Messages Message Replyall",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/ReplyAll",
+            "description": "Post messages message  replyall",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "body",
+                    "description": "(Untitled)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "c5e0af4254c61be6d0bbf3c5d2ec5eae",
+            "name": "Parameters Messages Message Replyall",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Messages{message_id}\/ReplyAll",
+            "description": "Parameters messages message  replyall",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        },
+        {
+            "id": "84a9c85d8b482d3fcc06767ef1671f84",
+            "name": "Get Services",
+            "url": "httpsoutlook.office365.com\/ews\/odata\/Me\/Services",
+            "description": "Get services",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "65dc11838cacfc9192d7d5ed4f9cc4e8",
+            "rawModeData": ""
+        }
+    ]
+}
