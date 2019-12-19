@@ -1,0 +1,61 @@
+{
+    "name": "Microsoft Office 365",
+    "description": "<p>Integrate Office 365 REST APIs powered by Microsoft Graph into your own app to connect to files, calendars, mail and more.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/microsoft-office.png",
+    "tags": [
+        "api provider",
+        "documents",
+        "have api",
+        "productivity",
+        "relative data",
+        "service api",
+        "spreadsheets"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/microsoft-office-365\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Microsoft Office 365",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/microsoft-office.png",
+            "humanURL": "http:\/\/office.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/microsoft-office-365-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/microsoft-office-365.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/microsoft-office-365-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Developers",
+            "url": "http:\/\/dev.office.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/OfficeDev"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/OfficeDev"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/office.com"
+        }
+    ]
+}
