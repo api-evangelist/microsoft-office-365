@@ -1,0 +1,1100 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Microsoft Office 365",
+        "description": "Office 365 is the brand name used by Microsoft for a group of software plus services subscriptions that provides productivity software and related services to its subscribers.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsoutlook.office365.com\/ews\/odata\/Me"
+    ],
+    "paths": {
+        "\/AllServices": {
+            "get": {
+                "summary": "Get All Services",
+                "description": "Get all services.",
+                "operationId": "GetAllservices",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Calendar": {
+            "get": {
+                "summary": "Get Calendar",
+                "description": "Retrieve information about the default calendar by using the...",
+                "operationId": "GetCalendar",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/CalendarGroups": {
+            "get": {
+                "summary": "Get Calendar Groups",
+                "description": "You can request all the calendar groups in a mailbox (or a f...",
+                "operationId": "GetCalendargroups",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Calendar Groups",
+                "description": "You can create a calendar group by sending a POST request wi...",
+                "operationId": "PostCalendargroups",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            }
+        },
+        "\/CalendarGroups{calendargroup_id}": {
+            "get": {
+                "summary": "Get Calendar Groups",
+                "description": "Get calendargroups calendargroup",
+                "operationId": "GetCalendargroupsCalendargroup",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Calendar Groups",
+                "description": "Post calendargroups calendargroup",
+                "operationId": "PostCalendargroupsCalendargroup",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "delete": {
+                "summary": "Delete Calendar Groups",
+                "description": "Deleting a calendar group is as simple as sending a DELETE r...",
+                "operationId": "DeleteCalendargroupsCalendargroup",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "patch": {
+                "summary": "Patch Calendar Groups",
+                "description": "You can update a calendar group by sending a PATCH request w...",
+                "operationId": "PatchCalendargroupsCalendargroup",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Calendar Groups",
+                "description": "Parameters calendargroups calendargroup",
+                "operationId": "ParametersCalendargroupsCalendargroup",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/CalendarGroups{calendargroup_id}\/Calendars": {
+            "get": {
+                "summary": "Get Calendar Groups Calendars",
+                "description": "You can request all the user's calendars (or a filtered list...",
+                "operationId": "GetCalendargroupsCalendargroupCalendars",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Calendar Groups Calendars",
+                "description": "You can create a calendar by sending a POST request with a J...",
+                "operationId": "PostCalendargroupsCalendargroupCalendars",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Calendar Groups Calendars",
+                "description": "Parameters calendargroups calendargroup  calendars",
+                "operationId": "ParametersCalendargroupsCalendargroupCalendars",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Calendars{calendar_id}": {
+            "get": {
+                "summary": "Get Calendars Calendar",
+                "description": "You can also retrieve information about a specific calendar ...",
+                "operationId": "GetCalendarsCalendar",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "delete": {
+                "summary": "Delete Calendars Calendar",
+                "description": "Deleting a calendar is as simple as sending a DELETE request...",
+                "operationId": "DeleteCalendarsCalendar",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "patch": {
+                "summary": "Patch Calendars Calendar",
+                "description": "You can update a calendar by sending a PATCH request with a ...",
+                "operationId": "PatchCalendarsCalendar",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Calendars Calendar",
+                "description": "Parameters calendars calendar",
+                "operationId": "ParametersCalendarsCalendar",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Calendars{calendar_id}\/Events": {
+            "get": {
+                "summary": "Get Calendars Calendar Events",
+                "description": "You can request all the events across all calendars (or a fi...",
+                "operationId": "GetCalendarsCalendarEvents",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Calendars Calendar Events",
+                "description": "Post calendars calendar  events",
+                "operationId": "PostCalendarsCalendarEvents",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Calendars Calendar Events",
+                "description": "Parameters calendars calendar  events",
+                "operationId": "ParametersCalendarsCalendarEvents",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/ContactFolders{contact_folder_id}": {
+            "get": {
+                "summary": "Get Contact Folders Contact Folder",
+                "description": "You can access the default contact folder by using the const...",
+                "operationId": "GetContactfoldersContactFolder",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Contact Folders Contact Folder",
+                "description": "Parameters contactfolders contact folder",
+                "operationId": "ParametersContactfoldersContactFolder",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/ContactFolders{contact_folder_id}\/ChildFolders": {
+            "get": {
+                "summary": "Get Contact Folders Contact Folder Childfolders",
+                "description": "All non-default contact folders are stored as children of th...",
+                "operationId": "GetContactfoldersContactFolderChildfolders",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Contact Folders Contact Folder Childfolders",
+                "description": "Parameters contactfolders contact folder  childfolders",
+                "operationId": "ParametersContactfoldersContactFolderChildfolders",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/ContactFolders{contact_folder_id}\/Contacts": {
+            "get": {
+                "summary": "Get Contact Folders Contact Folder Contacts",
+                "description": "You can request all contacts (or a filtered set by using the...",
+                "operationId": "GetContactfoldersContactFolderContacts",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Contact Folders Contact Folder Contacts",
+                "description": "You can create a contact by sending a POST request with a JS...",
+                "operationId": "PostContactfoldersContactFolderContacts",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Contact Folders Contact Folder Contacts",
+                "description": "Parameters contactfolders contact folder  contacts",
+                "operationId": "ParametersContactfoldersContactFolderContacts",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Contacts{contact_id}": {
+            "get": {
+                "summary": "Get Contacts Contact",
+                "description": "You can retrieve information about a specific contact by usi...",
+                "operationId": "GetContactsContact",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Contacts Contact",
+                "description": "You can create a contact by sending a POST request with a JS...",
+                "operationId": "PostContactsContact",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete Contacts Contact",
+                "description": "You can delete a contact by simply sending a DELETE request ...",
+                "operationId": "DeleteContactsContact",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "patch": {
+                "summary": "Patch Contacts Contact",
+                "description": "To update a contact, send a PATCH request to the URL of the ...",
+                "operationId": "PatchContactsContact",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Contacts Contact",
+                "description": "Parameters contacts contact",
+                "operationId": "ParametersContactsContact",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Contacts{contact_id}\/Attachments": {
+            "get": {
+                "summary": "Get Contacts Contact Attachments",
+                "description": "To get attachments, send a GET request to the Attachments pr...",
+                "operationId": "GetContactsContactAttachments",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Contacts Contact Attachments",
+                "description": "To add an attachment to an item, send a POST request to the ...",
+                "operationId": "PostContactsContactAttachments",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete Contacts Contact Attachments",
+                "description": "To delete an attachment, send a DELETE request to the URL of...",
+                "operationId": "DeleteContactsContactAttachments",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Contacts Contact Attachments",
+                "description": "Parameters contacts contact  attachments",
+                "operationId": "ParametersContactsContactAttachments",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Events{event_id}": {
+            "get": {
+                "summary": "Get Events Event",
+                "description": "You can also retrieve information about a specific event by ...",
+                "operationId": "GetEventsEvent",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "delete": {
+                "summary": "Delete Events Event",
+                "description": "Upon success, the appointment is moved to the user's Deleted...",
+                "operationId": "DeleteEventsEvent",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "patch": {
+                "summary": "Patch Events Event",
+                "description": "To update an event, send a PATCH request to the URL of the e...",
+                "operationId": "PatchEventsEvent",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Events Event",
+                "description": "Parameters events event",
+                "operationId": "ParametersEventsEvent",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Events{event_id}\/Accept": {
+            "post": {
+                "summary": "Add Events Event Accept",
+                "description": "Post events event  accept",
+                "operationId": "PostEventsEventAccept",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Events Event Accept",
+                "description": "Parameters events event  accept",
+                "operationId": "ParametersEventsEventAccept",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Events{event_id}\/Decline": {
+            "post": {
+                "summary": "Add Events Event Decline",
+                "description": "Post events event  decline",
+                "operationId": "PostEventsEventDecline",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Events Event Decline",
+                "description": "Parameters events event  decline",
+                "operationId": "ParametersEventsEventDecline",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Events{event_id}\/TentativelyAccept": {
+            "post": {
+                "summary": "Add Events Event Tentatively Accept",
+                "description": "Post events event  tentativelyaccept",
+                "operationId": "PostEventsEventTentativelyaccept",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Events Event Tentatively Accept",
+                "description": "Parameters events event  tentativelyaccept",
+                "operationId": "ParametersEventsEventTentativelyaccept",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/FirstSignIn": {
+            "get": {
+                "summary": "Get Firstsignin",
+                "description": "Get firstsignin",
+                "operationId": "GetFirstsignin",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Folders{folder_id}": {
+            "get": {
+                "summary": "Get Folders Folder",
+                "description": "You can retrieve information about other folders by using th...",
+                "operationId": "GetFoldersFolder",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Folders Folder",
+                "description": "You can create a folder by sending a POST request with a JSO...",
+                "operationId": "PostFoldersFolder",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Delete Folders Folder",
+                "description": "To delete a folder, send a DELETE request to the URL of the ...",
+                "operationId": "DeleteFoldersFolder",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "patch": {
+                "summary": "Patch Folders Folder",
+                "description": "You can update a folder by sending a PATCH request with a JS...",
+                "operationId": "PatchFoldersFolder",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Folders Folder",
+                "description": "Parameters folders folder",
+                "operationId": "ParametersFoldersFolder",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Folders{folder_id}\/Messages": {
+            "get": {
+                "summary": "Get Folders Folder Messages",
+                "description": "You can request all the emails and meeting requests in a fol...",
+                "operationId": "GetFoldersFolderMessages",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "Add Folders Folder Messages",
+                "description": "You can create an email by sending a POST request with a JSO...",
+                "operationId": "PostFoldersFolderMessages",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    },
+                    {
+                        "name": "MessageDisposition",
+                        "in": "query",
+                        "description": "When sending a POST request to create an email, there is an optional MessageDisposition query parameter that controls what happens to the message as it is created. The behavior and the default value depends on whether you are sending the POST request to the Messages property on a Folder entity or on the User entity."
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Folders Folder Messages",
+                "description": "Parameters folders folder  messages",
+                "operationId": "ParametersFoldersFolderMessages",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{event_id}\/Send": {
+            "post": {
+                "summary": "Add Messages Event Send",
+                "description": "You can send an existing email that has the IsDraft property...",
+                "operationId": "PostMessagesEventSend",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Messages Event Send",
+                "description": "Parameters messages event  send",
+                "operationId": "ParametersMessagesEventSend",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}": {
+            "get": {
+                "summary": "Get Messages Message",
+                "description": "You can request information about a specific email or meetin...",
+                "operationId": "GetMessagesMessage",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "delete": {
+                "summary": "Delete Messages Message",
+                "description": "You can delete email by simply sending a DELETE request to t...",
+                "operationId": "DeleteMessagesMessage",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "patch": {
+                "summary": "Patch Messages Message",
+                "description": "You can update an existing email by sending a PATCH request ...",
+                "operationId": "PatchMessagesMessage",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message",
+                "description": "Parameters messages message",
+                "operationId": "ParametersMessagesMessage",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}\/Copy": {
+            "post": {
+                "summary": "Add Messages Message Copy",
+                "description": "Post messages message  copy",
+                "operationId": "PostMessagesMessageCopy",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message Copy",
+                "description": "Parameters messages message  copy",
+                "operationId": "ParametersMessagesMessageCopy",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}\/CreateForward": {
+            "post": {
+                "summary": "Add Messages Message Createforward",
+                "description": "Post messages message  createforward",
+                "operationId": "PostMessagesMessageCreateforward",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message Createforward",
+                "description": "Parameters messages message  createforward",
+                "operationId": "ParametersMessagesMessageCreateforward",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}\/CreateReply": {
+            "post": {
+                "summary": "Add Messages Message Createreply",
+                "description": "Post messages message  createreply",
+                "operationId": "PostMessagesMessageCreatereply",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message Createreply",
+                "description": "Parameters messages message  createreply",
+                "operationId": "ParametersMessagesMessageCreatereply",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}\/CreateReplyAll": {
+            "post": {
+                "summary": "Add Messages Message Create Reply All",
+                "description": "Post messages message  createreplyall",
+                "operationId": "PostMessagesMessageCreatereplyall",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message Create Reply All",
+                "description": "Parameters messages message  createreplyall",
+                "operationId": "ParametersMessagesMessageCreatereplyall",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}\/Forward": {
+            "post": {
+                "summary": "Add Messages Message Forward",
+                "description": "You can forward an email by using the Forward action on the ...",
+                "operationId": "PostMessagesMessageForward",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message Forward",
+                "description": "Parameters messages message  forward",
+                "operationId": "ParametersMessagesMessageForward",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}\/Move": {
+            "post": {
+                "summary": "Add Messages Message Move",
+                "description": "Post messages message  move",
+                "operationId": "PostMessagesMessageMove",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message Move",
+                "description": "Parameters messages message  move",
+                "operationId": "ParametersMessagesMessageMove",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}\/Reply": {
+            "post": {
+                "summary": "Add Messages Message Reply",
+                "description": "Post messages message  reply",
+                "operationId": "PostMessagesMessageReply",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message Reply",
+                "description": "Parameters messages message  reply",
+                "operationId": "ParametersMessagesMessageReply",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Messages{message_id}\/ReplyAll": {
+            "post": {
+                "summary": "Add Messages Message Replyall",
+                "description": "Post messages message  replyall",
+                "operationId": "PostMessagesMessageReplyall",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "(Untitled)"
+                    }
+                ]
+            },
+            "parameters": {
+                "summary": "Parameters Messages Message Replyall",
+                "description": "Parameters messages message  replyall",
+                "operationId": "ParametersMessagesMessageReplyall",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/Services": {
+            "get": {
+                "summary": "Get Services",
+                "description": "Get services",
+                "operationId": "GetServices",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "calendar": {
+                "type": "object",
+                "properties": {
+                    "@odata.id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "@odata.editLink": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ChangeKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Events@odata.navigationLink": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "forwardEmail": {
+                "type": "object",
+                "properties": {
+                    "Comment": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ToRecipients": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "copyFolder": {
+                "type": "object",
+                "properties": {
+                    "DestinationId": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "getFolderById": {
+                "type": "object",
+                "properties": {
+                    "@odata.id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "@odata.editLink": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ParentFolderId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "DisplayName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ClassName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "TotalCount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ChildFolderCount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "UnreadItemCount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ChildFolders@odata.navigationLink": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Messages@odata.navigationLink": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "addCalendarGroup": {
+                "type": "object",
+                "properties": {
+                    "@odata.type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Name": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "newEvent": {
+                "type": "object",
+                "properties": {
+                    "@odata.type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Subject": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Body": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Start": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "End": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Location": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ShowAs": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "updateEmail": {
+                "type": "object",
+                "properties": {
+                    "Body": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "addNewMailFolderRequest": {
+                "type": "object",
+                "properties": {
+                    "@odata.type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "DisplayName": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "updateEvent": {
+                "type": "object",
+                "properties": {
+                    "Location": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "replyComment": {
+                "type": "object",
+                "properties": {
+                    "Comment": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "updateNewMailFolderRequest": {
+                "type": "object",
+                "properties": {
+                    "DisplayName": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "newAttachment": {
+                "type": "object",
+                "properties": {
+                    "@odata.type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Item": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "createContact": {
+                "type": "object",
+                "properties": {
+                    "@odata.type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "GivenName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Surname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "EmailAddress1": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "BusinessPhone1": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Birthday": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "newEmail": {
+                "type": "object",
+                "properties": {
+                    "@odata.type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Subject": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Importance": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Body": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "updateContact": {
+                "type": "object",
+                "properties": {
+                    "MobilePhone1": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "updateCalendar": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "calendarRepresentation": {
+                "type": "object",
+                "properties": {
+                    "@odata.id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "@odata.editLink": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ChangeKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ClassId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Calendars@odata.navigationLink": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "contacts": {
+                "type": "object",
+                "properties": {
+                    "@odata.id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "@odata.editLink": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ParentFolderId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "DisplayName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Contacts@odata.navigationLink": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ChildFolders@odata.navigationLink": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            }
+        }
+    }
+}
