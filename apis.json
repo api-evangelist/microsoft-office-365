@@ -11,8 +11,8 @@
         "service api",
         "spreadsheets"
     ],
-    "created": "2019-12-19",
-    "modified": "2019-12-19",
+    "created": "2019-12-21",
+    "modified": "2019-12-21",
     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/microsoft-office-365\/master\/apis.json",
     "specificationVersion": "0.14",
     "apis": [
@@ -26,7 +26,7 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/microsoft-office-365-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/microsoft-office-365\/master\/microsoft-office-365-openapi.json"
                 },
                 {
                     "type": "x-openapi",
@@ -34,13 +34,17 @@
                 },
                 {
                     "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/microsoft-office-365-postman-collection.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/microsoft-office-365\/master\/microsoft-office-365-postman-collection.json"
                 }
             ]
         }
     ],
     "include": [],
     "x-common": [
+        {
+            "type": "APIs.json",
+            "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
+        },
         {
             "type": "Developers",
             "url": "http:\/\/dev.office.com"
