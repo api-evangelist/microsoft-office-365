@@ -1,0 +1,156 @@
+name: Microsoft Office 365 APIs
+description: A collection of APIs provided by Microsoft Office 365 for productivity, collaboration, and enterprise services
+image: https://www.microsoft.com/en-us/microsoft-365/blog/wp-content/uploads/sites/2/2020/04/Microsoft-365.png
+url: https://www.microsoft.com/en-us/microsoft-365
+created: '2024-01-15'
+modified: '2024-01-15'
+specificationVersion: '0.16'
+tags:
+- productivity
+- collaboration
+- cloud
+- enterprise
+- microsoft
+apis:
+- name: Microsoft Graph API
+  description: Unified API endpoint to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security
+  image: https://docs.microsoft.com/en-us/graph/images/microsoft-graph.png
+  humanURL: https://developer.microsoft.com/en-us/graph
+  baseURL: https://graph.microsoft.com
+  tags:
+  - graph
+  - unified
+  - users
+  - groups
+  - mail
+  - calendar
+  properties:
+  - type: X-documentation
+    url: https://docs.microsoft.com/en-us/graph/overview
+  - type: X-openapi
+    url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/openapi.yaml
+  - type: X-pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/active-directory/
+  - type: X-authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+  - type: X-postman-collection
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: X-terms-of-service
+    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  - type: X-rate-limits
+    url: https://docs.microsoft.com/en-us/graph/throttling
+- name: Outlook Mail API
+  description: Access to Outlook email, including reading, sending, and managing messages
+  humanURL: https://docs.microsoft.com/en-us/graph/api/resources/mail-api-overview
+  baseURL: https://graph.microsoft.com/v1.0/me/messages
+  tags:
+  - email
+  - outlook
+  - messages
+  - mail
+  properties:
+  - type: X-documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/message
+  - type: X-openapi
+    url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/mail.yaml
+- name: Outlook Calendar API
+  description: Access to Outlook calendar events, scheduling, and meeting management
+  humanURL: https://docs.microsoft.com/en-us/graph/api/resources/calendar
+  baseURL: https://graph.microsoft.com/v1.0/me/calendar
+  tags:
+  - calendar
+  - events
+  - scheduling
+  - meetings
+  properties:
+  - type: X-documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/event
+  - type: X-openapi
+    url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/calendar.yaml
+- name: OneDrive API
+  description: Access to OneDrive file storage, sharing, and collaboration features
+  humanURL: https://docs.microsoft.com/en-us/graph/api/resources/onedrive
+  baseURL: https://graph.microsoft.com/v1.0/me/drive
+  tags:
+  - storage
+  - files
+  - onedrive
+  - sharing
+  properties:
+  - type: X-documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/driveitem
+  - type: X-openapi
+    url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/files.yaml
+- name: SharePoint API
+  description: Access to SharePoint sites, lists, and document libraries
+  humanURL: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
+  baseURL: https://graph.microsoft.com/v1.0/sites
+  tags:
+  - sharepoint
+  - sites
+  - lists
+  - collaboration
+  properties:
+  - type: X-documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/site
+  - type: X-openapi
+    url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/sites.yaml
+- name: Microsoft Teams API
+  description: Access to Microsoft Teams channels, messages, and collaboration features
+  humanURL: https://docs.microsoft.com/en-us/graph/api/resources/teams-api-overview
+  baseURL: https://graph.microsoft.com/v1.0/teams
+  tags:
+  - teams
+  - chat
+  - collaboration
+  - channels
+  properties:
+  - type: X-documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/team
+  - type: X-openapi
+    url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/teams.yaml
+- name: Office 365 Users API
+  description: Manage Office 365 users, profiles, and organizational information
+  humanURL: https://docs.microsoft.com/en-us/graph/api/resources/user
+  baseURL: https://graph.microsoft.com/v1.0/users
+  tags:
+  - users
+  - profiles
+  - directory
+  - identity
+  properties:
+  - type: X-documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/user
+  - type: X-openapi
+    url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/users.yaml
+- name: Planner API
+  description: Access to Microsoft Planner tasks, plans, and project management features
+  humanURL: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
+  baseURL: https://graph.microsoft.com/v1.0/planner
+  tags:
+  - planner
+  - tasks
+  - projects
+  - planning
+  properties:
+  - type: X-documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
+  - type: X-openapi
+    url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/planner.yaml
+maintainers:
+- name: Microsoft
+  email: graphsdkpub@microsoft.com
+  url: https://developer.microsoft.com/en-us/graph
+common:
+- type: X-developer-portal
+  url: https://developer.microsoft.com/en-us/microsoft-365
+- type: X-status
+  url: https://status.office365.com/
+- type: X-support
+  url: https://developer.microsoft.com/en-us/graph/support
+- type: X-blog
+  url: https://developer.microsoft.com/en-us/graph/blogs/
+- type: X-github
+  url: https://github.com/microsoftgraph
+- type: X-privacy-policy
+  url: https://privacy.microsoft.com/en-us/privacystatement
