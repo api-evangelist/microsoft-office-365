@@ -1,0 +1,498 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kinlane/microsoft-office-365/json-schema/microsoft-office-365-user-schema.json",
+  "title": "Microsoft Office 365 User",
+  "description": "Represents an Azure Active Directory (Entra ID) user account accessed through the Microsoft Graph API. A user resource contains profile information, organizational hierarchy, contact details, assigned licenses, and managed resources. This schema models the user resource as documented at https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the user. Inherited from directoryObject. A GUID value assigned by Azure AD and immutable once set.",
+      "readOnly": true,
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "examples": ["87d349ed-44d7-43e1-9a83-5f2406dee5bd"]
+    },
+    "displayName": {
+      "type": ["string", "null"],
+      "description": "The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. Maximum length is 256 characters.",
+      "maxLength": 256,
+      "examples": ["Adele Vance"]
+    },
+    "givenName": {
+      "type": ["string", "null"],
+      "description": "The given name (first name) of the user. Maximum length is 64 characters.",
+      "maxLength": 64,
+      "examples": ["Adele"]
+    },
+    "surname": {
+      "type": ["string", "null"],
+      "description": "The user's surname (family name or last name). Maximum length is 64 characters.",
+      "maxLength": 64,
+      "examples": ["Vance"]
+    },
+    "mail": {
+      "type": ["string", "null"],
+      "description": "The SMTP address for the user, for example, admin@contoso.com. Changes to this property also update the user's proxyAddresses collection to include the value as an SMTP address. This property cannot contain accent characters.",
+      "format": "email",
+      "examples": ["AdeleV@contoso.com"]
+    },
+    "userPrincipalName": {
+      "type": "string",
+      "description": "The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains.",
+      "examples": ["AdeleV@contoso.com"]
+    },
+    "mailNickname": {
+      "type": ["string", "null"],
+      "description": "The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters.",
+      "maxLength": 64,
+      "examples": ["AdeleV"]
+    },
+    "jobTitle": {
+      "type": ["string", "null"],
+      "description": "The user's job title. Maximum length is 128 characters.",
+      "maxLength": 128,
+      "examples": ["Retail Manager"]
+    },
+    "department": {
+      "type": ["string", "null"],
+      "description": "The name of the department in which the user works. Maximum length is 64 characters.",
+      "maxLength": 64,
+      "examples": ["Retail"]
+    },
+    "officeLocation": {
+      "type": ["string", "null"],
+      "description": "The office location in the user's place of business. Maximum length is 128 characters.",
+      "maxLength": 128,
+      "examples": ["18/2111"]
+    },
+    "companyName": {
+      "type": ["string", "null"],
+      "description": "The company name which the user is associated with. This property can be useful for describing the company that an external user comes from. Maximum length is 64 characters.",
+      "maxLength": 64,
+      "examples": ["Contoso"]
+    },
+    "businessPhones": {
+      "type": "array",
+      "description": "The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced from on-premises directory.",
+      "items": {
+        "type": "string"
+      },
+      "examples": [["+1 425 555 0109"]]
+    },
+    "mobilePhone": {
+      "type": ["string", "null"],
+      "description": "The primary cellular telephone number for the user. Read-only for users synced from on-premises directory.",
+      "examples": ["+1 425 555 0100"]
+    },
+    "faxNumber": {
+      "type": ["string", "null"],
+      "description": "The fax number of the user."
+    },
+    "streetAddress": {
+      "type": ["string", "null"],
+      "description": "The street address of the user's place of business. Maximum length is 1024 characters.",
+      "maxLength": 1024,
+      "examples": ["123 Main Street"]
+    },
+    "city": {
+      "type": ["string", "null"],
+      "description": "The city in which the user is located. Maximum length is 128 characters.",
+      "maxLength": 128,
+      "examples": ["Seattle"]
+    },
+    "state": {
+      "type": ["string", "null"],
+      "description": "The state or province in the user's address. Maximum length is 128 characters.",
+      "maxLength": 128,
+      "examples": ["WA"]
+    },
+    "postalCode": {
+      "type": ["string", "null"],
+      "description": "The postal code for the user's postal address. The postal code is specific to the user's country/region. Maximum length is 40 characters.",
+      "maxLength": 40,
+      "examples": ["98052"]
+    },
+    "country": {
+      "type": ["string", "null"],
+      "description": "The country or region in which the user is located; for example, US or UK. Maximum length is 128 characters.",
+      "maxLength": 128,
+      "examples": ["United States"]
+    },
+    "usageLocation": {
+      "type": ["string", "null"],
+      "description": "A two-letter country code (ISO standard 3166). Required for users that are assigned licenses due to legal requirements to check for availability of services in countries. Examples include: US, JP, and GB. Not nullable.",
+      "pattern": "^[A-Z]{2}$",
+      "examples": ["US"]
+    },
+    "preferredLanguage": {
+      "type": ["string", "null"],
+      "description": "The preferred language for the user. Should follow ISO 639-1 Code; for example en-US.",
+      "examples": ["en-US"]
+    },
+    "preferredDataLocation": {
+      "type": ["string", "null"],
+      "description": "The preferred data location for the user, used in multi-geo environments."
+    },
+    "accountEnabled": {
+      "type": ["boolean", "null"],
+      "description": "true if the account is enabled; otherwise, false. This property is required when a user is created.",
+      "examples": [true]
+    },
+    "ageGroup": {
+      "type": ["string", "null"],
+      "description": "Sets the age group of the user.",
+      "enum": [null, "Minor", "NotAdult", "Adult"]
+    },
+    "consentProvidedForMinor": {
+      "type": ["string", "null"],
+      "description": "Sets whether consent has been obtained for minors.",
+      "enum": [null, "Granted", "Denied", "NotRequired"]
+    },
+    "legalAgeGroupClassification": {
+      "type": ["string", "null"],
+      "description": "Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties.",
+      "readOnly": true,
+      "enum": [null, "MinorWithOutParentalConsent", "MinorWithParentalConsent", "MinorNoParentalConsentRequired", "NotAdult", "Adult"]
+    },
+    "employeeId": {
+      "type": ["string", "null"],
+      "description": "The employee identifier assigned to the user by the organization. Maximum length is 16 characters.",
+      "maxLength": 16
+    },
+    "employeeType": {
+      "type": ["string", "null"],
+      "description": "Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor."
+    },
+    "employeeHireDate": {
+      "type": ["string", "null"],
+      "description": "The date and time when the user was hired or will start work in a future hire.",
+      "format": "date-time"
+    },
+    "employeeOrgData": {
+      "type": ["object", "null"],
+      "description": "Represents organization data (e.g., division and costCenter) associated with a user.",
+      "properties": {
+        "division": {
+          "type": ["string", "null"],
+          "description": "The name of the division the user belongs to."
+        },
+        "costCenter": {
+          "type": ["string", "null"],
+          "description": "The cost center associated with the user."
+        }
+      }
+    },
+    "userType": {
+      "type": ["string", "null"],
+      "description": "A string value that can be used to classify user types in your directory, such as Member and Guest.",
+      "enum": [null, "Member", "Guest"],
+      "examples": ["Member"]
+    },
+    "externalUserState": {
+      "type": ["string", "null"],
+      "description": "For an external user invited to the tenant, this property represents the invited user's invitation status.",
+      "readOnly": true,
+      "enum": [null, "PendingAcceptance", "Accepted"]
+    },
+    "externalUserStateChangeDateTime": {
+      "type": ["string", "null"],
+      "description": "Shows the timestamp for the latest change to the externalUserState property.",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "createdDateTime": {
+      "type": ["string", "null"],
+      "description": "The date and time the user was created, in ISO 8601 format and UTC time.",
+      "format": "date-time",
+      "readOnly": true,
+      "examples": ["2017-07-29T03:07:25Z"]
+    },
+    "lastSignInDateTime": {
+      "type": ["string", "null"],
+      "description": "The date and time of the user's most recent interactive or non-interactive sign-in activity. Read-only and returned only on $select.",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "deletedDateTime": {
+      "type": ["string", "null"],
+      "description": "The date and time the user was deleted. Returned only on $select.",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "onPremisesImmutableId": {
+      "type": ["string", "null"],
+      "description": "This property is used to associate an on-premises Active Directory user account to their Azure AD user object. Must be specified when creating a new user account if using a federated domain for the user's userPrincipalName (UPN) property."
+    },
+    "onPremisesLastSyncDateTime": {
+      "type": ["string", "null"],
+      "description": "Indicates the last time at which the object was synced with the on-premises directory.",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "onPremisesSyncEnabled": {
+      "type": ["boolean", "null"],
+      "description": "true if this user object is currently being synced from an on-premises Active Directory; otherwise the user isn't being synced and can be managed in Azure Active Directory.",
+      "readOnly": true
+    },
+    "onPremisesSamAccountName": {
+      "type": ["string", "null"],
+      "description": "Contains the on-premises samAccountName synchronized from the on-premises directory.",
+      "readOnly": true
+    },
+    "onPremisesDomainName": {
+      "type": ["string", "null"],
+      "description": "Contains the on-premises domainFQDN (also called dnsDomainName) synchronized from the on-premises directory.",
+      "readOnly": true
+    },
+    "onPremisesDistinguishedName": {
+      "type": ["string", "null"],
+      "description": "Contains the on-premises Active Directory distinguished name or DN.",
+      "readOnly": true
+    },
+    "onPremisesSecurityIdentifier": {
+      "type": ["string", "null"],
+      "description": "Contains the on-premises security identifier (SID) for the user.",
+      "readOnly": true
+    },
+    "onPremisesUserPrincipalName": {
+      "type": ["string", "null"],
+      "description": "Contains the on-premises userPrincipalName synchronized from the on-premises directory.",
+      "readOnly": true
+    },
+    "proxyAddresses": {
+      "type": "array",
+      "description": "For example: [\"SMTP: bob@contoso.com\", \"smtp: bob@sales.contoso.com\"]. Changes to the mail property also update this collection to include the value as an SMTP address.",
+      "readOnly": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "otherMails": {
+      "type": "array",
+      "description": "A list of additional email addresses for the user; for example: [\"bob@contoso.com\", \"Robert@fabrikam.com\"].",
+      "items": {
+        "type": "string",
+        "format": "email"
+      }
+    },
+    "imAddresses": {
+      "type": "array",
+      "description": "The instant message voice-over IP (VOIP) session initiation protocol (SIP) addresses for the user.",
+      "readOnly": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "showInAddressList": {
+      "type": ["boolean", "null"],
+      "description": "true if the Outlook global address list should contain this user; otherwise, false."
+    },
+    "passwordProfile": {
+      "type": ["object", "null"],
+      "description": "Specifies the password profile for the user. The profile contains the user's password. Required when creating a user.",
+      "properties": {
+        "forceChangePasswordNextSignIn": {
+          "type": "boolean",
+          "description": "true if the user must change their password on the next sign-in; otherwise false.",
+          "default": true
+        },
+        "forceChangePasswordNextSignInWithMfa": {
+          "type": "boolean",
+          "description": "If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password.",
+          "default": false
+        },
+        "password": {
+          "type": ["string", "null"],
+          "description": "The password for the user. This property is required when a user is created. It can be updated, but the user is required to change the password on the next login. The password must satisfy minimum requirements as specified by the user's passwordPolicies property.",
+          "format": "password"
+        }
+      }
+    },
+    "passwordPolicies": {
+      "type": ["string", "null"],
+      "description": "Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified."
+    },
+    "identities": {
+      "type": "array",
+      "description": "Represents the identities that can be used to sign in to this user account. An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "signInType": {
+            "type": "string",
+            "description": "Specifies the user sign-in types in your directory, such as emailAddress, userName, federated, or userPrincipalName.",
+            "examples": ["userPrincipalName"]
+          },
+          "issuer": {
+            "type": "string",
+            "description": "Specifies the issuer of the identity, for example contoso.onmicrosoft.com.",
+            "examples": ["contoso.onmicrosoft.com"]
+          },
+          "issuerAssignedId": {
+            "type": "string",
+            "description": "Specifies the unique value associated with the issuer and signInType combination that identifies the user."
+          }
+        },
+        "required": ["signInType", "issuer", "issuerAssignedId"]
+      }
+    },
+    "assignedLicenses": {
+      "type": "array",
+      "description": "The licenses that are assigned to the user, including inherited (group-based) licenses.",
+      "readOnly": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "disabledPlans": {
+            "type": "array",
+            "description": "A collection of the unique identifiers for plans that have been disabled.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "skuId": {
+            "type": "string",
+            "description": "The unique identifier for the SKU.",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+          }
+        }
+      }
+    },
+    "assignedPlans": {
+      "type": "array",
+      "description": "The plans that are assigned to the user.",
+      "readOnly": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "assignedDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time at which the plan was assigned."
+          },
+          "capabilityStatus": {
+            "type": "string",
+            "description": "Condition of the capability assignment.",
+            "enum": ["Enabled", "Warning", "Suspended", "Deleted", "LockedOut"]
+          },
+          "service": {
+            "type": "string",
+            "description": "The name of the service; for example, exchange."
+          },
+          "servicePlanId": {
+            "type": "string",
+            "description": "A GUID that identifies the service plan."
+          }
+        }
+      }
+    },
+    "provisionedPlans": {
+      "type": "array",
+      "description": "The plans that are provisioned for the user.",
+      "readOnly": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "capabilityStatus": {
+            "type": "string",
+            "description": "Condition of the capability assignment."
+          },
+          "provisioningStatus": {
+            "type": "string",
+            "description": "The provisioning status."
+          },
+          "service": {
+            "type": "string",
+            "description": "The name of the service."
+          }
+        }
+      }
+    },
+    "aboutMe": {
+      "type": ["string", "null"],
+      "description": "A freeform text entry field for the user to describe themselves. Returned only on $select."
+    },
+    "birthday": {
+      "type": ["string", "null"],
+      "description": "The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. Returned only on $select.",
+      "format": "date-time"
+    },
+    "hireDate": {
+      "type": ["string", "null"],
+      "description": "The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. Returned only on $select.",
+      "format": "date-time"
+    },
+    "interests": {
+      "type": "array",
+      "description": "A list for the user to describe their interests. Returned only on $select.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mySite": {
+      "type": ["string", "null"],
+      "description": "The URL for the user's personal site. Returned only on $select.",
+      "format": "uri"
+    },
+    "pastProjects": {
+      "type": "array",
+      "description": "A list for the user to enumerate their past projects. Returned only on $select.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "responsibilities": {
+      "type": "array",
+      "description": "A list for the user to enumerate their responsibilities. Returned only on $select.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "schools": {
+      "type": "array",
+      "description": "A list for the user to enumerate the schools they have attended. Returned only on $select.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "skills": {
+      "type": "array",
+      "description": "A list for the user to enumerate their skills. Returned only on $select.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "signInActivity": {
+      "type": ["object", "null"],
+      "description": "Get the last signed-in date and request ID of the sign-in for a given user. Read-only. Returned only on $select.",
+      "readOnly": true,
+      "properties": {
+        "lastSignInDateTime": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "The last interactive sign-in date and time for the user."
+        },
+        "lastSignInRequestId": {
+          "type": ["string", "null"],
+          "description": "The request ID of the last interactive sign-in performed by this user."
+        },
+        "lastNonInteractiveSignInDateTime": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "The last non-interactive sign-in date for the user."
+        },
+        "lastNonInteractiveSignInRequestId": {
+          "type": ["string", "null"],
+          "description": "The request ID of the last non-interactive sign-in."
+        }
+      }
+    }
+  },
+  "required": [
+    "accountEnabled",
+    "displayName",
+    "mailNickname",
+    "userPrincipalName",
+    "passwordProfile"
+  ]
+}

@@ -1,0 +1,483 @@
+{
+  "@context": {
+    "@version": 1.1,
+
+    "msgraph": "https://graph.microsoft.com/v1.0/",
+    "schema": "https://schema.org/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "org": "http://www.w3.org/ns/org#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "odata": "http://docs.oasis-open.org/odata/ns/",
+
+    "User": {
+      "@id": "msgraph:users",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "givenName": {
+          "@id": "schema:givenName",
+          "@type": "xsd:string"
+        },
+        "surname": {
+          "@id": "schema:familyName",
+          "@type": "xsd:string"
+        },
+        "mail": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "userPrincipalName": {
+          "@id": "msgraph:userPrincipalName",
+          "@type": "xsd:string"
+        },
+        "jobTitle": {
+          "@id": "schema:jobTitle",
+          "@type": "xsd:string"
+        },
+        "department": {
+          "@id": "org:unitOf",
+          "@type": "xsd:string"
+        },
+        "officeLocation": {
+          "@id": "schema:workLocation",
+          "@type": "xsd:string"
+        },
+        "companyName": {
+          "@id": "schema:worksFor",
+          "@type": "xsd:string"
+        },
+        "businessPhones": {
+          "@id": "schema:telephone",
+          "@container": "@set"
+        },
+        "mobilePhone": {
+          "@id": "vcard:hasTelephone",
+          "@type": "xsd:string"
+        },
+        "streetAddress": {
+          "@id": "schema:streetAddress",
+          "@type": "xsd:string"
+        },
+        "city": {
+          "@id": "schema:addressLocality",
+          "@type": "xsd:string"
+        },
+        "state": {
+          "@id": "schema:addressRegion",
+          "@type": "xsd:string"
+        },
+        "postalCode": {
+          "@id": "schema:postalCode",
+          "@type": "xsd:string"
+        },
+        "country": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "preferredLanguage": {
+          "@id": "schema:knowsLanguage",
+          "@type": "xsd:string"
+        },
+        "accountEnabled": {
+          "@id": "msgraph:accountEnabled",
+          "@type": "xsd:boolean"
+        },
+        "createdDateTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "employeeId": {
+          "@id": "schema:employeeId",
+          "@type": "xsd:string"
+        },
+        "usageLocation": {
+          "@id": "schema:countryOfOrigin",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Group": {
+      "@id": "msgraph:groups",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "mail": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "mailEnabled": {
+          "@id": "msgraph:mailEnabled",
+          "@type": "xsd:boolean"
+        },
+        "mailNickname": {
+          "@id": "msgraph:mailNickname",
+          "@type": "xsd:string"
+        },
+        "securityEnabled": {
+          "@id": "msgraph:securityEnabled",
+          "@type": "xsd:boolean"
+        },
+        "groupTypes": {
+          "@id": "msgraph:groupTypes",
+          "@container": "@set"
+        },
+        "visibility": {
+          "@id": "msgraph:visibility",
+          "@type": "xsd:string"
+        },
+        "createdDateTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "classification": {
+          "@id": "skos:notation",
+          "@type": "xsd:string"
+        },
+        "members": {
+          "@id": "org:hasMember",
+          "@container": "@set"
+        },
+        "owners": {
+          "@id": "msgraph:owners",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Message": {
+      "@id": "schema:EmailMessage",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:string"
+        },
+        "subject": {
+          "@id": "schema:about",
+          "@type": "xsd:string"
+        },
+        "body": {
+          "@id": "schema:text"
+        },
+        "bodyPreview": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "sender": {
+          "@id": "schema:sender"
+        },
+        "from": {
+          "@id": "schema:author"
+        },
+        "toRecipients": {
+          "@id": "schema:recipient",
+          "@container": "@set"
+        },
+        "ccRecipients": {
+          "@id": "schema:ccRecipient",
+          "@container": "@set"
+        },
+        "bccRecipients": {
+          "@id": "schema:bccRecipient",
+          "@container": "@set"
+        },
+        "receivedDateTime": {
+          "@id": "schema:dateReceived",
+          "@type": "xsd:dateTime"
+        },
+        "sentDateTime": {
+          "@id": "schema:dateSent",
+          "@type": "xsd:dateTime"
+        },
+        "createdDateTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "hasAttachments": {
+          "@id": "msgraph:hasAttachments",
+          "@type": "xsd:boolean"
+        },
+        "importance": {
+          "@id": "msgraph:importance",
+          "@type": "xsd:string"
+        },
+        "isRead": {
+          "@id": "msgraph:isRead",
+          "@type": "xsd:boolean"
+        },
+        "isDraft": {
+          "@id": "msgraph:isDraft",
+          "@type": "xsd:boolean"
+        },
+        "categories": {
+          "@id": "dcterms:subject",
+          "@container": "@set"
+        },
+        "conversationId": {
+          "@id": "msgraph:conversationId",
+          "@type": "xsd:string"
+        },
+        "internetMessageId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "webLink": {
+          "@id": "schema:url",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Event": {
+      "@id": "schema:Event",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:string"
+        },
+        "subject": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "body": {
+          "@id": "schema:description"
+        },
+        "start": {
+          "@id": "schema:startDate"
+        },
+        "end": {
+          "@id": "schema:endDate"
+        },
+        "location": {
+          "@id": "schema:location"
+        },
+        "locations": {
+          "@id": "schema:location",
+          "@container": "@set"
+        },
+        "attendees": {
+          "@id": "schema:attendee",
+          "@container": "@set"
+        },
+        "organizer": {
+          "@id": "schema:organizer"
+        },
+        "isAllDay": {
+          "@id": "msgraph:isAllDay",
+          "@type": "xsd:boolean"
+        },
+        "isCancelled": {
+          "@id": "schema:eventStatus",
+          "@type": "xsd:boolean"
+        },
+        "isOnlineMeeting": {
+          "@id": "msgraph:isOnlineMeeting",
+          "@type": "xsd:boolean"
+        },
+        "onlineMeetingUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "recurrence": {
+          "@id": "msgraph:recurrence"
+        },
+        "showAs": {
+          "@id": "msgraph:showAs",
+          "@type": "xsd:string"
+        },
+        "importance": {
+          "@id": "msgraph:importance",
+          "@type": "xsd:string"
+        },
+        "sensitivity": {
+          "@id": "msgraph:sensitivity",
+          "@type": "xsd:string"
+        },
+        "createdDateTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastModifiedDateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "categories": {
+          "@id": "dcterms:subject",
+          "@container": "@set"
+        },
+        "hasAttachments": {
+          "@id": "msgraph:hasAttachments",
+          "@type": "xsd:boolean"
+        },
+        "webLink": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "reminderMinutesBeforeStart": {
+          "@id": "msgraph:reminderMinutesBeforeStart",
+          "@type": "xsd:integer"
+        },
+        "responseRequested": {
+          "@id": "msgraph:responseRequested",
+          "@type": "xsd:boolean"
+        },
+        "allowNewTimeProposals": {
+          "@id": "msgraph:allowNewTimeProposals",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "Calendar": {
+      "@id": "msgraph:calendars",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "color": {
+          "@id": "msgraph:color",
+          "@type": "xsd:string"
+        },
+        "isDefaultCalendar": {
+          "@id": "msgraph:isDefaultCalendar",
+          "@type": "xsd:boolean"
+        },
+        "canEdit": {
+          "@id": "msgraph:canEdit",
+          "@type": "xsd:boolean"
+        },
+        "canShare": {
+          "@id": "msgraph:canShare",
+          "@type": "xsd:boolean"
+        },
+        "owner": {
+          "@id": "schema:creator"
+        }
+      }
+    },
+
+    "MailFolder": {
+      "@id": "msgraph:mailFolders",
+      "@context": {
+        "id": {
+          "@id": "dcterms:identifier",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "totalItemCount": {
+          "@id": "msgraph:totalItemCount",
+          "@type": "xsd:integer"
+        },
+        "unreadItemCount": {
+          "@id": "msgraph:unreadItemCount",
+          "@type": "xsd:integer"
+        },
+        "childFolderCount": {
+          "@id": "msgraph:childFolderCount",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Location": {
+      "@id": "schema:Place",
+      "@context": {
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "address": {
+          "@id": "schema:address"
+        },
+        "coordinates": {
+          "@id": "schema:geo"
+        }
+      }
+    },
+
+    "EmailAddress": {
+      "@id": "schema:ContactPoint",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "address": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "PhysicalAddress": {
+      "@id": "schema:PostalAddress",
+      "@context": {
+        "street": {
+          "@id": "schema:streetAddress",
+          "@type": "xsd:string"
+        },
+        "city": {
+          "@id": "schema:addressLocality",
+          "@type": "xsd:string"
+        },
+        "state": {
+          "@id": "schema:addressRegion",
+          "@type": "xsd:string"
+        },
+        "countryOrRegion": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "postalCode": {
+          "@id": "schema:postalCode",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "DateTimeTimeZone": {
+      "@id": "msgraph:DateTimeTimeZone",
+      "@context": {
+        "dateTime": {
+          "@id": "schema:value",
+          "@type": "xsd:dateTime"
+        },
+        "timeZone": {
+          "@id": "msgraph:timeZone",
+          "@type": "xsd:string"
+        }
+      }
+    }
+  }
+}
