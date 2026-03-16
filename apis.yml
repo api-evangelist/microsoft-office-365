@@ -1,10 +1,11 @@
+aid: microsoft-office-365
 name: Microsoft Office 365 APIs
 description: A collection of APIs provided by Microsoft Office 365 for productivity, collaboration, and enterprise services
 image: https://www.microsoft.com/en-us/microsoft-365/blog/wp-content/uploads/sites/2/2020/04/Microsoft-365.png
 url: https://www.microsoft.com/en-us/microsoft-365
 created: '2024-01-15'
-modified: '2026-03-03'
-specificationVersion: '0.16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 tags:
 - productivity
 - collaboration
@@ -288,7 +289,7 @@ apis:
   - type: X-development-guide
     url: https://learn.microsoft.com/en-us/office/dev/add-ins/develop/develop-overview
 maintainers:
-- name: Kin Lane
+- FN: Kin Lane
   email: kin@apievangelist.com
   url: https://apievangelist.com
 common:
