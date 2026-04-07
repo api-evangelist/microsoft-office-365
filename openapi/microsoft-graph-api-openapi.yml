@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Microsoft Graph API
+  title: Microsoft Office 365 Microsoft Graph API
   description: >-
     The Microsoft Graph API provides a unified programmability model to access
     data, intelligence, and insights from Microsoft 365, Windows, and Enterprise
@@ -65,7 +65,7 @@ paths:
   /users:
     get:
       operationId: listUsers
-      summary: List users
+      summary: Microsoft Office 365 List users
       description: >-
         Retrieve a list of user objects. By default, only a limited set of
         properties are returned. To return additional properties, use the $select
@@ -100,7 +100,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createUser
-      summary: Create user
+      summary: Microsoft Office 365 Create user
       description: >-
         Create a new user object. The request body must contain the required
         properties for the user. You can optionally specify other writable
@@ -133,7 +133,7 @@ paths:
   /users/{user-id}:
     get:
       operationId: getUser
-      summary: Get user
+      summary: Microsoft Office 365 Get user
       description: >-
         Retrieve the properties and relationships of a user object. Returns a
         limited set of properties by default; use $select to request additional
@@ -162,7 +162,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: updateUser
-      summary: Update user
+      summary: Microsoft Office 365 Update user
       description: >-
         Update the properties of a user object. Not all properties can be
         updated by Member or Guest users with their default permissions without
@@ -193,7 +193,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: deleteUser
-      summary: Delete user
+      summary: Microsoft Office 365 Delete user
       description: >-
         Delete a user object. When deleted, user resources are moved to a
         temporary container and can be restored within 30 days. After 30 days,
@@ -218,7 +218,7 @@ paths:
   /me:
     get:
       operationId: getSignedInUser
-      summary: Get signed-in user
+      summary: Microsoft Office 365 Get signed-in user
       description: >-
         Retrieve the properties and relationships of the currently signed-in
         user. The /me endpoint resolves to the signed-in user based on the
@@ -246,7 +246,7 @@ paths:
   /groups:
     get:
       operationId: listGroups
-      summary: List groups
+      summary: Microsoft Office 365 List groups
       description: >-
         List all groups in an organization, including Microsoft 365 groups,
         security groups, and distribution groups. Returns up to 100 objects
@@ -280,7 +280,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
     post:
       operationId: createGroup
-      summary: Create group
+      summary: Microsoft Office 365 Create group
       description: >-
         Create a new Microsoft 365 group or security group. You can create
         Microsoft 365 groups with a team, a channel, or both by specifying the
@@ -313,7 +313,7 @@ paths:
   /groups/{group-id}:
     get:
       operationId: getGroup
-      summary: Get group
+      summary: Microsoft Office 365 Get group
       description: >-
         Get the properties and relationships of a group object. Returns a
         default set of properties; use $select to request additional properties.
@@ -342,7 +342,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: updateGroup
-      summary: Update group
+      summary: Microsoft Office 365 Update group
       description: >-
         Update the properties of a group object. Requires Group.ReadWrite.All
         or Directory.ReadWrite.All permission. Not every property can be updated.
@@ -371,7 +371,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: deleteGroup
-      summary: Delete group
+      summary: Microsoft Office 365 Delete group
       description: >-
         Delete a group. When deleted, Microsoft 365 groups are moved to a
         temporary container and can be restored within 30 days. Security
@@ -396,7 +396,7 @@ paths:
   /groups/{group-id}/members:
     get:
       operationId: listGroupMembers
-      summary: List group members
+      summary: Microsoft Office 365 List group members
       description: >-
         Get a list of the group's direct members. A group can have users,
         organizational contacts, devices, service principals, and other groups
@@ -430,7 +430,7 @@ paths:
   /groups/{group-id}/members/$ref:
     post:
       operationId: addGroupMember
-      summary: Add group member
+      summary: Microsoft Office 365 Add group member
       description: >-
         Add a member to a Microsoft 365 group or a security group through the
         members navigation property. You can add users, organizational contacts,
@@ -471,7 +471,7 @@ paths:
   /groups/{group-id}/members/{directoryObject-id}/$ref:
     delete:
       operationId: removeGroupMember
-      summary: Remove group member
+      summary: Microsoft Office 365 Remove group member
       description: >-
         Remove a member from a group via the members navigation property.
         Requires GroupMember.ReadWrite.All, Group.ReadWrite.All, or
@@ -502,7 +502,7 @@ paths:
   /me/messages:
     get:
       operationId: listMessages
-      summary: List messages
+      summary: Microsoft Office 365 List messages
       description: >-
         Get the messages in the signed-in user's mailbox (including Deleted
         Items and Clutter folders). Depending on the page size and mailbox data,
@@ -534,7 +534,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: createMessage
-      summary: Create draft message
+      summary: Microsoft Office 365 Create draft message
       description: >-
         Create a draft of a new message in the signed-in user's mailbox. The
         draft can then be updated and sent. The message is saved in the Drafts
@@ -566,7 +566,7 @@ paths:
   /me/messages/{message-id}:
     get:
       operationId: getMessage
-      summary: Get message
+      summary: Microsoft Office 365 Get message
       description: >-
         Retrieve the properties and relationships of a message object. You can
         use $select to return specific properties and $expand to expand
@@ -595,7 +595,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: updateMessage
-      summary: Update message
+      summary: Microsoft Office 365 Update message
       description: >-
         Update the properties of a message object. Requires Mail.ReadWrite
         permission.
@@ -628,7 +628,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: deleteMessage
-      summary: Delete message
+      summary: Microsoft Office 365 Delete message
       description: >-
         Delete a message in the signed-in user's mailbox. Requires
         Mail.ReadWrite permission.
@@ -651,7 +651,7 @@ paths:
   /me/sendMail:
     post:
       operationId: sendMail
-      summary: Send mail
+      summary: Microsoft Office 365 Send mail
       description: >-
         Send the message specified in the request body using either JSON or MIME
         format. The message is saved in the Sent Items folder by default. You
@@ -689,7 +689,7 @@ paths:
   /me/mailFolders:
     get:
       operationId: listMailFolders
-      summary: List mail folders
+      summary: Microsoft Office 365 List mail folders
       description: >-
         Get the mail folder collection directly under the root folder of the
         signed-in user. The returned collection includes any mail search folders
@@ -719,7 +719,7 @@ paths:
   /me/mailFolders/{mailFolder-id}/messages:
     get:
       operationId: listMailFolderMessages
-      summary: List messages in folder
+      summary: Microsoft Office 365 List messages in folder
       description: >-
         Get the message collection in the specified mail folder. Requires
         Mail.ReadBasic, Mail.Read, or Mail.ReadWrite permission.
@@ -758,7 +758,7 @@ paths:
   /me/events:
     get:
       operationId: listEvents
-      summary: List events
+      summary: Microsoft Office 365 List events
       description: >-
         Get the events in the signed-in user's default calendar or from a
         specified calendar. The list contains single instance meetings and
@@ -788,7 +788,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: createEvent
-      summary: Create event
+      summary: Microsoft Office 365 Create event
       description: >-
         Create an event in the signed-in user's default calendar or a specified
         calendar. By default, the allowNewTimeProposals property is set to true
@@ -820,7 +820,7 @@ paths:
   /me/events/{event-id}:
     get:
       operationId: getEvent
-      summary: Get event
+      summary: Microsoft Office 365 Get event
       description: >-
         Get the properties and relationships of the specified event object.
         Returns the event body in HTML format by default. Requires
@@ -848,7 +848,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: updateEvent
-      summary: Update event
+      summary: Microsoft Office 365 Update event
       description: >-
         Update the properties of an event object. Only the properties you
         specify are changed. Requires Calendars.ReadWrite permission.
@@ -881,7 +881,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: deleteEvent
-      summary: Delete event
+      summary: Microsoft Office 365 Delete event
       description: >-
         Remove the specified event from the user's calendar. If the event is a
         meeting, deleting it on the organizer's calendar sends a cancellation
@@ -905,7 +905,7 @@ paths:
   /me/calendars:
     get:
       operationId: listCalendars
-      summary: List calendars
+      summary: Microsoft Office 365 List calendars
       description: >-
         Get all the signed-in user's calendars from the default calendar group
         or from a specific calendar group. Requires Calendars.Read or
@@ -934,7 +934,7 @@ paths:
   /me/calendarView:
     get:
       operationId: getCalendarView
-      summary: Get calendar view
+      summary: Microsoft Office 365 Get calendar view
       description: >-
         Get the occurrences, exceptions, and single instances of events in a
         calendar view defined by a time range, from the user's default calendar
@@ -981,7 +981,7 @@ paths:
   /me/events/{event-id}/accept:
     post:
       operationId: acceptEvent
-      summary: Accept event
+      summary: Microsoft Office 365 Accept event
       description: >-
         Accept the specified event in a user calendar. Requires
         Calendars.ReadWrite permission.
@@ -1018,7 +1018,7 @@ paths:
   /me/events/{event-id}/decline:
     post:
       operationId: declineEvent
-      summary: Decline event
+      summary: Microsoft Office 365 Decline event
       description: >-
         Decline invitation to the specified event in a user calendar. Requires
         Calendars.ReadWrite permission.
