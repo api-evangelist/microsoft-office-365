@@ -32,13 +32,13 @@ security:
   - bearerAuth: []
 
 tags:
-  - name: Users
+  - name: Calendar
     description: >-
-      Manage users in Azure Active Directory. Users are the core identity
-      resource representing a person, including their profile, organizational
-      relationships, and access to services.
+      Access and manage Outlook calendar events, calendars, and calendar groups.
+      Supports scheduling, meeting management, and free/busy lookups.
     externalDocs:
-      url: https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0
+      url: https://learn.microsoft.com/en-us/graph/api/resources/calendar?view=graph-rest-1.0
+
   - name: Groups
     description: >-
       Manage Microsoft 365 groups and security groups. Groups provide shared
@@ -53,13 +53,13 @@ tags:
       and organizing email.
     externalDocs:
       url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview?view=graph-rest-1.0
-  - name: Calendar
+  - name: Users
     description: >-
-      Access and manage Outlook calendar events, calendars, and calendar groups.
-      Supports scheduling, meeting management, and free/busy lookups.
+      Manage users in Azure Active Directory. Users are the core identity
+      resource representing a person, including their profile, organizational
+      relationships, and access to services.
     externalDocs:
-      url: https://learn.microsoft.com/en-us/graph/api/resources/calendar?view=graph-rest-1.0
-
+      url: https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0
 paths:
   # ── Users ──────────────────────────────────────────────────────────────
   /users:
