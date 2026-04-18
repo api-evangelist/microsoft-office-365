@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MessageCreateRequest",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "The subject of the message."
+    },
+    "toRecipients": {
+      "type": "array"
+    },
+    "ccRecipients": {
+      "type": "array"
+    },
+    "bccRecipients": {
+      "type": "array"
+    },
+    "replyTo": {
+      "type": "array"
+    },
+    "importance": {
+      "type": "string"
+    },
+    "isDeliveryReceiptRequested": {
+      "type": "boolean"
+    },
+    "isReadReceiptRequested": {
+      "type": "boolean"
+    },
+    "categories": {
+      "type": "array"
+    }
+  }
+}

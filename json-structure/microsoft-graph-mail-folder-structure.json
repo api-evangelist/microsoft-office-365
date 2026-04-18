@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MailFolder",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "parentFolderId": {
+      "type": "string"
+    },
+    "childFolderCount": {
+      "type": "integer"
+    },
+    "totalItemCount": {
+      "type": "integer"
+    },
+    "unreadItemCount": {
+      "type": "integer"
+    },
+    "isHidden": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "accountEnabled": true,
+  "displayName": "example_value",
+  "mailNickname": "example_value",
+  "userPrincipalName": "example_value",
+  "givenName": "example_value",
+  "surname": "example_value",
+  "jobTitle": "example_value",
+  "department": "example_value",
+  "officeLocation": "example_value",
+  "mobilePhone": "example_value",
+  "usageLocation": "example_value"
+}

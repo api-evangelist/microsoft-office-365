@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroupCreateRequest",
+  "type": "object",
+  "properties": {
+    "displayName": {
+      "type": "string",
+      "description": "The display name for the group."
+    },
+    "description": {
+      "type": "string"
+    },
+    "mailEnabled": {
+      "type": "boolean"
+    },
+    "mailNickname": {
+      "type": "string"
+    },
+    "securityEnabled": {
+      "type": "boolean"
+    },
+    "groupTypes": {
+      "type": "array",
+      "description": "Set to [\"Unified\"] to create a Microsoft 365 group."
+    },
+    "visibility": {
+      "type": "string"
+    },
+    "owners@odata.bind": {
+      "type": "array",
+      "description": "URLs of user objects to set as owners at creation time."
+    },
+    "members@odata.bind": {
+      "type": "array",
+      "description": "URLs of user objects to set as members at creation time."
+    }
+  }
+}

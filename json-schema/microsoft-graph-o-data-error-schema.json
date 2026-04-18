@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ODataError",
+  "type": "object",
+  "description": "The error response from the Microsoft Graph API following OData conventions.",
+  "properties": {
+    "error": {
+      "type": "object"
+    }
+  }
+}

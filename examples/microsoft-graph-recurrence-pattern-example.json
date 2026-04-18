@@ -1,0 +1,9 @@
+{
+  "type": "example_value",
+  "interval": 10,
+  "daysOfWeek": [],
+  "dayOfMonth": 10,
+  "month": 10,
+  "firstDayOfWeek": "example_value",
+  "index": "example_value"
+}

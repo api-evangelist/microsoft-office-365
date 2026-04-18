@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Location",
+  "type": "object",
+  "description": "Represents location information of an event.",
+  "properties": {
+    "displayName": {
+      "type": "string",
+      "description": "The name associated with the location."
+    },
+    "locationType": {
+      "type": "string",
+      "description": "The type of location."
+    },
+    "locationUri": {
+      "type": "string",
+      "description": "Optional URI representing the location."
+    },
+    "uniqueId": {
+      "type": "string",
+      "description": "For internal use only."
+    },
+    "uniqueIdType": {
+      "type": "string",
+      "description": "For internal use only."
+    }
+  }
+}

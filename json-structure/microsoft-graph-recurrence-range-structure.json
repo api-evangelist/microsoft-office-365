@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RecurrenceRange",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "numberOfOccurrences": {
+      "type": "integer"
+    },
+    "recurrenceTimeZone": {
+      "type": "string"
+    }
+  }
+}

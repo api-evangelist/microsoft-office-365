@@ -1,0 +1,6 @@
+{
+  "@odata.context": "example_value",
+  "@odata.count": 10,
+  "@odata.nextLink": "example_value",
+  "value": []
+}

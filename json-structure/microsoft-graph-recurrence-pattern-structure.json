@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RecurrencePattern",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "interval": {
+      "type": "integer"
+    },
+    "daysOfWeek": {
+      "type": "array"
+    },
+    "dayOfMonth": {
+      "type": "integer"
+    },
+    "month": {
+      "type": "integer"
+    },
+    "firstDayOfWeek": {
+      "type": "string"
+    },
+    "index": {
+      "type": "string"
+    }
+  }
+}

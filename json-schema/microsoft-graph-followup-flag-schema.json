@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FollowupFlag",
+  "type": "object",
+  "description": "Allows setting a flag on an item for the user to follow up on later.",
+  "properties": {
+    "flagStatus": {
+      "type": "string",
+      "description": "The status of the follow-up flag."
+    }
+  }
+}

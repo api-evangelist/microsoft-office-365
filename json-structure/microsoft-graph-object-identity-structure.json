@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ObjectIdentity",
+  "type": "object",
+  "properties": {
+    "signInType": {
+      "type": "string"
+    },
+    "issuer": {
+      "type": "string"
+    },
+    "issuerAssignedId": {
+      "type": "string"
+    }
+  }
+}

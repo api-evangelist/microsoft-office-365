@@ -1,0 +1,13 @@
+{
+  "subject": "example_value",
+  "locations": [],
+  "attendees": [],
+  "isAllDay": true,
+  "isOnlineMeeting": true,
+  "onlineMeetingProvider": "example_value",
+  "showAs": "example_value",
+  "importance": "example_value",
+  "sensitivity": "example_value",
+  "categories": [],
+  "reminderMinutesBeforeStart": 10
+}

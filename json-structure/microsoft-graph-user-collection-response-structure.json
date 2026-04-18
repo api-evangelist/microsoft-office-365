@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "UserCollectionResponse",
+  "type": "object",
+  "properties": {
+    "@odata.context": {
+      "type": "string"
+    },
+    "@odata.count": {
+      "type": "integer"
+    },
+    "@odata.nextLink": {
+      "type": "string"
+    },
+    "value": {
+      "type": "array"
+    }
+  }
+}

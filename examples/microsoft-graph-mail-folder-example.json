@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "displayName": "example_value",
+  "parentFolderId": "500123",
+  "childFolderCount": 10,
+  "totalItemCount": 10,
+  "unreadItemCount": 10,
+  "isHidden": true
+}

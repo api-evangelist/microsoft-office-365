@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Group",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "mail": {
+      "type": "string"
+    },
+    "mailEnabled": {
+      "type": "boolean"
+    },
+    "mailNickname": {
+      "type": "string"
+    },
+    "securityEnabled": {
+      "type": "boolean"
+    },
+    "groupTypes": {
+      "type": "array"
+    },
+    "visibility": {
+      "type": "string"
+    },
+    "createdDateTime": {
+      "type": "string"
+    },
+    "renewedDateTime": {
+      "type": "string"
+    },
+    "classification": {
+      "type": "string"
+    },
+    "membershipRule": {
+      "type": "string"
+    },
+    "membershipRuleProcessingState": {
+      "type": "string"
+    },
+    "resourceProvisioningOptions": {
+      "type": "array"
+    },
+    "members": {
+      "type": "array"
+    },
+    "owners": {
+      "type": "array"
+    }
+  }
+}

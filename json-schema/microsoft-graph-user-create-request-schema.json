@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UserCreateRequest",
+  "type": "object",
+  "properties": {
+    "accountEnabled": {
+      "type": "boolean",
+      "description": "True if the account is enabled; otherwise, false."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The name to display in the address book for the user."
+    },
+    "mailNickname": {
+      "type": "string",
+      "description": "The mail alias for the user."
+    },
+    "userPrincipalName": {
+      "type": "string",
+      "description": "The user principal name (someuser@contoso.com)."
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "officeLocation": {
+      "type": "string"
+    },
+    "mobilePhone": {
+      "type": "string"
+    },
+    "usageLocation": {
+      "type": "string"
+    }
+  }
+}

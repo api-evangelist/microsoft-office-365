@@ -1,0 +1,19 @@
+{
+  "id": "abc123",
+  "displayName": "example_value",
+  "description": "A sample description.",
+  "mail": "example_value",
+  "mailEnabled": true,
+  "mailNickname": "example_value",
+  "securityEnabled": true,
+  "groupTypes": [],
+  "visibility": "example_value",
+  "createdDateTime": "example_value",
+  "renewedDateTime": "example_value",
+  "classification": "example_value",
+  "membershipRule": "example_value",
+  "membershipRuleProcessingState": "example_value",
+  "resourceProvisioningOptions": [],
+  "members": [],
+  "owners": []
+}

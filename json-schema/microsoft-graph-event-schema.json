@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event",
+  "type": "object",
+  "description": "An event in a user calendar or the default calendar of a Microsoft 365 group. Contains event details, scheduling, recurrence, attendees, and location information.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the event."
+    },
+    "subject": {
+      "type": "string",
+      "description": "The text of the event's subject line."
+    },
+    "bodyPreview": {
+      "type": "string",
+      "description": "A preview of the message associated with the event."
+    },
+    "locations": {
+      "type": "array",
+      "description": "The locations where the event is held or attended from."
+    },
+    "attendees": {
+      "type": "array",
+      "description": "The collection of attendees for the event."
+    },
+    "isAllDay": {
+      "type": "boolean",
+      "description": "Set to true if the event lasts all day."
+    },
+    "isCancelled": {
+      "type": "boolean",
+      "description": "Set to true if the event has been canceled."
+    },
+    "isOrganizer": {
+      "type": "boolean",
+      "description": "Set to true if the calendar owner is the organizer."
+    },
+    "isOnlineMeeting": {
+      "type": "boolean",
+      "description": "Whether the event is an online meeting."
+    },
+    "onlineMeetingProvider": {
+      "type": "string",
+      "description": "The online meeting service provider."
+    },
+    "onlineMeetingUrl": {
+      "type": "string",
+      "description": "A URL for an online meeting."
+    },
+    "seriesMasterId": {
+      "type": "string",
+      "description": "The ID for the recurring series master item."
+    },
+    "type": {
+      "type": "string",
+      "description": "The event type."
+    },
+    "showAs": {
+      "type": "string",
+      "description": "The status to show."
+    },
+    "importance": {
+      "type": "string",
+      "description": "The importance of the event."
+    },
+    "sensitivity": {
+      "type": "string",
+      "description": "The sensitivity of the event."
+    },
+    "responseRequested": {
+      "type": "boolean",
+      "description": "Whether the organizer would like an invitee to send a response."
+    },
+    "allowNewTimeProposals": {
+      "type": "boolean",
+      "description": "Whether new time proposals are allowed for the event."
+    },
+    "categories": {
+      "type": "array",
+      "description": "The categories associated with the event."
+    },
+    "hasAttachments": {
+      "type": "boolean",
+      "description": "Whether the event has attachments."
+    },
+    "iCalUId": {
+      "type": "string",
+      "description": "A unique identifier across calendars (RFC 2445)."
+    },
+    "webLink": {
+      "type": "string",
+      "description": "The URL to open the event in Outlook on the web."
+    },
+    "createdDateTime": {
+      "type": "string",
+      "description": "The date and time the event was created."
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "description": "The date and time the event was last modified."
+    },
+    "reminderMinutesBeforeStart": {
+      "type": "integer",
+      "description": "The number of minutes before the event start time for the reminder alert."
+    },
+    "transactionId": {
+      "type": "string",
+      "description": "A custom identifier for the client to avoid redundant POST operations when client retries."
+    }
+  }
+}

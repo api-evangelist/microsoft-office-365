@@ -1,0 +1,11 @@
+name: microsoft-office-365 API Vocabulary
+provider: microsoft-office-365
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 31
+schemas: 41
+tags:
+- Calendar
+- Groups
+- Mail
+- Users

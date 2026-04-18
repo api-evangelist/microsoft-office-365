@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventUpdateRequest",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string"
+    },
+    "locations": {
+      "type": "array"
+    },
+    "attendees": {
+      "type": "array"
+    },
+    "isAllDay": {
+      "type": "boolean"
+    },
+    "isOnlineMeeting": {
+      "type": "boolean"
+    },
+    "onlineMeetingProvider": {
+      "type": "string"
+    },
+    "showAs": {
+      "type": "string"
+    },
+    "importance": {
+      "type": "string"
+    },
+    "sensitivity": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array"
+    },
+    "reminderMinutesBeforeStart": {
+      "type": "integer"
+    }
+  }
+}

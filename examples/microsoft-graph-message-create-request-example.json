@@ -1,0 +1,11 @@
+{
+  "subject": "example_value",
+  "toRecipients": [],
+  "ccRecipients": [],
+  "bccRecipients": [],
+  "replyTo": [],
+  "importance": "example_value",
+  "isDeliveryReceiptRequested": true,
+  "isReadReceiptRequested": true,
+  "categories": []
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "bodyPreview": {
+      "type": "string"
+    },
+    "locations": {
+      "type": "array"
+    },
+    "attendees": {
+      "type": "array"
+    },
+    "isAllDay": {
+      "type": "boolean"
+    },
+    "isCancelled": {
+      "type": "boolean"
+    },
+    "isOrganizer": {
+      "type": "boolean"
+    },
+    "isOnlineMeeting": {
+      "type": "boolean"
+    },
+    "onlineMeetingProvider": {
+      "type": "string"
+    },
+    "onlineMeetingUrl": {
+      "type": "string"
+    },
+    "seriesMasterId": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "showAs": {
+      "type": "string"
+    },
+    "importance": {
+      "type": "string"
+    },
+    "sensitivity": {
+      "type": "string"
+    },
+    "responseRequested": {
+      "type": "boolean"
+    },
+    "allowNewTimeProposals": {
+      "type": "boolean"
+    },
+    "categories": {
+      "type": "array"
+    },
+    "hasAttachments": {
+      "type": "boolean"
+    },
+    "iCalUId": {
+      "type": "string"
+    },
+    "webLink": {
+      "type": "string"
+    },
+    "createdDateTime": {
+      "type": "string"
+    },
+    "lastModifiedDateTime": {
+      "type": "string"
+    },
+    "reminderMinutesBeforeStart": {
+      "type": "integer"
+    },
+    "transactionId": {
+      "type": "string"
+    }
+  }
+}

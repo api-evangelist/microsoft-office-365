@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "mail": {
+      "type": "string"
+    },
+    "userPrincipalName": {
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "officeLocation": {
+      "type": "string"
+    },
+    "companyName": {
+      "type": "string"
+    },
+    "businessPhones": {
+      "type": "array"
+    },
+    "mobilePhone": {
+      "type": "string"
+    },
+    "streetAddress": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "preferredLanguage": {
+      "type": "string"
+    },
+    "accountEnabled": {
+      "type": "boolean"
+    },
+    "createdDateTime": {
+      "type": "string"
+    },
+    "lastSignInDateTime": {
+      "type": "string"
+    },
+    "usageLocation": {
+      "type": "string"
+    },
+    "identities": {
+      "type": "array"
+    },
+    "assignedLicenses": {
+      "type": "array"
+    },
+    "memberOf": {
+      "type": "array"
+    }
+  }
+}

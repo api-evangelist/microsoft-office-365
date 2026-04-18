@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecurrenceRange",
+  "type": "object",
+  "description": "Describes a date range over which a recurring event repeats.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The recurrence range type."
+    },
+    "startDate": {
+      "type": "string",
+      "description": "The start date of the series (first occurrence)."
+    },
+    "endDate": {
+      "type": "string",
+      "description": "The date to stop applying the recurrence pattern."
+    },
+    "numberOfOccurrences": {
+      "type": "integer",
+      "description": "The number of times to repeat the event."
+    },
+    "recurrenceTimeZone": {
+      "type": "string",
+      "description": "Time zone for the startDate and endDate properties."
+    }
+  }
+}

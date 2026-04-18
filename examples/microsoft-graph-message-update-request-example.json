@@ -1,0 +1,10 @@
+{
+  "subject": "example_value",
+  "toRecipients": [],
+  "ccRecipients": [],
+  "bccRecipients": [],
+  "importance": "example_value",
+  "isRead": true,
+  "categories": [],
+  "inferenceClassification": "example_value"
+}

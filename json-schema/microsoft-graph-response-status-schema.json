@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResponseStatus",
+  "type": "object",
+  "description": "The response status of an attendee or organizer for a meeting request.",
+  "properties": {
+    "response": {
+      "type": "string",
+      "description": "The response type."
+    },
+    "time": {
+      "type": "string",
+      "description": "The date and time the response was returned."
+    }
+  }
+}

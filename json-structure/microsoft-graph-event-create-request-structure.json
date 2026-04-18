@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventCreateRequest",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string"
+    },
+    "locations": {
+      "type": "array"
+    },
+    "attendees": {
+      "type": "array"
+    },
+    "isAllDay": {
+      "type": "boolean"
+    },
+    "isOnlineMeeting": {
+      "type": "boolean"
+    },
+    "onlineMeetingProvider": {
+      "type": "string"
+    },
+    "showAs": {
+      "type": "string"
+    },
+    "importance": {
+      "type": "string"
+    },
+    "sensitivity": {
+      "type": "string"
+    },
+    "responseRequested": {
+      "type": "boolean"
+    },
+    "allowNewTimeProposals": {
+      "type": "boolean"
+    },
+    "categories": {
+      "type": "array"
+    },
+    "reminderMinutesBeforeStart": {
+      "type": "integer"
+    },
+    "transactionId": {
+      "type": "string"
+    }
+  }
+}

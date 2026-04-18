@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GroupCreateRequest",
+  "type": "object",
+  "properties": {
+    "displayName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "mailEnabled": {
+      "type": "boolean"
+    },
+    "mailNickname": {
+      "type": "string"
+    },
+    "securityEnabled": {
+      "type": "boolean"
+    },
+    "groupTypes": {
+      "type": "array"
+    },
+    "visibility": {
+      "type": "string"
+    },
+    "owners@odata.bind": {
+      "type": "array"
+    },
+    "members@odata.bind": {
+      "type": "array"
+    }
+  }
+}

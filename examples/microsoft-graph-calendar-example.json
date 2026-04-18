@@ -1,0 +1,15 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "color": "example_value",
+  "changeKey": "example_value",
+  "canEdit": true,
+  "canShare": true,
+  "canViewPrivateItems": true,
+  "isDefaultCalendar": true,
+  "hexColor": "example_value",
+  "isRemovable": true,
+  "isTallyingResponses": true,
+  "allowedOnlineMeetingProviders": [],
+  "defaultOnlineMeetingProvider": "example_value"
+}

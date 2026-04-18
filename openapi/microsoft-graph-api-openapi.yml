@@ -22,50 +22,50 @@ info:
     url: https://developer.microsoft.com/en-us/graph/graph-explorer
 
 servers:
-  - url: https://graph.microsoft.com/v1.0
-    description: Microsoft Graph v1.0 production endpoint
-  - url: https://graph.microsoft.com/beta
-    description: Microsoft Graph beta endpoint (preview features)
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+- url: https://graph.microsoft.com/beta
+  description: Microsoft Graph beta endpoint (preview features)
 
 security:
-  - oauth2: []
-  - bearerAuth: []
+- oauth2: []
+- bearerAuth: []
 
 tags:
-  - name: Calendar
-    description: >-
-      Access and manage Outlook calendar events, calendars, and calendar groups.
-      Supports scheduling, meeting management, and free/busy lookups.
-    externalDocs:
-      url: https://learn.microsoft.com/en-us/graph/api/resources/calendar?view=graph-rest-1.0
+- name: Calendar
+  description: >-
+    Access and manage Outlook calendar events, calendars, and calendar groups.
+    Supports scheduling, meeting management, and free/busy lookups.
+  externalDocs:
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar?view=graph-rest-1.0
 
-  - name: Groups
-    description: >-
-      Manage Microsoft 365 groups and security groups. Groups provide shared
-      access to resources such as SharePoint sites, shared mailboxes, Planner
-      plans, OneNote notebooks, and conversations.
-    externalDocs:
-      url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
-  - name: Mail
-    description: >-
-      Access and manage Outlook mail messages, mail folders, and message
-      attachments. Supports reading, creating, sending, replying, forwarding,
-      and organizing email.
-    externalDocs:
-      url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview?view=graph-rest-1.0
-  - name: Users
-    description: >-
-      Manage users in Azure Active Directory. Users are the core identity
-      resource representing a person, including their profile, organizational
-      relationships, and access to services.
-    externalDocs:
-      url: https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0
+- name: Groups
+  description: >-
+    Manage Microsoft 365 groups and security groups. Groups provide shared
+    access to resources such as SharePoint sites, shared mailboxes, Planner
+    plans, OneNote notebooks, and conversations.
+  externalDocs:
+    url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
+- name: Mail
+  description: >-
+    Access and manage Outlook mail messages, mail folders, and message
+    attachments. Supports reading, creating, sending, replying, forwarding,
+    and organizing email.
+  externalDocs:
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview?view=graph-rest-1.0
+- name: Users
+  description: >-
+    Manage users in Azure Active Directory. Users are the core identity
+    resource representing a person, including their profile, organizational
+    relationships, and access to services.
+  externalDocs:
+    url: https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0
 paths:
   # ── Users ──────────────────────────────────────────────────────────────
   /users:
     get:
       operationId: listUsers
-      summary: Microsoft Office 365 List users
+      summary: Microsoft Office 365 List Users
       description: >-
         Retrieve a list of user objects. By default, only a limited set of
         properties are returned. To return additional properties, use the $select
@@ -73,16 +73,16 @@ paths:
         Requires User.ReadBasic.All, User.Read.All, or Directory.Read.All
         permission.
       tags:
-        - Users
+      - Users
       parameters:
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/orderby'
-        - $ref: '#/components/parameters/search'
-        - $ref: '#/components/parameters/count'
-        - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: A collection of user objects.
@@ -90,6 +90,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserCollectionResponse'
+              examples:
+                Listusers200Example:
+                  summary: Default listUsers 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      givenName: example_value
+                      surname: example_value
+                      mail: example_value
+                      userPrincipalName: example_value
+                      jobTitle: example_value
+                      department: example_value
+                      officeLocation: example_value
+                      companyName: example_value
+                      businessPhones: {}
+                      mobilePhone: example_value
+                      streetAddress: example_value
+                      city: example_value
+                      state: example_value
+                      postalCode: example_value
+                      country: example_value
+                      preferredLanguage: example_value
+                      accountEnabled: true
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      lastSignInDateTime: '2026-01-15T10:30:00Z'
+                      usageLocation: example_value
+                      identities: {}
+                      assignedLicenses: {}
+                      memberOf: {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -98,22 +132,45 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createUser
-      summary: Microsoft Office 365 Create user
+      summary: Microsoft Office 365 Create User
       description: >-
         Create a new user object. The request body must contain the required
         properties for the user. You can optionally specify other writable
         properties. Requires User.ReadWrite.All or Directory.ReadWrite.All
         permission.
       tags:
-        - Users
+      - Users
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/UserCreateRequest'
+            examples:
+              CreateuserRequestExample:
+                summary: Default createUser request
+                x-microcks-default: true
+                value:
+                  accountEnabled: true
+                  displayName: example_value
+                  mailNickname: example_value
+                  userPrincipalName: example_value
+                  passwordProfile:
+                    forceChangePasswordNextSignIn: true
+                    forceChangePasswordNextSignInWithMfa: true
+                    password: example_value
+                  givenName: example_value
+                  surname: example_value
+                  jobTitle: example_value
+                  department: example_value
+                  officeLocation: example_value
+                  mobilePhone: example_value
+                  usageLocation: example_value
       responses:
         '201':
           description: The created user object.
@@ -121,6 +178,53 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+              examples:
+                Createuser201Example:
+                  summary: Default createUser 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    givenName: example_value
+                    surname: example_value
+                    mail: example_value
+                    userPrincipalName: example_value
+                    jobTitle: example_value
+                    department: example_value
+                    officeLocation: example_value
+                    companyName: example_value
+                    businessPhones:
+                    - example_value
+                    mobilePhone: example_value
+                    streetAddress: example_value
+                    city: example_value
+                    state: example_value
+                    postalCode: example_value
+                    country: example_value
+                    preferredLanguage: example_value
+                    accountEnabled: true
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastSignInDateTime: '2026-01-15T10:30:00Z'
+                    usageLocation: example_value
+                    passwordProfile:
+                      forceChangePasswordNextSignIn: true
+                      forceChangePasswordNextSignInWithMfa: true
+                      password: example_value
+                    identities:
+                    - signInType: example_value
+                      issuer: example_value
+                      issuerAssignedId: '500123'
+                    assignedLicenses:
+                    - disabledPlans: {}
+                      skuId: '500123'
+                    manager:
+                      '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    memberOf:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -130,21 +234,24 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /users/{user-id}:
     get:
       operationId: getUser
-      summary: Microsoft Office 365 Get user
+      summary: Microsoft Office 365 Get User
       description: >-
         Retrieve the properties and relationships of a user object. Returns a
         limited set of properties by default; use $select to request additional
         properties. Requires User.Read, User.ReadBasic.All, User.Read.All, or
         Directory.Read.All permission.
       tags:
-        - Users
+      - Users
       parameters:
-        - $ref: '#/components/parameters/userId'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: The requested user object.
@@ -152,6 +259,53 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+              examples:
+                Getuser200Example:
+                  summary: Default getUser 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    givenName: example_value
+                    surname: example_value
+                    mail: example_value
+                    userPrincipalName: example_value
+                    jobTitle: example_value
+                    department: example_value
+                    officeLocation: example_value
+                    companyName: example_value
+                    businessPhones:
+                    - example_value
+                    mobilePhone: example_value
+                    streetAddress: example_value
+                    city: example_value
+                    state: example_value
+                    postalCode: example_value
+                    country: example_value
+                    preferredLanguage: example_value
+                    accountEnabled: true
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastSignInDateTime: '2026-01-15T10:30:00Z'
+                    usageLocation: example_value
+                    passwordProfile:
+                      forceChangePasswordNextSignIn: true
+                      forceChangePasswordNextSignInWithMfa: true
+                      password: example_value
+                    identities:
+                    - signInType: example_value
+                      issuer: example_value
+                      issuerAssignedId: '500123'
+                    assignedLicenses:
+                    - disabledPlans: {}
+                      skuId: '500123'
+                    manager:
+                      '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    memberOf:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -160,24 +314,53 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: updateUser
-      summary: Microsoft Office 365 Update user
+      summary: Microsoft Office 365 Update User
       description: >-
         Update the properties of a user object. Not all properties can be
         updated by Member or Guest users with their default permissions without
         administrator roles. Requires User.ReadWrite, User.ReadWrite.All, or
         Directory.ReadWrite.All permission.
       tags:
-        - Users
+      - Users
       parameters:
-        - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/userId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/UserUpdateRequest'
+            examples:
+              UpdateuserRequestExample:
+                summary: Default updateUser request
+                x-microcks-default: true
+                value:
+                  displayName: example_value
+                  givenName: example_value
+                  surname: example_value
+                  jobTitle: example_value
+                  department: example_value
+                  officeLocation: example_value
+                  mobilePhone: example_value
+                  businessPhones:
+                  - example_value
+                  streetAddress: example_value
+                  city: example_value
+                  state: example_value
+                  postalCode: example_value
+                  country: example_value
+                  preferredLanguage: example_value
+                  accountEnabled: true
+                  usageLocation: example_value
+                  passwordProfile:
+                    forceChangePasswordNextSignIn: true
+                    forceChangePasswordNextSignInWithMfa: true
+                    password: example_value
       responses:
         '204':
           description: User updated successfully. No content returned.
@@ -191,18 +374,21 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteUser
-      summary: Microsoft Office 365 Delete user
+      summary: Microsoft Office 365 Delete User
       description: >-
         Delete a user object. When deleted, user resources are moved to a
         temporary container and can be restored within 30 days. After 30 days,
         they are permanently deleted. Requires User.ReadWrite.All or
         Directory.ReadWrite.All permission.
       tags:
-        - Users
+      - Users
       parameters:
-        - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/userId'
       responses:
         '204':
           description: User deleted successfully. No content returned.
@@ -215,19 +401,22 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me:
     get:
       operationId: getSignedInUser
-      summary: Microsoft Office 365 Get signed-in user
+      summary: Microsoft Office 365 Get Signed-in User
       description: >-
         Retrieve the properties and relationships of the currently signed-in
         user. The /me endpoint resolves to the signed-in user based on the
         access token. Requires User.Read permission at minimum.
       tags:
-        - Users
+      - Users
       parameters:
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: The signed-in user object.
@@ -235,6 +424,53 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+              examples:
+                Getsignedinuser200Example:
+                  summary: Default getSignedInUser 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    givenName: example_value
+                    surname: example_value
+                    mail: example_value
+                    userPrincipalName: example_value
+                    jobTitle: example_value
+                    department: example_value
+                    officeLocation: example_value
+                    companyName: example_value
+                    businessPhones:
+                    - example_value
+                    mobilePhone: example_value
+                    streetAddress: example_value
+                    city: example_value
+                    state: example_value
+                    postalCode: example_value
+                    country: example_value
+                    preferredLanguage: example_value
+                    accountEnabled: true
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastSignInDateTime: '2026-01-15T10:30:00Z'
+                    usageLocation: example_value
+                    passwordProfile:
+                      forceChangePasswordNextSignIn: true
+                      forceChangePasswordNextSignInWithMfa: true
+                      password: example_value
+                    identities:
+                    - signInType: example_value
+                      issuer: example_value
+                      issuerAssignedId: '500123'
+                    assignedLicenses:
+                    - disabledPlans: {}
+                      skuId: '500123'
+                    manager:
+                      '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    memberOf:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -243,26 +479,29 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 
   # ── Groups ─────────────────────────────────────────────────────────────
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups:
     get:
       operationId: listGroups
-      summary: Microsoft Office 365 List groups
+      summary: Microsoft Office 365 List Groups
       description: >-
         List all groups in an organization, including Microsoft 365 groups,
         security groups, and distribution groups. Returns up to 100 objects
         by default. To return additional properties, use $select. Requires
         GroupMember.Read.All, Group.Read.All, or Directory.Read.All permission.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/orderby'
-        - $ref: '#/components/parameters/search'
-        - $ref: '#/components/parameters/count'
-        - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: A collection of group objects.
@@ -270,6 +509,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GroupCollectionResponse'
+              examples:
+                Listgroups200Example:
+                  summary: Default listGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      description: A sample description.
+                      mail: example_value
+                      mailEnabled: true
+                      mailNickname: example_value
+                      securityEnabled: true
+                      groupTypes: {}
+                      visibility: Public
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      renewedDateTime: '2026-01-15T10:30:00Z'
+                      classification: example_value
+                      membershipRule: example_value
+                      membershipRuleProcessingState: 'On'
+                      resourceProvisioningOptions: {}
+                      members: {}
+                      owners: {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -278,22 +543,42 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createGroup
-      summary: Microsoft Office 365 Create group
+      summary: Microsoft Office 365 Create Group
       description: >-
         Create a new Microsoft 365 group or security group. You can create
         Microsoft 365 groups with a team, a channel, or both by specifying the
         resourceProvisioningOptions. Requires Group.ReadWrite.All or
         Directory.ReadWrite.All permission.
       tags:
-        - Groups
+      - Groups
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupCreateRequest'
+            examples:
+              CreategroupRequestExample:
+                summary: Default createGroup request
+                x-microcks-default: true
+                value:
+                  displayName: example_value
+                  description: A sample description.
+                  mailEnabled: true
+                  mailNickname: example_value
+                  securityEnabled: true
+                  groupTypes:
+                  - example_value
+                  visibility: Public
+                  'owners@odata.bind':
+                  - example_value
+                  'members@odata.bind':
+                  - example_value
       responses:
         '201':
           description: The created group object.
@@ -301,6 +586,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Group'
+              examples:
+                Creategroup201Example:
+                  summary: Default createGroup 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    description: A sample description.
+                    mail: example_value
+                    mailEnabled: true
+                    mailNickname: example_value
+                    securityEnabled: true
+                    groupTypes:
+                    - example_value
+                    visibility: Public
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    renewedDateTime: '2026-01-15T10:30:00Z'
+                    classification: example_value
+                    membershipRule: example_value
+                    membershipRuleProcessingState: 'On'
+                    resourceProvisioningOptions:
+                    - example_value
+                    members:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    owners:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -310,21 +625,24 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{group-id}:
     get:
       operationId: getGroup
-      summary: Microsoft Office 365 Get group
+      summary: Microsoft Office 365 Get Group
       description: >-
         Get the properties and relationships of a group object. Returns a
         default set of properties; use $select to request additional properties.
         Requires GroupMember.Read.All, Group.Read.All, or Directory.Read.All
         permission.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: The requested group object.
@@ -332,6 +650,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Group'
+              examples:
+                Getgroup200Example:
+                  summary: Default getGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    description: A sample description.
+                    mail: example_value
+                    mailEnabled: true
+                    mailNickname: example_value
+                    securityEnabled: true
+                    groupTypes:
+                    - example_value
+                    visibility: Public
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    renewedDateTime: '2026-01-15T10:30:00Z'
+                    classification: example_value
+                    membershipRule: example_value
+                    membershipRuleProcessingState: 'On'
+                    resourceProvisioningOptions:
+                    - example_value
+                    members:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    owners:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -340,22 +688,35 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: updateGroup
-      summary: Microsoft Office 365 Update group
+      summary: Microsoft Office 365 Update Group
       description: >-
         Update the properties of a group object. Requires Group.ReadWrite.All
         or Directory.ReadWrite.All permission. Not every property can be updated.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupUpdateRequest'
+            examples:
+              UpdategroupRequestExample:
+                summary: Default updateGroup request
+                x-microcks-default: true
+                value:
+                  displayName: example_value
+                  description: A sample description.
+                  mailNickname: example_value
+                  visibility: Public
+                  classification: example_value
       responses:
         '204':
           description: Group updated successfully. No content returned.
@@ -369,18 +730,21 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteGroup
-      summary: Microsoft Office 365 Delete group
+      summary: Microsoft Office 365 Delete Group
       description: >-
         Delete a group. When deleted, Microsoft 365 groups are moved to a
         temporary container and can be restored within 30 days. Security
         groups and distribution groups are permanently deleted immediately.
         Requires Group.ReadWrite.All or Directory.ReadWrite.All permission.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       responses:
         '204':
           description: Group deleted successfully. No content returned.
@@ -393,24 +757,27 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{group-id}/members:
     get:
       operationId: listGroupMembers
-      summary: Microsoft Office 365 List group members
+      summary: Microsoft Office 365 List Group Members
       description: >-
         Get a list of the group's direct members. A group can have users,
         organizational contacts, devices, service principals, and other groups
         as members. Requires GroupMember.Read.All, Group.Read.All, or
         Directory.Read.All permission.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/count'
       responses:
         '200':
           description: A collection of directory objects representing group members.
@@ -418,6 +785,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DirectoryObjectCollectionResponse'
+              examples:
+                Listgroupmembers200Example:
+                  summary: Default listGroupMembers 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -427,19 +806,22 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{group-id}/members/$ref:
     post:
       operationId: addGroupMember
-      summary: Microsoft Office 365 Add group member
+      summary: Microsoft Office 365 Add Group Member
       description: >-
         Add a member to a Microsoft 365 group or a security group through the
         members navigation property. You can add users, organizational contacts,
         service principals, or other groups. Requires GroupMember.ReadWrite.All,
         Group.ReadWrite.All, or Directory.ReadWrite.All permission.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       requestBody:
         required: true
         content:
@@ -447,13 +829,19 @@ paths:
             schema:
               type: object
               required:
-                - '@odata.id'
+              - '@odata.id'
               properties:
                 '@odata.id':
                   type: string
                   description: >-
                     The URL of the directory object to add as a member.
                   example: https://graph.microsoft.com/v1.0/directoryObjects/{id}
+            examples:
+              AddgroupmemberRequestExample:
+                summary: Default addGroupMember request
+                x-microcks-default: true
+                value:
+                  '@odata.id': '500123'
       responses:
         '204':
           description: Member added successfully. No content returned.
@@ -468,24 +856,28 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{group-id}/members/{directoryObject-id}/$ref:
     delete:
       operationId: removeGroupMember
-      summary: Microsoft Office 365 Remove group member
+      summary: Microsoft Office 365 Remove Group Member
       description: >-
         Remove a member from a group via the members navigation property.
         Requires GroupMember.ReadWrite.All, Group.ReadWrite.All, or
         Directory.ReadWrite.All permission.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
-        - name: directoryObject-id
-          in: path
-          required: true
-          description: The unique identifier of the directory object (member) to remove.
-          schema:
-            type: string
+      - $ref: '#/components/parameters/groupId'
+      - name: directoryObject-id
+        in: path
+        required: true
+        description: The unique identifier of the directory object (member) to remove.
+        schema:
+          type: string
+        example: '500123'
       responses:
         '204':
           description: Member removed successfully. No content returned.
@@ -499,26 +891,29 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 
   # ── Mail ───────────────────────────────────────────────────────────────
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/messages:
     get:
       operationId: listMessages
-      summary: Microsoft Office 365 List messages
+      summary: Microsoft Office 365 List Messages
       description: >-
         Get the messages in the signed-in user's mailbox (including Deleted
         Items and Clutter folders). Depending on the page size and mailbox data,
         getting messages may incur multiple requests. The default page size is
         10. Requires Mail.ReadBasic, Mail.Read, or Mail.ReadWrite permission.
       tags:
-        - Mail
+      - Mail
       parameters:
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/orderby'
-        - $ref: '#/components/parameters/search'
-        - $ref: '#/components/parameters/count'
-        - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: A collection of message objects.
@@ -526,27 +921,85 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MessageCollectionResponse'
+              examples:
+                Listmessages200Example:
+                  summary: Default listMessages 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      subject: example_value
+                      bodyPreview: example_value
+                      toRecipients: {}
+                      ccRecipients: {}
+                      bccRecipients: {}
+                      replyTo: {}
+                      conversationId: '500123'
+                      conversationIndex: example_value
+                      receivedDateTime: '2026-01-15T10:30:00Z'
+                      sentDateTime: '2026-01-15T10:30:00Z'
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                      hasAttachments: true
+                      internetMessageId: '500123'
+                      importance: low
+                      isRead: true
+                      isDraft: true
+                      isDeliveryReceiptRequested: true
+                      isReadReceiptRequested: true
+                      categories: {}
+                      parentFolderId: '500123'
+                      webLink: https://www.example.com
+                      inferenceClassification: focused
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createMessage
-      summary: Microsoft Office 365 Create draft message
+      summary: Microsoft Office 365 Create Draft Message
       description: >-
         Create a draft of a new message in the signed-in user's mailbox. The
         draft can then be updated and sent. The message is saved in the Drafts
         folder by default. Requires Mail.ReadWrite permission.
       tags:
-        - Mail
+      - Mail
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/MessageCreateRequest'
+            examples:
+              CreatemessageRequestExample:
+                summary: Default createMessage request
+                x-microcks-default: true
+                value:
+                  subject: example_value
+                  body:
+                    contentType: text
+                    content: example_value
+                  toRecipients:
+                  - {}
+                  ccRecipients:
+                  - {}
+                  bccRecipients:
+                  - {}
+                  replyTo:
+                  - {}
+                  importance: low
+                  isDeliveryReceiptRequested: true
+                  isReadReceiptRequested: true
+                  categories:
+                  - example_value
       responses:
         '201':
           description: The created draft message object.
@@ -554,6 +1007,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+              examples:
+                Createmessage201Example:
+                  summary: Default createMessage 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    sender: {}
+                    from: {}
+                    toRecipients:
+                    - {}
+                    ccRecipients:
+                    - {}
+                    bccRecipients:
+                    - {}
+                    replyTo:
+                    - {}
+                    conversationId: '500123'
+                    conversationIndex: example_value
+                    receivedDateTime: '2026-01-15T10:30:00Z'
+                    sentDateTime: '2026-01-15T10:30:00Z'
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    hasAttachments: true
+                    internetMessageId: '500123'
+                    importance: low
+                    isRead: true
+                    isDraft: true
+                    isDeliveryReceiptRequested: true
+                    isReadReceiptRequested: true
+                    flag:
+                      flagStatus: notFlagged
+                    categories:
+                    - example_value
+                    parentFolderId: '500123'
+                    webLink: https://www.example.com
+                    inferenceClassification: focused
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -563,21 +1057,24 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/messages/{message-id}:
     get:
       operationId: getMessage
-      summary: Microsoft Office 365 Get message
+      summary: Microsoft Office 365 Get Message
       description: >-
         Retrieve the properties and relationships of a message object. You can
         use $select to return specific properties and $expand to expand
         relationships such as attachments. Requires Mail.ReadBasic, Mail.Read,
         or Mail.ReadWrite permission.
       tags:
-        - Mail
+      - Mail
       parameters:
-        - $ref: '#/components/parameters/messageId'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/messageId'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: The requested message object.
@@ -585,6 +1082,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+              examples:
+                Getmessage200Example:
+                  summary: Default getMessage 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    sender: {}
+                    from: {}
+                    toRecipients:
+                    - {}
+                    ccRecipients:
+                    - {}
+                    bccRecipients:
+                    - {}
+                    replyTo:
+                    - {}
+                    conversationId: '500123'
+                    conversationIndex: example_value
+                    receivedDateTime: '2026-01-15T10:30:00Z'
+                    sentDateTime: '2026-01-15T10:30:00Z'
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    hasAttachments: true
+                    internetMessageId: '500123'
+                    importance: low
+                    isRead: true
+                    isDraft: true
+                    isDeliveryReceiptRequested: true
+                    isReadReceiptRequested: true
+                    flag:
+                      flagStatus: notFlagged
+                    categories:
+                    - example_value
+                    parentFolderId: '500123'
+                    webLink: https://www.example.com
+                    inferenceClassification: focused
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -593,22 +1131,47 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: updateMessage
-      summary: Microsoft Office 365 Update message
+      summary: Microsoft Office 365 Update Message
       description: >-
         Update the properties of a message object. Requires Mail.ReadWrite
         permission.
       tags:
-        - Mail
+      - Mail
       parameters:
-        - $ref: '#/components/parameters/messageId'
+      - $ref: '#/components/parameters/messageId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/MessageUpdateRequest'
+            examples:
+              UpdatemessageRequestExample:
+                summary: Default updateMessage request
+                x-microcks-default: true
+                value:
+                  subject: example_value
+                  body:
+                    contentType: text
+                    content: example_value
+                  toRecipients:
+                  - {}
+                  ccRecipients:
+                  - {}
+                  bccRecipients:
+                  - {}
+                  importance: low
+                  isRead: true
+                  categories:
+                  - example_value
+                  flag:
+                    flagStatus: notFlagged
+                  inferenceClassification: focused
       responses:
         '200':
           description: The updated message object.
@@ -616,6 +1179,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
+              examples:
+                Updatemessage200Example:
+                  summary: Default updateMessage 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    sender: {}
+                    from: {}
+                    toRecipients:
+                    - {}
+                    ccRecipients:
+                    - {}
+                    bccRecipients:
+                    - {}
+                    replyTo:
+                    - {}
+                    conversationId: '500123'
+                    conversationIndex: example_value
+                    receivedDateTime: '2026-01-15T10:30:00Z'
+                    sentDateTime: '2026-01-15T10:30:00Z'
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    hasAttachments: true
+                    internetMessageId: '500123'
+                    importance: low
+                    isRead: true
+                    isDraft: true
+                    isDeliveryReceiptRequested: true
+                    isReadReceiptRequested: true
+                    flag:
+                      flagStatus: notFlagged
+                    categories:
+                    - example_value
+                    parentFolderId: '500123'
+                    webLink: https://www.example.com
+                    inferenceClassification: focused
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -626,16 +1230,19 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteMessage
-      summary: Microsoft Office 365 Delete message
+      summary: Microsoft Office 365 Delete Message
       description: >-
         Delete a message in the signed-in user's mailbox. Requires
         Mail.ReadWrite permission.
       tags:
-        - Mail
+      - Mail
       parameters:
-        - $ref: '#/components/parameters/messageId'
+      - $ref: '#/components/parameters/messageId'
       responses:
         '204':
           description: Message deleted successfully. No content returned.
@@ -648,17 +1255,20 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/sendMail:
     post:
       operationId: sendMail
-      summary: Microsoft Office 365 Send mail
+      summary: Microsoft Office 365 Send Mail
       description: >-
         Send the message specified in the request body using either JSON or MIME
         format. The message is saved in the Sent Items folder by default. You
         can include an attachment with the send action. Requires Mail.Send
         permission.
       tags:
-        - Mail
+      - Mail
       requestBody:
         required: true
         content:
@@ -666,7 +1276,7 @@ paths:
             schema:
               type: object
               required:
-                - message
+              - message
               properties:
                 message:
                   $ref: '#/components/schemas/MessageCreateRequest'
@@ -674,6 +1284,30 @@ paths:
                   type: boolean
                   description: Whether to save the message in Sent Items folder.
                   default: true
+            examples:
+              SendmailRequestExample:
+                summary: Default sendMail request
+                x-microcks-default: true
+                value:
+                  message:
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    toRecipients:
+                    - {}
+                    ccRecipients:
+                    - {}
+                    bccRecipients:
+                    - {}
+                    replyTo:
+                    - {}
+                    importance: low
+                    isDeliveryReceiptRequested: true
+                    isReadReceiptRequested: true
+                    categories:
+                    - example_value
+                  saveToSentItems: true
       responses:
         '202':
           description: Mail accepted for delivery. No content returned.
@@ -686,22 +1320,25 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/mailFolders:
     get:
       operationId: listMailFolders
-      summary: Microsoft Office 365 List mail folders
+      summary: Microsoft Office 365 List Mail Folders
       description: >-
         Get the mail folder collection directly under the root folder of the
         signed-in user. The returned collection includes any mail search folders
         directly under the root. Requires Mail.ReadBasic, Mail.Read, or
         Mail.ReadWrite permission.
       tags:
-        - Mail
+      - Mail
       parameters:
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/filter'
       responses:
         '200':
           description: A collection of mail folder objects.
@@ -709,6 +1346,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MailFolderCollectionResponse'
+              examples:
+                Listmailfolders200Example:
+                  summary: Default listMailFolders 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      parentFolderId: '500123'
+                      childFolderCount: 10
+                      totalItemCount: 10
+                      unreadItemCount: 10
+                      isHidden: true
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -716,28 +1368,32 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/mailFolders/{mailFolder-id}/messages:
     get:
       operationId: listMailFolderMessages
-      summary: Microsoft Office 365 List messages in folder
+      summary: Microsoft Office 365 List Messages in Folder
       description: >-
         Get the message collection in the specified mail folder. Requires
         Mail.ReadBasic, Mail.Read, or Mail.ReadWrite permission.
       tags:
-        - Mail
+      - Mail
       parameters:
-        - name: mailFolder-id
-          in: path
-          required: true
-          description: The unique identifier of the mail folder, or a well-known folder name (inbox, drafts, sentitems, deleteditems).
-          schema:
-            type: string
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/orderby'
-        - $ref: '#/components/parameters/search'
+      - name: mailFolder-id
+        in: path
+        required: true
+        description: The unique identifier of the mail folder, or a well-known folder name (inbox, drafts, sentitems, deleteditems).
+        schema:
+          type: string
+        example: '500123'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/search'
       responses:
         '200':
           description: A collection of message objects.
@@ -745,6 +1401,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MessageCollectionResponse'
+              examples:
+                Listmailfoldermessages200Example:
+                  summary: Default listMailFolderMessages 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      subject: example_value
+                      bodyPreview: example_value
+                      toRecipients: {}
+                      ccRecipients: {}
+                      bccRecipients: {}
+                      replyTo: {}
+                      conversationId: '500123'
+                      conversationIndex: example_value
+                      receivedDateTime: '2026-01-15T10:30:00Z'
+                      sentDateTime: '2026-01-15T10:30:00Z'
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                      hasAttachments: true
+                      internetMessageId: '500123'
+                      importance: low
+                      isRead: true
+                      isDraft: true
+                      isDeliveryReceiptRequested: true
+                      isReadReceiptRequested: true
+                      categories: {}
+                      parentFolderId: '500123'
+                      webLink: https://www.example.com
+                      inferenceClassification: focused
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -755,10 +1444,13 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 
   # ── Calendar ───────────────────────────────────────────────────────────
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/events:
     get:
       operationId: listEvents
-      summary: Microsoft Office 365 List events
+      summary: Microsoft Office 365 List Events
       description: >-
         Get the events in the signed-in user's default calendar or from a
         specified calendar. The list contains single instance meetings and
@@ -766,13 +1458,13 @@ paths:
         calendar view or the instances of an event. Requires Calendars.Read
         or Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       parameters:
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
       responses:
         '200':
           description: A collection of event objects.
@@ -780,27 +1472,107 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EventCollectionResponse'
+              examples:
+                Listevents200Example:
+                  summary: Default listEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      subject: example_value
+                      bodyPreview: example_value
+                      locations: {}
+                      attendees: {}
+                      isAllDay: true
+                      isCancelled: true
+                      isOrganizer: true
+                      isOnlineMeeting: true
+                      onlineMeetingProvider: unknown
+                      onlineMeetingUrl: https://www.example.com
+                      seriesMasterId: '500123'
+                      type: singleInstance
+                      showAs: free
+                      importance: low
+                      sensitivity: normal
+                      responseRequested: true
+                      allowNewTimeProposals: true
+                      categories: {}
+                      hasAttachments: true
+                      iCalUId: '500123'
+                      webLink: https://www.example.com
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                      reminderMinutesBeforeStart: 10
+                      transactionId: '500123'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createEvent
-      summary: Microsoft Office 365 Create event
+      summary: Microsoft Office 365 Create Event
       description: >-
         Create an event in the signed-in user's default calendar or a specified
         calendar. By default, the allowNewTimeProposals property is set to true
         when an event is created. Requires Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/EventCreateRequest'
+            examples:
+              CreateeventRequestExample:
+                summary: Default createEvent request
+                x-microcks-default: true
+                value:
+                  subject: example_value
+                  body:
+                    contentType: text
+                    content: example_value
+                  start:
+                    dateTime: example_value
+                    timeZone: example_value
+                  end:
+                    dateTime: example_value
+                    timeZone: example_value
+                  location:
+                    displayName: example_value
+                    locationType: default
+                    locationUri: example_value
+                    uniqueId: '500123'
+                    uniqueIdType: unknown
+                  locations:
+                  - displayName: example_value
+                    locationType: default
+                    locationUri: example_value
+                    uniqueId: '500123'
+                    uniqueIdType: unknown
+                  attendees:
+                  - type: required
+                  isAllDay: true
+                  isOnlineMeeting: true
+                  onlineMeetingProvider: teamsForBusiness
+                  recurrence: {}
+                  showAs: free
+                  importance: low
+                  sensitivity: normal
+                  responseRequested: true
+                  allowNewTimeProposals: true
+                  categories:
+                  - example_value
+                  reminderMinutesBeforeStart: 10
+                  transactionId: '500123'
       responses:
         '201':
           description: The created event object.
@@ -808,6 +1580,73 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Event'
+              examples:
+                Createevent201Example:
+                  summary: Default createEvent 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    start:
+                      dateTime: example_value
+                      timeZone: example_value
+                    end:
+                      dateTime: example_value
+                      timeZone: example_value
+                    location:
+                      displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    locations:
+                    - displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    attendees:
+                    - type: required
+                    organizer: {}
+                    isAllDay: true
+                    isCancelled: true
+                    isOrganizer: true
+                    isOnlineMeeting: true
+                    onlineMeetingProvider: unknown
+                    onlineMeetingUrl: https://www.example.com
+                    onlineMeeting:
+                      joinUrl: https://www.example.com
+                      conferenceId: '500123'
+                      tollNumber: example_value
+                      tollFreeNumbers:
+                      - {}
+                      quickDial: example_value
+                      phones:
+                      - {}
+                    recurrence: {}
+                    seriesMasterId: '500123'
+                    type: singleInstance
+                    showAs: free
+                    importance: low
+                    sensitivity: normal
+                    responseStatus:
+                      response: none
+                      time: '2026-01-15T10:30:00Z'
+                    responseRequested: true
+                    allowNewTimeProposals: true
+                    categories:
+                    - example_value
+                    hasAttachments: true
+                    iCalUId: '500123'
+                    webLink: https://www.example.com
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    reminderMinutesBeforeStart: 10
+                    transactionId: '500123'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -817,20 +1656,23 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/events/{event-id}:
     get:
       operationId: getEvent
-      summary: Microsoft Office 365 Get event
+      summary: Microsoft Office 365 Get Event
       description: >-
         Get the properties and relationships of the specified event object.
         Returns the event body in HTML format by default. Requires
         Calendars.Read or Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       parameters:
-        - $ref: '#/components/parameters/eventId'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/eventId'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
       responses:
         '200':
           description: The requested event object.
@@ -838,6 +1680,73 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Event'
+              examples:
+                Getevent200Example:
+                  summary: Default getEvent 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    start:
+                      dateTime: example_value
+                      timeZone: example_value
+                    end:
+                      dateTime: example_value
+                      timeZone: example_value
+                    location:
+                      displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    locations:
+                    - displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    attendees:
+                    - type: required
+                    organizer: {}
+                    isAllDay: true
+                    isCancelled: true
+                    isOrganizer: true
+                    isOnlineMeeting: true
+                    onlineMeetingProvider: unknown
+                    onlineMeetingUrl: https://www.example.com
+                    onlineMeeting:
+                      joinUrl: https://www.example.com
+                      conferenceId: '500123'
+                      tollNumber: example_value
+                      tollFreeNumbers:
+                      - {}
+                      quickDial: example_value
+                      phones:
+                      - {}
+                    recurrence: {}
+                    seriesMasterId: '500123'
+                    type: singleInstance
+                    showAs: free
+                    importance: low
+                    sensitivity: normal
+                    responseStatus:
+                      response: none
+                      time: '2026-01-15T10:30:00Z'
+                    responseRequested: true
+                    allowNewTimeProposals: true
+                    categories:
+                    - example_value
+                    hasAttachments: true
+                    iCalUId: '500123'
+                    webLink: https://www.example.com
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    reminderMinutesBeforeStart: 10
+                    transactionId: '500123'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -846,22 +1755,64 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: updateEvent
-      summary: Microsoft Office 365 Update event
+      summary: Microsoft Office 365 Update Event
       description: >-
         Update the properties of an event object. Only the properties you
         specify are changed. Requires Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       parameters:
-        - $ref: '#/components/parameters/eventId'
+      - $ref: '#/components/parameters/eventId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/EventUpdateRequest'
+            examples:
+              UpdateeventRequestExample:
+                summary: Default updateEvent request
+                x-microcks-default: true
+                value:
+                  subject: example_value
+                  body:
+                    contentType: text
+                    content: example_value
+                  start:
+                    dateTime: example_value
+                    timeZone: example_value
+                  end:
+                    dateTime: example_value
+                    timeZone: example_value
+                  location:
+                    displayName: example_value
+                    locationType: default
+                    locationUri: example_value
+                    uniqueId: '500123'
+                    uniqueIdType: unknown
+                  locations:
+                  - displayName: example_value
+                    locationType: default
+                    locationUri: example_value
+                    uniqueId: '500123'
+                    uniqueIdType: unknown
+                  attendees:
+                  - type: required
+                  isAllDay: true
+                  isOnlineMeeting: true
+                  onlineMeetingProvider: teamsForBusiness
+                  recurrence: {}
+                  showAs: free
+                  importance: low
+                  sensitivity: normal
+                  categories:
+                  - example_value
+                  reminderMinutesBeforeStart: 10
       responses:
         '200':
           description: The updated event object.
@@ -869,6 +1820,73 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Event'
+              examples:
+                Updateevent200Example:
+                  summary: Default updateEvent 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    start:
+                      dateTime: example_value
+                      timeZone: example_value
+                    end:
+                      dateTime: example_value
+                      timeZone: example_value
+                    location:
+                      displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    locations:
+                    - displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    attendees:
+                    - type: required
+                    organizer: {}
+                    isAllDay: true
+                    isCancelled: true
+                    isOrganizer: true
+                    isOnlineMeeting: true
+                    onlineMeetingProvider: unknown
+                    onlineMeetingUrl: https://www.example.com
+                    onlineMeeting:
+                      joinUrl: https://www.example.com
+                      conferenceId: '500123'
+                      tollNumber: example_value
+                      tollFreeNumbers:
+                      - {}
+                      quickDial: example_value
+                      phones:
+                      - {}
+                    recurrence: {}
+                    seriesMasterId: '500123'
+                    type: singleInstance
+                    showAs: free
+                    importance: low
+                    sensitivity: normal
+                    responseStatus:
+                      response: none
+                      time: '2026-01-15T10:30:00Z'
+                    responseRequested: true
+                    allowNewTimeProposals: true
+                    categories:
+                    - example_value
+                    hasAttachments: true
+                    iCalUId: '500123'
+                    webLink: https://www.example.com
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    reminderMinutesBeforeStart: 10
+                    transactionId: '500123'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -879,17 +1897,20 @@ paths:
           $ref: '#/components/responses/NotFound'
         '429':
           $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteEvent
-      summary: Microsoft Office 365 Delete event
+      summary: Microsoft Office 365 Delete Event
       description: >-
         Remove the specified event from the user's calendar. If the event is a
         meeting, deleting it on the organizer's calendar sends a cancellation
         message to attendees. Requires Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       parameters:
-        - $ref: '#/components/parameters/eventId'
+      - $ref: '#/components/parameters/eventId'
       responses:
         '204':
           description: Event deleted successfully. No content returned.
@@ -902,21 +1923,24 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/calendars:
     get:
       operationId: listCalendars
-      summary: Microsoft Office 365 List calendars
+      summary: Microsoft Office 365 List Calendars
       description: >-
         Get all the signed-in user's calendars from the default calendar group
         or from a specific calendar group. Requires Calendars.Read or
         Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       parameters:
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/filter'
       responses:
         '200':
           description: A collection of calendar objects.
@@ -924,6 +1948,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CalendarCollectionResponse'
+              examples:
+                Listcalendars200Example:
+                  summary: Default listCalendars 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      color: auto
+                      changeKey: example_value
+                      canEdit: true
+                      canShare: true
+                      canViewPrivateItems: true
+                      isDefaultCalendar: true
+                      hexColor: example_value
+                      isRemovable: true
+                      isTallyingResponses: true
+                      allowedOnlineMeetingProviders: {}
+                      defaultOnlineMeetingProvider: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -931,37 +1976,42 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/calendarView:
     get:
       operationId: getCalendarView
-      summary: Microsoft Office 365 Get calendar view
+      summary: Microsoft Office 365 Get Calendar View
       description: >-
         Get the occurrences, exceptions, and single instances of events in a
         calendar view defined by a time range, from the user's default calendar
         or from a specified calendar. Requires Calendars.Read or
         Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       parameters:
-        - name: startDateTime
-          in: query
-          required: true
-          description: The start date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T19:00:00-08:00).
-          schema:
-            type: string
-            format: date-time
-        - name: endDateTime
-          in: query
-          required: true
-          description: The end date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T20:00:00-08:00).
-          schema:
-            type: string
-            format: date-time
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/select'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/orderby'
+      - name: startDateTime
+        in: query
+        required: true
+        description: The start date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T19:00:00-08:00).
+        schema:
+          type: string
+          format: date-time
+        example: '2026-01-15T10:30:00Z'
+      - name: endDateTime
+        in: query
+        required: true
+        description: The end date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T20:00:00-08:00).
+        schema:
+          type: string
+          format: date-time
+        example: '2026-01-15T10:30:00Z'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
       responses:
         '200':
           description: A collection of event objects within the specified time range.
@@ -969,6 +2019,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EventCollectionResponse'
+              examples:
+                Getcalendarview200Example:
+                  summary: Default getCalendarView 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      subject: example_value
+                      bodyPreview: example_value
+                      locations: {}
+                      attendees: {}
+                      isAllDay: true
+                      isCancelled: true
+                      isOrganizer: true
+                      isOnlineMeeting: true
+                      onlineMeetingProvider: unknown
+                      onlineMeetingUrl: https://www.example.com
+                      seriesMasterId: '500123'
+                      type: singleInstance
+                      showAs: free
+                      importance: low
+                      sensitivity: normal
+                      responseRequested: true
+                      allowNewTimeProposals: true
+                      categories: {}
+                      hasAttachments: true
+                      iCalUId: '500123'
+                      webLink: https://www.example.com
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                      reminderMinutesBeforeStart: 10
+                      transactionId: '500123'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -978,17 +2063,20 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/events/{event-id}/accept:
     post:
       operationId: acceptEvent
-      summary: Microsoft Office 365 Accept event
+      summary: Microsoft Office 365 Accept Event
       description: >-
         Accept the specified event in a user calendar. Requires
         Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       parameters:
-        - $ref: '#/components/parameters/eventId'
+      - $ref: '#/components/parameters/eventId'
       requestBody:
         required: false
         content:
@@ -1003,6 +2091,13 @@ paths:
                   type: boolean
                   description: Whether a response is to be sent to the organizer. Default is true.
                   default: true
+            examples:
+              AccepteventRequestExample:
+                summary: Default acceptEvent request
+                x-microcks-default: true
+                value:
+                  comment: example_value
+                  sendResponse: true
       responses:
         '202':
           description: Event accepted. No content returned.
@@ -1015,17 +2110,20 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /me/events/{event-id}/decline:
     post:
       operationId: declineEvent
-      summary: Microsoft Office 365 Decline event
+      summary: Microsoft Office 365 Decline Event
       description: >-
         Decline invitation to the specified event in a user calendar. Requires
         Calendars.ReadWrite permission.
       tags:
-        - Calendar
+      - Calendar
       parameters:
-        - $ref: '#/components/parameters/eventId'
+      - $ref: '#/components/parameters/eventId'
       requestBody:
         required: false
         content:
@@ -1042,6 +2140,20 @@ paths:
                   default: true
                 proposedNewTime:
                   $ref: '#/components/schemas/TimeSlot'
+            examples:
+              DeclineeventRequestExample:
+                summary: Default declineEvent request
+                x-microcks-default: true
+                value:
+                  comment: example_value
+                  sendResponse: true
+                  proposedNewTime:
+                    start:
+                      dateTime: example_value
+                      timeZone: example_value
+                    end:
+                      dateTime: example_value
+                      timeZone: example_value
       responses:
         '202':
           description: Event declined. No content returned.
@@ -1054,6 +2166,9 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     oauth2:
@@ -1191,79 +2306,99 @@ components:
           description: >-
             The unique identifier for the user. Inherited from directoryObject.
             GUID format.
+          example: abc123
         displayName:
           type: string
           description: The name displayed in the address book for the user.
+          example: example_value
         givenName:
           type: string
           description: The given name (first name) of the user.
+          example: example_value
         surname:
           type: string
           description: The user's surname (family name or last name).
+          example: example_value
         mail:
           type: string
           format: email
           description: >-
             The SMTP address for the user. This property cannot contain accent
             characters.
+          example: example_value
         userPrincipalName:
           type: string
           description: >-
             The user principal name (UPN) of the user. The UPN is an
             Internet-style login name based on RFC 822. By convention, this
             should map to the user's email name.
+          example: example_value
         jobTitle:
           type: string
           description: The user's job title.
+          example: example_value
         department:
           type: string
           description: The name of the department in which the user works.
+          example: example_value
         officeLocation:
           type: string
           description: The office location in the user's place of business.
+          example: example_value
         companyName:
           type: string
           description: The company name associated with the user.
+          example: example_value
         businessPhones:
           type: array
           items:
             type: string
           description: The telephone numbers for the user.
+          example: []
         mobilePhone:
           type: string
           description: The primary cellular telephone number for the user.
+          example: example_value
         streetAddress:
           type: string
           description: The street address of the user's place of business.
+          example: example_value
         city:
           type: string
           description: The city in which the user is located.
+          example: example_value
         state:
           type: string
           description: The state or province in the user's address.
+          example: example_value
         postalCode:
           type: string
           description: The postal code for the user's postal address.
+          example: example_value
         country:
           type: string
           description: >-
             The country or region in which the user is located; for example,
             US or UK.
+          example: example_value
         preferredLanguage:
           type: string
           description: >-
             The preferred language for the user. Should follow ISO 639-1 Code;
             for example en-US.
+          example: example_value
         accountEnabled:
           type: boolean
           description: >-
             True if the account is enabled; otherwise, false. Required when
             creating a user.
+          example: true
         createdDateTime:
           type: string
           format: date-time
           readOnly: true
           description: The date and time the user was created in ISO 8601 format.
+          example: '2026-01-15T10:30:00Z'
         lastSignInDateTime:
           type: string
           format: date-time
@@ -1271,11 +2406,13 @@ components:
           description: >-
             The date and time of the user's most recent interactive or
             non-interactive sign-in.
+          example: '2026-01-15T10:30:00Z'
         usageLocation:
           type: string
           description: >-
             A two-letter country code (ISO 3166) required for users who will be
             assigned licenses. Not nullable.
+          example: example_value
         passwordProfile:
           $ref: '#/components/schemas/PasswordProfile'
         identities:
@@ -1285,12 +2422,14 @@ components:
           description: >-
             Represents the identities that can be used to sign in to this user
             account.
+          example: []
         assignedLicenses:
           type: array
           readOnly: true
           items:
             $ref: '#/components/schemas/AssignedLicense'
           description: The licenses assigned to the user.
+          example: []
         manager:
           $ref: '#/components/schemas/DirectoryObject'
         memberOf:
@@ -1300,82 +2439,110 @@ components:
             $ref: '#/components/schemas/DirectoryObject'
           description: The groups, directory roles, and administrative units the user is a member of.
 
+          example: []
     UserCreateRequest:
       type: object
       required:
-        - accountEnabled
-        - displayName
-        - mailNickname
-        - userPrincipalName
-        - passwordProfile
+      - accountEnabled
+      - displayName
+      - mailNickname
+      - userPrincipalName
+      - passwordProfile
       properties:
         accountEnabled:
           type: boolean
           description: True if the account is enabled; otherwise, false.
+          example: true
         displayName:
           type: string
           description: The name to display in the address book for the user.
+          example: example_value
         mailNickname:
           type: string
           description: The mail alias for the user.
+          example: example_value
         userPrincipalName:
           type: string
           description: >-
             The user principal name (someuser@contoso.com).
+          example: example_value
         passwordProfile:
           $ref: '#/components/schemas/PasswordProfile'
         givenName:
           type: string
+          example: example_value
         surname:
           type: string
+          example: example_value
         jobTitle:
           type: string
+          example: example_value
         department:
           type: string
+          example: example_value
         officeLocation:
           type: string
+          example: example_value
         mobilePhone:
           type: string
+          example: example_value
         usageLocation:
           type: string
 
+          example: example_value
     UserUpdateRequest:
       type: object
       properties:
         displayName:
           type: string
+          example: example_value
         givenName:
           type: string
+          example: example_value
         surname:
           type: string
+          example: example_value
         jobTitle:
           type: string
+          example: example_value
         department:
           type: string
+          example: example_value
         officeLocation:
           type: string
+          example: example_value
         mobilePhone:
           type: string
+          example: example_value
         businessPhones:
           type: array
           items:
             type: string
+          example: []
         streetAddress:
           type: string
+          example: example_value
         city:
           type: string
+          example: example_value
         state:
           type: string
+          example: example_value
         postalCode:
           type: string
+          example: example_value
         country:
           type: string
+          example: example_value
         preferredLanguage:
           type: string
+          example: example_value
         accountEnabled:
           type: boolean
+          example: true
         usageLocation:
           type: string
+          example: example_value
         passwordProfile:
           $ref: '#/components/schemas/PasswordProfile'
 
@@ -1385,18 +2552,22 @@ components:
         '@odata.context':
           type: string
           description: The OData context URL for the collection.
+          example: example_value
         '@odata.count':
           type: integer
           description: The total count of items in the collection (if requested).
+          example: 10
         '@odata.nextLink':
           type: string
           format: uri
           description: The URL to retrieve the next page of results.
+          example: https://www.example.com
         value:
           type: array
           items:
             $ref: '#/components/schemas/User'
 
+          example: []
     PasswordProfile:
       type: object
       description: Contains the password profile associated with a user.
@@ -1405,12 +2576,14 @@ components:
           type: boolean
           description: Whether the user must change the password on the next sign-in.
           default: true
+          example: true
         forceChangePasswordNextSignInWithMfa:
           type: boolean
           description: >-
             Whether the user must perform multi-factor authentication before
             being forced to change their password.
           default: false
+          example: true
         password:
           type: string
           format: password
@@ -1418,6 +2591,7 @@ components:
             The password for the user. Must satisfy the tenant's password
             complexity requirements. Minimum of 8 characters.
 
+          example: example_value
     ObjectIdentity:
       type: object
       description: Represents an identity used to sign in to a user account.
@@ -1427,17 +2601,20 @@ components:
           description: >-
             Specifies the type of user sign-in (e.g. emailAddress,
             userName, userPrincipalName).
+          example: example_value
         issuer:
           type: string
           description: >-
             Specifies the issuer of the identity, for example
             contoso.onmicrosoft.com.
+          example: example_value
         issuerAssignedId:
           type: string
           description: >-
             Specifies the unique value associated with the issuer-
             signInType combination.
 
+          example: '500123'
     AssignedLicense:
       type: object
       description: Represents a license assigned to a user.
@@ -1447,10 +2624,12 @@ components:
           items:
             type: string
           description: A collection of unique identifiers for disabled plans.
+          example: []
         skuId:
           type: string
           description: The unique identifier for the SKU.
 
+          example: '500123'
     DirectoryObject:
       type: object
       description: >-
@@ -1460,29 +2639,36 @@ components:
         '@odata.type':
           type: string
           description: The OData type of the directory object.
+          example: example_value
         id:
           type: string
           description: The unique identifier for the directory object.
+          example: abc123
         displayName:
           type: string
           description: The name displayed for the directory object.
 
+          example: example_value
     DirectoryObjectCollectionResponse:
       type: object
       properties:
         '@odata.context':
           type: string
+          example: example_value
         '@odata.count':
           type: integer
+          example: 10
         '@odata.nextLink':
           type: string
           format: uri
+          example: https://www.example.com
         value:
           type: array
           items:
             $ref: '#/components/schemas/DirectoryObject'
 
     # ── Group schemas ──────────────────────────────────────────────────
+          example: []
     Group:
       type: object
       description: >-
@@ -1494,28 +2680,35 @@ components:
           type: string
           readOnly: true
           description: The unique identifier for the group.
+          example: abc123
         displayName:
           type: string
           description: The display name for the group.
+          example: example_value
         description:
           type: string
           description: An optional description for the group.
+          example: A sample description.
         mail:
           type: string
           format: email
           readOnly: true
           description: The SMTP address for the group.
+          example: example_value
         mailEnabled:
           type: boolean
           description: Specifies whether the group is mail-enabled.
+          example: true
         mailNickname:
           type: string
           description: >-
             The mail alias for the group, unique for Microsoft 365 groups in
             the organization.
+          example: example_value
         securityEnabled:
           type: boolean
           description: Specifies whether the group is a security group.
+          example: true
         groupTypes:
           type: array
           items:
@@ -1523,41 +2716,48 @@ components:
           description: >-
             Specifies the group type and its membership. If the collection
             includes "Unified", the group is a Microsoft 365 group.
+          example: []
         visibility:
           type: string
           enum:
-            - Public
-            - Private
-            - HiddenMembership
+          - Public
+          - Private
+          - HiddenMembership
           description: >-
             Specifies the visibility of a Microsoft 365 group. Default value
             is Public.
+          example: Public
         createdDateTime:
           type: string
           format: date-time
           readOnly: true
           description: Timestamp of when the group was created.
+          example: '2026-01-15T10:30:00Z'
         renewedDateTime:
           type: string
           format: date-time
           readOnly: true
           description: Timestamp of when the group was last renewed.
+          example: '2026-01-15T10:30:00Z'
         classification:
           type: string
           description: >-
             Describes a classification for the group (such as low, medium, or
             high business impact).
+          example: example_value
         membershipRule:
           type: string
           description: >-
             The rule that determines members for this group if the group is a
             dynamic group.
+          example: example_value
         membershipRuleProcessingState:
           type: string
           enum:
-            - 'On'
-            - Paused
+          - 'On'
+          - Paused
           description: Whether dynamic membership processing is on or paused.
+          example: 'On'
         resourceProvisioningOptions:
           type: array
           items:
@@ -1565,12 +2765,14 @@ components:
           description: >-
             Specifies the group resources provisioned as part of Microsoft 365
             group creation (e.g., Team).
+          example: []
         members:
           type: array
           readOnly: true
           items:
             $ref: '#/components/schemas/DirectoryObject'
           description: Direct members of this group.
+          example: []
         owners:
           type: array
           readOnly: true
@@ -1578,81 +2780,100 @@ components:
             $ref: '#/components/schemas/DirectoryObject'
           description: The owners of the group.
 
+          example: []
     GroupCreateRequest:
       type: object
       required:
-        - displayName
-        - mailEnabled
-        - mailNickname
-        - securityEnabled
+      - displayName
+      - mailEnabled
+      - mailNickname
+      - securityEnabled
       properties:
         displayName:
           type: string
           description: The display name for the group.
+          example: example_value
         description:
           type: string
+          example: A sample description.
         mailEnabled:
           type: boolean
+          example: true
         mailNickname:
           type: string
+          example: example_value
         securityEnabled:
           type: boolean
+          example: true
         groupTypes:
           type: array
           items:
             type: string
           description: Set to ["Unified"] to create a Microsoft 365 group.
+          example: []
         visibility:
           type: string
           enum:
-            - Public
-            - Private
-            - HiddenMembership
+          - Public
+          - Private
+          - HiddenMembership
+          example: Public
         'owners@odata.bind':
           type: array
           items:
             type: string
           description: URLs of user objects to set as owners at creation time.
+          example: []
         'members@odata.bind':
           type: array
           items:
             type: string
           description: URLs of user objects to set as members at creation time.
 
+          example: []
     GroupUpdateRequest:
       type: object
       properties:
         displayName:
           type: string
+          example: example_value
         description:
           type: string
+          example: A sample description.
         mailNickname:
           type: string
+          example: example_value
         visibility:
           type: string
           enum:
-            - Public
-            - Private
-            - HiddenMembership
+          - Public
+          - Private
+          - HiddenMembership
+          example: Public
         classification:
           type: string
 
+          example: example_value
     GroupCollectionResponse:
       type: object
       properties:
         '@odata.context':
           type: string
+          example: example_value
         '@odata.count':
           type: integer
+          example: 10
         '@odata.nextLink':
           type: string
           format: uri
+          example: https://www.example.com
         value:
           type: array
           items:
             $ref: '#/components/schemas/Group'
 
     # ── Mail schemas ───────────────────────────────────────────────────
+          example: []
     Message:
       type: object
       description: >-
@@ -1663,15 +2884,18 @@ components:
           type: string
           readOnly: true
           description: Unique identifier for the message.
+          example: abc123
         subject:
           type: string
           description: The subject of the message.
+          example: example_value
         body:
           $ref: '#/components/schemas/ItemBody'
         bodyPreview:
           type: string
           readOnly: true
           description: The first 255 characters of the message body in text format.
+          example: example_value
         sender:
           $ref: '#/components/schemas/Recipient'
         from:
@@ -1681,78 +2905,95 @@ components:
           items:
             $ref: '#/components/schemas/Recipient'
           description: The To recipients for the message.
+          example: []
         ccRecipients:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
           description: The Cc recipients for the message.
+          example: []
         bccRecipients:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
           description: The Bcc recipients for the message.
+          example: []
         replyTo:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
           description: The email addresses to use when replying.
+          example: []
         conversationId:
           type: string
           readOnly: true
           description: The ID of the conversation the email belongs to.
+          example: '500123'
         conversationIndex:
           type: string
           format: byte
           readOnly: true
           description: The index of the message in the conversation.
+          example: example_value
         receivedDateTime:
           type: string
           format: date-time
           readOnly: true
           description: The date and time the message was received.
+          example: '2026-01-15T10:30:00Z'
         sentDateTime:
           type: string
           format: date-time
           readOnly: true
           description: The date and time the message was sent.
+          example: '2026-01-15T10:30:00Z'
         createdDateTime:
           type: string
           format: date-time
           readOnly: true
           description: The date and time the message was created.
+          example: '2026-01-15T10:30:00Z'
         lastModifiedDateTime:
           type: string
           format: date-time
           readOnly: true
           description: The date and time the message was last changed.
+          example: '2026-01-15T10:30:00Z'
         hasAttachments:
           type: boolean
           readOnly: true
           description: Indicates whether the message has attachments.
+          example: true
         internetMessageId:
           type: string
           readOnly: true
           description: The message ID in RFC2822 format.
+          example: '500123'
         importance:
           type: string
           enum:
-            - low
-            - normal
-            - high
+          - low
+          - normal
+          - high
           description: The importance of the message.
+          example: low
         isRead:
           type: boolean
           description: Indicates whether the message has been read.
+          example: true
         isDraft:
           type: boolean
           readOnly: true
           description: Indicates whether the message is a draft.
+          example: true
         isDeliveryReceiptRequested:
           type: boolean
           description: Indicates whether a delivery receipt is requested.
+          example: true
         isReadReceiptRequested:
           type: boolean
           description: Indicates whether a read receipt is requested.
+          example: true
         flag:
           $ref: '#/components/schemas/FollowupFlag'
         categories:
@@ -1760,115 +3001,140 @@ components:
           items:
             type: string
           description: The categories associated with the message.
+          example: []
         parentFolderId:
           type: string
           readOnly: true
           description: The unique identifier for the message's parent mailFolder.
+          example: '500123'
         webLink:
           type: string
           format: uri
           readOnly: true
           description: The URL to open the message in Outlook on the web.
+          example: https://www.example.com
         inferenceClassification:
           type: string
           enum:
-            - focused
-            - other
+          - focused
+          - other
           description: The classification of the message based on inferred relevance.
 
+          example: focused
     MessageCreateRequest:
       type: object
       properties:
         subject:
           type: string
           description: The subject of the message.
+          example: example_value
         body:
           $ref: '#/components/schemas/ItemBody'
         toRecipients:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
+          example: []
         ccRecipients:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
+          example: []
         bccRecipients:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
+          example: []
         replyTo:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
+          example: []
         importance:
           type: string
           enum:
-            - low
-            - normal
-            - high
+          - low
+          - normal
+          - high
+          example: low
         isDeliveryReceiptRequested:
           type: boolean
+          example: true
         isReadReceiptRequested:
           type: boolean
+          example: true
         categories:
           type: array
           items:
             type: string
 
+          example: []
     MessageUpdateRequest:
       type: object
       properties:
         subject:
           type: string
+          example: example_value
         body:
           $ref: '#/components/schemas/ItemBody'
         toRecipients:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
+          example: []
         ccRecipients:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
+          example: []
         bccRecipients:
           type: array
           items:
             $ref: '#/components/schemas/Recipient'
+          example: []
         importance:
           type: string
           enum:
-            - low
-            - normal
-            - high
+          - low
+          - normal
+          - high
+          example: low
         isRead:
           type: boolean
+          example: true
         categories:
           type: array
           items:
             type: string
+          example: []
         flag:
           $ref: '#/components/schemas/FollowupFlag'
         inferenceClassification:
           type: string
           enum:
-            - focused
-            - other
+          - focused
+          - other
 
+          example: focused
     MessageCollectionResponse:
       type: object
       properties:
         '@odata.context':
           type: string
+          example: example_value
         '@odata.count':
           type: integer
+          example: 10
         '@odata.nextLink':
           type: string
           format: uri
+          example: https://www.example.com
         value:
           type: array
           items:
             $ref: '#/components/schemas/Message'
 
+          example: []
     MailFolder:
       type: object
       description: A mail folder in a user's mailbox, such as Inbox and Drafts.
@@ -1877,42 +3143,52 @@ components:
           type: string
           readOnly: true
           description: The unique identifier for the mail folder.
+          example: abc123
         displayName:
           type: string
           description: The mail folder's display name.
+          example: example_value
         parentFolderId:
           type: string
           readOnly: true
           description: The unique identifier for the mail folder's parent.
+          example: '500123'
         childFolderCount:
           type: integer
           readOnly: true
           description: The number of immediate child folders in the current folder.
+          example: 10
         totalItemCount:
           type: integer
           readOnly: true
           description: The number of items in the mail folder.
+          example: 10
         unreadItemCount:
           type: integer
           readOnly: true
           description: The number of unread items in the folder.
+          example: 10
         isHidden:
           type: boolean
           description: Indicates whether the mail folder is hidden.
 
+          example: true
     MailFolderCollectionResponse:
       type: object
       properties:
         '@odata.context':
           type: string
+          example: example_value
         '@odata.nextLink':
           type: string
           format: uri
+          example: https://www.example.com
         value:
           type: array
           items:
             $ref: '#/components/schemas/MailFolder'
 
+          example: []
     ItemBody:
       type: object
       description: Represents properties of the body of a message or event.
@@ -1920,13 +3196,15 @@ components:
         contentType:
           type: string
           enum:
-            - text
-            - html
+          - text
+          - html
           description: The type of the content. Possible values are text and html.
+          example: text
         content:
           type: string
           description: The content of the item.
 
+          example: example_value
     Recipient:
       type: object
       description: Represents information about a user in the sending or receiving end of a message or event.
@@ -1941,11 +3219,13 @@ components:
         name:
           type: string
           description: The display name of the person or entity.
+          example: Example Title
         address:
           type: string
           format: email
           description: The email address of the person or entity.
 
+          example: example_value
     FollowupFlag:
       type: object
       description: Allows setting a flag on an item for the user to follow up on later.
@@ -1959,12 +3239,13 @@ components:
         flagStatus:
           type: string
           enum:
-            - notFlagged
-            - complete
-            - flagged
+          - notFlagged
+          - complete
+          - flagged
           description: The status of the follow-up flag.
 
     # ── Calendar schemas ───────────────────────────────────────────────
+          example: notFlagged
     Event:
       type: object
       description: >-
@@ -1976,15 +3257,18 @@ components:
           type: string
           readOnly: true
           description: Unique identifier for the event.
+          example: abc123
         subject:
           type: string
           description: The text of the event's subject line.
+          example: example_value
         body:
           $ref: '#/components/schemas/ItemBody'
         bodyPreview:
           type: string
           readOnly: true
           description: A preview of the message associated with the event.
+          example: example_value
         start:
           $ref: '#/components/schemas/DateTimeTimeZone'
         end:
@@ -1996,40 +3280,48 @@ components:
           items:
             $ref: '#/components/schemas/Location'
           description: The locations where the event is held or attended from.
+          example: []
         attendees:
           type: array
           items:
             $ref: '#/components/schemas/Attendee'
           description: The collection of attendees for the event.
+          example: []
         organizer:
           $ref: '#/components/schemas/Recipient'
         isAllDay:
           type: boolean
           description: Set to true if the event lasts all day.
+          example: true
         isCancelled:
           type: boolean
           readOnly: true
           description: Set to true if the event has been canceled.
+          example: true
         isOrganizer:
           type: boolean
           readOnly: true
           description: Set to true if the calendar owner is the organizer.
+          example: true
         isOnlineMeeting:
           type: boolean
           description: Whether the event is an online meeting.
+          example: true
         onlineMeetingProvider:
           type: string
           enum:
-            - unknown
-            - teamsForBusiness
-            - skypeForBusiness
-            - skypeForConsumer
+          - unknown
+          - teamsForBusiness
+          - skypeForBusiness
+          - skypeForConsumer
           description: The online meeting service provider.
+          example: unknown
         onlineMeetingUrl:
           type: string
           format: uri
           readOnly: true
           description: A URL for an online meeting.
+          example: https://www.example.com
         onlineMeeting:
           $ref: '#/components/schemas/OnlineMeetingInfo'
         recurrence:
@@ -2038,94 +3330,110 @@ components:
           type: string
           readOnly: true
           description: The ID for the recurring series master item.
+          example: '500123'
         type:
           type: string
           enum:
-            - singleInstance
-            - occurrence
-            - exception
-            - seriesMaster
+          - singleInstance
+          - occurrence
+          - exception
+          - seriesMaster
           readOnly: true
           description: The event type.
+          example: singleInstance
         showAs:
           type: string
           enum:
-            - free
-            - tentative
-            - busy
-            - oof
-            - workingElsewhere
-            - unknown
+          - free
+          - tentative
+          - busy
+          - oof
+          - workingElsewhere
+          - unknown
           description: The status to show.
+          example: free
         importance:
           type: string
           enum:
-            - low
-            - normal
-            - high
+          - low
+          - normal
+          - high
           description: The importance of the event.
+          example: low
         sensitivity:
           type: string
           enum:
-            - normal
-            - personal
-            - private
-            - confidential
+          - normal
+          - personal
+          - private
+          - confidential
           description: The sensitivity of the event.
+          example: normal
         responseStatus:
           $ref: '#/components/schemas/ResponseStatus'
         responseRequested:
           type: boolean
           description: Whether the organizer would like an invitee to send a response.
+          example: true
         allowNewTimeProposals:
           type: boolean
           description: Whether new time proposals are allowed for the event.
+          example: true
         categories:
           type: array
           items:
             type: string
           description: The categories associated with the event.
+          example: []
         hasAttachments:
           type: boolean
           readOnly: true
           description: Whether the event has attachments.
+          example: true
         iCalUId:
           type: string
           readOnly: true
           description: A unique identifier across calendars (RFC 2445).
+          example: '500123'
         webLink:
           type: string
           format: uri
           readOnly: true
           description: The URL to open the event in Outlook on the web.
+          example: https://www.example.com
         createdDateTime:
           type: string
           format: date-time
           readOnly: true
           description: The date and time the event was created.
+          example: '2026-01-15T10:30:00Z'
         lastModifiedDateTime:
           type: string
           format: date-time
           readOnly: true
           description: The date and time the event was last modified.
+          example: '2026-01-15T10:30:00Z'
         reminderMinutesBeforeStart:
           type: integer
           description: The number of minutes before the event start time for the reminder alert.
+          example: 10
         transactionId:
           type: string
           description: >-
             A custom identifier for the client to avoid redundant POST
             operations when client retries.
 
+          example: '500123'
     EventCreateRequest:
       type: object
       required:
-        - subject
-        - start
-        - end
+      - subject
+      - start
+      - end
       properties:
         subject:
           type: string
+          example: example_value
         body:
           $ref: '#/components/schemas/ItemBody'
         start:
@@ -2138,62 +3446,76 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Location'
+          example: []
         attendees:
           type: array
           items:
             $ref: '#/components/schemas/Attendee'
+          example: []
         isAllDay:
           type: boolean
+          example: true
         isOnlineMeeting:
           type: boolean
+          example: true
         onlineMeetingProvider:
           type: string
           enum:
-            - teamsForBusiness
-            - skypeForBusiness
-            - skypeForConsumer
+          - teamsForBusiness
+          - skypeForBusiness
+          - skypeForConsumer
+          example: teamsForBusiness
         recurrence:
           $ref: '#/components/schemas/PatternedRecurrence'
         showAs:
           type: string
           enum:
-            - free
-            - tentative
-            - busy
-            - oof
-            - workingElsewhere
-            - unknown
+          - free
+          - tentative
+          - busy
+          - oof
+          - workingElsewhere
+          - unknown
+          example: free
         importance:
           type: string
           enum:
-            - low
-            - normal
-            - high
+          - low
+          - normal
+          - high
+          example: low
         sensitivity:
           type: string
           enum:
-            - normal
-            - personal
-            - private
-            - confidential
+          - normal
+          - personal
+          - private
+          - confidential
+          example: normal
         responseRequested:
           type: boolean
+          example: true
         allowNewTimeProposals:
           type: boolean
+          example: true
         categories:
           type: array
           items:
             type: string
+          example: []
         reminderMinutesBeforeStart:
           type: integer
+          example: 10
         transactionId:
           type: string
 
+          example: '500123'
     EventUpdateRequest:
       type: object
       properties:
         subject:
           type: string
+          example: example_value
         body:
           $ref: '#/components/schemas/ItemBody'
         start:
@@ -2206,66 +3528,80 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Location'
+          example: []
         attendees:
           type: array
           items:
             $ref: '#/components/schemas/Attendee'
+          example: []
         isAllDay:
           type: boolean
+          example: true
         isOnlineMeeting:
           type: boolean
+          example: true
         onlineMeetingProvider:
           type: string
           enum:
-            - teamsForBusiness
-            - skypeForBusiness
-            - skypeForConsumer
+          - teamsForBusiness
+          - skypeForBusiness
+          - skypeForConsumer
+          example: teamsForBusiness
         recurrence:
           $ref: '#/components/schemas/PatternedRecurrence'
         showAs:
           type: string
           enum:
-            - free
-            - tentative
-            - busy
-            - oof
-            - workingElsewhere
-            - unknown
+          - free
+          - tentative
+          - busy
+          - oof
+          - workingElsewhere
+          - unknown
+          example: free
         importance:
           type: string
           enum:
-            - low
-            - normal
-            - high
+          - low
+          - normal
+          - high
+          example: low
         sensitivity:
           type: string
           enum:
-            - normal
-            - personal
-            - private
-            - confidential
+          - normal
+          - personal
+          - private
+          - confidential
+          example: normal
         categories:
           type: array
           items:
             type: string
+          example: []
         reminderMinutesBeforeStart:
           type: integer
 
+          example: 10
     EventCollectionResponse:
       type: object
       properties:
         '@odata.context':
           type: string
+          example: example_value
         '@odata.count':
           type: integer
+          example: 10
         '@odata.nextLink':
           type: string
           format: uri
+          example: https://www.example.com
         value:
           type: array
           items:
             $ref: '#/components/schemas/Event'
 
+          example: []
     Calendar:
       type: object
       description: A calendar which is a container for events.
@@ -2274,79 +3610,95 @@ components:
           type: string
           readOnly: true
           description: The unique identifier for the calendar.
+          example: abc123
         name:
           type: string
           description: The calendar name.
+          example: Example Title
         color:
           type: string
           enum:
-            - auto
-            - lightBlue
-            - lightGreen
-            - lightOrange
-            - lightGray
-            - lightYellow
-            - lightTeal
-            - lightPink
-            - lightBrown
-            - lightRed
-            - maxColor
+          - auto
+          - lightBlue
+          - lightGreen
+          - lightOrange
+          - lightGray
+          - lightYellow
+          - lightTeal
+          - lightPink
+          - lightBrown
+          - lightRed
+          - maxColor
           description: Specifies the color theme for the calendar.
+          example: auto
         changeKey:
           type: string
           readOnly: true
           description: Identifies the version of the calendar object.
+          example: example_value
         canEdit:
           type: boolean
           readOnly: true
           description: Whether the user can write to the calendar.
+          example: true
         canShare:
           type: boolean
           readOnly: true
           description: Whether the user has permission to share the calendar.
+          example: true
         canViewPrivateItems:
           type: boolean
           readOnly: true
           description: Whether the user can read calendar items marked as private.
+          example: true
         isDefaultCalendar:
           type: boolean
           readOnly: true
           description: Whether this is the default calendar.
+          example: true
         owner:
           $ref: '#/components/schemas/EmailAddress'
         hexColor:
           type: string
           description: The calendar color expressed in hex format of three six-digit values.
+          example: example_value
         isRemovable:
           type: boolean
           readOnly: true
           description: Whether the calendar can be deleted from the user's mailbox.
+          example: true
         isTallyingResponses:
           type: boolean
           description: Whether the calendar supports tracking of meeting responses.
+          example: true
         allowedOnlineMeetingProviders:
           type: array
           readOnly: true
           items:
             type: string
           description: The online meeting service providers available for events in this calendar.
+          example: []
         defaultOnlineMeetingProvider:
           type: string
           description: The default online meeting provider for meetings sent from this calendar.
 
+          example: example_value
     CalendarCollectionResponse:
       type: object
       properties:
         '@odata.context':
           type: string
+          example: example_value
         '@odata.nextLink':
           type: string
           format: uri
+          example: https://www.example.com
         value:
           type: array
           items:
             $ref: '#/components/schemas/Calendar'
 
+          example: []
     DateTimeTimeZone:
       type: object
       description: Describes the date, time, and time zone of a point in time.
@@ -2356,12 +3708,14 @@ components:
           description: >-
             A single point of time in a combined date and time representation
             ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
+          example: example_value
         timeZone:
           type: string
           description: >-
             The time zone for the time. For example, Pacific Standard Time.
             See https://learn.microsoft.com/en-us/graph/api/resources/datetimetimezone
 
+          example: example_value
     Location:
       type: object
       description: Represents location information of an event.
@@ -2369,23 +3723,26 @@ components:
         displayName:
           type: string
           description: The name associated with the location.
+          example: example_value
         locationType:
           type: string
           enum:
-            - default
-            - conferenceRoom
-            - homeAddress
-            - businessAddress
-            - geoCoordinates
-            - streetAddress
-            - hotel
-            - restaurant
-            - localBusiness
-            - postalAddress
+          - default
+          - conferenceRoom
+          - homeAddress
+          - businessAddress
+          - geoCoordinates
+          - streetAddress
+          - hotel
+          - restaurant
+          - localBusiness
+          - postalAddress
           description: The type of location.
+          example: default
         locationUri:
           type: string
           description: Optional URI representing the location.
+          example: example_value
         address:
           $ref: '#/components/schemas/PhysicalAddress'
         coordinates:
@@ -2393,31 +3750,38 @@ components:
         uniqueId:
           type: string
           description: For internal use only.
+          example: '500123'
         uniqueIdType:
           type: string
           enum:
-            - unknown
-            - locationStore
-            - directory
-            - private
-            - bing
+          - unknown
+          - locationStore
+          - directory
+          - private
+          - bing
           description: For internal use only.
 
+          example: unknown
     PhysicalAddress:
       type: object
       description: Represents the street address of a resource such as a contact or event.
       properties:
         street:
           type: string
+          example: example_value
         city:
           type: string
+          example: example_value
         state:
           type: string
+          example: example_value
         countryOrRegion:
           type: string
+          example: example_value
         postalCode:
           type: string
 
+          example: example_value
     OutlookGeoCoordinates:
       type: object
       description: The geographic coordinates and elevation of a location.
@@ -2425,19 +3789,24 @@ components:
         latitude:
           type: number
           format: double
+          example: 42.5
         longitude:
           type: number
           format: double
+          example: 42.5
         accuracy:
           type: number
           format: double
+          example: 42.5
         altitude:
           type: number
           format: double
+          example: 42.5
         altitudeAccuracy:
           type: number
           format: double
 
+          example: 42.5
     Attendee:
       type: object
       description: An event attendee that can be a person or resource.
@@ -2447,10 +3816,11 @@ components:
         type:
           type: string
           enum:
-            - required
-            - optional
-            - resource
+          - required
+          - optional
+          - resource
           description: The type of attendee.
+          example: required
         status:
           $ref: '#/components/schemas/ResponseStatus'
         proposedNewTime:
@@ -2463,18 +3833,20 @@ components:
         response:
           type: string
           enum:
-            - none
-            - organizer
-            - tentativelyAccepted
-            - accepted
-            - declined
-            - notResponded
+          - none
+          - organizer
+          - tentativelyAccepted
+          - accepted
+          - declined
+          - notResponded
           description: The response type.
+          example: none
         time:
           type: string
           format: date-time
           description: The date and time the response was returned.
 
+          example: '2026-01-15T10:30:00Z'
     TimeSlot:
       type: object
       description: A time period.
@@ -2492,20 +3864,25 @@ components:
           type: string
           format: uri
           description: The URL to join the meeting online.
+          example: https://www.example.com
         conferenceId:
           type: string
           description: The ID of the conference.
+          example: '500123'
         tollNumber:
           type: string
           description: The toll number to dial for audio conference.
+          example: example_value
         tollFreeNumbers:
           type: array
           items:
             type: string
           description: The toll-free numbers to dial.
+          example: []
         quickDial:
           type: string
           description: The pre-formatted quick-dial for this call.
+          example: example_value
         phones:
           type: array
           items:
@@ -2516,10 +3893,11 @@ components:
               type:
                 type: string
                 enum:
-                  - toll
-                  - tollFree
+                - toll
+                - tollFree
           description: All phone numbers associated with this conference.
 
+          example: []
     PatternedRecurrence:
       type: object
       description: The recurrence pattern and range.
@@ -2536,40 +3914,25 @@ components:
         type:
           type: string
           enum:
-            - daily
-            - weekly
-            - absoluteMonthly
-            - relativeMonthly
-            - absoluteYearly
-            - relativeYearly
+          - daily
+          - weekly
+          - absoluteMonthly
+          - relativeMonthly
+          - absoluteYearly
+          - relativeYearly
           description: The recurrence pattern type.
+          example: daily
         interval:
           type: integer
           description: >-
             The number of units between occurrences, where units can be in days,
             weeks, months, or years.
+          example: 10
         daysOfWeek:
           type: array
           items:
             type: string
             enum:
-              - sunday
-              - monday
-              - tuesday
-              - wednesday
-              - thursday
-              - friday
-              - saturday
-          description: A collection of the days of the week on which the event occurs.
-        dayOfMonth:
-          type: integer
-          description: The day of the month on which the event occurs.
-        month:
-          type: integer
-          description: The month in which the event occurs (1-12).
-        firstDayOfWeek:
-          type: string
-          enum:
             - sunday
             - monday
             - tuesday
@@ -2577,17 +3940,39 @@ components:
             - thursday
             - friday
             - saturday
+          description: A collection of the days of the week on which the event occurs.
+          example: []
+        dayOfMonth:
+          type: integer
+          description: The day of the month on which the event occurs.
+          example: 10
+        month:
+          type: integer
+          description: The month in which the event occurs (1-12).
+          example: 10
+        firstDayOfWeek:
+          type: string
+          enum:
+          - sunday
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          - saturday
           description: The first day of the week.
+          example: sunday
         index:
           type: string
           enum:
-            - first
-            - second
-            - third
-            - fourth
-            - last
+          - first
+          - second
+          - third
+          - fourth
+          - last
           description: The week index for relative monthly and yearly patterns.
 
+          example: first
     RecurrenceRange:
       type: object
       description: Describes a date range over which a recurring event repeats.
@@ -2595,26 +3980,31 @@ components:
         type:
           type: string
           enum:
-            - endDate
-            - noEnd
-            - numbered
+          - endDate
+          - noEnd
+          - numbered
           description: The recurrence range type.
+          example: endDate
         startDate:
           type: string
           format: date
           description: The start date of the series (first occurrence).
+          example: '2026-01-15'
         endDate:
           type: string
           format: date
           description: The date to stop applying the recurrence pattern.
+          example: '2026-01-15'
         numberOfOccurrences:
           type: integer
           description: The number of times to repeat the event.
+          example: 10
         recurrenceTimeZone:
           type: string
           description: Time zone for the startDate and endDate properties.
 
     # ── Error schemas ──────────────────────────────────────────────────
+          example: example_value
     ODataError:
       type: object
       description: The error response from the Microsoft Graph API following OData conventions.
@@ -2639,6 +4029,7 @@ components:
                 client-request-id:
                   type: string
 
+          example: example_value
   responses:
     BadRequest:
       description: Bad request. The request body or parameters are invalid.

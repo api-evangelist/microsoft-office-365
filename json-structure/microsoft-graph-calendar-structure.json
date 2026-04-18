@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Calendar",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "changeKey": {
+      "type": "string"
+    },
+    "canEdit": {
+      "type": "boolean"
+    },
+    "canShare": {
+      "type": "boolean"
+    },
+    "canViewPrivateItems": {
+      "type": "boolean"
+    },
+    "isDefaultCalendar": {
+      "type": "boolean"
+    },
+    "hexColor": {
+      "type": "string"
+    },
+    "isRemovable": {
+      "type": "boolean"
+    },
+    "isTallyingResponses": {
+      "type": "boolean"
+    },
+    "allowedOnlineMeetingProviders": {
+      "type": "array"
+    },
+    "defaultOnlineMeetingProvider": {
+      "type": "string"
+    }
+  }
+}

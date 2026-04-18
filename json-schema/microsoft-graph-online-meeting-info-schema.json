@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OnlineMeetingInfo",
+  "type": "object",
+  "description": "Details for an attendee to join the meeting online.",
+  "properties": {
+    "joinUrl": {
+      "type": "string",
+      "description": "The URL to join the meeting online."
+    },
+    "conferenceId": {
+      "type": "string",
+      "description": "The ID of the conference."
+    },
+    "tollNumber": {
+      "type": "string",
+      "description": "The toll number to dial for audio conference."
+    },
+    "tollFreeNumbers": {
+      "type": "array",
+      "description": "The toll-free numbers to dial."
+    },
+    "quickDial": {
+      "type": "string",
+      "description": "The pre-formatted quick-dial for this call."
+    },
+    "phones": {
+      "type": "array",
+      "description": "All phone numbers associated with this conference."
+    }
+  }
+}

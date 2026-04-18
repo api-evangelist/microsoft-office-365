@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "UserCreateRequest",
+  "type": "object",
+  "properties": {
+    "accountEnabled": {
+      "type": "boolean"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "mailNickname": {
+      "type": "string"
+    },
+    "userPrincipalName": {
+      "type": "string"
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "officeLocation": {
+      "type": "string"
+    },
+    "mobilePhone": {
+      "type": "string"
+    },
+    "usageLocation": {
+      "type": "string"
+    }
+  }
+}

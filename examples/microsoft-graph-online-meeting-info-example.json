@@ -1,0 +1,8 @@
+{
+  "joinUrl": "https://www.example.com",
+  "conferenceId": "500123",
+  "tollNumber": "example_value",
+  "tollFreeNumbers": [],
+  "quickDial": "example_value",
+  "phones": []
+}

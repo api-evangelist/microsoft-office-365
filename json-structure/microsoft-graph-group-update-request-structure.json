@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GroupUpdateRequest",
+  "type": "object",
+  "properties": {
+    "displayName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "mailNickname": {
+      "type": "string"
+    },
+    "visibility": {
+      "type": "string"
+    },
+    "classification": {
+      "type": "string"
+    }
+  }
+}

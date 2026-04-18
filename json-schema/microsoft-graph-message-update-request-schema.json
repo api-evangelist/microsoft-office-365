@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MessageUpdateRequest",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string"
+    },
+    "toRecipients": {
+      "type": "array"
+    },
+    "ccRecipients": {
+      "type": "array"
+    },
+    "bccRecipients": {
+      "type": "array"
+    },
+    "importance": {
+      "type": "string"
+    },
+    "isRead": {
+      "type": "boolean"
+    },
+    "categories": {
+      "type": "array"
+    },
+    "inferenceClassification": {
+      "type": "string"
+    }
+  }
+}

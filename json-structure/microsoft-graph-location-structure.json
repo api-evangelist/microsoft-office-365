@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Location",
+  "type": "object",
+  "properties": {
+    "displayName": {
+      "type": "string"
+    },
+    "locationType": {
+      "type": "string"
+    },
+    "locationUri": {
+      "type": "string"
+    },
+    "uniqueId": {
+      "type": "string"
+    },
+    "uniqueIdType": {
+      "type": "string"
+    }
+  }
+}

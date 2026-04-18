@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "OnlineMeetingInfo",
+  "type": "object",
+  "properties": {
+    "joinUrl": {
+      "type": "string"
+    },
+    "conferenceId": {
+      "type": "string"
+    },
+    "tollNumber": {
+      "type": "string"
+    },
+    "tollFreeNumbers": {
+      "type": "array"
+    },
+    "quickDial": {
+      "type": "string"
+    },
+    "phones": {
+      "type": "array"
+    }
+  }
+}

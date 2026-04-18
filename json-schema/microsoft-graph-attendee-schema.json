@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Attendee",
+  "type": "object",
+  "description": "An event attendee that can be a person or resource.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of attendee."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DirectoryObject",
+  "type": "object",
+  "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+  "properties": {
+    "@odata.type": {
+      "type": "string",
+      "description": "The OData type of the directory object."
+    },
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the directory object."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The name displayed for the directory object."
+    }
+  }
+}
