@@ -1,0 +1,293 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Microsoft Office 365
+providerId: microsoft-office-365
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Cloud
+  - Collaboration
+  - Enterprise
+  - Microsoft
+  - Productivity
+description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
+  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+plans:
+  - id: microsoft-office-365-free
+    name: Free
+    type: freemium
+    description: Free entry tier for the Microsoft Office 365 API surface. Intended for evaluation, prototyping,
+      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
+      plan documentation.
+    entries:
+      - label: API Requests
+        description: Monthly API request quota across all included endpoints
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: 1000
+        timeFrame: month
+        geo: global
+        domains:
+          - https://graph.microsoft.com
+          - https://graph.microsoft.com/v1.0/me/messages
+          - https://graph.microsoft.com/v1.0/me/calendar
+          - https://graph.microsoft.com/v1.0/me/contacts
+          - https://graph.microsoft.com/v1.0/me/drive
+          - https://graph.microsoft.com/v1.0/sites
+          - https://graph.microsoft.com/v1.0/teams
+          - https://graph.microsoft.com/v1.0/users
+          - https://graph.microsoft.com/v1.0/planner
+          - https://graph.microsoft.com/v1.0/me/onenote
+          - https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
+          - https://graph.microsoft.com/v1.0/me/todo
+          - https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
+          - https://graph.microsoft.com/v1.0/groups
+          - https://graph.microsoft.com/v1.0/security
+          - https://graph.microsoft.com/v1.0/communications
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per minute on the free tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 10
+        timeFrame: minute
+        geo: global
+        domains:
+          - https://graph.microsoft.com
+          - https://graph.microsoft.com/v1.0/me/messages
+          - https://graph.microsoft.com/v1.0/me/calendar
+          - https://graph.microsoft.com/v1.0/me/contacts
+          - https://graph.microsoft.com/v1.0/me/drive
+          - https://graph.microsoft.com/v1.0/sites
+          - https://graph.microsoft.com/v1.0/teams
+          - https://graph.microsoft.com/v1.0/users
+          - https://graph.microsoft.com/v1.0/planner
+          - https://graph.microsoft.com/v1.0/me/onenote
+          - https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
+          - https://graph.microsoft.com/v1.0/me/todo
+          - https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
+          - https://graph.microsoft.com/v1.0/groups
+          - https://graph.microsoft.com/v1.0/security
+          - https://graph.microsoft.com/v1.0/communications
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Public Documentation
+      - name: Community Support
+      - name: Sandbox Access
+      - name: Microsoft Graph API
+      - name: Outlook Mail API
+      - name: Outlook Calendar API
+      - name: Outlook Contacts API
+      - name: OneDrive API
+      - name: SharePoint API
+      - name: Microsoft Teams API
+      - name: Office 365 Users API
+  - id: microsoft-office-365-pro
+    name: Professional
+    type: paid
+    description: Production tier for Microsoft Office 365. Provides higher quotas, priority support, and
+      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+    entries:
+      - label: API Requests
+        description: Monthly API request quota
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: 100000
+        timeFrame: month
+        geo: global
+        domains:
+          - https://graph.microsoft.com
+          - https://graph.microsoft.com/v1.0/me/messages
+          - https://graph.microsoft.com/v1.0/me/calendar
+          - https://graph.microsoft.com/v1.0/me/contacts
+          - https://graph.microsoft.com/v1.0/me/drive
+          - https://graph.microsoft.com/v1.0/sites
+          - https://graph.microsoft.com/v1.0/teams
+          - https://graph.microsoft.com/v1.0/users
+          - https://graph.microsoft.com/v1.0/planner
+          - https://graph.microsoft.com/v1.0/me/onenote
+          - https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
+          - https://graph.microsoft.com/v1.0/me/todo
+          - https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
+          - https://graph.microsoft.com/v1.0/groups
+          - https://graph.microsoft.com/v1.0/security
+          - https://graph.microsoft.com/v1.0/communications
+        unit: 1
+        price: TBD
+        userMultiplied: false
+      - label: Rate Limit
+        description: Maximum requests per minute on the professional tier
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 100
+        timeFrame: minute
+        geo: global
+        domains:
+          - https://graph.microsoft.com
+          - https://graph.microsoft.com/v1.0/me/messages
+          - https://graph.microsoft.com/v1.0/me/calendar
+          - https://graph.microsoft.com/v1.0/me/contacts
+          - https://graph.microsoft.com/v1.0/me/drive
+          - https://graph.microsoft.com/v1.0/sites
+          - https://graph.microsoft.com/v1.0/teams
+          - https://graph.microsoft.com/v1.0/users
+          - https://graph.microsoft.com/v1.0/planner
+          - https://graph.microsoft.com/v1.0/me/onenote
+          - https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
+          - https://graph.microsoft.com/v1.0/me/todo
+          - https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
+          - https://graph.microsoft.com/v1.0/groups
+          - https://graph.microsoft.com/v1.0/security
+          - https://graph.microsoft.com/v1.0/communications
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Overage
+        description: Per-request price after monthly quota is exceeded
+        name: overage
+        type: metered
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://graph.microsoft.com
+          - https://graph.microsoft.com/v1.0/me/messages
+          - https://graph.microsoft.com/v1.0/me/calendar
+          - https://graph.microsoft.com/v1.0/me/contacts
+          - https://graph.microsoft.com/v1.0/me/drive
+          - https://graph.microsoft.com/v1.0/sites
+          - https://graph.microsoft.com/v1.0/teams
+          - https://graph.microsoft.com/v1.0/users
+          - https://graph.microsoft.com/v1.0/planner
+          - https://graph.microsoft.com/v1.0/me/onenote
+          - https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
+          - https://graph.microsoft.com/v1.0/me/todo
+          - https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
+          - https://graph.microsoft.com/v1.0/groups
+          - https://graph.microsoft.com/v1.0/security
+          - https://graph.microsoft.com/v1.0/communications
+        unit: 1000
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: All Production Endpoints
+      - name: Email Support
+      - name: SLA Targets
+      - name: Webhook Subscriptions
+      - name: Microsoft Graph API
+      - name: Outlook Mail API
+      - name: Outlook Calendar API
+      - name: Outlook Contacts API
+      - name: OneDrive API
+      - name: SharePoint API
+      - name: Microsoft Teams API
+      - name: Office 365 Users API
+      - name: Planner API
+      - name: OneNote API
+      - name: Excel Workbooks and Charts API
+      - name: Microsoft To Do API
+      - name: Microsoft Bookings API
+      - name: Office 365 Groups API
+      - name: Microsoft Graph Security API
+      - name: Microsoft Graph Communications API
+      - name: Office Add-ins Platform
+  - id: microsoft-office-365-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom-negotiated tier for Microsoft Office 365. Includes dedicated capacity, contractual
+      SLAs, security review, data residency options, and named technical account management.
+    entries:
+      - label: API Requests
+        description: Negotiated request volume; -1 indicates uncapped subject to fair use
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: configurable
+        domains:
+          - https://graph.microsoft.com
+          - https://graph.microsoft.com/v1.0/me/messages
+          - https://graph.microsoft.com/v1.0/me/calendar
+          - https://graph.microsoft.com/v1.0/me/contacts
+          - https://graph.microsoft.com/v1.0/me/drive
+          - https://graph.microsoft.com/v1.0/sites
+          - https://graph.microsoft.com/v1.0/teams
+          - https://graph.microsoft.com/v1.0/users
+          - https://graph.microsoft.com/v1.0/planner
+          - https://graph.microsoft.com/v1.0/me/onenote
+          - https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
+          - https://graph.microsoft.com/v1.0/me/todo
+          - https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
+          - https://graph.microsoft.com/v1.0/groups
+          - https://graph.microsoft.com/v1.0/security
+          - https://graph.microsoft.com/v1.0/communications
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Rate Limit
+        description: Negotiated burst and steady-state rate
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 1000
+        timeFrame: minute
+        geo: configurable
+        domains:
+          - https://graph.microsoft.com
+          - https://graph.microsoft.com/v1.0/me/messages
+          - https://graph.microsoft.com/v1.0/me/calendar
+          - https://graph.microsoft.com/v1.0/me/contacts
+          - https://graph.microsoft.com/v1.0/me/drive
+          - https://graph.microsoft.com/v1.0/sites
+          - https://graph.microsoft.com/v1.0/teams
+          - https://graph.microsoft.com/v1.0/users
+          - https://graph.microsoft.com/v1.0/planner
+          - https://graph.microsoft.com/v1.0/me/onenote
+          - https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
+          - https://graph.microsoft.com/v1.0/me/todo
+          - https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
+          - https://graph.microsoft.com/v1.0/groups
+          - https://graph.microsoft.com/v1.0/security
+          - https://graph.microsoft.com/v1.0/communications
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Unlimited / Negotiated Volume
+      - name: 24/7 Dedicated Support
+      - name: Contractual SLA
+      - name: Security & Compliance Review
+      - name: Dedicated Account Manager
+      - name: Custom Data Residency
+      - name: Microsoft Graph API
+      - name: Outlook Mail API
+      - name: Outlook Calendar API
+      - name: Outlook Contacts API
+      - name: OneDrive API
+      - name: SharePoint API
+      - name: Microsoft Teams API
+      - name: Office 365 Users API
+      - name: Planner API
+      - name: OneNote API
+      - name: Excel Workbooks and Charts API
+      - name: Microsoft To Do API
+      - name: Microsoft Bookings API
+      - name: Office 365 Groups API
+      - name: Microsoft Graph Security API
+      - name: Microsoft Graph Communications API
+      - name: Office Add-ins Platform
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
