@@ -1,0 +1,13 @@
+{
+  "repo": "microsoft-office-365",
+  "feeds": [
+    {
+      "source": "https://developer.microsoft.com/en-us/graph/blogs/",
+      "feed_url": "https://devblogs.microsoft.com/microsoft365dev/category/microsoft-graph/feed/",
+      "saved": 10,
+      "title": "Microsoft Graph - Category | Microsoft 365 Developer Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:31:51Z"
+}
