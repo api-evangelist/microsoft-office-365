@@ -4,167 +4,82 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Office 365
 providerId: microsoft-office-365
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Cloud
-  - Collaboration
-  - Enterprise
-  - Microsoft
-  - Productivity
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Microsoft Office 365 API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+  - Microsoft 365
+  - Microsoft Graph
+  - Microsoft
+description: Microsoft Office 365 / Microsoft 365 programmatic access is provided through Microsoft Graph,
+  Exchange Web Services, and the legacy Outlook REST API. The dominant throttling regime is the Microsoft
+  Graph per-app-per-tenant and per-app-across-all-tenants quotas, with a global ceiling of 130,000 requests
+  per 10 seconds per app. Each Office 365 service (Exchange, SharePoint / OneDrive, Teams, Excel) has
+  its own service-specific quota.
+sources:
+  - https://learn.microsoft.com/en-us/graph/throttling
+  - https://learn.microsoft.com/en-us/graph/throttling-limits
+  - https://learn.microsoft.com/en-us/sharepoint/dev/general-development/how-to-avoid-getting-throttled-or-blocked-in-sharepoint-online
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
+  requestId: request-id
+  throttleScope: x-ms-throttle-scope
+  throttleLimit: x-ms-throttle-limit-percentage
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Microsoft Graph API
-      - Outlook Mail API
-      - Outlook Calendar API
-      - Outlook Contacts API
-      - OneDrive API
-      - SharePoint API
-      - Microsoft Teams API
-      - Office 365 Users API
-      - Planner API
-      - OneNote API
-      - Excel Workbooks and Charts API
-      - Microsoft To Do API
-      - Microsoft Bookings API
-      - Office 365 Groups API
-      - Microsoft Graph Security API
-      - Microsoft Graph Communications API
-      - Office Add-ins Platform
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Microsoft Graph API
-      - Outlook Mail API
-      - Outlook Calendar API
-      - Outlook Contacts API
-      - OneDrive API
-      - SharePoint API
-      - Microsoft Teams API
-      - Office 365 Users API
-      - Planner API
-      - OneNote API
-      - Excel Workbooks and Charts API
-      - Microsoft To Do API
-      - Microsoft Bookings API
-      - Office 365 Groups API
-      - Microsoft Graph Security API
-      - Microsoft Graph Communications API
-      - Office Add-ins Platform
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
+  - name: Microsoft Graph global ceiling
+    scope: application
+    metric: requests_per_10_seconds
+    limit: 130000
+    timeFrame: second
+  - name: Excel — per app/tenant
+    scope: app/tenant
+    metric: requests_per_10_seconds
+    limit: 1500
+    timeFrame: second
+  - name: Excel — per app across tenants
+    scope: application
+    metric: requests_per_10_seconds
+    limit: 5000
+    timeFrame: second
+  - name: Teams Calls per app/tenant
+    scope: app/tenant
+    metric: requests_per_15_seconds
+    limit: 50000
+    timeFrame: second
+  - name: Teams Presence per app/tenant
+    scope: app/tenant
+    metric: requests_per_30_seconds
+    limit: 10000
+    timeFrame: second
+  - name: Exchange Message Trace
+    scope: tenant
+    metric: requests_per_5_minutes
     limit: 100
-    burst: 200
     timeFrame: minute
-    applies:
-      - Microsoft Graph API
-      - Outlook Mail API
-      - Outlook Calendar API
-      - Outlook Contacts API
-      - OneDrive API
-      - SharePoint API
-      - Microsoft Teams API
-      - Office 365 Users API
-      - Planner API
-      - OneNote API
-      - Excel Workbooks and Charts API
-      - Microsoft To Do API
-      - Microsoft Bookings API
-      - Office 365 Groups API
-      - Microsoft Graph Security API
-      - Microsoft Graph Communications API
-      - Office Add-ins Platform
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Microsoft Graph API
-      - Outlook Mail API
-      - Outlook Calendar API
-      - Outlook Contacts API
-      - OneDrive API
-      - SharePoint API
-      - Microsoft Teams API
-      - Office 365 Users API
-      - Planner API
-      - OneNote API
-      - Excel Workbooks and Charts API
-      - Microsoft To Do API
-      - Microsoft Bookings API
-      - Office 365 Groups API
-      - Microsoft Graph Security API
-      - Microsoft Graph Communications API
-      - Office Add-ins Platform
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Microsoft Graph API
-      - Outlook Mail API
-      - Outlook Calendar API
-      - Outlook Contacts API
-      - OneDrive API
-      - SharePoint API
-      - Microsoft Teams API
-      - Office 365 Users API
-      - Planner API
-      - OneNote API
-      - Excel Workbooks and Charts API
-      - Microsoft To Do API
-      - Microsoft Bookings API
-      - Office 365 Groups API
-      - Microsoft Graph Security API
-      - Microsoft Graph Communications API
-      - Office Add-ins Platform
+  - name: SharePoint / OneDrive
+    scope: app/tenant
+    metric: varies
+    limit: see SharePoint Online throttling guidance — no fixed numeric per-app per-second quota published
+  - name: Identity & Access (read) per app/tenant
+    scope: app/tenant
+    metric: resource_units_per_10_seconds
+    limit: 3500–8000 RU per 10s based on tenant size
+    timeFrame: second
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Honour Retry-After on 429 / 503; the Microsoft Graph SDK handlers do this by default.
+  - name: Use change notifications
+    description: Subscribe to change notifications instead of polling.
+  - name: Use $batch
+    description: Combine up to 20 requests in a single $batch envelope.
+  - name: Service-specific guidance
+    description: SharePoint / OneDrive throttling is handled separately by the SharePoint Online service;
+      always implement client-side backoff and avoid generic User-Agent strings.
+  - name: Microsoft Graph Data Connect for bulk
+    description: For tenant-scale exports, use Data Connect to bypass REST throttling.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com
