@@ -1,404 +1,873 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Microsoft Office 365 Productivity and Collaboration"
-  description: "Unified productivity workflow combining mail, calendar, user management, and group collaboration for enterprise users and IT administrators."
+  label: Microsoft Office 365 Productivity and Collaboration
+  description: Unified productivity workflow combining mail, calendar, user management, and group collaboration for enterprise
+    users and IT administrators.
   tags:
-    - Microsoft
-    - Office 365
-    - Productivity
-    - Collaboration
-    - Enterprise
-  created: "2026-04-18"
-  modified: "2026-04-18"
-
+  - Microsoft
+  - Office 365
+  - Productivity
+  - Collaboration
+  - Enterprise
+  created: '2026-04-18'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      MICROSOFT_GRAPH_TOKEN: MICROSOFT_GRAPH_TOKEN
-
+- namespace: env
+  keys:
+    MICROSOFT_GRAPH_TOKEN: MICROSOFT_GRAPH_TOKEN
 capability:
   consumes:
-    - import: graph-api
-      location: ./shared/graph-api.yaml
-
+  - type: http
+    namespace: graph-api
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Graph API for accessing Microsoft 365 data.
+    authentication:
+      type: bearer
+      token: '{{MICROSOFT_GRAPH_TOKEN}}'
+    resources:
+    - name: users
+      path: /users
+      description: Manage Microsoft 365 users.
+      operations:
+      - name: list-users
+        method: GET
+        description: List users in the organization.
+        inputParameters:
+        - name: $top
+          in: query
+          type: integer
+          required: false
+          description: Number of results to return.
+        - name: $filter
+          in: query
+          type: string
+          required: false
+          description: OData filter expression.
+        - name: $select
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of properties to include.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-user
+        method: POST
+        description: Create a new user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            displayName: '{{tools.displayName}}'
+            mailNickname: '{{tools.mailNickname}}'
+            userPrincipalName: '{{tools.userPrincipalName}}'
+            accountEnabled: '{{tools.accountEnabled}}'
+            passwordProfile: '{{tools.passwordProfile}}'
+      - name: get-user
+        method: GET
+        description: Get a specific user by ID.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User ID or userPrincipalName.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-user
+        method: PATCH
+        description: Update user properties.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            displayName: '{{tools.displayName}}'
+      - name: delete-user
+        method: DELETE
+        description: Delete a user.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-signed-in-user
+        method: GET
+        description: Get the signed-in user profile.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups
+      path: /groups
+      description: Manage Microsoft 365 groups.
+      operations:
+      - name: list-groups
+        method: GET
+        description: List groups in the organization.
+        inputParameters:
+        - name: $top
+          in: query
+          type: integer
+          required: false
+          description: Number of results.
+        - name: $filter
+          in: query
+          type: string
+          required: false
+          description: OData filter.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-group
+        method: POST
+        description: Create a new group.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            displayName: '{{tools.displayName}}'
+            mailEnabled: '{{tools.mailEnabled}}'
+            mailNickname: '{{tools.mailNickname}}'
+            securityEnabled: '{{tools.securityEnabled}}'
+            groupTypes: '{{tools.groupTypes}}'
+      - name: get-group
+        method: GET
+        description: Get a specific group.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-group
+        method: PATCH
+        description: Update group properties.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-group
+        method: DELETE
+        description: Delete a group.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-group-members
+        method: GET
+        description: List members of a group.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: add-group-member
+        method: POST
+        description: Add a member to a group.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: remove-group-member
+        method: DELETE
+        description: Remove a member from a group.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID.
+        - name: memberId
+          in: path
+          type: string
+          required: true
+          description: Member ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: mail
+      path: /me/messages
+      description: Manage Outlook mail.
+      operations:
+      - name: list-messages
+        method: GET
+        description: List messages in the signed-in user mailbox.
+        inputParameters:
+        - name: $top
+          in: query
+          type: integer
+          required: false
+          description: Number of results.
+        - name: $filter
+          in: query
+          type: string
+          required: false
+          description: OData filter.
+        - name: $select
+          in: query
+          type: string
+          required: false
+          description: Properties to include.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-message
+        method: POST
+        description: Create a draft message.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            subject: '{{tools.subject}}'
+            body: '{{tools.body}}'
+            toRecipients: '{{tools.toRecipients}}'
+      - name: get-message
+        method: GET
+        description: Get a specific message.
+        inputParameters:
+        - name: messageId
+          in: path
+          type: string
+          required: true
+          description: Message ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-message
+        method: PATCH
+        description: Update a message.
+        inputParameters:
+        - name: messageId
+          in: path
+          type: string
+          required: true
+          description: Message ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-message
+        method: DELETE
+        description: Delete a message.
+        inputParameters:
+        - name: messageId
+          in: path
+          type: string
+          required: true
+          description: Message ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: send-mail
+        method: POST
+        description: Send an email message.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            message: '{{tools.message}}'
+            saveToSentItems: '{{tools.saveToSentItems}}'
+      - name: list-mail-folders
+        method: GET
+        description: List mail folders.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: calendar
+      path: /me
+      description: Manage Outlook calendar.
+      operations:
+      - name: list-events
+        method: GET
+        description: List calendar events.
+        inputParameters:
+        - name: $top
+          in: query
+          type: integer
+          required: false
+          description: Number of results.
+        - name: $filter
+          in: query
+          type: string
+          required: false
+          description: OData filter.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-event
+        method: POST
+        description: Create a new calendar event.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            subject: '{{tools.subject}}'
+            start: '{{tools.start}}'
+            end: '{{tools.end}}'
+            body: '{{tools.body}}'
+            attendees: '{{tools.attendees}}'
+      - name: get-event
+        method: GET
+        description: Get a specific event.
+        inputParameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: Event ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-event
+        method: PATCH
+        description: Update an event.
+        inputParameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: Event ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-event
+        method: DELETE
+        description: Delete an event.
+        inputParameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: Event ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: list-calendars
+        method: GET
+        description: List calendars.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-calendar-view
+        method: GET
+        description: Get calendar view for a date range.
+        inputParameters:
+        - name: startDateTime
+          in: query
+          type: string
+          required: true
+          description: Start date/time.
+        - name: endDateTime
+          in: query
+          type: string
+          required: true
+          description: End date/time.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: accept-event
+        method: POST
+        description: Accept a meeting invitation.
+        inputParameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: Event ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: decline-event
+        method: POST
+        description: Decline a meeting invitation.
+        inputParameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: Event ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: productivity-api
-      description: "Unified REST API for Microsoft 365 productivity and collaboration."
-      resources:
-        - path: /v1/users
-          name: users
-          description: "User management."
-          operations:
-            - method: GET
-              name: list-users
-              description: "List users."
-              call: "graph-api.list-users"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-user
-              description: "Create a user."
-              call: "graph-api.create-user"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/groups
-          name: groups
-          description: "Group management."
-          operations:
-            - method: GET
-              name: list-groups
-              description: "List groups."
-              call: "graph-api.list-groups"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-group
-              description: "Create a group."
-              call: "graph-api.create-group"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/messages
-          name: mail
-          description: "Mail management."
-          operations:
-            - method: GET
-              name: list-messages
-              description: "List messages."
-              call: "graph-api.list-messages"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: send-mail
-              description: "Send mail."
-              call: "graph-api.send-mail"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/events
-          name: calendar
-          description: "Calendar management."
-          operations:
-            - method: GET
-              name: list-events
-              description: "List events."
-              call: "graph-api.list-events"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-event
-              description: "Create an event."
-              call: "graph-api.create-event"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: productivity-mcp
-      transport: http
-      description: "MCP server for AI-assisted Microsoft 365 productivity and collaboration."
-      tools:
-        - name: list-users
-          description: "List users in the organization."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "graph-api.list-users"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-user
-          description: "Create a new user."
-          hints:
-            readOnly: false
-          call: "graph-api.create-user"
-          with:
-            displayName: "tools.displayName"
-            mailNickname: "tools.mailNickname"
-            userPrincipalName: "tools.userPrincipalName"
-            accountEnabled: "tools.accountEnabled"
-            passwordProfile: "tools.passwordProfile"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-user
-          description: "Get a specific user."
-          hints:
-            readOnly: true
-          call: "graph-api.get-user"
-          with:
-            userId: "tools.userId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-user
-          description: "Update user properties."
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "graph-api.update-user"
-          with:
-            userId: "tools.userId"
-            displayName: "tools.displayName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-user
-          description: "Delete a user."
-          hints:
-            readOnly: false
-            destructive: true
-          call: "graph-api.delete-user"
-          with:
-            userId: "tools.userId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-signed-in-user
-          description: "Get the signed-in user profile."
-          hints:
-            readOnly: true
-          call: "graph-api.get-signed-in-user"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-groups
-          description: "List groups."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "graph-api.list-groups"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-group
-          description: "Create a new group."
-          hints:
-            readOnly: false
-          call: "graph-api.create-group"
-          with:
-            displayName: "tools.displayName"
-            mailEnabled: "tools.mailEnabled"
-            mailNickname: "tools.mailNickname"
-            securityEnabled: "tools.securityEnabled"
-            groupTypes: "tools.groupTypes"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-group
-          description: "Get a specific group."
-          hints:
-            readOnly: true
-          call: "graph-api.get-group"
-          with:
-            groupId: "tools.groupId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-group
-          description: "Delete a group."
-          hints:
-            readOnly: false
-            destructive: true
-          call: "graph-api.delete-group"
-          with:
-            groupId: "tools.groupId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-group-members
-          description: "List members of a group."
-          hints:
-            readOnly: true
-          call: "graph-api.list-group-members"
-          with:
-            groupId: "tools.groupId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: add-group-member
-          description: "Add a member to a group."
-          hints:
-            readOnly: false
-          call: "graph-api.add-group-member"
-          with:
-            groupId: "tools.groupId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: remove-group-member
-          description: "Remove a member from a group."
-          hints:
-            readOnly: false
-            destructive: true
-          call: "graph-api.remove-group-member"
-          with:
-            groupId: "tools.groupId"
-            memberId: "tools.memberId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-messages
-          description: "List mail messages."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "graph-api.list-messages"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-message
-          description: "Create a draft message."
-          hints:
-            readOnly: false
-          call: "graph-api.create-message"
-          with:
-            subject: "tools.subject"
-            body: "tools.body"
-            toRecipients: "tools.toRecipients"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-message
-          description: "Get a specific message."
-          hints:
-            readOnly: true
-          call: "graph-api.get-message"
-          with:
-            messageId: "tools.messageId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-message
-          description: "Delete a message."
-          hints:
-            readOnly: false
-            destructive: true
-          call: "graph-api.delete-message"
-          with:
-            messageId: "tools.messageId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: send-mail
-          description: "Send an email message."
-          hints:
-            readOnly: false
-          call: "graph-api.send-mail"
-          with:
-            message: "tools.message"
-            saveToSentItems: "tools.saveToSentItems"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-mail-folders
-          description: "List mail folders."
-          hints:
-            readOnly: true
-          call: "graph-api.list-mail-folders"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-events
-          description: "List calendar events."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "graph-api.list-events"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-event
-          description: "Create a calendar event."
-          hints:
-            readOnly: false
-          call: "graph-api.create-event"
-          with:
-            subject: "tools.subject"
-            start: "tools.start"
-            end: "tools.end"
-            body: "tools.body"
-            attendees: "tools.attendees"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-event
-          description: "Get a specific event."
-          hints:
-            readOnly: true
-          call: "graph-api.get-event"
-          with:
-            eventId: "tools.eventId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: update-event
-          description: "Update a calendar event."
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "graph-api.update-event"
-          with:
-            eventId: "tools.eventId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-event
-          description: "Delete a calendar event."
-          hints:
-            readOnly: false
-            destructive: true
-          call: "graph-api.delete-event"
-          with:
-            eventId: "tools.eventId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-calendars
-          description: "List calendars."
-          hints:
-            readOnly: true
-          call: "graph-api.list-calendars"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-calendar-view
-          description: "Get calendar view for a date range."
-          hints:
-            readOnly: true
-          call: "graph-api.get-calendar-view"
-          with:
-            startDateTime: "tools.startDateTime"
-            endDateTime: "tools.endDateTime"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: accept-event
-          description: "Accept a meeting invitation."
-          hints:
-            readOnly: false
-          call: "graph-api.accept-event"
-          with:
-            eventId: "tools.eventId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: decline-event
-          description: "Decline a meeting invitation."
-          hints:
-            readOnly: false
-          call: "graph-api.decline-event"
-          with:
-            eventId: "tools.eventId"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: productivity-api
+    description: Unified REST API for Microsoft 365 productivity and collaboration.
+    resources:
+    - path: /v1/users
+      name: users
+      description: User management.
+      operations:
+      - method: GET
+        name: list-users
+        description: List users.
+        call: graph-api.list-users
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-user
+        description: Create a user.
+        call: graph-api.create-user
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups
+      name: groups
+      description: Group management.
+      operations:
+      - method: GET
+        name: list-groups
+        description: List groups.
+        call: graph-api.list-groups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-group
+        description: Create a group.
+        call: graph-api.create-group
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/messages
+      name: mail
+      description: Mail management.
+      operations:
+      - method: GET
+        name: list-messages
+        description: List messages.
+        call: graph-api.list-messages
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: send-mail
+        description: Send mail.
+        call: graph-api.send-mail
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/events
+      name: calendar
+      description: Calendar management.
+      operations:
+      - method: GET
+        name: list-events
+        description: List events.
+        call: graph-api.list-events
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-event
+        description: Create an event.
+        call: graph-api.create-event
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: productivity-mcp
+    transport: http
+    description: MCP server for AI-assisted Microsoft 365 productivity and collaboration.
+    tools:
+    - name: list-users
+      description: List users in the organization.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: graph-api.list-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-user
+      description: Create a new user.
+      hints:
+        readOnly: false
+      call: graph-api.create-user
+      with:
+        displayName: tools.displayName
+        mailNickname: tools.mailNickname
+        userPrincipalName: tools.userPrincipalName
+        accountEnabled: tools.accountEnabled
+        passwordProfile: tools.passwordProfile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user
+      description: Get a specific user.
+      hints:
+        readOnly: true
+      call: graph-api.get-user
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user
+      description: Update user properties.
+      hints:
+        readOnly: false
+        idempotent: true
+      call: graph-api.update-user
+      with:
+        userId: tools.userId
+        displayName: tools.displayName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-user
+      description: Delete a user.
+      hints:
+        readOnly: false
+        destructive: true
+      call: graph-api.delete-user
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-signed-in-user
+      description: Get the signed-in user profile.
+      hints:
+        readOnly: true
+      call: graph-api.get-signed-in-user
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-groups
+      description: List groups.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: graph-api.list-groups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-group
+      description: Create a new group.
+      hints:
+        readOnly: false
+      call: graph-api.create-group
+      with:
+        displayName: tools.displayName
+        mailEnabled: tools.mailEnabled
+        mailNickname: tools.mailNickname
+        securityEnabled: tools.securityEnabled
+        groupTypes: tools.groupTypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-group
+      description: Get a specific group.
+      hints:
+        readOnly: true
+      call: graph-api.get-group
+      with:
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-group
+      description: Delete a group.
+      hints:
+        readOnly: false
+        destructive: true
+      call: graph-api.delete-group
+      with:
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-group-members
+      description: List members of a group.
+      hints:
+        readOnly: true
+      call: graph-api.list-group-members
+      with:
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-group-member
+      description: Add a member to a group.
+      hints:
+        readOnly: false
+      call: graph-api.add-group-member
+      with:
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-group-member
+      description: Remove a member from a group.
+      hints:
+        readOnly: false
+        destructive: true
+      call: graph-api.remove-group-member
+      with:
+        groupId: tools.groupId
+        memberId: tools.memberId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-messages
+      description: List mail messages.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: graph-api.list-messages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-message
+      description: Create a draft message.
+      hints:
+        readOnly: false
+      call: graph-api.create-message
+      with:
+        subject: tools.subject
+        body: tools.body
+        toRecipients: tools.toRecipients
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-message
+      description: Get a specific message.
+      hints:
+        readOnly: true
+      call: graph-api.get-message
+      with:
+        messageId: tools.messageId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-message
+      description: Delete a message.
+      hints:
+        readOnly: false
+        destructive: true
+      call: graph-api.delete-message
+      with:
+        messageId: tools.messageId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-mail
+      description: Send an email message.
+      hints:
+        readOnly: false
+      call: graph-api.send-mail
+      with:
+        message: tools.message
+        saveToSentItems: tools.saveToSentItems
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-mail-folders
+      description: List mail folders.
+      hints:
+        readOnly: true
+      call: graph-api.list-mail-folders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-events
+      description: List calendar events.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: graph-api.list-events
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-event
+      description: Create a calendar event.
+      hints:
+        readOnly: false
+      call: graph-api.create-event
+      with:
+        subject: tools.subject
+        start: tools.start
+        end: tools.end
+        body: tools.body
+        attendees: tools.attendees
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-event
+      description: Get a specific event.
+      hints:
+        readOnly: true
+      call: graph-api.get-event
+      with:
+        eventId: tools.eventId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-event
+      description: Update a calendar event.
+      hints:
+        readOnly: false
+        idempotent: true
+      call: graph-api.update-event
+      with:
+        eventId: tools.eventId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-event
+      description: Delete a calendar event.
+      hints:
+        readOnly: false
+        destructive: true
+      call: graph-api.delete-event
+      with:
+        eventId: tools.eventId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-calendars
+      description: List calendars.
+      hints:
+        readOnly: true
+      call: graph-api.list-calendars
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-calendar-view
+      description: Get calendar view for a date range.
+      hints:
+        readOnly: true
+      call: graph-api.get-calendar-view
+      with:
+        startDateTime: tools.startDateTime
+        endDateTime: tools.endDateTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: accept-event
+      description: Accept a meeting invitation.
+      hints:
+        readOnly: false
+      call: graph-api.accept-event
+      with:
+        eventId: tools.eventId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: decline-event
+      description: Decline a meeting invitation.
+      hints:
+        readOnly: false
+      call: graph-api.decline-event
+      with:
+        eventId: tools.eventId
+      outputParameters:
+      - type: object
+        mapping: $.
