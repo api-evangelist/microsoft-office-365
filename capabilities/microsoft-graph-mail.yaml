@@ -1,0 +1,313 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Office 365 Microsoft Graph API — Mail
+  description: 'Microsoft Office 365 Microsoft Graph API — Mail. 8 operations. Lead operation: Microsoft Office 365 List Mail
+    Folders. Self-contained Naftiko capability covering one Microsoft Office 365 business surface.'
+  tags:
+  - Microsoft Office 365
+  - Mail
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_OFFICE_365_API_KEY: MICROSOFT_OFFICE_365_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-graph-mail
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Office 365 Microsoft Graph API — Mail business capability. Self-contained, no shared references.
+    resources:
+    - name: me-mailFolders
+      path: /me/mailFolders
+      operations:
+      - name: listmailfolders
+        method: GET
+        description: Microsoft Office 365 List Mail Folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-mailFolders-mailFolder-id-messages
+      path: /me/mailFolders/{mailFolder-id}/messages
+      operations:
+      - name: listmailfoldermessages
+        method: GET
+        description: Microsoft Office 365 List Messages in Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mailFolder-id
+          in: path
+          type: string
+          description: The unique identifier of the mail folder, or a well-known folder name (inbox, drafts, sentitems, deleteditems).
+          required: true
+    - name: me-messages
+      path: /me/messages
+      operations:
+      - name: listmessages
+        method: GET
+        description: Microsoft Office 365 List Messages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmessage
+        method: POST
+        description: Microsoft Office 365 Create Draft Message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-messages-message-id
+      path: /me/messages/{message-id}
+      operations:
+      - name: getmessage
+        method: GET
+        description: Microsoft Office 365 Get Message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatemessage
+        method: PATCH
+        description: Microsoft Office 365 Update Message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemessage
+        method: DELETE
+        description: Microsoft Office 365 Delete Message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-sendMail
+      path: /me/sendMail
+      operations:
+      - name: sendmail
+        method: POST
+        description: Microsoft Office 365 Send Mail
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_OFFICE_365_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-graph-mail-rest
+    port: 8080
+    description: REST adapter for Microsoft Office 365 Microsoft Graph API — Mail. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/me/mailfolders
+      name: me-mailfolders
+      description: REST surface for me-mailFolders.
+      operations:
+      - method: GET
+        name: listmailfolders
+        description: Microsoft Office 365 List Mail Folders
+        call: microsoft-graph-mail.listmailfolders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/mailfolders/{mailfolder-id}/messages
+      name: me-mailfolders-mailfolder-id-messages
+      description: REST surface for me-mailFolders-mailFolder-id-messages.
+      operations:
+      - method: GET
+        name: listmailfoldermessages
+        description: Microsoft Office 365 List Messages in Folder
+        call: microsoft-graph-mail.listmailfoldermessages
+        with:
+          mailFolder-id: rest.mailFolder-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/messages
+      name: me-messages
+      description: REST surface for me-messages.
+      operations:
+      - method: GET
+        name: listmessages
+        description: Microsoft Office 365 List Messages
+        call: microsoft-graph-mail.listmessages
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmessage
+        description: Microsoft Office 365 Create Draft Message
+        call: microsoft-graph-mail.createmessage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/messages/{message-id}
+      name: me-messages-message-id
+      description: REST surface for me-messages-message-id.
+      operations:
+      - method: GET
+        name: getmessage
+        description: Microsoft Office 365 Get Message
+        call: microsoft-graph-mail.getmessage
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatemessage
+        description: Microsoft Office 365 Update Message
+        call: microsoft-graph-mail.updatemessage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemessage
+        description: Microsoft Office 365 Delete Message
+        call: microsoft-graph-mail.deletemessage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/sendmail
+      name: me-sendmail
+      description: REST surface for me-sendMail.
+      operations:
+      - method: POST
+        name: sendmail
+        description: Microsoft Office 365 Send Mail
+        call: microsoft-graph-mail.sendmail
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-graph-mail-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Office 365 Microsoft Graph API — Mail. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-office-365-list-mail
+      description: Microsoft Office 365 List Mail Folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-mail.listmailfolders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-list-messages
+      description: Microsoft Office 365 List Messages in Folder
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-mail.listmailfoldermessages
+      with:
+        mailFolder-id: tools.mailFolder-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-list-messages-2
+      description: Microsoft Office 365 List Messages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-mail.listmessages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-create-draft
+      description: Microsoft Office 365 Create Draft Message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-graph-mail.createmessage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-get-message
+      description: Microsoft Office 365 Get Message
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-mail.getmessage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-update-message
+      description: Microsoft Office 365 Update Message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-mail.updatemessage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-delete-message
+      description: Microsoft Office 365 Delete Message
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-graph-mail.deletemessage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-send-mail
+      description: Microsoft Office 365 Send Mail
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-graph-mail.sendmail
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

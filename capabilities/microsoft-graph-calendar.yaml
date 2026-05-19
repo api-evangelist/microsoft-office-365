@@ -1,0 +1,362 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Office 365 Microsoft Graph API — Calendar
+  description: 'Microsoft Office 365 Microsoft Graph API — Calendar. 9 operations. Lead operation: Microsoft Office 365 Get
+    Calendar View. Self-contained Naftiko capability covering one Microsoft Office 365 business surface.'
+  tags:
+  - Microsoft Office 365
+  - Calendar
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_OFFICE_365_API_KEY: MICROSOFT_OFFICE_365_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-graph-calendar
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Office 365 Microsoft Graph API — Calendar business capability. Self-contained, no shared references.
+    resources:
+    - name: me-calendarView
+      path: /me/calendarView
+      operations:
+      - name: getcalendarview
+        method: GET
+        description: Microsoft Office 365 Get Calendar View
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDateTime
+          in: query
+          type: string
+          description: The start date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T19:00:00-08:00).
+          required: true
+        - name: endDateTime
+          in: query
+          type: string
+          description: The end date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T20:00:00-08:00).
+          required: true
+    - name: me-calendars
+      path: /me/calendars
+      operations:
+      - name: listcalendars
+        method: GET
+        description: Microsoft Office 365 List Calendars
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-events
+      path: /me/events
+      operations:
+      - name: listevents
+        method: GET
+        description: Microsoft Office 365 List Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createevent
+        method: POST
+        description: Microsoft Office 365 Create Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: me-events-event-id
+      path: /me/events/{event-id}
+      operations:
+      - name: getevent
+        method: GET
+        description: Microsoft Office 365 Get Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateevent
+        method: PATCH
+        description: Microsoft Office 365 Update Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteevent
+        method: DELETE
+        description: Microsoft Office 365 Delete Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: me-events-event-id-accept
+      path: /me/events/{event-id}/accept
+      operations:
+      - name: acceptevent
+        method: POST
+        description: Microsoft Office 365 Accept Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: me-events-event-id-decline
+      path: /me/events/{event-id}/decline
+      operations:
+      - name: declineevent
+        method: POST
+        description: Microsoft Office 365 Decline Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_OFFICE_365_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-graph-calendar-rest
+    port: 8080
+    description: REST adapter for Microsoft Office 365 Microsoft Graph API — Calendar. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/me/calendarview
+      name: me-calendarview
+      description: REST surface for me-calendarView.
+      operations:
+      - method: GET
+        name: getcalendarview
+        description: Microsoft Office 365 Get Calendar View
+        call: microsoft-graph-calendar.getcalendarview
+        with:
+          startDateTime: rest.startDateTime
+          endDateTime: rest.endDateTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/calendars
+      name: me-calendars
+      description: REST surface for me-calendars.
+      operations:
+      - method: GET
+        name: listcalendars
+        description: Microsoft Office 365 List Calendars
+        call: microsoft-graph-calendar.listcalendars
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events
+      name: me-events
+      description: REST surface for me-events.
+      operations:
+      - method: GET
+        name: listevents
+        description: Microsoft Office 365 List Events
+        call: microsoft-graph-calendar.listevents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createevent
+        description: Microsoft Office 365 Create Event
+        call: microsoft-graph-calendar.createevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}
+      name: me-events-event-id
+      description: REST surface for me-events-event-id.
+      operations:
+      - method: GET
+        name: getevent
+        description: Microsoft Office 365 Get Event
+        call: microsoft-graph-calendar.getevent
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateevent
+        description: Microsoft Office 365 Update Event
+        call: microsoft-graph-calendar.updateevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteevent
+        description: Microsoft Office 365 Delete Event
+        call: microsoft-graph-calendar.deleteevent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/accept
+      name: me-events-event-id-accept
+      description: REST surface for me-events-event-id-accept.
+      operations:
+      - method: POST
+        name: acceptevent
+        description: Microsoft Office 365 Accept Event
+        call: microsoft-graph-calendar.acceptevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/me/events/{event-id}/decline
+      name: me-events-event-id-decline
+      description: REST surface for me-events-event-id-decline.
+      operations:
+      - method: POST
+        name: declineevent
+        description: Microsoft Office 365 Decline Event
+        call: microsoft-graph-calendar.declineevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-graph-calendar-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Office 365 Microsoft Graph API — Calendar. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-office-365-get-calendar
+      description: Microsoft Office 365 Get Calendar View
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-calendar.getcalendarview
+      with:
+        startDateTime: tools.startDateTime
+        endDateTime: tools.endDateTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-list-calendars
+      description: Microsoft Office 365 List Calendars
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-calendar.listcalendars
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-list-events
+      description: Microsoft Office 365 List Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-calendar.listevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-create-event
+      description: Microsoft Office 365 Create Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-graph-calendar.createevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-get-event
+      description: Microsoft Office 365 Get Event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-calendar.getevent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-update-event
+      description: Microsoft Office 365 Update Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-calendar.updateevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-delete-event
+      description: Microsoft Office 365 Delete Event
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-graph-calendar.deleteevent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-accept-event
+      description: Microsoft Office 365 Accept Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-graph-calendar.acceptevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-decline-event
+      description: Microsoft Office 365 Decline Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-graph-calendar.declineevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

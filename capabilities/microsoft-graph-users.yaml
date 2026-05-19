@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Office 365 Microsoft Graph API — Users
+  description: 'Microsoft Office 365 Microsoft Graph API — Users. 6 operations. Lead operation: Microsoft Office 365 Get Signed-in
+    User. Self-contained Naftiko capability covering one Microsoft Office 365 business surface.'
+  tags:
+  - Microsoft Office 365
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_OFFICE_365_API_KEY: MICROSOFT_OFFICE_365_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-graph-users
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Office 365 Microsoft Graph API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: me
+      path: /me
+      operations:
+      - name: getsignedinuser
+        method: GET
+        description: Microsoft Office 365 Get Signed-in User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users
+      path: /users
+      operations:
+      - name: listusers
+        method: GET
+        description: Microsoft Office 365 List Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createuser
+        method: POST
+        description: Microsoft Office 365 Create User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: users-user-id
+      path: /users/{user-id}
+      operations:
+      - name: getuser
+        method: GET
+        description: Microsoft Office 365 Get User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateuser
+        method: PATCH
+        description: Microsoft Office 365 Update User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteuser
+        method: DELETE
+        description: Microsoft Office 365 Delete User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_OFFICE_365_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-graph-users-rest
+    port: 8080
+    description: REST adapter for Microsoft Office 365 Microsoft Graph API — Users. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/me
+      name: me
+      description: REST surface for me.
+      operations:
+      - method: GET
+        name: getsignedinuser
+        description: Microsoft Office 365 Get Signed-in User
+        call: microsoft-graph-users.getsignedinuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users
+      name: users
+      description: REST surface for users.
+      operations:
+      - method: GET
+        name: listusers
+        description: Microsoft Office 365 List Users
+        call: microsoft-graph-users.listusers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createuser
+        description: Microsoft Office 365 Create User
+        call: microsoft-graph-users.createuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{user-id}
+      name: users-user-id
+      description: REST surface for users-user-id.
+      operations:
+      - method: GET
+        name: getuser
+        description: Microsoft Office 365 Get User
+        call: microsoft-graph-users.getuser
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateuser
+        description: Microsoft Office 365 Update User
+        call: microsoft-graph-users.updateuser
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuser
+        description: Microsoft Office 365 Delete User
+        call: microsoft-graph-users.deleteuser
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-graph-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Office 365 Microsoft Graph API — Users. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-office-365-get-signed
+      description: Microsoft Office 365 Get Signed-in User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-users.getsignedinuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-list-users
+      description: Microsoft Office 365 List Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-users.listusers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-create-user
+      description: Microsoft Office 365 Create User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-graph-users.createuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-get-user
+      description: Microsoft Office 365 Get User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-users.getuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-update-user
+      description: Microsoft Office 365 Update User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-users.updateuser
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-delete-user
+      description: Microsoft Office 365 Delete User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-graph-users.deleteuser
+      outputParameters:
+      - type: object
+        mapping: $.

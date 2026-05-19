@@ -1,0 +1,313 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Office 365 Microsoft Graph API — Groups
+  description: 'Microsoft Office 365 Microsoft Graph API — Groups. 8 operations. Lead operation: Microsoft Office 365 List
+    Groups. Self-contained Naftiko capability covering one Microsoft Office 365 business surface.'
+  tags:
+  - Microsoft Office 365
+  - Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_OFFICE_365_API_KEY: MICROSOFT_OFFICE_365_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-graph-groups
+    baseUri: https://graph.microsoft.com/v1.0
+    description: Microsoft Office 365 Microsoft Graph API — Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: groups
+      path: /groups
+      operations:
+      - name: listgroups
+        method: GET
+        description: Microsoft Office 365 List Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: creategroup
+        method: POST
+        description: Microsoft Office 365 Create Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: groups-group-id
+      path: /groups/{group-id}
+      operations:
+      - name: getgroup
+        method: GET
+        description: Microsoft Office 365 Get Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updategroup
+        method: PATCH
+        description: Microsoft Office 365 Update Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletegroup
+        method: DELETE
+        description: Microsoft Office 365 Delete Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups-group-id-members
+      path: /groups/{group-id}/members
+      operations:
+      - name: listgroupmembers
+        method: GET
+        description: Microsoft Office 365 List Group Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups-group-id-members-$ref
+      path: /groups/{group-id}/members/$ref
+      operations:
+      - name: addgroupmember
+        method: POST
+        description: Microsoft Office 365 Add Group Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: groups-group-id-members-directoryObject-id-$ref
+      path: /groups/{group-id}/members/{directoryObject-id}/$ref
+      operations:
+      - name: removegroupmember
+        method: DELETE
+        description: Microsoft Office 365 Remove Group Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: directoryObject-id
+          in: path
+          type: string
+          description: The unique identifier of the directory object (member) to remove.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_OFFICE_365_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-graph-groups-rest
+    port: 8080
+    description: REST adapter for Microsoft Office 365 Microsoft Graph API — Groups. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/groups
+      name: groups
+      description: REST surface for groups.
+      operations:
+      - method: GET
+        name: listgroups
+        description: Microsoft Office 365 List Groups
+        call: microsoft-graph-groups.listgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creategroup
+        description: Microsoft Office 365 Create Group
+        call: microsoft-graph-groups.creategroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{group-id}
+      name: groups-group-id
+      description: REST surface for groups-group-id.
+      operations:
+      - method: GET
+        name: getgroup
+        description: Microsoft Office 365 Get Group
+        call: microsoft-graph-groups.getgroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updategroup
+        description: Microsoft Office 365 Update Group
+        call: microsoft-graph-groups.updategroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegroup
+        description: Microsoft Office 365 Delete Group
+        call: microsoft-graph-groups.deletegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{group-id}/members
+      name: groups-group-id-members
+      description: REST surface for groups-group-id-members.
+      operations:
+      - method: GET
+        name: listgroupmembers
+        description: Microsoft Office 365 List Group Members
+        call: microsoft-graph-groups.listgroupmembers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{group-id}/members/ref
+      name: groups-group-id-members-ref
+      description: REST surface for groups-group-id-members-$ref.
+      operations:
+      - method: POST
+        name: addgroupmember
+        description: Microsoft Office 365 Add Group Member
+        call: microsoft-graph-groups.addgroupmember
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{group-id}/members/{directoryobject-id}/ref
+      name: groups-group-id-members-directoryobject-id-ref
+      description: REST surface for groups-group-id-members-directoryObject-id-$ref.
+      operations:
+      - method: DELETE
+        name: removegroupmember
+        description: Microsoft Office 365 Remove Group Member
+        call: microsoft-graph-groups.removegroupmember
+        with:
+          directoryObject-id: rest.directoryObject-id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-graph-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Office 365 Microsoft Graph API — Groups. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-office-365-list-groups
+      description: Microsoft Office 365 List Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-groups.listgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-create-group
+      description: Microsoft Office 365 Create Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-graph-groups.creategroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-get-group
+      description: Microsoft Office 365 Get Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-groups.getgroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-update-group
+      description: Microsoft Office 365 Update Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-groups.updategroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-delete-group
+      description: Microsoft Office 365 Delete Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-graph-groups.deletegroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-list-group
+      description: Microsoft Office 365 List Group Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-graph-groups.listgroupmembers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-add-group
+      description: Microsoft Office 365 Add Group Member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-graph-groups.addgroupmember
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-office-365-remove-group
+      description: Microsoft Office 365 Remove Group Member
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-graph-groups.removegroupmember
+      with:
+        directoryObject-id: tools.directoryObject-id
+      outputParameters:
+      - type: object
+        mapping: $.
