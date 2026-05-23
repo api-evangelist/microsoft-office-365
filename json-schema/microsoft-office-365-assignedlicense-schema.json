@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssignedLicense",
+  "title": "AssignedLicense",
+  "type": "object",
+  "description": "Represents a license assigned to a user.",
+  "properties": {
+    "disabledPlans": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A collection of unique identifiers for disabled plans.",
+      "example": []
+    },
+    "skuId": {
+      "type": "string",
+      "description": "The unique identifier for the SKU.",
+      "example": "500123"
+    }
+  }
+}

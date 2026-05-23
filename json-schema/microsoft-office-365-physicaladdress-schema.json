@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PhysicalAddress",
+  "title": "PhysicalAddress",
+  "type": "object",
+  "description": "Represents the street address of a resource such as a contact or event.",
+  "properties": {
+    "street": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "city": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "state": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "countryOrRegion": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "postalCode": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

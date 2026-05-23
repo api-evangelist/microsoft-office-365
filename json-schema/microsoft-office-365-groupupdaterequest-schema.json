@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupUpdateRequest",
+  "title": "GroupUpdateRequest",
+  "type": "object",
+  "properties": {
+    "displayName": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "mailNickname": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "Public",
+        "Private",
+        "HiddenMembership"
+      ],
+      "example": "Public"
+    },
+    "classification": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

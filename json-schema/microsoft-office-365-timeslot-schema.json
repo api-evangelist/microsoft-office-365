@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeSlot",
+  "title": "TimeSlot",
+  "type": "object",
+  "description": "A time period.",
+  "properties": {
+    "start": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "end": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    }
+  }
+}

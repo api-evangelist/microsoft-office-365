@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventCreateRequest",
+  "title": "EventCreateRequest",
+  "type": "object",
+  "required": [
+    "subject",
+    "start",
+    "end"
+  ],
+  "properties": {
+    "subject": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "body": {
+      "$ref": "#/components/schemas/ItemBody"
+    },
+    "start": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "end": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "location": {
+      "$ref": "#/components/schemas/Location"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Location"
+      },
+      "example": []
+    },
+    "attendees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attendee"
+      },
+      "example": []
+    },
+    "isAllDay": {
+      "type": "boolean",
+      "example": true
+    },
+    "isOnlineMeeting": {
+      "type": "boolean",
+      "example": true
+    },
+    "onlineMeetingProvider": {
+      "type": "string",
+      "enum": [
+        "teamsForBusiness",
+        "skypeForBusiness",
+        "skypeForConsumer"
+      ],
+      "example": "teamsForBusiness"
+    },
+    "recurrence": {
+      "$ref": "#/components/schemas/PatternedRecurrence"
+    },
+    "showAs": {
+      "type": "string",
+      "enum": [
+        "free",
+        "tentative",
+        "busy",
+        "oof",
+        "workingElsewhere",
+        "unknown"
+      ],
+      "example": "free"
+    },
+    "importance": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high"
+      ],
+      "example": "low"
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "personal",
+        "private",
+        "confidential"
+      ],
+      "example": "normal"
+    },
+    "responseRequested": {
+      "type": "boolean",
+      "example": true
+    },
+    "allowNewTimeProposals": {
+      "type": "boolean",
+      "example": true
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "reminderMinutesBeforeStart": {
+      "type": "integer",
+      "example": 10
+    },
+    "transactionId": {
+      "type": "string",
+      "example": "500123"
+    }
+  }
+}

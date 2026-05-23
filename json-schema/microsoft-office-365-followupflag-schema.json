@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FollowupFlag",
+  "title": "FollowupFlag",
+  "type": "object",
+  "description": "Allows setting a flag on an item for the user to follow up on later.",
+  "properties": {
+    "completedDateTime": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "dueDateTime": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "startDateTime": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "flagStatus": {
+      "type": "string",
+      "enum": [
+        "notFlagged",
+        "complete",
+        "flagged"
+      ],
+      "description": "The status of the follow-up flag.",
+      "example": "notFlagged"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "operationId": "listCalendars",
+  "method": "GET",
+  "path": "/me/calendars",
+  "summary": "Microsoft Office 365 List Calendars",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listcalendars200Example",
+      "example": {
+        "@odata.context": "example_value",
+        "@odata.nextLink": "https://www.example.com",
+        "value": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "color": "auto",
+            "changeKey": "example_value",
+            "canEdit": true,
+            "canShare": true,
+            "canViewPrivateItems": true,
+            "isDefaultCalendar": true,
+            "hexColor": "example_value",
+            "isRemovable": true,
+            "isTallyingResponses": true,
+            "allowedOnlineMeetingProviders": {},
+            "defaultOnlineMeetingProvider": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "operationId": "declineEvent",
+  "method": "POST",
+  "path": "/me/events/{event-id}/decline",
+  "summary": "Microsoft Office 365 Decline Event",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "DeclineeventRequestExample",
+      "example": {
+        "comment": "example_value",
+        "sendResponse": true,
+        "proposedNewTime": {
+          "start": {
+            "dateTime": "example_value",
+            "timeZone": "example_value"
+          },
+          "end": {
+            "dateTime": "example_value",
+            "timeZone": "example_value"
+          }
+        }
+      }
+    }
+  ],
+  "responseExamples": []
+}

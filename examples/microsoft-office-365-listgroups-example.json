@@ -1,0 +1,40 @@
+{
+  "operationId": "listGroups",
+  "method": "GET",
+  "path": "/groups",
+  "summary": "Microsoft Office 365 List Groups",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listgroups200Example",
+      "example": {
+        "@odata.context": "example_value",
+        "@odata.count": 10,
+        "@odata.nextLink": "https://www.example.com",
+        "value": [
+          {
+            "id": "abc123",
+            "displayName": "example_value",
+            "description": "A sample description.",
+            "mail": "example_value",
+            "mailEnabled": true,
+            "mailNickname": "example_value",
+            "securityEnabled": true,
+            "groupTypes": {},
+            "visibility": "Public",
+            "createdDateTime": "2026-01-15T10:30:00Z",
+            "renewedDateTime": "2026-01-15T10:30:00Z",
+            "classification": "example_value",
+            "membershipRule": "example_value",
+            "membershipRuleProcessingState": "On",
+            "resourceProvisioningOptions": {},
+            "members": {},
+            "owners": {}
+          }
+        ]
+      }
+    }
+  ]
+}

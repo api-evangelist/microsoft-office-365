@@ -1,0 +1,552 @@
+{
+  "provider": "Microsoft Office 365",
+  "providerId": "microsoft-office-365",
+  "kind": "json-structure",
+  "description": "Structural overview of the Microsoft Office 365 API surface; extracted from openapi/.",
+  "schemaCount": 41,
+  "operationCount": 31,
+  "schemas": [
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 27,
+      "required": []
+    },
+    {
+      "name": "UserCreateRequest",
+      "type": "object",
+      "propertyCount": 12,
+      "required": [
+        "accountEnabled",
+        "displayName",
+        "mailNickname",
+        "userPrincipalName",
+        "passwordProfile"
+      ]
+    },
+    {
+      "name": "UserUpdateRequest",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "UserCollectionResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "PasswordProfile",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ObjectIdentity",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AssignedLicense",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DirectoryObject",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DirectoryObjectCollectionResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Group",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "GroupCreateRequest",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "displayName",
+        "mailEnabled",
+        "mailNickname",
+        "securityEnabled"
+      ]
+    },
+    {
+      "name": "GroupUpdateRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "GroupCollectionResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Message",
+      "type": "object",
+      "propertyCount": 28,
+      "required": []
+    },
+    {
+      "name": "MessageCreateRequest",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "MessageUpdateRequest",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "MessageCollectionResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "MailFolder",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "MailFolderCollectionResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ItemBody",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Recipient",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "EmailAddress",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "FollowupFlag",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Event",
+      "type": "object",
+      "propertyCount": 34,
+      "required": []
+    },
+    {
+      "name": "EventCreateRequest",
+      "type": "object",
+      "propertyCount": 19,
+      "required": [
+        "subject",
+        "start",
+        "end"
+      ]
+    },
+    {
+      "name": "EventUpdateRequest",
+      "type": "object",
+      "propertyCount": 16,
+      "required": []
+    },
+    {
+      "name": "EventCollectionResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Calendar",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "CalendarCollectionResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DateTimeTimeZone",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Location",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "PhysicalAddress",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "OutlookGeoCoordinates",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Attendee",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ResponseStatus",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "TimeSlot",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OnlineMeetingInfo",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "PatternedRecurrence",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "RecurrencePattern",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "RecurrenceRange",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ODataError",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/users",
+      "operationId": "listUsers",
+      "summary": "Microsoft Office 365 List Users",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "operationId": "createUser",
+      "summary": "Microsoft Office 365 Create User",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{user-id}",
+      "operationId": "getUser",
+      "summary": "Microsoft Office 365 Get User",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{user-id}",
+      "operationId": "deleteUser",
+      "summary": "Microsoft Office 365 Delete User",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/{user-id}",
+      "operationId": "updateUser",
+      "summary": "Microsoft Office 365 Update User",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me",
+      "operationId": "getSignedInUser",
+      "summary": "Microsoft Office 365 Get Signed-in User",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups",
+      "operationId": "listGroups",
+      "summary": "Microsoft Office 365 List Groups",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/groups",
+      "operationId": "createGroup",
+      "summary": "Microsoft Office 365 Create Group",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{group-id}",
+      "operationId": "getGroup",
+      "summary": "Microsoft Office 365 Get Group",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/{group-id}",
+      "operationId": "deleteGroup",
+      "summary": "Microsoft Office 365 Delete Group",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/groups/{group-id}",
+      "operationId": "updateGroup",
+      "summary": "Microsoft Office 365 Update Group",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{group-id}/members",
+      "operationId": "listGroupMembers",
+      "summary": "Microsoft Office 365 List Group Members",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/groups/{group-id}/members/$ref",
+      "operationId": "addGroupMember",
+      "summary": "Microsoft Office 365 Add Group Member",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/{group-id}/members/{directoryObject-id}/$ref",
+      "operationId": "removeGroupMember",
+      "summary": "Microsoft Office 365 Remove Group Member",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/messages",
+      "operationId": "listMessages",
+      "summary": "Microsoft Office 365 List Messages",
+      "tags": [
+        "Mail"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/messages",
+      "operationId": "createMessage",
+      "summary": "Microsoft Office 365 Create Draft Message",
+      "tags": [
+        "Mail"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/messages/{message-id}",
+      "operationId": "getMessage",
+      "summary": "Microsoft Office 365 Get Message",
+      "tags": [
+        "Mail"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/me/messages/{message-id}",
+      "operationId": "deleteMessage",
+      "summary": "Microsoft Office 365 Delete Message",
+      "tags": [
+        "Mail"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/me/messages/{message-id}",
+      "operationId": "updateMessage",
+      "summary": "Microsoft Office 365 Update Message",
+      "tags": [
+        "Mail"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/sendMail",
+      "operationId": "sendMail",
+      "summary": "Microsoft Office 365 Send Mail",
+      "tags": [
+        "Mail"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/mailFolders",
+      "operationId": "listMailFolders",
+      "summary": "Microsoft Office 365 List Mail Folders",
+      "tags": [
+        "Mail"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/mailFolders/{mailFolder-id}/messages",
+      "operationId": "listMailFolderMessages",
+      "summary": "Microsoft Office 365 List Messages in Folder",
+      "tags": [
+        "Mail"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/events",
+      "operationId": "listEvents",
+      "summary": "Microsoft Office 365 List Events",
+      "tags": [
+        "Calendar"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events",
+      "operationId": "createEvent",
+      "summary": "Microsoft Office 365 Create Event",
+      "tags": [
+        "Calendar"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/events/{event-id}",
+      "operationId": "getEvent",
+      "summary": "Microsoft Office 365 Get Event",
+      "tags": [
+        "Calendar"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/me/events/{event-id}",
+      "operationId": "deleteEvent",
+      "summary": "Microsoft Office 365 Delete Event",
+      "tags": [
+        "Calendar"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/me/events/{event-id}",
+      "operationId": "updateEvent",
+      "summary": "Microsoft Office 365 Update Event",
+      "tags": [
+        "Calendar"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/calendars",
+      "operationId": "listCalendars",
+      "summary": "Microsoft Office 365 List Calendars",
+      "tags": [
+        "Calendar"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/me/calendarView",
+      "operationId": "getCalendarView",
+      "summary": "Microsoft Office 365 Get Calendar View",
+      "tags": [
+        "Calendar"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events/{event-id}/accept",
+      "operationId": "acceptEvent",
+      "summary": "Microsoft Office 365 Accept Event",
+      "tags": [
+        "Calendar"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/me/events/{event-id}/decline",
+      "operationId": "declineEvent",
+      "summary": "Microsoft Office 365 Decline Event",
+      "tags": [
+        "Calendar"
+      ]
+    }
+  ]
+}

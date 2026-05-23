@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ResponseStatus",
+  "title": "ResponseStatus",
+  "type": "object",
+  "description": "The response status of an attendee or organizer for a meeting request.",
+  "properties": {
+    "response": {
+      "type": "string",
+      "enum": [
+        "none",
+        "organizer",
+        "tentativelyAccepted",
+        "accepted",
+        "declined",
+        "notResponded"
+      ],
+      "description": "The response type.",
+      "example": "none"
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the response was returned.",
+      "example": "2026-01-15T10:30:00Z"
+    }
+  }
+}

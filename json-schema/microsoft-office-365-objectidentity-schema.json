@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ObjectIdentity",
+  "title": "ObjectIdentity",
+  "type": "object",
+  "description": "Represents an identity used to sign in to a user account.",
+  "properties": {
+    "signInType": {
+      "type": "string",
+      "description": "Specifies the type of user sign-in (e.g. emailAddress, userName, userPrincipalName).",
+      "example": "example_value"
+    },
+    "issuer": {
+      "type": "string",
+      "description": "Specifies the issuer of the identity, for example contoso.onmicrosoft.com.",
+      "example": "example_value"
+    },
+    "issuerAssignedId": {
+      "type": "string",
+      "description": "Specifies the unique value associated with the issuer- signInType combination.",
+      "example": "500123"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "operationId": "listEvents",
+  "method": "GET",
+  "path": "/me/events",
+  "summary": "Microsoft Office 365 List Events",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listevents200Example",
+      "example": {
+        "@odata.context": "example_value",
+        "@odata.count": 10,
+        "@odata.nextLink": "https://www.example.com",
+        "value": [
+          {
+            "id": "abc123",
+            "subject": "example_value",
+            "bodyPreview": "example_value",
+            "locations": {},
+            "attendees": {},
+            "isAllDay": true,
+            "isCancelled": true,
+            "isOrganizer": true,
+            "isOnlineMeeting": true,
+            "onlineMeetingProvider": "unknown",
+            "onlineMeetingUrl": "https://www.example.com",
+            "seriesMasterId": "500123",
+            "type": "singleInstance",
+            "showAs": "free",
+            "importance": "low",
+            "sensitivity": "normal",
+            "responseRequested": true,
+            "allowNewTimeProposals": true,
+            "categories": {},
+            "hasAttachments": true,
+            "iCalUId": "500123",
+            "webLink": "https://www.example.com",
+            "createdDateTime": "2026-01-15T10:30:00Z",
+            "lastModifiedDateTime": "2026-01-15T10:30:00Z",
+            "reminderMinutesBeforeStart": 10,
+            "transactionId": "500123"
+          }
+        ]
+      }
+    }
+  ]
+}

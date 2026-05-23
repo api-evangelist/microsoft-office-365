@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Message",
+  "title": "Message",
+  "type": "object",
+  "description": "A message in a mailFolder. Contains the message subject, body, sender, recipients, and other metadata.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Unique identifier for the message.",
+      "example": "abc123"
+    },
+    "subject": {
+      "type": "string",
+      "description": "The subject of the message.",
+      "example": "example_value"
+    },
+    "body": {
+      "$ref": "#/components/schemas/ItemBody"
+    },
+    "bodyPreview": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The first 255 characters of the message body in text format.",
+      "example": "example_value"
+    },
+    "sender": {
+      "$ref": "#/components/schemas/Recipient"
+    },
+    "from": {
+      "$ref": "#/components/schemas/Recipient"
+    },
+    "toRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "description": "The To recipients for the message.",
+      "example": []
+    },
+    "ccRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "description": "The Cc recipients for the message.",
+      "example": []
+    },
+    "bccRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "description": "The Bcc recipients for the message.",
+      "example": []
+    },
+    "replyTo": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "description": "The email addresses to use when replying.",
+      "example": []
+    },
+    "conversationId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The ID of the conversation the email belongs to.",
+      "example": "500123"
+    },
+    "conversationIndex": {
+      "type": "string",
+      "format": "byte",
+      "readOnly": true,
+      "description": "The index of the message in the conversation.",
+      "example": "example_value"
+    },
+    "receivedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The date and time the message was received.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "sentDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The date and time the message was sent.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The date and time the message was created.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The date and time the message was last changed.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "hasAttachments": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "Indicates whether the message has attachments.",
+      "example": true
+    },
+    "internetMessageId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The message ID in RFC2822 format.",
+      "example": "500123"
+    },
+    "importance": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high"
+      ],
+      "description": "The importance of the message.",
+      "example": "low"
+    },
+    "isRead": {
+      "type": "boolean",
+      "description": "Indicates whether the message has been read.",
+      "example": true
+    },
+    "isDraft": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "Indicates whether the message is a draft.",
+      "example": true
+    },
+    "isDeliveryReceiptRequested": {
+      "type": "boolean",
+      "description": "Indicates whether a delivery receipt is requested.",
+      "example": true
+    },
+    "isReadReceiptRequested": {
+      "type": "boolean",
+      "description": "Indicates whether a read receipt is requested.",
+      "example": true
+    },
+    "flag": {
+      "$ref": "#/components/schemas/FollowupFlag"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The categories associated with the message.",
+      "example": []
+    },
+    "parentFolderId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The unique identifier for the message's parent mailFolder.",
+      "example": "500123"
+    },
+    "webLink": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true,
+      "description": "The URL to open the message in Outlook on the web.",
+      "example": "https://www.example.com"
+    },
+    "inferenceClassification": {
+      "type": "string",
+      "enum": [
+        "focused",
+        "other"
+      ],
+      "description": "The classification of the message based on inferred relevance.",
+      "example": "focused"
+    }
+  }
+}

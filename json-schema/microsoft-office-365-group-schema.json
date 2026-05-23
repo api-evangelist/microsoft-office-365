@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Group",
+  "title": "Group",
+  "type": "object",
+  "description": "Represents an Azure Active Directory group. Can be a Microsoft 365 group, a security group, a mail-enabled security group, or a distribution group.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The unique identifier for the group.",
+      "example": "abc123"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name for the group.",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "description": "An optional description for the group.",
+      "example": "A sample description."
+    },
+    "mail": {
+      "type": "string",
+      "format": "email",
+      "readOnly": true,
+      "description": "The SMTP address for the group.",
+      "example": "example_value"
+    },
+    "mailEnabled": {
+      "type": "boolean",
+      "description": "Specifies whether the group is mail-enabled.",
+      "example": true
+    },
+    "mailNickname": {
+      "type": "string",
+      "description": "The mail alias for the group, unique for Microsoft 365 groups in the organization.",
+      "example": "example_value"
+    },
+    "securityEnabled": {
+      "type": "boolean",
+      "description": "Specifies whether the group is a security group.",
+      "example": true
+    },
+    "groupTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specifies the group type and its membership. If the collection includes \"Unified\", the group is a Microsoft 365 group.",
+      "example": []
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "Public",
+        "Private",
+        "HiddenMembership"
+      ],
+      "description": "Specifies the visibility of a Microsoft 365 group. Default value is Public.",
+      "example": "Public"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Timestamp of when the group was created.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "renewedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Timestamp of when the group was last renewed.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "classification": {
+      "type": "string",
+      "description": "Describes a classification for the group (such as low, medium, or high business impact).",
+      "example": "example_value"
+    },
+    "membershipRule": {
+      "type": "string",
+      "description": "The rule that determines members for this group if the group is a dynamic group.",
+      "example": "example_value"
+    },
+    "membershipRuleProcessingState": {
+      "type": "string",
+      "enum": [
+        "On",
+        "Paused"
+      ],
+      "description": "Whether dynamic membership processing is on or paused.",
+      "example": "On"
+    },
+    "resourceProvisioningOptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Specifies the group resources provisioned as part of Microsoft 365 group creation (e.g., Team).",
+      "example": []
+    },
+    "members": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DirectoryObject"
+      },
+      "description": "Direct members of this group.",
+      "example": []
+    },
+    "owners": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DirectoryObject"
+      },
+      "description": "The owners of the group.",
+      "example": []
+    }
+  }
+}

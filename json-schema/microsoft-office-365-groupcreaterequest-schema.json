@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupCreateRequest",
+  "title": "GroupCreateRequest",
+  "type": "object",
+  "required": [
+    "displayName",
+    "mailEnabled",
+    "mailNickname",
+    "securityEnabled"
+  ],
+  "properties": {
+    "displayName": {
+      "type": "string",
+      "description": "The display name for the group.",
+      "example": "example_value"
+    },
+    "description": {
+      "type": "string",
+      "example": "A sample description."
+    },
+    "mailEnabled": {
+      "type": "boolean",
+      "example": true
+    },
+    "mailNickname": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "securityEnabled": {
+      "type": "boolean",
+      "example": true
+    },
+    "groupTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Set to [\"Unified\"] to create a Microsoft 365 group.",
+      "example": []
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "Public",
+        "Private",
+        "HiddenMembership"
+      ],
+      "example": "Public"
+    },
+    "owners@odata.bind": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "URLs of user objects to set as owners at creation time.",
+      "example": []
+    },
+    "members@odata.bind": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "URLs of user objects to set as members at creation time.",
+      "example": []
+    }
+  }
+}

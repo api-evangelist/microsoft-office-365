@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OnlineMeetingInfo",
+  "title": "OnlineMeetingInfo",
+  "type": "object",
+  "description": "Details for an attendee to join the meeting online.",
+  "properties": {
+    "joinUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to join the meeting online.",
+      "example": "https://www.example.com"
+    },
+    "conferenceId": {
+      "type": "string",
+      "description": "The ID of the conference.",
+      "example": "500123"
+    },
+    "tollNumber": {
+      "type": "string",
+      "description": "The toll number to dial for audio conference.",
+      "example": "example_value"
+    },
+    "tollFreeNumbers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The toll-free numbers to dial.",
+      "example": []
+    },
+    "quickDial": {
+      "type": "string",
+      "description": "The pre-formatted quick-dial for this call.",
+      "example": "example_value"
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "toll",
+              "tollFree"
+            ]
+          }
+        }
+      },
+      "description": "All phone numbers associated with this conference.",
+      "example": []
+    }
+  }
+}

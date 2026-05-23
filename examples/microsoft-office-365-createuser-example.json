@@ -1,0 +1,93 @@
+{
+  "operationId": "createUser",
+  "method": "POST",
+  "path": "/users",
+  "summary": "Microsoft Office 365 Create User",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreateuserRequestExample",
+      "example": {
+        "accountEnabled": true,
+        "displayName": "example_value",
+        "mailNickname": "example_value",
+        "userPrincipalName": "example_value",
+        "passwordProfile": {
+          "forceChangePasswordNextSignIn": true,
+          "forceChangePasswordNextSignInWithMfa": true,
+          "password": "example_value"
+        },
+        "givenName": "example_value",
+        "surname": "example_value",
+        "jobTitle": "example_value",
+        "department": "example_value",
+        "officeLocation": "example_value",
+        "mobilePhone": "example_value",
+        "usageLocation": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createuser201Example",
+      "example": {
+        "id": "abc123",
+        "displayName": "example_value",
+        "givenName": "example_value",
+        "surname": "example_value",
+        "mail": "example_value",
+        "userPrincipalName": "example_value",
+        "jobTitle": "example_value",
+        "department": "example_value",
+        "officeLocation": "example_value",
+        "companyName": "example_value",
+        "businessPhones": [
+          "example_value"
+        ],
+        "mobilePhone": "example_value",
+        "streetAddress": "example_value",
+        "city": "example_value",
+        "state": "example_value",
+        "postalCode": "example_value",
+        "country": "example_value",
+        "preferredLanguage": "example_value",
+        "accountEnabled": true,
+        "createdDateTime": "2026-01-15T10:30:00Z",
+        "lastSignInDateTime": "2026-01-15T10:30:00Z",
+        "usageLocation": "example_value",
+        "passwordProfile": {
+          "forceChangePasswordNextSignIn": true,
+          "forceChangePasswordNextSignInWithMfa": true,
+          "password": "example_value"
+        },
+        "identities": [
+          {
+            "signInType": "example_value",
+            "issuer": "example_value",
+            "issuerAssignedId": "500123"
+          }
+        ],
+        "assignedLicenses": [
+          {
+            "disabledPlans": {},
+            "skuId": "500123"
+          }
+        ],
+        "manager": {
+          "@odata.type": "example_value",
+          "id": "abc123",
+          "displayName": "example_value"
+        },
+        "memberOf": [
+          {
+            "@odata.type": "example_value",
+            "id": "abc123",
+            "displayName": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

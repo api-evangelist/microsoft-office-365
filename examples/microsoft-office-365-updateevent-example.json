@@ -1,0 +1,145 @@
+{
+  "operationId": "updateEvent",
+  "method": "PATCH",
+  "path": "/me/events/{event-id}",
+  "summary": "Microsoft Office 365 Update Event",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdateeventRequestExample",
+      "example": {
+        "subject": "example_value",
+        "body": {
+          "contentType": "text",
+          "content": "example_value"
+        },
+        "start": {
+          "dateTime": "example_value",
+          "timeZone": "example_value"
+        },
+        "end": {
+          "dateTime": "example_value",
+          "timeZone": "example_value"
+        },
+        "location": {
+          "displayName": "example_value",
+          "locationType": "default",
+          "locationUri": "example_value",
+          "uniqueId": "500123",
+          "uniqueIdType": "unknown"
+        },
+        "locations": [
+          {
+            "displayName": "example_value",
+            "locationType": "default",
+            "locationUri": "example_value",
+            "uniqueId": "500123",
+            "uniqueIdType": "unknown"
+          }
+        ],
+        "attendees": [
+          {
+            "type": "required"
+          }
+        ],
+        "isAllDay": true,
+        "isOnlineMeeting": true,
+        "onlineMeetingProvider": "teamsForBusiness",
+        "recurrence": {},
+        "showAs": "free",
+        "importance": "low",
+        "sensitivity": "normal",
+        "categories": [
+          "example_value"
+        ],
+        "reminderMinutesBeforeStart": 10
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Updateevent200Example",
+      "example": {
+        "id": "abc123",
+        "subject": "example_value",
+        "body": {
+          "contentType": "text",
+          "content": "example_value"
+        },
+        "bodyPreview": "example_value",
+        "start": {
+          "dateTime": "example_value",
+          "timeZone": "example_value"
+        },
+        "end": {
+          "dateTime": "example_value",
+          "timeZone": "example_value"
+        },
+        "location": {
+          "displayName": "example_value",
+          "locationType": "default",
+          "locationUri": "example_value",
+          "uniqueId": "500123",
+          "uniqueIdType": "unknown"
+        },
+        "locations": [
+          {
+            "displayName": "example_value",
+            "locationType": "default",
+            "locationUri": "example_value",
+            "uniqueId": "500123",
+            "uniqueIdType": "unknown"
+          }
+        ],
+        "attendees": [
+          {
+            "type": "required"
+          }
+        ],
+        "organizer": {},
+        "isAllDay": true,
+        "isCancelled": true,
+        "isOrganizer": true,
+        "isOnlineMeeting": true,
+        "onlineMeetingProvider": "unknown",
+        "onlineMeetingUrl": "https://www.example.com",
+        "onlineMeeting": {
+          "joinUrl": "https://www.example.com",
+          "conferenceId": "500123",
+          "tollNumber": "example_value",
+          "tollFreeNumbers": [
+            {}
+          ],
+          "quickDial": "example_value",
+          "phones": [
+            {}
+          ]
+        },
+        "recurrence": {},
+        "seriesMasterId": "500123",
+        "type": "singleInstance",
+        "showAs": "free",
+        "importance": "low",
+        "sensitivity": "normal",
+        "responseStatus": {
+          "response": "none",
+          "time": "2026-01-15T10:30:00Z"
+        },
+        "responseRequested": true,
+        "allowNewTimeProposals": true,
+        "categories": [
+          "example_value"
+        ],
+        "hasAttachments": true,
+        "iCalUId": "500123",
+        "webLink": "https://www.example.com",
+        "createdDateTime": "2026-01-15T10:30:00Z",
+        "lastModifiedDateTime": "2026-01-15T10:30:00Z",
+        "reminderMinutesBeforeStart": 10,
+        "transactionId": "500123"
+      }
+    }
+  ]
+}

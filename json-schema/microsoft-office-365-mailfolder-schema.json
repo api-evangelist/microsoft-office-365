@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MailFolder",
+  "title": "MailFolder",
+  "type": "object",
+  "description": "A mail folder in a user's mailbox, such as Inbox and Drafts.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The unique identifier for the mail folder.",
+      "example": "abc123"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The mail folder's display name.",
+      "example": "example_value"
+    },
+    "parentFolderId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The unique identifier for the mail folder's parent.",
+      "example": "500123"
+    },
+    "childFolderCount": {
+      "type": "integer",
+      "readOnly": true,
+      "description": "The number of immediate child folders in the current folder.",
+      "example": 10
+    },
+    "totalItemCount": {
+      "type": "integer",
+      "readOnly": true,
+      "description": "The number of items in the mail folder.",
+      "example": 10
+    },
+    "unreadItemCount": {
+      "type": "integer",
+      "readOnly": true,
+      "description": "The number of unread items in the folder.",
+      "example": 10
+    },
+    "isHidden": {
+      "type": "boolean",
+      "description": "Indicates whether the mail folder is hidden.",
+      "example": true
+    }
+  }
+}

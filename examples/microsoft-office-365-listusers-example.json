@@ -1,0 +1,48 @@
+{
+  "operationId": "listUsers",
+  "method": "GET",
+  "path": "/users",
+  "summary": "Microsoft Office 365 List Users",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listusers200Example",
+      "example": {
+        "@odata.context": "example_value",
+        "@odata.count": 10,
+        "@odata.nextLink": "https://www.example.com",
+        "value": [
+          {
+            "id": "abc123",
+            "displayName": "example_value",
+            "givenName": "example_value",
+            "surname": "example_value",
+            "mail": "example_value",
+            "userPrincipalName": "example_value",
+            "jobTitle": "example_value",
+            "department": "example_value",
+            "officeLocation": "example_value",
+            "companyName": "example_value",
+            "businessPhones": {},
+            "mobilePhone": "example_value",
+            "streetAddress": "example_value",
+            "city": "example_value",
+            "state": "example_value",
+            "postalCode": "example_value",
+            "country": "example_value",
+            "preferredLanguage": "example_value",
+            "accountEnabled": true,
+            "createdDateTime": "2026-01-15T10:30:00Z",
+            "lastSignInDateTime": "2026-01-15T10:30:00Z",
+            "usageLocation": "example_value",
+            "identities": {},
+            "assignedLicenses": {},
+            "memberOf": {}
+          }
+        ]
+      }
+    }
+  ]
+}

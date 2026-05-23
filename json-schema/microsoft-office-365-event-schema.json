@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Event",
+  "title": "Event",
+  "type": "object",
+  "description": "An event in a user calendar or the default calendar of a Microsoft 365 group. Contains event details, scheduling, recurrence, attendees, and location information.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Unique identifier for the event.",
+      "example": "abc123"
+    },
+    "subject": {
+      "type": "string",
+      "description": "The text of the event's subject line.",
+      "example": "example_value"
+    },
+    "body": {
+      "$ref": "#/components/schemas/ItemBody"
+    },
+    "bodyPreview": {
+      "type": "string",
+      "readOnly": true,
+      "description": "A preview of the message associated with the event.",
+      "example": "example_value"
+    },
+    "start": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "end": {
+      "$ref": "#/components/schemas/DateTimeTimeZone"
+    },
+    "location": {
+      "$ref": "#/components/schemas/Location"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Location"
+      },
+      "description": "The locations where the event is held or attended from.",
+      "example": []
+    },
+    "attendees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attendee"
+      },
+      "description": "The collection of attendees for the event.",
+      "example": []
+    },
+    "organizer": {
+      "$ref": "#/components/schemas/Recipient"
+    },
+    "isAllDay": {
+      "type": "boolean",
+      "description": "Set to true if the event lasts all day.",
+      "example": true
+    },
+    "isCancelled": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "Set to true if the event has been canceled.",
+      "example": true
+    },
+    "isOrganizer": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "Set to true if the calendar owner is the organizer.",
+      "example": true
+    },
+    "isOnlineMeeting": {
+      "type": "boolean",
+      "description": "Whether the event is an online meeting.",
+      "example": true
+    },
+    "onlineMeetingProvider": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "teamsForBusiness",
+        "skypeForBusiness",
+        "skypeForConsumer"
+      ],
+      "description": "The online meeting service provider.",
+      "example": "unknown"
+    },
+    "onlineMeetingUrl": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true,
+      "description": "A URL for an online meeting.",
+      "example": "https://www.example.com"
+    },
+    "onlineMeeting": {
+      "$ref": "#/components/schemas/OnlineMeetingInfo"
+    },
+    "recurrence": {
+      "$ref": "#/components/schemas/PatternedRecurrence"
+    },
+    "seriesMasterId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The ID for the recurring series master item.",
+      "example": "500123"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "singleInstance",
+        "occurrence",
+        "exception",
+        "seriesMaster"
+      ],
+      "readOnly": true,
+      "description": "The event type.",
+      "example": "singleInstance"
+    },
+    "showAs": {
+      "type": "string",
+      "enum": [
+        "free",
+        "tentative",
+        "busy",
+        "oof",
+        "workingElsewhere",
+        "unknown"
+      ],
+      "description": "The status to show.",
+      "example": "free"
+    },
+    "importance": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high"
+      ],
+      "description": "The importance of the event.",
+      "example": "low"
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "personal",
+        "private",
+        "confidential"
+      ],
+      "description": "The sensitivity of the event.",
+      "example": "normal"
+    },
+    "responseStatus": {
+      "$ref": "#/components/schemas/ResponseStatus"
+    },
+    "responseRequested": {
+      "type": "boolean",
+      "description": "Whether the organizer would like an invitee to send a response.",
+      "example": true
+    },
+    "allowNewTimeProposals": {
+      "type": "boolean",
+      "description": "Whether new time proposals are allowed for the event.",
+      "example": true
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The categories associated with the event.",
+      "example": []
+    },
+    "hasAttachments": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "Whether the event has attachments.",
+      "example": true
+    },
+    "iCalUId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "A unique identifier across calendars (RFC 2445).",
+      "example": "500123"
+    },
+    "webLink": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true,
+      "description": "The URL to open the event in Outlook on the web.",
+      "example": "https://www.example.com"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The date and time the event was created.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The date and time the event was last modified.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "reminderMinutesBeforeStart": {
+      "type": "integer",
+      "description": "The number of minutes before the event start time for the reminder alert.",
+      "example": 10
+    },
+    "transactionId": {
+      "type": "string",
+      "description": "A custom identifier for the client to avoid redundant POST operations when client retries.",
+      "example": "500123"
+    }
+  }
+}

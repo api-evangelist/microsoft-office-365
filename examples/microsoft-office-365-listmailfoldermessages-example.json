@@ -1,0 +1,47 @@
+{
+  "operationId": "listMailFolderMessages",
+  "method": "GET",
+  "path": "/me/mailFolders/{mailFolder-id}/messages",
+  "summary": "Microsoft Office 365 List Messages in Folder",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listmailfoldermessages200Example",
+      "example": {
+        "@odata.context": "example_value",
+        "@odata.count": 10,
+        "@odata.nextLink": "https://www.example.com",
+        "value": [
+          {
+            "id": "abc123",
+            "subject": "example_value",
+            "bodyPreview": "example_value",
+            "toRecipients": {},
+            "ccRecipients": {},
+            "bccRecipients": {},
+            "replyTo": {},
+            "conversationId": "500123",
+            "conversationIndex": "example_value",
+            "receivedDateTime": "2026-01-15T10:30:00Z",
+            "sentDateTime": "2026-01-15T10:30:00Z",
+            "createdDateTime": "2026-01-15T10:30:00Z",
+            "lastModifiedDateTime": "2026-01-15T10:30:00Z",
+            "hasAttachments": true,
+            "internetMessageId": "500123",
+            "importance": "low",
+            "isRead": true,
+            "isDraft": true,
+            "isDeliveryReceiptRequested": true,
+            "isReadReceiptRequested": true,
+            "categories": {},
+            "parentFolderId": "500123",
+            "webLink": "https://www.example.com",
+            "inferenceClassification": "focused"
+          }
+        ]
+      }
+    }
+  ]
+}

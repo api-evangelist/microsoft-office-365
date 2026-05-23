@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageCollectionResponse",
+  "title": "MessageCollectionResponse",
+  "type": "object",
+  "properties": {
+    "@odata.context": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "@odata.count": {
+      "type": "integer",
+      "example": 10
+    },
+    "@odata.nextLink": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://www.example.com"
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Message"
+      },
+      "example": []
+    }
+  }
+}

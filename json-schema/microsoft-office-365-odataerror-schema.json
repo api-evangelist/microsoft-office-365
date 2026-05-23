@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ODataError",
+  "title": "ODataError",
+  "type": "object",
+  "description": "The error response from the Microsoft Graph API following OData conventions.",
+  "properties": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "The error code string."
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable error message."
+        },
+        "innerError": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "request-id": {
+              "type": "string"
+            },
+            "client-request-id": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

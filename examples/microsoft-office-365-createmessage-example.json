@@ -1,0 +1,89 @@
+{
+  "operationId": "createMessage",
+  "method": "POST",
+  "path": "/me/messages",
+  "summary": "Microsoft Office 365 Create Draft Message",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatemessageRequestExample",
+      "example": {
+        "subject": "example_value",
+        "body": {
+          "contentType": "text",
+          "content": "example_value"
+        },
+        "toRecipients": [
+          {}
+        ],
+        "ccRecipients": [
+          {}
+        ],
+        "bccRecipients": [
+          {}
+        ],
+        "replyTo": [
+          {}
+        ],
+        "importance": "low",
+        "isDeliveryReceiptRequested": true,
+        "isReadReceiptRequested": true,
+        "categories": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Createmessage201Example",
+      "example": {
+        "id": "abc123",
+        "subject": "example_value",
+        "body": {
+          "contentType": "text",
+          "content": "example_value"
+        },
+        "bodyPreview": "example_value",
+        "sender": {},
+        "from": {},
+        "toRecipients": [
+          {}
+        ],
+        "ccRecipients": [
+          {}
+        ],
+        "bccRecipients": [
+          {}
+        ],
+        "replyTo": [
+          {}
+        ],
+        "conversationId": "500123",
+        "conversationIndex": "example_value",
+        "receivedDateTime": "2026-01-15T10:30:00Z",
+        "sentDateTime": "2026-01-15T10:30:00Z",
+        "createdDateTime": "2026-01-15T10:30:00Z",
+        "lastModifiedDateTime": "2026-01-15T10:30:00Z",
+        "hasAttachments": true,
+        "internetMessageId": "500123",
+        "importance": "low",
+        "isRead": true,
+        "isDraft": true,
+        "isDeliveryReceiptRequested": true,
+        "isReadReceiptRequested": true,
+        "flag": {
+          "flagStatus": "notFlagged"
+        },
+        "categories": [
+          "example_value"
+        ],
+        "parentFolderId": "500123",
+        "webLink": "https://www.example.com",
+        "inferenceClassification": "focused"
+      }
+    }
+  ]
+}

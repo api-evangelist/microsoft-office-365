@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ItemBody",
+  "title": "ItemBody",
+  "type": "object",
+  "description": "Represents properties of the body of a message or event.",
+  "properties": {
+    "contentType": {
+      "type": "string",
+      "enum": [
+        "text",
+        "html"
+      ],
+      "description": "The type of the content. Possible values are text and html.",
+      "example": "text"
+    },
+    "content": {
+      "type": "string",
+      "description": "The content of the item.",
+      "example": "example_value"
+    }
+  }
+}

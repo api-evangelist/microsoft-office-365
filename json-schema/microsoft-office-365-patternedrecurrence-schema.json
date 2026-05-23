@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PatternedRecurrence",
+  "title": "PatternedRecurrence",
+  "type": "object",
+  "description": "The recurrence pattern and range.",
+  "properties": {
+    "pattern": {
+      "$ref": "#/components/schemas/RecurrencePattern"
+    },
+    "range": {
+      "$ref": "#/components/schemas/RecurrenceRange"
+    }
+  }
+}

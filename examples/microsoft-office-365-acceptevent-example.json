@@ -1,0 +1,17 @@
+{
+  "operationId": "acceptEvent",
+  "method": "POST",
+  "path": "/me/events/{event-id}/accept",
+  "summary": "Microsoft Office 365 Accept Event",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "AccepteventRequestExample",
+      "example": {
+        "comment": "example_value",
+        "sendResponse": true
+      }
+    }
+  ],
+  "responseExamples": []
+}

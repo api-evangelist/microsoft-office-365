@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageCreateRequest",
+  "title": "MessageCreateRequest",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "The subject of the message.",
+      "example": "example_value"
+    },
+    "body": {
+      "$ref": "#/components/schemas/ItemBody"
+    },
+    "toRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "example": []
+    },
+    "ccRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "example": []
+    },
+    "bccRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "example": []
+    },
+    "replyTo": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "example": []
+    },
+    "importance": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high"
+      ],
+      "example": "low"
+    },
+    "isDeliveryReceiptRequested": {
+      "type": "boolean",
+      "example": true
+    },
+    "isReadReceiptRequested": {
+      "type": "boolean",
+      "example": true
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    }
+  }
+}

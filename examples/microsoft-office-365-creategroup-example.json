@@ -1,0 +1,71 @@
+{
+  "operationId": "createGroup",
+  "method": "POST",
+  "path": "/groups",
+  "summary": "Microsoft Office 365 Create Group",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreategroupRequestExample",
+      "example": {
+        "displayName": "example_value",
+        "description": "A sample description.",
+        "mailEnabled": true,
+        "mailNickname": "example_value",
+        "securityEnabled": true,
+        "groupTypes": [
+          "example_value"
+        ],
+        "visibility": "Public",
+        "owners@odata.bind": [
+          "example_value"
+        ],
+        "members@odata.bind": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "Creategroup201Example",
+      "example": {
+        "id": "abc123",
+        "displayName": "example_value",
+        "description": "A sample description.",
+        "mail": "example_value",
+        "mailEnabled": true,
+        "mailNickname": "example_value",
+        "securityEnabled": true,
+        "groupTypes": [
+          "example_value"
+        ],
+        "visibility": "Public",
+        "createdDateTime": "2026-01-15T10:30:00Z",
+        "renewedDateTime": "2026-01-15T10:30:00Z",
+        "classification": "example_value",
+        "membershipRule": "example_value",
+        "membershipRuleProcessingState": "On",
+        "resourceProvisioningOptions": [
+          "example_value"
+        ],
+        "members": [
+          {
+            "@odata.type": "example_value",
+            "id": "abc123",
+            "displayName": "example_value"
+          }
+        ],
+        "owners": [
+          {
+            "@odata.type": "example_value",
+            "id": "abc123",
+            "displayName": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

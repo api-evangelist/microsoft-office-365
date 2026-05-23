@@ -1,0 +1,16 @@
+{
+  "operationId": "addGroupMember",
+  "method": "POST",
+  "path": "/groups/{group-id}/members/$ref",
+  "summary": "Microsoft Office 365 Add Group Member",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "AddgroupmemberRequestExample",
+      "example": {
+        "@odata.id": "500123"
+      }
+    }
+  ],
+  "responseExamples": []
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserUpdateRequest",
+  "title": "UserUpdateRequest",
+  "type": "object",
+  "properties": {
+    "displayName": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "givenName": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "surname": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "jobTitle": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "department": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "officeLocation": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "mobilePhone": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "businessPhones": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "streetAddress": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "city": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "state": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "postalCode": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "country": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "preferredLanguage": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "accountEnabled": {
+      "type": "boolean",
+      "example": true
+    },
+    "usageLocation": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "passwordProfile": {
+      "$ref": "#/components/schemas/PasswordProfile"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmailAddress",
+  "title": "EmailAddress",
+  "type": "object",
+  "description": "The name and email address of a contact or message recipient.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The display name of the person or entity.",
+      "example": "Example Title"
+    },
+    "address": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the person or entity.",
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Attendee",
+  "title": "Attendee",
+  "type": "object",
+  "description": "An event attendee that can be a person or resource.",
+  "properties": {
+    "emailAddress": {
+      "$ref": "#/components/schemas/EmailAddress"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "required",
+        "optional",
+        "resource"
+      ],
+      "description": "The type of attendee.",
+      "example": "required"
+    },
+    "status": {
+      "$ref": "#/components/schemas/ResponseStatus"
+    },
+    "proposedNewTime": {
+      "$ref": "#/components/schemas/TimeSlot"
+    }
+  }
+}

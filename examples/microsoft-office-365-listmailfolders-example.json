@@ -1,0 +1,29 @@
+{
+  "operationId": "listMailFolders",
+  "method": "GET",
+  "path": "/me/mailFolders",
+  "summary": "Microsoft Office 365 List Mail Folders",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listmailfolders200Example",
+      "example": {
+        "@odata.context": "example_value",
+        "@odata.nextLink": "https://www.example.com",
+        "value": [
+          {
+            "id": "abc123",
+            "displayName": "example_value",
+            "parentFolderId": "500123",
+            "childFolderCount": 10,
+            "totalItemCount": 10,
+            "unreadItemCount": 10,
+            "isHidden": true
+          }
+        ]
+      }
+    }
+  ]
+}

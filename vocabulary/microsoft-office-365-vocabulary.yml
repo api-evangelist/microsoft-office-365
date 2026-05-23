@@ -1,0 +1,17 @@
+name: Microsoft Office 365 Domain Vocabulary
+provider: Microsoft Office 365
+providerId: microsoft-office-365
+description: Tag-derived vocabulary for the Microsoft Office 365 API surface; sourced from openapi/ tags.
+terms:
+- term: Calendar
+  description: Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling, meeting management,
+    and free/busy lookups.
+- term: Groups
+  description: Manage Microsoft 365 groups and security groups. Groups provide shared access to resources such as SharePoint
+    sites, shared mailboxes, Planner plans, OneNote notebooks, and conversations.
+- term: Mail
+  description: Access and manage Outlook mail messages, mail folders, and message attachments. Supports reading, creating,
+    sending, replying, forwarding, and organizing email.
+- term: Users
+  description: Manage users in Azure Active Directory. Users are the core identity resource representing a person, including
+    their profile, organizational relationships, and access to services.

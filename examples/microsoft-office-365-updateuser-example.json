@@ -1,0 +1,38 @@
+{
+  "operationId": "updateUser",
+  "method": "PATCH",
+  "path": "/users/{user-id}",
+  "summary": "Microsoft Office 365 Update User",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdateuserRequestExample",
+      "example": {
+        "displayName": "example_value",
+        "givenName": "example_value",
+        "surname": "example_value",
+        "jobTitle": "example_value",
+        "department": "example_value",
+        "officeLocation": "example_value",
+        "mobilePhone": "example_value",
+        "businessPhones": [
+          "example_value"
+        ],
+        "streetAddress": "example_value",
+        "city": "example_value",
+        "state": "example_value",
+        "postalCode": "example_value",
+        "country": "example_value",
+        "preferredLanguage": "example_value",
+        "accountEnabled": true,
+        "usageLocation": "example_value",
+        "passwordProfile": {
+          "forceChangePasswordNextSignIn": true,
+          "forceChangePasswordNextSignInWithMfa": true,
+          "password": "example_value"
+        }
+      }
+    }
+  ],
+  "responseExamples": []
+}

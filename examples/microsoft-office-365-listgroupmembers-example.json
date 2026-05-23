@@ -1,0 +1,26 @@
+{
+  "operationId": "listGroupMembers",
+  "method": "GET",
+  "path": "/groups/{group-id}/members",
+  "summary": "Microsoft Office 365 List Group Members",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listgroupmembers200Example",
+      "example": {
+        "@odata.context": "example_value",
+        "@odata.count": 10,
+        "@odata.nextLink": "https://www.example.com",
+        "value": [
+          {
+            "@odata.type": "example_value",
+            "id": "abc123",
+            "displayName": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

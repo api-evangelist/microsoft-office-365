@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserCreateRequest",
+  "title": "UserCreateRequest",
+  "type": "object",
+  "required": [
+    "accountEnabled",
+    "displayName",
+    "mailNickname",
+    "userPrincipalName",
+    "passwordProfile"
+  ],
+  "properties": {
+    "accountEnabled": {
+      "type": "boolean",
+      "description": "True if the account is enabled; otherwise, false.",
+      "example": true
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The name to display in the address book for the user.",
+      "example": "example_value"
+    },
+    "mailNickname": {
+      "type": "string",
+      "description": "The mail alias for the user.",
+      "example": "example_value"
+    },
+    "userPrincipalName": {
+      "type": "string",
+      "description": "The user principal name (someuser@contoso.com).",
+      "example": "example_value"
+    },
+    "passwordProfile": {
+      "$ref": "#/components/schemas/PasswordProfile"
+    },
+    "givenName": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "surname": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "jobTitle": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "department": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "officeLocation": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "mobilePhone": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "usageLocation": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

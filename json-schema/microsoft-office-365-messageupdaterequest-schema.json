@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageUpdateRequest",
+  "title": "MessageUpdateRequest",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "body": {
+      "$ref": "#/components/schemas/ItemBody"
+    },
+    "toRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "example": []
+    },
+    "ccRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "example": []
+    },
+    "bccRecipients": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Recipient"
+      },
+      "example": []
+    },
+    "importance": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high"
+      ],
+      "example": "low"
+    },
+    "isRead": {
+      "type": "boolean",
+      "example": true
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "flag": {
+      "$ref": "#/components/schemas/FollowupFlag"
+    },
+    "inferenceClassification": {
+      "type": "string",
+      "enum": [
+        "focused",
+        "other"
+      ],
+      "example": "focused"
+    }
+  }
+}
