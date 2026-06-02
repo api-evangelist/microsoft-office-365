@@ -2,12 +2,20 @@
   "repo": "microsoft-office-365",
   "feeds": [
     {
-      "source": "https://developer.microsoft.com/en-us/graph/blogs/",
+      "source": "https://developer.microsoft.com/en-us/graph/blogs/feed/",
       "feed_url": "https://developer.microsoft.com/en-us/graph/blogs/feed/",
-      "title": "Microsoft 365 Developer Blog",
-      "saved": 8
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://developer.microsoft.com/en-us/graph/support",
+      "feed_url": "https://developer.microsoft.com/en-us/graph/support",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 20,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 21,
+  "fetched": "2026-06-01T23:35:02Z"
 }
