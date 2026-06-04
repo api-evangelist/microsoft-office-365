@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Reschedule Event
+  summary: Create an event, patch its start and end times, then read it back.
+  description: >-
+    Moves a meeting to a new time slot. The workflow creates an event, patches
+    the event to change its start and end times (the update returns 200 with the
+    revised event), and then reads the event back to confirm the new schedule.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reschedule-event
+  summary: Create an event then move it to a new time.
+  description: >-
+    Creates an event via POST /me/events (201), updates its time via PATCH
+    /me/events/{event-id} (200), then reads it via GET /me/events/{event-id}
+    (200) to confirm.
+  inputs:
+    type: object
+    required:
+    - subject
+    - originalStart
+    - originalEnd
+    - newStart
+    - newEnd
+    - timeZone
+    properties:
+      subject:
+        type: string
+        description: The subject of the event.
+      originalStart:
+        type: string
+        description: The original start date-time.
+      originalEnd:
+        type: string
+        description: The original end date-time.
+      newStart:
+        type: string
+        description: The new start date-time to move the event to.
+      newEnd:
+        type: string
+        description: The new end date-time to move the event to.
+      timeZone:
+        type: string
+        description: The time zone name for all date-times.
+  steps:
+  - stepId: createEvent
+    description: Create an event at its original time on the default calendar.
+    operationId: createEvent
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        start:
+          dateTime: $inputs.originalStart
+          timeZone: $inputs.timeZone
+        end:
+          dateTime: $inputs.originalEnd
+          timeZone: $inputs.timeZone
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+  - stepId: moveEvent
+    description: >-
+      Patch the event to change its start and end times. Returns the updated
+      event object.
+    operationId: updateEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.createEvent.outputs.eventId
+    requestBody:
+      contentType: application/json
+      payload:
+        start:
+          dateTime: $inputs.newStart
+          timeZone: $inputs.timeZone
+        end:
+          dateTime: $inputs.newEnd
+          timeZone: $inputs.timeZone
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedStart: $response.body#/start
+  - stepId: confirmEvent
+    description: Read the event back to confirm the new schedule persisted.
+    operationId: getEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.createEvent.outputs.eventId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      start: $response.body#/start
+      end: $response.body#/end
+  outputs:
+    eventId: $steps.createEvent.outputs.eventId
+    start: $steps.confirmEvent.outputs.start
+    end: $steps.confirmEvent.outputs.end

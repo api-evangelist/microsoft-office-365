@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Triage Inbox Message
+  summary: Read the latest inbox message, then mark it as read and categorize it.
+  description: >-
+    An inbox triage flow over the signed-in user's mailbox. The workflow lists
+    the most recent message in the well-known inbox folder, fetches that message
+    by id for its full content, and then patches the message to mark it read and
+    apply a category. The update returns 200 with the revised message. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: triage-inbox-message
+  summary: Pull the newest inbox message and mark it read with a category.
+  description: >-
+    Lists inbox messages newest-first via GET /me/mailFolders/{mailFolder-id}/messages
+    (200), reads the top message via GET /me/messages/{message-id} (200), then
+    patches it via PATCH /me/messages/{message-id} (200).
+  inputs:
+    type: object
+    required:
+    - category
+    properties:
+      category:
+        type: string
+        description: The category label to apply to the triaged message.
+  steps:
+  - stepId: listInbox
+    description: >-
+      List messages in the well-known inbox folder ordered by received date
+      descending, returning the most recent message first.
+    operationId: listMailFolderMessages
+    parameters:
+    - name: mailFolder-id
+      in: path
+      value: inbox
+    - name: $orderby
+      in: query
+      value: receivedDateTime desc
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      latestMessageId: $response.body#/value/0/id
+  - stepId: readMessage
+    description: Fetch the latest message by id to retrieve its full content.
+    operationId: getMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.listInbox.outputs.latestMessageId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      messageId: $response.body#/id
+      subject: $response.body#/subject
+  - stepId: markReadAndCategorize
+    description: >-
+      Patch the message to mark it as read and apply the supplied category.
+      Returns the updated message object.
+    operationId: updateMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.readMessage.outputs.messageId
+    requestBody:
+      contentType: application/json
+      payload:
+        isRead: true
+        categories:
+        - $inputs.category
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      isRead: $response.body#/isRead
+      categories: $response.body#/categories
+  outputs:
+    messageId: $steps.readMessage.outputs.messageId
+    subject: $steps.readMessage.outputs.subject
+    categories: $steps.markReadAndCategorize.outputs.categories

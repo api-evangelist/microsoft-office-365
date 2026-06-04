@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Schedule and Accept Event
+  summary: Create an event, then accept it on behalf of the signed-in user.
+  description: >-
+    Books a meeting and immediately confirms attendance. The workflow creates an
+    event on the default calendar, then accepts that same event so the signed-in
+    user's response is recorded as accepted. The create returns 201 and the
+    accept action returns 202 Accepted. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: schedule-and-accept-event
+  summary: Create an event and accept it in one chain.
+  description: >-
+    Creates an event via POST /me/events (201), then accepts it via POST
+    /me/events/{event-id}/accept (202).
+  inputs:
+    type: object
+    required:
+    - subject
+    - startDateTime
+    - endDateTime
+    - timeZone
+    properties:
+      subject:
+        type: string
+        description: The subject of the event.
+      startDateTime:
+        type: string
+        description: The event start date-time.
+      endDateTime:
+        type: string
+        description: The event end date-time.
+      timeZone:
+        type: string
+        description: The time zone name for the date-times.
+      comment:
+        type: string
+        description: An optional comment included with the acceptance.
+  steps:
+  - stepId: createEvent
+    description: Create the event on the default calendar.
+    operationId: createEvent
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        start:
+          dateTime: $inputs.startDateTime
+          timeZone: $inputs.timeZone
+        end:
+          dateTime: $inputs.endDateTime
+          timeZone: $inputs.timeZone
+        responseRequested: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+  - stepId: acceptEvent
+    description: >-
+      Accept the newly created event, optionally sending a comment. Returns 202
+      Accepted.
+    operationId: acceptEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.createEvent.outputs.eventId
+    requestBody:
+      contentType: application/json
+      payload:
+        comment: $inputs.comment
+        sendResponse: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      acceptedEventId: $steps.createEvent.outputs.eventId
+  outputs:
+    eventId: $steps.createEvent.outputs.eventId
+    acceptedEventId: $steps.acceptEvent.outputs.acceptedEventId

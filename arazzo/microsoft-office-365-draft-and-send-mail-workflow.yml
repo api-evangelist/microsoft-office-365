@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Draft and Send Mail
+  summary: Create a draft message, read it back, then send it from the mailbox.
+  description: >-
+    A review-then-send mail flow against the signed-in user's mailbox. The
+    workflow creates a draft message in the Drafts folder, reads the draft back
+    to confirm its content, and then sends an equivalent message via the sendMail
+    action. The sendMail action returns 202 Accepted because delivery is
+    asynchronous. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: draft-and-send-mail
+  summary: Draft a message, verify it, then send mail to a recipient.
+  description: >-
+    Creates a draft via POST /me/messages (201), reads it via GET
+    /me/messages/{message-id} (200), then sends mail via POST /me/sendMail (202).
+  inputs:
+    type: object
+    required:
+    - subject
+    - bodyContent
+    - toAddress
+    properties:
+      subject:
+        type: string
+        description: The subject line of the message.
+      bodyContent:
+        type: string
+        description: The plain-text body content of the message.
+      toAddress:
+        type: string
+        description: The email address of the primary recipient.
+      toName:
+        type: string
+        description: The display name of the primary recipient.
+  steps:
+  - stepId: createDraft
+    description: >-
+      Create a draft message in the signed-in user's Drafts folder with the
+      supplied subject, body, and recipient.
+    operationId: createMessage
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        body:
+          contentType: text
+          content: $inputs.bodyContent
+        toRecipients:
+        - emailAddress:
+            address: $inputs.toAddress
+            name: $inputs.toName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      messageId: $response.body#/id
+  - stepId: reviewDraft
+    description: Read the draft back by id to confirm its content before sending.
+    operationId: getMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.createDraft.outputs.messageId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+      isDraft: $response.body#/isDraft
+  - stepId: sendMail
+    description: >-
+      Send an equivalent message to the recipient and save a copy to Sent Items.
+      Returns 202 Accepted as delivery is queued asynchronously.
+    operationId: sendMail
+    requestBody:
+      contentType: application/json
+      payload:
+        message:
+          subject: $inputs.subject
+          body:
+            contentType: text
+            content: $inputs.bodyContent
+          toRecipients:
+          - emailAddress:
+              address: $inputs.toAddress
+              name: $inputs.toName
+        saveToSentItems: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      sentSubject: $inputs.subject
+  outputs:
+    draftMessageId: $steps.createDraft.outputs.messageId
+    sentSubject: $steps.sendMail.outputs.sentSubject

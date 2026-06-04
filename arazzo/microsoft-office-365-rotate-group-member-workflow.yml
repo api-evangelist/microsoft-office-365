@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Rotate Group Member
+  summary: Remove one member from a group, add another, then list members to confirm.
+  description: >-
+    Swaps one user out of a group for another in a single coordinated flow. The
+    workflow removes an existing member from the group's members collection, adds
+    a replacement user by binding the replacement's directory object reference,
+    and then lists the group members to confirm the rotation. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: rotate-group-member
+  summary: Replace a group member with a different user.
+  description: >-
+    Removes a member via DELETE /groups/{group-id}/members/{directoryObject-id}/$ref
+    (204), adds a replacement via POST /groups/{group-id}/members/$ref (204),
+    then lists members (200) to confirm.
+  inputs:
+    type: object
+    required:
+    - groupId
+    - outgoingMemberId
+    - incomingMemberId
+    properties:
+      groupId:
+        type: string
+        description: The id of the group whose membership is being rotated.
+      outgoingMemberId:
+        type: string
+        description: The directory object id of the member to remove.
+      incomingMemberId:
+        type: string
+        description: The directory object id of the user to add as the replacement.
+  steps:
+  - stepId: removeMember
+    description: Remove the outgoing member from the group's members collection.
+    operationId: removeGroupMember
+    parameters:
+    - name: group-id
+      in: path
+      value: $inputs.groupId
+    - name: directoryObject-id
+      in: path
+      value: $inputs.outgoingMemberId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      removedMemberId: $inputs.outgoingMemberId
+  - stepId: addMember
+    description: >-
+      Add the incoming user as a replacement member by binding their directory
+      object URL.
+    operationId: addGroupMember
+    parameters:
+    - name: group-id
+      in: path
+      value: $inputs.groupId
+    requestBody:
+      contentType: application/json
+      payload:
+        '@odata.id': https://graph.microsoft.com/v1.0/directoryObjects/$inputs.incomingMemberId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      addedMemberId: $inputs.incomingMemberId
+  - stepId: confirmMembers
+    description: List the group's members to confirm the rotation completed.
+    operationId: listGroupMembers
+    parameters:
+    - name: group-id
+      in: path
+      value: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      members: $response.body#/value
+  outputs:
+    groupId: $inputs.groupId
+    removedMemberId: $steps.removeMember.outputs.removedMemberId
+    addedMemberId: $steps.addMember.outputs.addedMemberId
+    members: $steps.confirmMembers.outputs.members

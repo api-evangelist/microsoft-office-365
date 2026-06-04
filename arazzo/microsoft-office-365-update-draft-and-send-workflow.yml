@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Update Draft and Send
+  summary: Create a draft, patch its subject and body, then send the updated message.
+  description: >-
+    Refines a draft before sending it. The workflow creates an initial draft
+    message, patches the draft to update its subject and body (the update returns
+    200 with the revised message), and then sends a message carrying the updated
+    content. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-draft-and-send
+  summary: Draft, revise, and send a message in one chain.
+  description: >-
+    Creates a draft via POST /me/messages (201), updates it via PATCH
+    /me/messages/{message-id} (200), then sends via POST /me/sendMail (202).
+  inputs:
+    type: object
+    required:
+    - initialSubject
+    - revisedSubject
+    - revisedBody
+    - toAddress
+    properties:
+      initialSubject:
+        type: string
+        description: The subject used when first creating the draft.
+      revisedSubject:
+        type: string
+        description: The final subject applied during the update and send.
+      revisedBody:
+        type: string
+        description: The final plain-text body content.
+      toAddress:
+        type: string
+        description: The email address of the primary recipient.
+  steps:
+  - stepId: createDraft
+    description: Create an initial draft message with a placeholder subject.
+    operationId: createMessage
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.initialSubject
+        body:
+          contentType: text
+          content: Draft in progress.
+        toRecipients:
+        - emailAddress:
+            address: $inputs.toAddress
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      messageId: $response.body#/id
+  - stepId: reviseDraft
+    description: >-
+      Patch the draft to apply the final subject and body. The update returns
+      the revised message object.
+    operationId: updateMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.createDraft.outputs.messageId
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.revisedSubject
+        body:
+          contentType: text
+          content: $inputs.revisedBody
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      revisedSubject: $response.body#/subject
+  - stepId: sendMail
+    description: Send a message carrying the revised subject and body. Returns 202.
+    operationId: sendMail
+    requestBody:
+      contentType: application/json
+      payload:
+        message:
+          subject: $inputs.revisedSubject
+          body:
+            contentType: text
+            content: $inputs.revisedBody
+          toRecipients:
+          - emailAddress:
+              address: $inputs.toAddress
+        saveToSentItems: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      sentSubject: $inputs.revisedSubject
+  outputs:
+    draftMessageId: $steps.createDraft.outputs.messageId
+    sentSubject: $steps.sendMail.outputs.sentSubject

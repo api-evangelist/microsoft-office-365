@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Find or Create Group
+  summary: Look up a group by display name and create it only if it does not exist.
+  description: >-
+    An idempotent group provisioning pattern. The workflow searches existing
+    groups with an OData filter on displayName, then branches: when a match is
+    found it reads that group, and when no match is found it creates a new group.
+    This avoids duplicate groups when a provisioning job runs more than once.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-or-create-group
+  summary: Resolve a group by display name, creating it when absent.
+  description: >-
+    Lists groups filtered by displayName (200), and branches on whether a match
+    exists: reads the matched group via GET /groups/{group-id} (200), or creates
+    a new group via POST /groups (201).
+  inputs:
+    type: object
+    required:
+    - displayName
+    - mailNickname
+    properties:
+      displayName:
+        type: string
+        description: The display name to search for and, if missing, create.
+      mailNickname:
+        type: string
+        description: The mail alias to use when creating the group.
+      description:
+        type: string
+        description: An optional description used when creating the group.
+  steps:
+  - stepId: findGroup
+    description: >-
+      Search existing groups for one whose displayName equals the supplied
+      value, returning at most one match.
+    operationId: listGroups
+    parameters:
+    - name: $filter
+      in: query
+      value: "displayName eq '$inputs.displayName'"
+    - name: $top
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedGroupId: $response.body#/value/0/id
+    onSuccess:
+    - name: groupExists
+      type: goto
+      stepId: readExisting
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: groupMissing
+      type: goto
+      stepId: createNew
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: readExisting
+    description: Read the matched group by id to return its full properties.
+    operationId: getGroup
+    parameters:
+    - name: group-id
+      in: path
+      value: $steps.findGroup.outputs.matchedGroupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      groupId: $response.body#/id
+      displayName: $response.body#/displayName
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: createNew
+    description: >-
+      Create a new Microsoft 365 group when no existing group matched the
+      supplied display name.
+    operationId: createGroup
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.displayName
+        description: $inputs.description
+        mailEnabled: true
+        mailNickname: $inputs.mailNickname
+        securityEnabled: false
+        groupTypes:
+        - Unified
+        visibility: Private
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      groupId: $response.body#/id
+      displayName: $response.body#/displayName
+  outputs:
+    groupId: $steps.readExisting.outputs.groupId
+    createdGroupId: $steps.createNew.outputs.groupId

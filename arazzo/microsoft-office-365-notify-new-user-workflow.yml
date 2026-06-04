@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Notify New User
+  summary: Create a user, then send a welcome email to their new mailbox address.
+  description: >-
+    A cross-resource onboarding flow spanning the Users and Mail resources. The
+    workflow creates a new user, reads the user back to capture the resolved
+    userPrincipalName, and then sends a welcome email addressed to that user from
+    the signed-in account. The create returns 201 and the sendMail action returns
+    202 Accepted. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: notify-new-user
+  summary: Provision a user and email them a welcome message.
+  description: >-
+    Creates a user via POST /users (201), reads it via GET /users/{user-id}
+    (200), then sends a welcome email via POST /me/sendMail (202).
+  inputs:
+    type: object
+    required:
+    - displayName
+    - mailNickname
+    - userPrincipalName
+    - password
+    - welcomeBody
+    properties:
+      displayName:
+        type: string
+        description: The display name for the new user.
+      mailNickname:
+        type: string
+        description: The mail alias for the new user.
+      userPrincipalName:
+        type: string
+        description: The user principal name, also used as the welcome email recipient.
+      password:
+        type: string
+        description: The initial password for the user.
+      welcomeBody:
+        type: string
+        description: The plain-text body of the welcome email.
+  steps:
+  - stepId: createUser
+    description: Create a new, enabled user account.
+    operationId: createUser
+    requestBody:
+      contentType: application/json
+      payload:
+        accountEnabled: true
+        displayName: $inputs.displayName
+        mailNickname: $inputs.mailNickname
+        userPrincipalName: $inputs.userPrincipalName
+        passwordProfile:
+          forceChangePasswordNextSignIn: true
+          password: $inputs.password
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      userId: $response.body#/id
+  - stepId: readUser
+    description: >-
+      Read the created user back to capture the resolved userPrincipalName for
+      addressing the welcome email.
+    operationId: getUser
+    parameters:
+    - name: user-id
+      in: path
+      value: $steps.createUser.outputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recipientAddress: $response.body#/userPrincipalName
+      displayName: $response.body#/displayName
+  - stepId: sendWelcome
+    description: >-
+      Send a welcome email from the signed-in account to the new user's address.
+      Returns 202 Accepted.
+    operationId: sendMail
+    requestBody:
+      contentType: application/json
+      payload:
+        message:
+          subject: Welcome to the organization
+          body:
+            contentType: text
+            content: $inputs.welcomeBody
+          toRecipients:
+          - emailAddress:
+              address: $steps.readUser.outputs.recipientAddress
+              name: $steps.readUser.outputs.displayName
+        saveToSentItems: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      notifiedAddress: $steps.readUser.outputs.recipientAddress
+  outputs:
+    userId: $steps.createUser.outputs.userId
+    notifiedAddress: $steps.sendWelcome.outputs.notifiedAddress

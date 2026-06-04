@@ -1,0 +1,71 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Deprovision User
+  summary: Disable a user account, confirm the change, then delete the user.
+  description: >-
+    An offboarding chain that safely removes a user. The workflow first patches
+    the user to disable their account, reads the user back to confirm the account
+    is disabled, and then deletes the user object. The update returns 204 and the
+    delete returns 204, while the read confirms the disabled state in between.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: deprovision-user
+  summary: Disable then delete a user, confirming the disable in between.
+  description: >-
+    Disables a user via PATCH /users/{user-id} (204), confirms via GET
+    /users/{user-id} (200), then deletes via DELETE /users/{user-id} (204).
+  inputs:
+    type: object
+    required:
+    - userId
+    properties:
+      userId:
+        type: string
+        description: The id of the user to deprovision.
+  steps:
+  - stepId: disableUser
+    description: Patch the user to disable their account before deletion.
+    operationId: updateUser
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        accountEnabled: false
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      userId: $inputs.userId
+  - stepId: confirmDisabled
+    description: Read the user back to confirm the account is now disabled.
+    operationId: getUser
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    - condition: $response.body#/accountEnabled == false
+    outputs:
+      accountEnabled: $response.body#/accountEnabled
+  - stepId: deleteUser
+    description: Delete the user object. Returns 204 no content.
+    operationId: deleteUser
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deletedUserId: $inputs.userId
+  outputs:
+    deletedUserId: $steps.deleteUser.outputs.deletedUserId

@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Schedule Event
+  summary: Create a calendar event, then read it back to confirm the booking.
+  description: >-
+    Books a meeting on the signed-in user's default calendar. The workflow
+    creates an event with a subject, start and end times, a location, and an
+    attendee, then reads the event back by id to confirm the booking and capture
+    its web link. The create returns 201. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: schedule-event
+  summary: Create a calendar event and confirm it by reading it back.
+  description: >-
+    Creates an event via POST /me/events (201), then reads it via GET
+    /me/events/{event-id} (200) to confirm the booking.
+  inputs:
+    type: object
+    required:
+    - subject
+    - startDateTime
+    - endDateTime
+    - timeZone
+    properties:
+      subject:
+        type: string
+        description: The subject of the event.
+      startDateTime:
+        type: string
+        description: The event start, e.g. 2026-06-10T15:00:00.
+      endDateTime:
+        type: string
+        description: The event end, e.g. 2026-06-10T16:00:00.
+      timeZone:
+        type: string
+        description: The time zone name, e.g. Pacific Standard Time.
+      locationName:
+        type: string
+        description: The display name of the meeting location.
+      attendeeAddress:
+        type: string
+        description: The email address of an attendee to invite.
+  steps:
+  - stepId: createEvent
+    description: >-
+      Create an event on the default calendar with the supplied subject, time
+      range, location, and a single required attendee.
+    operationId: createEvent
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        start:
+          dateTime: $inputs.startDateTime
+          timeZone: $inputs.timeZone
+        end:
+          dateTime: $inputs.endDateTime
+          timeZone: $inputs.timeZone
+        location:
+          displayName: $inputs.locationName
+        attendees:
+        - type: required
+          emailAddress:
+            address: $inputs.attendeeAddress
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+      webLink: $response.body#/webLink
+  - stepId: confirmEvent
+    description: Read the created event back by id to confirm the booking.
+    operationId: getEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.createEvent.outputs.eventId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventId: $response.body#/id
+      subject: $response.body#/subject
+  outputs:
+    eventId: $steps.confirmEvent.outputs.eventId
+    webLink: $steps.createEvent.outputs.webLink
+    subject: $steps.confirmEvent.outputs.subject

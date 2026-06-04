@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Cancel Event
+  summary: Create an event, read it back to confirm, then delete it from the calendar.
+  description: >-
+    A full event lifecycle that books and then cancels a meeting. The workflow
+    creates an event, reads it back to confirm the booking exists, and then
+    deletes the event from the calendar. The delete returns 204 with no content.
+    This supports tentative bookings that are later withdrawn. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: cancel-event
+  summary: Book an event then cancel it after confirming it exists.
+  description: >-
+    Creates an event via POST /me/events (201), reads it via GET
+    /me/events/{event-id} (200), then deletes it via DELETE /me/events/{event-id}
+    (204).
+  inputs:
+    type: object
+    required:
+    - subject
+    - startDateTime
+    - endDateTime
+    - timeZone
+    properties:
+      subject:
+        type: string
+        description: The subject of the event.
+      startDateTime:
+        type: string
+        description: The event start date-time.
+      endDateTime:
+        type: string
+        description: The event end date-time.
+      timeZone:
+        type: string
+        description: The time zone name for the date-times.
+  steps:
+  - stepId: createEvent
+    description: Create the event on the default calendar.
+    operationId: createEvent
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        start:
+          dateTime: $inputs.startDateTime
+          timeZone: $inputs.timeZone
+        end:
+          dateTime: $inputs.endDateTime
+          timeZone: $inputs.timeZone
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      eventId: $response.body#/id
+  - stepId: confirmEvent
+    description: Read the event back by id to confirm it was booked.
+    operationId: getEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.createEvent.outputs.eventId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+  - stepId: deleteEvent
+    description: Delete the event from the calendar. Returns 204 no content.
+    operationId: deleteEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.createEvent.outputs.eventId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      cancelledEventId: $steps.createEvent.outputs.eventId
+  outputs:
+    cancelledEventId: $steps.deleteEvent.outputs.cancelledEventId

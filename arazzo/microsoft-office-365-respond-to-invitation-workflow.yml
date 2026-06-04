@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Respond to Invitation
+  summary: Read an event, then accept or decline it based on a desired response.
+  description: >-
+    Responds to a meeting invitation on the signed-in user's calendar. The
+    workflow reads the event by id, then branches on the caller's desired
+    response: it either accepts the event or declines it, sending a comment to
+    the organizer in both cases. Both the accept and decline actions return 202
+    Accepted. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: respond-to-invitation
+  summary: Accept or decline a calendar event based on the requested response.
+  description: >-
+    Reads an event via GET /me/events/{event-id} (200), then branches: accepts
+    via POST /me/events/{event-id}/accept (202) or declines via POST
+    /me/events/{event-id}/decline (202).
+  inputs:
+    type: object
+    required:
+    - eventId
+    - response
+    properties:
+      eventId:
+        type: string
+        description: The id of the event to respond to.
+      response:
+        type: string
+        description: The desired response, either "accept" or "decline".
+      comment:
+        type: string
+        description: An optional comment to include in the response to the organizer.
+  steps:
+  - stepId: readEvent
+    description: >-
+      Read the event by id to confirm it exists before responding, and decide
+      which branch to take based on the requested response.
+    operationId: getEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $inputs.eventId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subject: $response.body#/subject
+    onSuccess:
+    - name: chooseAccept
+      type: goto
+      stepId: acceptEvent
+      criteria:
+      - condition: $inputs.response == "accept"
+    - name: chooseDecline
+      type: goto
+      stepId: declineEvent
+      criteria:
+      - condition: $inputs.response == "decline"
+  - stepId: acceptEvent
+    description: >-
+      Accept the event and send a response to the organizer. Returns 202
+      Accepted.
+    operationId: acceptEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $inputs.eventId
+    requestBody:
+      contentType: application/json
+      payload:
+        comment: $inputs.comment
+        sendResponse: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      outcome: accepted
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: declineEvent
+    description: >-
+      Decline the event and send a response to the organizer. Returns 202
+      Accepted.
+    operationId: declineEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $inputs.eventId
+    requestBody:
+      contentType: application/json
+      payload:
+        comment: $inputs.comment
+        sendResponse: true
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      outcome: declined
+  outputs:
+    eventId: $inputs.eventId
+    acceptedOutcome: $steps.acceptEvent.outputs.outcome
+    declinedOutcome: $steps.declineEvent.outputs.outcome

@@ -1,0 +1,76 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Update User Profile
+  summary: Patch a user's profile properties, then read the user back to verify.
+  description: >-
+    Maintains an existing user's directory profile. The workflow patches a user's
+    job title, department, and office location, then reads the user back by id to
+    confirm the changes. Because the update returns 204 with no body, the
+    read-back is the only way to observe the new state. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-user-profile
+  summary: Update a user's profile and confirm via read-back.
+  description: >-
+    Patches a user via PATCH /users/{user-id} (204 no content), then reads the
+    user via GET /users/{user-id} (200) to verify the updated properties.
+  inputs:
+    type: object
+    required:
+    - userId
+    properties:
+      userId:
+        type: string
+        description: The id of the user to update.
+      jobTitle:
+        type: string
+        description: The new job title.
+      department:
+        type: string
+        description: The new department.
+      officeLocation:
+        type: string
+        description: The new office location.
+  steps:
+  - stepId: updateUser
+    description: >-
+      Patch the user with the supplied job title, department, and office
+      location. Only the provided properties change.
+    operationId: updateUser
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    requestBody:
+      contentType: application/json
+      payload:
+        jobTitle: $inputs.jobTitle
+        department: $inputs.department
+        officeLocation: $inputs.officeLocation
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      userId: $inputs.userId
+  - stepId: verifyUser
+    description: Read the user back by id to confirm the updated profile properties.
+    operationId: getUser
+    parameters:
+    - name: user-id
+      in: path
+      value: $inputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+      jobTitle: $response.body#/jobTitle
+      department: $response.body#/department
+  outputs:
+    userId: $steps.verifyUser.outputs.userId
+    jobTitle: $steps.verifyUser.outputs.jobTitle
+    department: $steps.verifyUser.outputs.department

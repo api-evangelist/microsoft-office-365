@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Create Group With Members
+  summary: Create a Microsoft 365 group, add a member, then list members to confirm.
+  description: >-
+    Stands up a new collaboration group and populates it. The workflow creates a
+    mail-enabled Microsoft 365 group, adds an existing directory object (user) as
+    a member through the members navigation property, and then lists the group's
+    members to verify the addition. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-group-with-members
+  summary: Create a group and add an initial member to it.
+  description: >-
+    Creates a group (201), adds a member by directory object id via POST
+    /groups/{group-id}/members/$ref (204), then lists members (200) to confirm.
+  inputs:
+    type: object
+    required:
+    - displayName
+    - mailNickname
+    - memberUserId
+    properties:
+      displayName:
+        type: string
+        description: The display name for the new group.
+      mailNickname:
+        type: string
+        description: The mail alias for the group.
+      description:
+        type: string
+        description: An optional description for the group.
+      memberUserId:
+        type: string
+        description: The directory object id of the user to add as the first member.
+  steps:
+  - stepId: createGroup
+    description: >-
+      Create a unified, mail-enabled Microsoft 365 group with the supplied
+      display name and mail nickname.
+    operationId: createGroup
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.displayName
+        description: $inputs.description
+        mailEnabled: true
+        mailNickname: $inputs.mailNickname
+        securityEnabled: false
+        groupTypes:
+        - Unified
+        visibility: Private
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      groupId: $response.body#/id
+      mail: $response.body#/mail
+  - stepId: addMember
+    description: >-
+      Add the supplied user as a member of the newly created group by binding
+      the user's directory object URL.
+    operationId: addGroupMember
+    parameters:
+    - name: group-id
+      in: path
+      value: $steps.createGroup.outputs.groupId
+    requestBody:
+      contentType: application/json
+      payload:
+        '@odata.id': https://graph.microsoft.com/v1.0/directoryObjects/$inputs.memberUserId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      groupId: $steps.createGroup.outputs.groupId
+  - stepId: listMembers
+    description: List the group's members to confirm the initial member was added.
+    operationId: listGroupMembers
+    parameters:
+    - name: group-id
+      in: path
+      value: $steps.createGroup.outputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      members: $response.body#/value
+      memberCount: $response.body#/@odata.count
+  outputs:
+    groupId: $steps.createGroup.outputs.groupId
+    mail: $steps.createGroup.outputs.mail
+    members: $steps.listMembers.outputs.members

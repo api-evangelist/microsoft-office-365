@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Onboard User to Group
+  summary: Create a user, add them to an existing group, then confirm membership.
+  description: >-
+    A complete onboarding chain across the Users and Groups resources of
+    Microsoft Graph. The workflow creates a new user, adds that user to an
+    existing group by binding the user's directory object reference, and then
+    lists the group members to confirm the new user appears. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: onboard-user-to-group
+  summary: Provision a user and place them into an existing Microsoft 365 group.
+  description: >-
+    Creates a user (201), adds the user to a target group via POST
+    /groups/{group-id}/members/$ref (204), then lists the group's members (200)
+    to confirm the addition.
+  inputs:
+    type: object
+    required:
+    - groupId
+    - displayName
+    - mailNickname
+    - userPrincipalName
+    - password
+    properties:
+      groupId:
+        type: string
+        description: The id of the existing group to add the new user to.
+      displayName:
+        type: string
+        description: The name displayed in the address book for the user.
+      mailNickname:
+        type: string
+        description: The mail alias for the user.
+      userPrincipalName:
+        type: string
+        description: The user principal name (e.g. someone@contoso.com).
+      password:
+        type: string
+        description: The initial password for the user's password profile.
+  steps:
+  - stepId: createUser
+    description: Create a new, enabled user account to be added to the group.
+    operationId: createUser
+    requestBody:
+      contentType: application/json
+      payload:
+        accountEnabled: true
+        displayName: $inputs.displayName
+        mailNickname: $inputs.mailNickname
+        userPrincipalName: $inputs.userPrincipalName
+        passwordProfile:
+          forceChangePasswordNextSignIn: true
+          password: $inputs.password
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      userId: $response.body#/id
+  - stepId: addToGroup
+    description: >-
+      Add the newly created user to the target group by binding the user's
+      directory object URL through the members navigation property.
+    operationId: addGroupMember
+    parameters:
+    - name: group-id
+      in: path
+      value: $inputs.groupId
+    requestBody:
+      contentType: application/json
+      payload:
+        '@odata.id': https://graph.microsoft.com/v1.0/directoryObjects/$steps.createUser.outputs.userId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      addedUserId: $steps.createUser.outputs.userId
+  - stepId: confirmMembership
+    description: >-
+      List the group's direct members to confirm the new user now appears in
+      the membership collection.
+    operationId: listGroupMembers
+    parameters:
+    - name: group-id
+      in: path
+      value: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      members: $response.body#/value
+  outputs:
+    userId: $steps.createUser.outputs.userId
+    groupId: $inputs.groupId
+    members: $steps.confirmMembership.outputs.members

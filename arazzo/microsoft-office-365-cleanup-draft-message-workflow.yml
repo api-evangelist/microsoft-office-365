@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Cleanup Draft Message
+  summary: Create a draft, read it back, then delete it from the mailbox.
+  description: >-
+    A draft lifecycle flow that creates, inspects, and discards a message. The
+    workflow creates a draft message, reads it back to confirm it exists, and
+    then deletes it from the mailbox. The delete returns 204 with no content.
+    This is useful for testing draft creation or for cleaning up abandoned
+    drafts. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: cleanup-draft-message
+  summary: Create a throwaway draft and delete it after confirming it exists.
+  description: >-
+    Creates a draft via POST /me/messages (201), reads it via GET
+    /me/messages/{message-id} (200), then deletes it via DELETE
+    /me/messages/{message-id} (204).
+  inputs:
+    type: object
+    required:
+    - subject
+    properties:
+      subject:
+        type: string
+        description: The subject of the throwaway draft message.
+      bodyContent:
+        type: string
+        description: Optional body content for the draft.
+  steps:
+  - stepId: createDraft
+    description: Create a draft message with the supplied subject and body.
+    operationId: createMessage
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        body:
+          contentType: text
+          content: $inputs.bodyContent
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      messageId: $response.body#/id
+  - stepId: confirmDraft
+    description: Read the draft back by id to confirm it was created.
+    operationId: getMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.createDraft.outputs.messageId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      isDraft: $response.body#/isDraft
+  - stepId: deleteDraft
+    description: Delete the draft message from the mailbox. Returns 204 no content.
+    operationId: deleteMessage
+    parameters:
+    - name: message-id
+      in: path
+      value: $steps.createDraft.outputs.messageId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deletedMessageId: $steps.createDraft.outputs.messageId
+  outputs:
+    deletedMessageId: $steps.deleteDraft.outputs.deletedMessageId

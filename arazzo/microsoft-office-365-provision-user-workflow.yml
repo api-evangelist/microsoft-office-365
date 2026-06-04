@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Provision User
+  summary: Create a new user, then read it back to confirm provisioning.
+  description: >-
+    A foundational onboarding flow against Microsoft Graph. The workflow creates
+    a new user object with the required identity properties and an initial
+    password profile, then immediately reads the created user back by its id to
+    confirm the account exists and capture its server-assigned properties. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-user
+  summary: Create a Microsoft 365 user and confirm it by reading it back.
+  description: >-
+    Creates a user via POST /users (returns 201 with the new id), then fetches
+    the same user via GET /users/{user-id} to verify the account was created.
+  inputs:
+    type: object
+    required:
+    - displayName
+    - mailNickname
+    - userPrincipalName
+    - password
+    properties:
+      displayName:
+        type: string
+        description: The name displayed in the address book for the user.
+      mailNickname:
+        type: string
+        description: The mail alias for the user.
+      userPrincipalName:
+        type: string
+        description: The user principal name (e.g. someone@contoso.com).
+      password:
+        type: string
+        description: The initial password for the user's password profile.
+      jobTitle:
+        type: string
+        description: The user's job title.
+      department:
+        type: string
+        description: The department the user belongs to.
+  steps:
+  - stepId: createUser
+    description: >-
+      Create a new, enabled user account with the supplied identity properties
+      and an initial password profile that forces a password change at next
+      sign-in.
+    operationId: createUser
+    requestBody:
+      contentType: application/json
+      payload:
+        accountEnabled: true
+        displayName: $inputs.displayName
+        mailNickname: $inputs.mailNickname
+        userPrincipalName: $inputs.userPrincipalName
+        passwordProfile:
+          forceChangePasswordNextSignIn: true
+          password: $inputs.password
+        jobTitle: $inputs.jobTitle
+        department: $inputs.department
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      userId: $response.body#/id
+      userPrincipalName: $response.body#/userPrincipalName
+  - stepId: confirmUser
+    description: >-
+      Read the newly created user back by id to confirm provisioning and capture
+      the durable profile properties.
+    operationId: getUser
+    parameters:
+    - name: user-id
+      in: path
+      value: $steps.createUser.outputs.userId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+      displayName: $response.body#/displayName
+      mail: $response.body#/mail
+  outputs:
+    userId: $steps.confirmUser.outputs.userId
+    userPrincipalName: $steps.createUser.outputs.userPrincipalName
+    displayName: $steps.confirmUser.outputs.displayName

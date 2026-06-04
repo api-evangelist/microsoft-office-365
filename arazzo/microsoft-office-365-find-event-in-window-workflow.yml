@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Office 365 Find Event in Window
+  summary: Query a calendar view for a time window, then read the first event found.
+  description: >-
+    Inspects the calendar over a specific time range. The workflow requests a
+    calendar view bounded by a start and end date-time, then branches: when at
+    least one occurrence falls in the window it reads the first event by id for
+    its full detail, and when the window is empty it ends without a read. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphApi
+  url: ../openapi/microsoft-graph-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-event-in-window
+  summary: Get a calendar view for a window and read the first event if any.
+  description: >-
+    Requests a calendar view via GET /me/calendarView (200), and when events
+    exist reads the first via GET /me/events/{event-id} (200).
+  inputs:
+    type: object
+    required:
+    - startDateTime
+    - endDateTime
+    properties:
+      startDateTime:
+        type: string
+        description: The start of the time range in ISO 8601, e.g. 2026-06-10T00:00:00Z.
+      endDateTime:
+        type: string
+        description: The end of the time range in ISO 8601, e.g. 2026-06-11T00:00:00Z.
+  steps:
+  - stepId: getCalendarView
+    description: >-
+      Get the occurrences and single instances of events that fall within the
+      supplied time window, ordered by start time.
+    operationId: getCalendarView
+    parameters:
+    - name: startDateTime
+      in: query
+      value: $inputs.startDateTime
+    - name: endDateTime
+      in: query
+      value: $inputs.endDateTime
+    - name: $orderby
+      in: query
+      value: start/dateTime
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstEventId: $response.body#/value/0/id
+      events: $response.body#/value
+    onSuccess:
+    - name: hasEvents
+      type: goto
+      stepId: readFirstEvent
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: noEvents
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: readFirstEvent
+    description: Read the first event found in the window by id for its full detail.
+    operationId: getEvent
+    parameters:
+    - name: event-id
+      in: path
+      value: $steps.getCalendarView.outputs.firstEventId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eventId: $response.body#/id
+      subject: $response.body#/subject
+  outputs:
+    events: $steps.getCalendarView.outputs.events
+    firstEventId: $steps.readFirstEvent.outputs.eventId
+    firstEventSubject: $steps.readFirstEvent.outputs.subject
