@@ -2,10 +2,10 @@
   "repo": "microsoft-office-365",
   "feeds": [
     {
-      "source": "https://developer.microsoft.com/en-us/graph/blogs/feed/",
-      "feed_url": "https://developer.microsoft.com/en-us/graph/blogs/feed/",
+      "source": "https://devblogs.microsoft.com/microsoft365dev/feed",
+      "feed_url": "https://devblogs.microsoft.com/microsoft365dev/feed",
       "title": "",
-      "saved": 0,
+      "saved": 2,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 21,
-  "fetched": "2026-06-01T23:35:02Z"
+  "post_count": 26,
+  "fetched": "2026-06-14T20:42:17Z"
 }
