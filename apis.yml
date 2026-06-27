@@ -49,7 +49,7 @@ apis:
         url: https://docs.microsoft.com/en-us/graph/throttling
       - type: GettingStarted
         url: https://learn.microsoft.com/en-us/graph/use-the-api
-      - type: SDK
+      - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
       - type: Documentation
         url: https://learn.microsoft.com/en-us/graph/change-notifications-overview
@@ -329,66 +329,63 @@ maintainers:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-office-365/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/microsoft-office-365-cancel-event-workflow.yml
-        name: Microsoft Office 365 Cancel Event
-        summary: Create an event, read it back to confirm, then delete it from the calendar.
-      - url: arazzo/microsoft-office-365-cleanup-draft-message-workflow.yml
-        name: Microsoft Office 365 Cleanup Draft Message
-        summary: Create a draft, read it back, then delete it from the mailbox.
-      - url: arazzo/microsoft-office-365-create-group-with-members-workflow.yml
-        name: Microsoft Office 365 Create Group With Members
-        summary: Create a Microsoft 365 group, add a member, then list members to confirm.
-      - url: arazzo/microsoft-office-365-deprovision-user-workflow.yml
-        name: Microsoft Office 365 Deprovision User
-        summary: Disable a user account, confirm the change, then delete the user.
-      - url: arazzo/microsoft-office-365-draft-and-send-mail-workflow.yml
-        name: Microsoft Office 365 Draft and Send Mail
-        summary: Create a draft message, read it back, then send it from the mailbox.
-      - url: arazzo/microsoft-office-365-find-event-in-window-workflow.yml
-        name: Microsoft Office 365 Find Event in Window
-        summary: Query a calendar view for a time window, then read the first event found.
-      - url: arazzo/microsoft-office-365-find-or-create-group-workflow.yml
-        name: Microsoft Office 365 Find or Create Group
-        summary: Look up a group by display name and create it only if it does not exist.
-      - url: arazzo/microsoft-office-365-notify-new-user-workflow.yml
-        name: Microsoft Office 365 Notify New User
-        summary: Create a user, then send a welcome email to their new mailbox address.
-      - url: arazzo/microsoft-office-365-onboard-user-to-group-workflow.yml
-        name: Microsoft Office 365 Onboard User to Group
-        summary: Create a user, add them to an existing group, then confirm membership.
-      - url: arazzo/microsoft-office-365-provision-user-workflow.yml
-        name: Microsoft Office 365 Provision User
-        summary: Create a new user, then read it back to confirm provisioning.
-      - url: arazzo/microsoft-office-365-reschedule-event-workflow.yml
-        name: Microsoft Office 365 Reschedule Event
-        summary: Create an event, patch its start and end times, then read it back.
-      - url: arazzo/microsoft-office-365-respond-to-invitation-workflow.yml
-        name: Microsoft Office 365 Respond to Invitation
-        summary: Read an event, then accept or decline it based on a desired response.
-      - url: arazzo/microsoft-office-365-rotate-group-member-workflow.yml
-        name: Microsoft Office 365 Rotate Group Member
-        summary: Remove one member from a group, add another, then list members to confirm.
-      - url: arazzo/microsoft-office-365-schedule-and-accept-event-workflow.yml
-        name: Microsoft Office 365 Schedule and Accept Event
-        summary: Create an event, then accept it on behalf of the signed-in user.
-      - url: arazzo/microsoft-office-365-schedule-event-workflow.yml
-        name: Microsoft Office 365 Schedule Event
-        summary: Create a calendar event, then read it back to confirm the booking.
-      - url: arazzo/microsoft-office-365-triage-inbox-message-workflow.yml
-        name: Microsoft Office 365 Triage Inbox Message
-        summary: Read the latest inbox message, then mark it as read and categorize it.
-      - url: arazzo/microsoft-office-365-update-draft-and-send-workflow.yml
-        name: Microsoft Office 365 Update Draft and Send
-        summary: Create a draft, patch its subject and body, then send the updated message.
-      - url: arazzo/microsoft-office-365-update-group-and-verify-workflow.yml
-        name: Microsoft Office 365 Update Group and Verify
-        summary: Patch a group's properties, then read it back to verify the change.
-      - url: arazzo/microsoft-office-365-update-user-profile-workflow.yml
-        name: Microsoft Office 365 Update User Profile
-        summary: Patch a user's profile properties, then read the user back to verify.
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-cancel-event-workflow.yml
+    name: Microsoft Office 365 Cancel Event
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-cleanup-draft-message-workflow.yml
+    name: Microsoft Office 365 Cleanup Draft Message
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-create-group-with-members-workflow.yml
+    name: Microsoft Office 365 Create Group With Members
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-deprovision-user-workflow.yml
+    name: Microsoft Office 365 Deprovision User
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-draft-and-send-mail-workflow.yml
+    name: Microsoft Office 365 Draft and Send Mail
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-find-event-in-window-workflow.yml
+    name: Microsoft Office 365 Find Event in Window
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-find-or-create-group-workflow.yml
+    name: Microsoft Office 365 Find or Create Group
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-notify-new-user-workflow.yml
+    name: Microsoft Office 365 Notify New User
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-onboard-user-to-group-workflow.yml
+    name: Microsoft Office 365 Onboard User to Group
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-provision-user-workflow.yml
+    name: Microsoft Office 365 Provision User
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-reschedule-event-workflow.yml
+    name: Microsoft Office 365 Reschedule Event
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-respond-to-invitation-workflow.yml
+    name: Microsoft Office 365 Respond to Invitation
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-rotate-group-member-workflow.yml
+    name: Microsoft Office 365 Rotate Group Member
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-schedule-and-accept-event-workflow.yml
+    name: Microsoft Office 365 Schedule and Accept Event
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-schedule-event-workflow.yml
+    name: Microsoft Office 365 Schedule Event
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-triage-inbox-message-workflow.yml
+    name: Microsoft Office 365 Triage Inbox Message
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-update-draft-and-send-workflow.yml
+    name: Microsoft Office 365 Update Draft and Send
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-update-group-and-verify-workflow.yml
+    name: Microsoft Office 365 Update Group and Verify
+  - type: Arazzo
+    url: arazzo/microsoft-office-365-update-user-profile-workflow.yml
+    name: Microsoft Office 365 Update User Profile
   - type: LinkedIn
     url: https://www.linkedin.com/showcase/microsoft-365
   - type: DeveloperPortal
@@ -406,7 +403,7 @@ common:
   - type: Console
     url: https://developer.microsoft.com/en-us/graph/graph-explorer
     title: Graph Explorer
-  - type: SDK
+  - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
   - type: ChangeLog
     url: https://developer.microsoft.com/en-us/graph/changelog
@@ -422,7 +419,7 @@ common:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/change-notifications-delivery-webhooks
     title: Webhooks
-  - type: Quickstart
+  - type: GettingStarted
     url: https://developer.microsoft.com/en-us/graph/quick-start
   - type: APIReference
     url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
