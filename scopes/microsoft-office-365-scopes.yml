@@ -1,0 +1,123 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/microsoft-graph-api-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/microsoft-graph-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+  description: Microsoft identity platform OAuth 2.0 authorization. Supports delegated (user)
+    and application-only permissions. Microsoft Graph uses scopes to control access to resources.
+scopes:
+- scope: Calendars.Read
+  description: Read user calendars
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Calendars.ReadWrite
+  description: Read and write user calendars
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Directory.Read.All
+  description: Read directory data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Directory.ReadWrite.All
+  description: Read and write directory data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Group.Read.All
+  description: Read all groups
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Group.ReadWrite.All
+  description: Read and write all groups
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: GroupMember.Read.All
+  description: Read all group memberships
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: GroupMember.ReadWrite.All
+  description: Read and write all group memberships
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Mail.Read
+  description: Read user mail
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Mail.ReadBasic
+  description: Read user basic mail
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Mail.ReadWrite
+  description: Read and write user mail
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: Mail.Send
+  description: Send mail as a user
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: User.Read
+  description: Sign in and read user profile
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: User.Read.All
+  description: Read all users' full profiles
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: User.ReadBasic.All
+  description: Read all users' basic profiles
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: User.ReadWrite
+  description: Read and update your profile
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: User.ReadWrite.All
+  description: Read and write all users' full profiles
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml
+- scope: https://graph.microsoft.com/.default
+  description: Default scope for application permissions
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/microsoft-graph-api-openapi.yml

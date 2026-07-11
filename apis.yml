@@ -327,6 +327,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: OAuthScopes
+    url: scopes/microsoft-office-365-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-office-365/overview
   - type: Arazzo
