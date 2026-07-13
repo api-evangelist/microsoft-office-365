@@ -5,7 +5,7 @@
       "source": "https://devblogs.microsoft.com/microsoft365dev/feed",
       "feed_url": "https://devblogs.microsoft.com/microsoft365dev/feed",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 27,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 32,
+  "fetched": "2026-07-11T11:50:51Z"
 }
