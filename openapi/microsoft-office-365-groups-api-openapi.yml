@@ -1,0 +1,786 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Office 365 Microsoft Graph Calendar Groups API
+  description: The Microsoft Graph API provides a unified programmability model to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security. It serves as the gateway to data and intelligence in Microsoft 365, enabling applications to interact with users, groups, mail, calendars, files, and other organizational resources through a single REST endpoint.
+  version: 1.0.0
+  termsOfService: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/en-us/graph/support
+  license:
+    name: Microsoft API License
+    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  x-documentation:
+    url: https://learn.microsoft.com/en-us/graph/overview
+  x-api-explorer:
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+- url: https://graph.microsoft.com/beta
+  description: Microsoft Graph beta endpoint (preview features)
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Groups
+  description: Manage Microsoft 365 groups and security groups. Groups provide shared access to resources such as SharePoint sites, shared mailboxes, Planner plans, OneNote notebooks, and conversations.
+  externalDocs:
+    url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
+paths:
+  /groups:
+    get:
+      operationId: listGroups
+      summary: Microsoft Office 365 List Groups
+      description: List all groups in an organization, including Microsoft 365 groups, security groups, and distribution groups. Returns up to 100 objects by default. To return additional properties, use $select. Requires GroupMember.Read.All, Group.Read.All, or Directory.Read.All permission.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: A collection of group objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupCollectionResponse'
+              examples:
+                Listgroups200Example:
+                  summary: Default listGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      description: A sample description.
+                      mail: example_value
+                      mailEnabled: true
+                      mailNickname: example_value
+                      securityEnabled: true
+                      groupTypes: {}
+                      visibility: Public
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      renewedDateTime: '2026-01-15T10:30:00Z'
+                      classification: example_value
+                      membershipRule: example_value
+                      membershipRuleProcessingState: 'On'
+                      resourceProvisioningOptions: {}
+                      members: {}
+                      owners: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createGroup
+      summary: Microsoft Office 365 Create Group
+      description: Create a new Microsoft 365 group or security group. You can create Microsoft 365 groups with a team, a channel, or both by specifying the resourceProvisioningOptions. Requires Group.ReadWrite.All or Directory.ReadWrite.All permission.
+      tags:
+      - Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCreateRequest'
+            examples:
+              CreategroupRequestExample:
+                summary: Default createGroup request
+                x-microcks-default: true
+                value:
+                  displayName: example_value
+                  description: A sample description.
+                  mailEnabled: true
+                  mailNickname: example_value
+                  securityEnabled: true
+                  groupTypes:
+                  - example_value
+                  visibility: Public
+                  owners@odata.bind:
+                  - example_value
+                  members@odata.bind:
+                  - example_value
+      responses:
+        '201':
+          description: The created group object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+              examples:
+                Creategroup201Example:
+                  summary: Default createGroup 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    description: A sample description.
+                    mail: example_value
+                    mailEnabled: true
+                    mailNickname: example_value
+                    securityEnabled: true
+                    groupTypes:
+                    - example_value
+                    visibility: Public
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    renewedDateTime: '2026-01-15T10:30:00Z'
+                    classification: example_value
+                    membershipRule: example_value
+                    membershipRuleProcessingState: 'On'
+                    resourceProvisioningOptions:
+                    - example_value
+                    members:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    owners:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{group-id}:
+    get:
+      operationId: getGroup
+      summary: Microsoft Office 365 Get Group
+      description: Get the properties and relationships of a group object. Returns a default set of properties; use $select to request additional properties. Requires GroupMember.Read.All, Group.Read.All, or Directory.Read.All permission.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The requested group object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+              examples:
+                Getgroup200Example:
+                  summary: Default getGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    description: A sample description.
+                    mail: example_value
+                    mailEnabled: true
+                    mailNickname: example_value
+                    securityEnabled: true
+                    groupTypes:
+                    - example_value
+                    visibility: Public
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    renewedDateTime: '2026-01-15T10:30:00Z'
+                    classification: example_value
+                    membershipRule: example_value
+                    membershipRuleProcessingState: 'On'
+                    resourceProvisioningOptions:
+                    - example_value
+                    members:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    owners:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateGroup
+      summary: Microsoft Office 365 Update Group
+      description: Update the properties of a group object. Requires Group.ReadWrite.All or Directory.ReadWrite.All permission. Not every property can be updated.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupUpdateRequest'
+            examples:
+              UpdategroupRequestExample:
+                summary: Default updateGroup request
+                x-microcks-default: true
+                value:
+                  displayName: example_value
+                  description: A sample description.
+                  mailNickname: example_value
+                  visibility: Public
+                  classification: example_value
+      responses:
+        '204':
+          description: Group updated successfully. No content returned.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteGroup
+      summary: Microsoft Office 365 Delete Group
+      description: Delete a group. When deleted, Microsoft 365 groups are moved to a temporary container and can be restored within 30 days. Security groups and distribution groups are permanently deleted immediately. Requires Group.ReadWrite.All or Directory.ReadWrite.All permission.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '204':
+          description: Group deleted successfully. No content returned.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{group-id}/members:
+    get:
+      operationId: listGroupMembers
+      summary: Microsoft Office 365 List Group Members
+      description: Get a list of the group's direct members. A group can have users, organizational contacts, devices, service principals, and other groups as members. Requires GroupMember.Read.All, Group.Read.All, or Directory.Read.All permission.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/count'
+      responses:
+        '200':
+          description: A collection of directory objects representing group members.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectoryObjectCollectionResponse'
+              examples:
+                Listgroupmembers200Example:
+                  summary: Default listGroupMembers 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{group-id}/members/$ref:
+    post:
+      operationId: addGroupMember
+      summary: Microsoft Office 365 Add Group Member
+      description: Add a member to a Microsoft 365 group or a security group through the members navigation property. You can add users, organizational contacts, service principals, or other groups. Requires GroupMember.ReadWrite.All, Group.ReadWrite.All, or Directory.ReadWrite.All permission.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - '@odata.id'
+              properties:
+                '@odata.id':
+                  type: string
+                  description: The URL of the directory object to add as a member.
+                  example: https://graph.microsoft.com/v1.0/directoryObjects/{id}
+            examples:
+              AddgroupmemberRequestExample:
+                summary: Default addGroupMember request
+                x-microcks-default: true
+                value:
+                  '@odata.id': '500123'
+      responses:
+        '204':
+          description: Member added successfully. No content returned.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{group-id}/members/{directoryObject-id}/$ref:
+    delete:
+      operationId: removeGroupMember
+      summary: Microsoft Office 365 Remove Group Member
+      description: Remove a member from a group via the members navigation property. Requires GroupMember.ReadWrite.All, Group.ReadWrite.All, or Directory.ReadWrite.All permission.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - name: directoryObject-id
+        in: path
+        required: true
+        description: The unique identifier of the directory object (member) to remove.
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '204':
+          description: Member removed successfully. No content returned.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ODataError:
+      type: object
+      description: The error response from the Microsoft Graph API following OData conventions.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code string.
+            message:
+              type: string
+              description: A human-readable error message.
+            innerError:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                request-id:
+                  type: string
+                client-request-id:
+                  type: string
+          example: example_value
+    GroupUpdateRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        mailNickname:
+          type: string
+          example: example_value
+        visibility:
+          type: string
+          enum:
+          - Public
+          - Private
+          - HiddenMembership
+          example: Public
+        classification:
+          type: string
+          example: example_value
+    GroupCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+          example: []
+    GroupCreateRequest:
+      type: object
+      required:
+      - displayName
+      - mailEnabled
+      - mailNickname
+      - securityEnabled
+      properties:
+        displayName:
+          type: string
+          description: The display name for the group.
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        mailEnabled:
+          type: boolean
+          example: true
+        mailNickname:
+          type: string
+          example: example_value
+        securityEnabled:
+          type: boolean
+          example: true
+        groupTypes:
+          type: array
+          items:
+            type: string
+          description: Set to ["Unified"] to create a Microsoft 365 group.
+          example: []
+        visibility:
+          type: string
+          enum:
+          - Public
+          - Private
+          - HiddenMembership
+          example: Public
+        owners@odata.bind:
+          type: array
+          items:
+            type: string
+          description: URLs of user objects to set as owners at creation time.
+          example: []
+        members@odata.bind:
+          type: array
+          items:
+            type: string
+          description: URLs of user objects to set as members at creation time.
+          example: []
+    Group:
+      type: object
+      description: Represents an Azure Active Directory group. Can be a Microsoft 365 group, a security group, a mail-enabled security group, or a distribution group.
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The unique identifier for the group.
+          example: abc123
+        displayName:
+          type: string
+          description: The display name for the group.
+          example: example_value
+        description:
+          type: string
+          description: An optional description for the group.
+          example: A sample description.
+        mail:
+          type: string
+          format: email
+          readOnly: true
+          description: The SMTP address for the group.
+          example: example_value
+        mailEnabled:
+          type: boolean
+          description: Specifies whether the group is mail-enabled.
+          example: true
+        mailNickname:
+          type: string
+          description: The mail alias for the group, unique for Microsoft 365 groups in the organization.
+          example: example_value
+        securityEnabled:
+          type: boolean
+          description: Specifies whether the group is a security group.
+          example: true
+        groupTypes:
+          type: array
+          items:
+            type: string
+          description: Specifies the group type and its membership. If the collection includes "Unified", the group is a Microsoft 365 group.
+          example: []
+        visibility:
+          type: string
+          enum:
+          - Public
+          - Private
+          - HiddenMembership
+          description: Specifies the visibility of a Microsoft 365 group. Default value is Public.
+          example: Public
+        createdDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Timestamp of when the group was created.
+          example: '2026-01-15T10:30:00Z'
+        renewedDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Timestamp of when the group was last renewed.
+          example: '2026-01-15T10:30:00Z'
+        classification:
+          type: string
+          description: Describes a classification for the group (such as low, medium, or high business impact).
+          example: example_value
+        membershipRule:
+          type: string
+          description: The rule that determines members for this group if the group is a dynamic group.
+          example: example_value
+        membershipRuleProcessingState:
+          type: string
+          enum:
+          - 'On'
+          - Paused
+          description: Whether dynamic membership processing is on or paused.
+          example: 'On'
+        resourceProvisioningOptions:
+          type: array
+          items:
+            type: string
+          description: Specifies the group resources provisioned as part of Microsoft 365 group creation (e.g., Team).
+          example: []
+        members:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DirectoryObject'
+          description: Direct members of this group.
+          example: []
+        owners:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DirectoryObject'
+          description: The owners of the group.
+          example: []
+    DirectoryObject:
+      type: object
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      properties:
+        '@odata.type':
+          type: string
+          description: The OData type of the directory object.
+          example: example_value
+        id:
+          type: string
+          description: The unique identifier for the directory object.
+          example: abc123
+        displayName:
+          type: string
+          description: The name displayed for the directory object.
+          example: example_value
+    DirectoryObjectCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectoryObject'
+          example: []
+  responses:
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    InternalServerError:
+      description: Internal server error. An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    TooManyRequests:
+      description: Too many requests. The application has been throttled.
+      headers:
+        Retry-After:
+          description: The number of seconds to wait before retrying the request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. A valid access token is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: The number of items to return in a result set. Maximum value depends on the API.
+      schema:
+        type: integer
+        minimum: 1
+    search:
+      name: $search
+      in: query
+      description: Search expression to filter results. Uses KQL syntax for directory objects.
+      schema:
+        type: string
+    count:
+      name: $count
+      in: query
+      description: Include a count of the total number of items in a collection alongside the page of data values.
+      schema:
+        type: boolean
+    skip:
+      name: $skip
+      in: query
+      description: The number of items to skip in the result set.
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of relationships to expand and include in the response.
+      schema:
+        type: string
+    groupId:
+      name: group-id
+      in: path
+      required: true
+      description: The unique identifier of the group (GUID).
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of items returned.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties for sorting results.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft identity platform OAuth 2.0 authorization. Supports delegated (user) and application-only permissions. Microsoft Graph uses scopes to control access to resources.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            User.Read: Sign in and read user profile
+            User.ReadBasic.All: Read all users' basic profiles
+            User.Read.All: Read all users' full profiles
+            User.ReadWrite: Read and update your profile
+            User.ReadWrite.All: Read and write all users' full profiles
+            Directory.Read.All: Read directory data
+            Directory.ReadWrite.All: Read and write directory data
+            Group.Read.All: Read all groups
+            Group.ReadWrite.All: Read and write all groups
+            GroupMember.Read.All: Read all group memberships
+            GroupMember.ReadWrite.All: Read and write all group memberships
+            Mail.ReadBasic: Read user basic mail
+            Mail.Read: Read user mail
+            Mail.ReadWrite: Read and write user mail
+            Mail.Send: Send mail as a user
+            Calendars.Read: Read user calendars
+            Calendars.ReadWrite: Read and write user calendars
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            https://graph.microsoft.com/.default: Default scope for application permissions
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the Microsoft identity platform. Use an access token in the Authorization header of each request.

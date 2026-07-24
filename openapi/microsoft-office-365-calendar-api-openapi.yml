@@ -1,0 +1,1626 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Office 365 Microsoft Graph Calendar API
+  description: The Microsoft Graph API provides a unified programmability model to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security. It serves as the gateway to data and intelligence in Microsoft 365, enabling applications to interact with users, groups, mail, calendars, files, and other organizational resources through a single REST endpoint.
+  version: 1.0.0
+  termsOfService: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/en-us/graph/support
+  license:
+    name: Microsoft API License
+    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  x-documentation:
+    url: https://learn.microsoft.com/en-us/graph/overview
+  x-api-explorer:
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+- url: https://graph.microsoft.com/beta
+  description: Microsoft Graph beta endpoint (preview features)
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Calendar
+  description: Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling, meeting management, and free/busy lookups.
+  externalDocs:
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar?view=graph-rest-1.0
+paths:
+  /me/events:
+    get:
+      operationId: listEvents
+      summary: Microsoft Office 365 List Events
+      description: Get the events in the signed-in user's default calendar or from a specified calendar. The list contains single instance meetings and series masters. To get expanded event instances, you can get the calendar view or the instances of an event. Requires Calendars.Read or Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: A collection of event objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventCollectionResponse'
+              examples:
+                Listevents200Example:
+                  summary: Default listEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      subject: example_value
+                      bodyPreview: example_value
+                      locations: {}
+                      attendees: {}
+                      isAllDay: true
+                      isCancelled: true
+                      isOrganizer: true
+                      isOnlineMeeting: true
+                      onlineMeetingProvider: unknown
+                      onlineMeetingUrl: https://www.example.com
+                      seriesMasterId: '500123'
+                      type: singleInstance
+                      showAs: free
+                      importance: low
+                      sensitivity: normal
+                      responseRequested: true
+                      allowNewTimeProposals: true
+                      categories: {}
+                      hasAttachments: true
+                      iCalUId: '500123'
+                      webLink: https://www.example.com
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                      reminderMinutesBeforeStart: 10
+                      transactionId: '500123'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createEvent
+      summary: Microsoft Office 365 Create Event
+      description: Create an event in the signed-in user's default calendar or a specified calendar. By default, the allowNewTimeProposals property is set to true when an event is created. Requires Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventCreateRequest'
+            examples:
+              CreateeventRequestExample:
+                summary: Default createEvent request
+                x-microcks-default: true
+                value:
+                  subject: example_value
+                  body:
+                    contentType: text
+                    content: example_value
+                  start:
+                    dateTime: example_value
+                    timeZone: example_value
+                  end:
+                    dateTime: example_value
+                    timeZone: example_value
+                  location:
+                    displayName: example_value
+                    locationType: default
+                    locationUri: example_value
+                    uniqueId: '500123'
+                    uniqueIdType: unknown
+                  locations:
+                  - displayName: example_value
+                    locationType: default
+                    locationUri: example_value
+                    uniqueId: '500123'
+                    uniqueIdType: unknown
+                  attendees:
+                  - type: required
+                  isAllDay: true
+                  isOnlineMeeting: true
+                  onlineMeetingProvider: teamsForBusiness
+                  recurrence: {}
+                  showAs: free
+                  importance: low
+                  sensitivity: normal
+                  responseRequested: true
+                  allowNewTimeProposals: true
+                  categories:
+                  - example_value
+                  reminderMinutesBeforeStart: 10
+                  transactionId: '500123'
+      responses:
+        '201':
+          description: The created event object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+              examples:
+                Createevent201Example:
+                  summary: Default createEvent 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    start:
+                      dateTime: example_value
+                      timeZone: example_value
+                    end:
+                      dateTime: example_value
+                      timeZone: example_value
+                    location:
+                      displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    locations:
+                    - displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    attendees:
+                    - type: required
+                    organizer: {}
+                    isAllDay: true
+                    isCancelled: true
+                    isOrganizer: true
+                    isOnlineMeeting: true
+                    onlineMeetingProvider: unknown
+                    onlineMeetingUrl: https://www.example.com
+                    onlineMeeting:
+                      joinUrl: https://www.example.com
+                      conferenceId: '500123'
+                      tollNumber: example_value
+                      tollFreeNumbers:
+                      - {}
+                      quickDial: example_value
+                      phones:
+                      - {}
+                    recurrence: {}
+                    seriesMasterId: '500123'
+                    type: singleInstance
+                    showAs: free
+                    importance: low
+                    sensitivity: normal
+                    responseStatus:
+                      response: none
+                      time: '2026-01-15T10:30:00Z'
+                    responseRequested: true
+                    allowNewTimeProposals: true
+                    categories:
+                    - example_value
+                    hasAttachments: true
+                    iCalUId: '500123'
+                    webLink: https://www.example.com
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    reminderMinutesBeforeStart: 10
+                    transactionId: '500123'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /me/events/{event-id}:
+    get:
+      operationId: getEvent
+      summary: Microsoft Office 365 Get Event
+      description: Get the properties and relationships of the specified event object. Returns the event body in HTML format by default. Requires Calendars.Read or Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      parameters:
+      - $ref: '#/components/parameters/eventId'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The requested event object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+              examples:
+                Getevent200Example:
+                  summary: Default getEvent 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    start:
+                      dateTime: example_value
+                      timeZone: example_value
+                    end:
+                      dateTime: example_value
+                      timeZone: example_value
+                    location:
+                      displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    locations:
+                    - displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    attendees:
+                    - type: required
+                    organizer: {}
+                    isAllDay: true
+                    isCancelled: true
+                    isOrganizer: true
+                    isOnlineMeeting: true
+                    onlineMeetingProvider: unknown
+                    onlineMeetingUrl: https://www.example.com
+                    onlineMeeting:
+                      joinUrl: https://www.example.com
+                      conferenceId: '500123'
+                      tollNumber: example_value
+                      tollFreeNumbers:
+                      - {}
+                      quickDial: example_value
+                      phones:
+                      - {}
+                    recurrence: {}
+                    seriesMasterId: '500123'
+                    type: singleInstance
+                    showAs: free
+                    importance: low
+                    sensitivity: normal
+                    responseStatus:
+                      response: none
+                      time: '2026-01-15T10:30:00Z'
+                    responseRequested: true
+                    allowNewTimeProposals: true
+                    categories:
+                    - example_value
+                    hasAttachments: true
+                    iCalUId: '500123'
+                    webLink: https://www.example.com
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    reminderMinutesBeforeStart: 10
+                    transactionId: '500123'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateEvent
+      summary: Microsoft Office 365 Update Event
+      description: Update the properties of an event object. Only the properties you specify are changed. Requires Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      parameters:
+      - $ref: '#/components/parameters/eventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventUpdateRequest'
+            examples:
+              UpdateeventRequestExample:
+                summary: Default updateEvent request
+                x-microcks-default: true
+                value:
+                  subject: example_value
+                  body:
+                    contentType: text
+                    content: example_value
+                  start:
+                    dateTime: example_value
+                    timeZone: example_value
+                  end:
+                    dateTime: example_value
+                    timeZone: example_value
+                  location:
+                    displayName: example_value
+                    locationType: default
+                    locationUri: example_value
+                    uniqueId: '500123'
+                    uniqueIdType: unknown
+                  locations:
+                  - displayName: example_value
+                    locationType: default
+                    locationUri: example_value
+                    uniqueId: '500123'
+                    uniqueIdType: unknown
+                  attendees:
+                  - type: required
+                  isAllDay: true
+                  isOnlineMeeting: true
+                  onlineMeetingProvider: teamsForBusiness
+                  recurrence: {}
+                  showAs: free
+                  importance: low
+                  sensitivity: normal
+                  categories:
+                  - example_value
+                  reminderMinutesBeforeStart: 10
+      responses:
+        '200':
+          description: The updated event object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+              examples:
+                Updateevent200Example:
+                  summary: Default updateEvent 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subject: example_value
+                    body:
+                      contentType: text
+                      content: example_value
+                    bodyPreview: example_value
+                    start:
+                      dateTime: example_value
+                      timeZone: example_value
+                    end:
+                      dateTime: example_value
+                      timeZone: example_value
+                    location:
+                      displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    locations:
+                    - displayName: example_value
+                      locationType: default
+                      locationUri: example_value
+                      uniqueId: '500123'
+                      uniqueIdType: unknown
+                    attendees:
+                    - type: required
+                    organizer: {}
+                    isAllDay: true
+                    isCancelled: true
+                    isOrganizer: true
+                    isOnlineMeeting: true
+                    onlineMeetingProvider: unknown
+                    onlineMeetingUrl: https://www.example.com
+                    onlineMeeting:
+                      joinUrl: https://www.example.com
+                      conferenceId: '500123'
+                      tollNumber: example_value
+                      tollFreeNumbers:
+                      - {}
+                      quickDial: example_value
+                      phones:
+                      - {}
+                    recurrence: {}
+                    seriesMasterId: '500123'
+                    type: singleInstance
+                    showAs: free
+                    importance: low
+                    sensitivity: normal
+                    responseStatus:
+                      response: none
+                      time: '2026-01-15T10:30:00Z'
+                    responseRequested: true
+                    allowNewTimeProposals: true
+                    categories:
+                    - example_value
+                    hasAttachments: true
+                    iCalUId: '500123'
+                    webLink: https://www.example.com
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                    reminderMinutesBeforeStart: 10
+                    transactionId: '500123'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteEvent
+      summary: Microsoft Office 365 Delete Event
+      description: Remove the specified event from the user's calendar. If the event is a meeting, deleting it on the organizer's calendar sends a cancellation message to attendees. Requires Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      parameters:
+      - $ref: '#/components/parameters/eventId'
+      responses:
+        '204':
+          description: Event deleted successfully. No content returned.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /me/calendars:
+    get:
+      operationId: listCalendars
+      summary: Microsoft Office 365 List Calendars
+      description: Get all the signed-in user's calendars from the default calendar group or from a specific calendar group. Requires Calendars.Read or Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          description: A collection of calendar objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarCollectionResponse'
+              examples:
+                Listcalendars200Example:
+                  summary: Default listCalendars 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      color: auto
+                      changeKey: example_value
+                      canEdit: true
+                      canShare: true
+                      canViewPrivateItems: true
+                      isDefaultCalendar: true
+                      hexColor: example_value
+                      isRemovable: true
+                      isTallyingResponses: true
+                      allowedOnlineMeetingProviders: {}
+                      defaultOnlineMeetingProvider: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /me/calendarView:
+    get:
+      operationId: getCalendarView
+      summary: Microsoft Office 365 Get Calendar View
+      description: Get the occurrences, exceptions, and single instances of events in a calendar view defined by a time range, from the user's default calendar or from a specified calendar. Requires Calendars.Read or Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      parameters:
+      - name: startDateTime
+        in: query
+        required: true
+        description: The start date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T19:00:00-08:00).
+        schema:
+          type: string
+          format: date-time
+        example: '2026-01-15T10:30:00Z'
+      - name: endDateTime
+        in: query
+        required: true
+        description: The end date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T20:00:00-08:00).
+        schema:
+          type: string
+          format: date-time
+        example: '2026-01-15T10:30:00Z'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: A collection of event objects within the specified time range.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventCollectionResponse'
+              examples:
+                Getcalendarview200Example:
+                  summary: Default getCalendarView 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      subject: example_value
+                      bodyPreview: example_value
+                      locations: {}
+                      attendees: {}
+                      isAllDay: true
+                      isCancelled: true
+                      isOrganizer: true
+                      isOnlineMeeting: true
+                      onlineMeetingProvider: unknown
+                      onlineMeetingUrl: https://www.example.com
+                      seriesMasterId: '500123'
+                      type: singleInstance
+                      showAs: free
+                      importance: low
+                      sensitivity: normal
+                      responseRequested: true
+                      allowNewTimeProposals: true
+                      categories: {}
+                      hasAttachments: true
+                      iCalUId: '500123'
+                      webLink: https://www.example.com
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      lastModifiedDateTime: '2026-01-15T10:30:00Z'
+                      reminderMinutesBeforeStart: 10
+                      transactionId: '500123'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /me/events/{event-id}/accept:
+    post:
+      operationId: acceptEvent
+      summary: Microsoft Office 365 Accept Event
+      description: Accept the specified event in a user calendar. Requires Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      parameters:
+      - $ref: '#/components/parameters/eventId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  description: Text included in the response. Optional.
+                sendResponse:
+                  type: boolean
+                  description: Whether a response is to be sent to the organizer. Default is true.
+                  default: true
+            examples:
+              AccepteventRequestExample:
+                summary: Default acceptEvent request
+                x-microcks-default: true
+                value:
+                  comment: example_value
+                  sendResponse: true
+      responses:
+        '202':
+          description: Event accepted. No content returned.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /me/events/{event-id}/decline:
+    post:
+      operationId: declineEvent
+      summary: Microsoft Office 365 Decline Event
+      description: Decline invitation to the specified event in a user calendar. Requires Calendars.ReadWrite permission.
+      tags:
+      - Calendar
+      parameters:
+      - $ref: '#/components/parameters/eventId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  description: Text included in the response. Optional.
+                sendResponse:
+                  type: boolean
+                  description: Whether a response is to be sent to the organizer. Default is true.
+                  default: true
+                proposedNewTime:
+                  $ref: '#/components/schemas/TimeSlot'
+            examples:
+              DeclineeventRequestExample:
+                summary: Default declineEvent request
+                x-microcks-default: true
+                value:
+                  comment: example_value
+                  sendResponse: true
+                  proposedNewTime:
+                    start:
+                      dateTime: example_value
+                      timeZone: example_value
+                    end:
+                      dateTime: example_value
+                      timeZone: example_value
+      responses:
+        '202':
+          description: Event declined. No content returned.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ODataError:
+      type: object
+      description: The error response from the Microsoft Graph API following OData conventions.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code string.
+            message:
+              type: string
+              description: A human-readable error message.
+            innerError:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                request-id:
+                  type: string
+                client-request-id:
+                  type: string
+          example: example_value
+    PatternedRecurrence:
+      type: object
+      description: The recurrence pattern and range.
+      properties:
+        pattern:
+          $ref: '#/components/schemas/RecurrencePattern'
+        range:
+          $ref: '#/components/schemas/RecurrenceRange'
+    OutlookGeoCoordinates:
+      type: object
+      description: The geographic coordinates and elevation of a location.
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 42.5
+        longitude:
+          type: number
+          format: double
+          example: 42.5
+        accuracy:
+          type: number
+          format: double
+          example: 42.5
+        altitude:
+          type: number
+          format: double
+          example: 42.5
+        altitudeAccuracy:
+          type: number
+          format: double
+          example: 42.5
+    RecurrencePattern:
+      type: object
+      description: Describes the frequency by which a recurring event repeats.
+      properties:
+        type:
+          type: string
+          enum:
+          - daily
+          - weekly
+          - absoluteMonthly
+          - relativeMonthly
+          - absoluteYearly
+          - relativeYearly
+          description: The recurrence pattern type.
+          example: daily
+        interval:
+          type: integer
+          description: The number of units between occurrences, where units can be in days, weeks, months, or years.
+          example: 10
+        daysOfWeek:
+          type: array
+          items:
+            type: string
+            enum:
+            - sunday
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+          description: A collection of the days of the week on which the event occurs.
+          example: []
+        dayOfMonth:
+          type: integer
+          description: The day of the month on which the event occurs.
+          example: 10
+        month:
+          type: integer
+          description: The month in which the event occurs (1-12).
+          example: 10
+        firstDayOfWeek:
+          type: string
+          enum:
+          - sunday
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          - saturday
+          description: The first day of the week.
+          example: sunday
+        index:
+          type: string
+          enum:
+          - first
+          - second
+          - third
+          - fourth
+          - last
+          description: The week index for relative monthly and yearly patterns.
+          example: first
+    Recipient:
+      type: object
+      description: Represents information about a user in the sending or receiving end of a message or event.
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+    Location:
+      type: object
+      description: Represents location information of an event.
+      properties:
+        displayName:
+          type: string
+          description: The name associated with the location.
+          example: example_value
+        locationType:
+          type: string
+          enum:
+          - default
+          - conferenceRoom
+          - homeAddress
+          - businessAddress
+          - geoCoordinates
+          - streetAddress
+          - hotel
+          - restaurant
+          - localBusiness
+          - postalAddress
+          description: The type of location.
+          example: default
+        locationUri:
+          type: string
+          description: Optional URI representing the location.
+          example: example_value
+        address:
+          $ref: '#/components/schemas/PhysicalAddress'
+        coordinates:
+          $ref: '#/components/schemas/OutlookGeoCoordinates'
+        uniqueId:
+          type: string
+          description: For internal use only.
+          example: '500123'
+        uniqueIdType:
+          type: string
+          enum:
+          - unknown
+          - locationStore
+          - directory
+          - private
+          - bing
+          description: For internal use only.
+          example: unknown
+    OnlineMeetingInfo:
+      type: object
+      description: Details for an attendee to join the meeting online.
+      properties:
+        joinUrl:
+          type: string
+          format: uri
+          description: The URL to join the meeting online.
+          example: https://www.example.com
+        conferenceId:
+          type: string
+          description: The ID of the conference.
+          example: '500123'
+        tollNumber:
+          type: string
+          description: The toll number to dial for audio conference.
+          example: example_value
+        tollFreeNumbers:
+          type: array
+          items:
+            type: string
+          description: The toll-free numbers to dial.
+          example: []
+        quickDial:
+          type: string
+          description: The pre-formatted quick-dial for this call.
+          example: example_value
+        phones:
+          type: array
+          items:
+            type: object
+            properties:
+              number:
+                type: string
+              type:
+                type: string
+                enum:
+                - toll
+                - tollFree
+          description: All phone numbers associated with this conference.
+          example: []
+    EventCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+          example: []
+    CalendarCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Calendar'
+          example: []
+    TimeSlot:
+      type: object
+      description: A time period.
+      properties:
+        start:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        end:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+    Attendee:
+      type: object
+      description: An event attendee that can be a person or resource.
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+        type:
+          type: string
+          enum:
+          - required
+          - optional
+          - resource
+          description: The type of attendee.
+          example: required
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        proposedNewTime:
+          $ref: '#/components/schemas/TimeSlot'
+    Event:
+      type: object
+      description: An event in a user calendar or the default calendar of a Microsoft 365 group. Contains event details, scheduling, recurrence, attendees, and location information.
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Unique identifier for the event.
+          example: abc123
+        subject:
+          type: string
+          description: The text of the event's subject line.
+          example: example_value
+        body:
+          $ref: '#/components/schemas/ItemBody'
+        bodyPreview:
+          type: string
+          readOnly: true
+          description: A preview of the message associated with the event.
+          example: example_value
+        start:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        end:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        location:
+          $ref: '#/components/schemas/Location'
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+          description: The locations where the event is held or attended from.
+          example: []
+        attendees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attendee'
+          description: The collection of attendees for the event.
+          example: []
+        organizer:
+          $ref: '#/components/schemas/Recipient'
+        isAllDay:
+          type: boolean
+          description: Set to true if the event lasts all day.
+          example: true
+        isCancelled:
+          type: boolean
+          readOnly: true
+          description: Set to true if the event has been canceled.
+          example: true
+        isOrganizer:
+          type: boolean
+          readOnly: true
+          description: Set to true if the calendar owner is the organizer.
+          example: true
+        isOnlineMeeting:
+          type: boolean
+          description: Whether the event is an online meeting.
+          example: true
+        onlineMeetingProvider:
+          type: string
+          enum:
+          - unknown
+          - teamsForBusiness
+          - skypeForBusiness
+          - skypeForConsumer
+          description: The online meeting service provider.
+          example: unknown
+        onlineMeetingUrl:
+          type: string
+          format: uri
+          readOnly: true
+          description: A URL for an online meeting.
+          example: https://www.example.com
+        onlineMeeting:
+          $ref: '#/components/schemas/OnlineMeetingInfo'
+        recurrence:
+          $ref: '#/components/schemas/PatternedRecurrence'
+        seriesMasterId:
+          type: string
+          readOnly: true
+          description: The ID for the recurring series master item.
+          example: '500123'
+        type:
+          type: string
+          enum:
+          - singleInstance
+          - occurrence
+          - exception
+          - seriesMaster
+          readOnly: true
+          description: The event type.
+          example: singleInstance
+        showAs:
+          type: string
+          enum:
+          - free
+          - tentative
+          - busy
+          - oof
+          - workingElsewhere
+          - unknown
+          description: The status to show.
+          example: free
+        importance:
+          type: string
+          enum:
+          - low
+          - normal
+          - high
+          description: The importance of the event.
+          example: low
+        sensitivity:
+          type: string
+          enum:
+          - normal
+          - personal
+          - private
+          - confidential
+          description: The sensitivity of the event.
+          example: normal
+        responseStatus:
+          $ref: '#/components/schemas/ResponseStatus'
+        responseRequested:
+          type: boolean
+          description: Whether the organizer would like an invitee to send a response.
+          example: true
+        allowNewTimeProposals:
+          type: boolean
+          description: Whether new time proposals are allowed for the event.
+          example: true
+        categories:
+          type: array
+          items:
+            type: string
+          description: The categories associated with the event.
+          example: []
+        hasAttachments:
+          type: boolean
+          readOnly: true
+          description: Whether the event has attachments.
+          example: true
+        iCalUId:
+          type: string
+          readOnly: true
+          description: A unique identifier across calendars (RFC 2445).
+          example: '500123'
+        webLink:
+          type: string
+          format: uri
+          readOnly: true
+          description: The URL to open the event in Outlook on the web.
+          example: https://www.example.com
+        createdDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time the event was created.
+          example: '2026-01-15T10:30:00Z'
+        lastModifiedDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time the event was last modified.
+          example: '2026-01-15T10:30:00Z'
+        reminderMinutesBeforeStart:
+          type: integer
+          description: The number of minutes before the event start time for the reminder alert.
+          example: 10
+        transactionId:
+          type: string
+          description: A custom identifier for the client to avoid redundant POST operations when client retries.
+          example: '500123'
+    Calendar:
+      type: object
+      description: A calendar which is a container for events.
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The unique identifier for the calendar.
+          example: abc123
+        name:
+          type: string
+          description: The calendar name.
+          example: Example Title
+        color:
+          type: string
+          enum:
+          - auto
+          - lightBlue
+          - lightGreen
+          - lightOrange
+          - lightGray
+          - lightYellow
+          - lightTeal
+          - lightPink
+          - lightBrown
+          - lightRed
+          - maxColor
+          description: Specifies the color theme for the calendar.
+          example: auto
+        changeKey:
+          type: string
+          readOnly: true
+          description: Identifies the version of the calendar object.
+          example: example_value
+        canEdit:
+          type: boolean
+          readOnly: true
+          description: Whether the user can write to the calendar.
+          example: true
+        canShare:
+          type: boolean
+          readOnly: true
+          description: Whether the user has permission to share the calendar.
+          example: true
+        canViewPrivateItems:
+          type: boolean
+          readOnly: true
+          description: Whether the user can read calendar items marked as private.
+          example: true
+        isDefaultCalendar:
+          type: boolean
+          readOnly: true
+          description: Whether this is the default calendar.
+          example: true
+        owner:
+          $ref: '#/components/schemas/EmailAddress'
+        hexColor:
+          type: string
+          description: The calendar color expressed in hex format of three six-digit values.
+          example: example_value
+        isRemovable:
+          type: boolean
+          readOnly: true
+          description: Whether the calendar can be deleted from the user's mailbox.
+          example: true
+        isTallyingResponses:
+          type: boolean
+          description: Whether the calendar supports tracking of meeting responses.
+          example: true
+        allowedOnlineMeetingProviders:
+          type: array
+          readOnly: true
+          items:
+            type: string
+          description: The online meeting service providers available for events in this calendar.
+          example: []
+        defaultOnlineMeetingProvider:
+          type: string
+          description: The default online meeting provider for meetings sent from this calendar.
+          example: example_value
+    PhysicalAddress:
+      type: object
+      description: Represents the street address of a resource such as a contact or event.
+      properties:
+        street:
+          type: string
+          example: example_value
+        city:
+          type: string
+          example: example_value
+        state:
+          type: string
+          example: example_value
+        countryOrRegion:
+          type: string
+          example: example_value
+        postalCode:
+          type: string
+          example: example_value
+    EventUpdateRequest:
+      type: object
+      properties:
+        subject:
+          type: string
+          example: example_value
+        body:
+          $ref: '#/components/schemas/ItemBody'
+        start:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        end:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        location:
+          $ref: '#/components/schemas/Location'
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+          example: []
+        attendees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attendee'
+          example: []
+        isAllDay:
+          type: boolean
+          example: true
+        isOnlineMeeting:
+          type: boolean
+          example: true
+        onlineMeetingProvider:
+          type: string
+          enum:
+          - teamsForBusiness
+          - skypeForBusiness
+          - skypeForConsumer
+          example: teamsForBusiness
+        recurrence:
+          $ref: '#/components/schemas/PatternedRecurrence'
+        showAs:
+          type: string
+          enum:
+          - free
+          - tentative
+          - busy
+          - oof
+          - workingElsewhere
+          - unknown
+          example: free
+        importance:
+          type: string
+          enum:
+          - low
+          - normal
+          - high
+          example: low
+        sensitivity:
+          type: string
+          enum:
+          - normal
+          - personal
+          - private
+          - confidential
+          example: normal
+        categories:
+          type: array
+          items:
+            type: string
+          example: []
+        reminderMinutesBeforeStart:
+          type: integer
+          example: 10
+    EmailAddress:
+      type: object
+      description: The name and email address of a contact or message recipient.
+      properties:
+        name:
+          type: string
+          description: The display name of the person or entity.
+          example: Example Title
+        address:
+          type: string
+          format: email
+          description: The email address of the person or entity.
+          example: example_value
+    DateTimeTimeZone:
+      type: object
+      description: Describes the date, time, and time zone of a point in time.
+      properties:
+        dateTime:
+          type: string
+          description: A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
+          example: example_value
+        timeZone:
+          type: string
+          description: The time zone for the time. For example, Pacific Standard Time. See https://learn.microsoft.com/en-us/graph/api/resources/datetimetimezone
+          example: example_value
+    RecurrenceRange:
+      type: object
+      description: Describes a date range over which a recurring event repeats.
+      properties:
+        type:
+          type: string
+          enum:
+          - endDate
+          - noEnd
+          - numbered
+          description: The recurrence range type.
+          example: endDate
+        startDate:
+          type: string
+          format: date
+          description: The start date of the series (first occurrence).
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: The date to stop applying the recurrence pattern.
+          example: '2026-01-15'
+        numberOfOccurrences:
+          type: integer
+          description: The number of times to repeat the event.
+          example: 10
+        recurrenceTimeZone:
+          type: string
+          description: Time zone for the startDate and endDate properties.
+          example: example_value
+    ResponseStatus:
+      type: object
+      description: The response status of an attendee or organizer for a meeting request.
+      properties:
+        response:
+          type: string
+          enum:
+          - none
+          - organizer
+          - tentativelyAccepted
+          - accepted
+          - declined
+          - notResponded
+          description: The response type.
+          example: none
+        time:
+          type: string
+          format: date-time
+          description: The date and time the response was returned.
+          example: '2026-01-15T10:30:00Z'
+    EventCreateRequest:
+      type: object
+      required:
+      - subject
+      - start
+      - end
+      properties:
+        subject:
+          type: string
+          example: example_value
+        body:
+          $ref: '#/components/schemas/ItemBody'
+        start:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        end:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        location:
+          $ref: '#/components/schemas/Location'
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+          example: []
+        attendees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attendee'
+          example: []
+        isAllDay:
+          type: boolean
+          example: true
+        isOnlineMeeting:
+          type: boolean
+          example: true
+        onlineMeetingProvider:
+          type: string
+          enum:
+          - teamsForBusiness
+          - skypeForBusiness
+          - skypeForConsumer
+          example: teamsForBusiness
+        recurrence:
+          $ref: '#/components/schemas/PatternedRecurrence'
+        showAs:
+          type: string
+          enum:
+          - free
+          - tentative
+          - busy
+          - oof
+          - workingElsewhere
+          - unknown
+          example: free
+        importance:
+          type: string
+          enum:
+          - low
+          - normal
+          - high
+          example: low
+        sensitivity:
+          type: string
+          enum:
+          - normal
+          - personal
+          - private
+          - confidential
+          example: normal
+        responseRequested:
+          type: boolean
+          example: true
+        allowNewTimeProposals:
+          type: boolean
+          example: true
+        categories:
+          type: array
+          items:
+            type: string
+          example: []
+        reminderMinutesBeforeStart:
+          type: integer
+          example: 10
+        transactionId:
+          type: string
+          example: '500123'
+    ItemBody:
+      type: object
+      description: Represents properties of the body of a message or event.
+      properties:
+        contentType:
+          type: string
+          enum:
+          - text
+          - html
+          description: The type of the content. Possible values are text and html.
+          example: text
+        content:
+          type: string
+          description: The content of the item.
+          example: example_value
+  parameters:
+    eventId:
+      name: event-id
+      in: path
+      required: true
+      description: The unique identifier of the event.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: The number of items to return in a result set. Maximum value depends on the API.
+      schema:
+        type: integer
+        minimum: 1
+    skip:
+      name: $skip
+      in: query
+      description: The number of items to skip in the result set.
+      schema:
+        type: integer
+        minimum: 0
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of relationships to expand and include in the response.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of items returned.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties for sorting results.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    TooManyRequests:
+      description: Too many requests. The application has been throttled.
+      headers:
+        Retry-After:
+          description: The number of seconds to wait before retrying the request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. A valid access token is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft identity platform OAuth 2.0 authorization. Supports delegated (user) and application-only permissions. Microsoft Graph uses scopes to control access to resources.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            User.Read: Sign in and read user profile
+            User.ReadBasic.All: Read all users' basic profiles
+            User.Read.All: Read all users' full profiles
+            User.ReadWrite: Read and update your profile
+            User.ReadWrite.All: Read and write all users' full profiles
+            Directory.Read.All: Read directory data
+            Directory.ReadWrite.All: Read and write directory data
+            Group.Read.All: Read all groups
+            Group.ReadWrite.All: Read and write all groups
+            GroupMember.Read.All: Read all group memberships
+            GroupMember.ReadWrite.All: Read and write all group memberships
+            Mail.ReadBasic: Read user basic mail
+            Mail.Read: Read user mail
+            Mail.ReadWrite: Read and write user mail
+            Mail.Send: Send mail as a user
+            Calendars.Read: Read user calendars
+            Calendars.ReadWrite: Read and write user calendars
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            https://graph.microsoft.com/.default: Default scope for application permissions
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the Microsoft identity platform. Use an access token in the Authorization header of each request.

@@ -1,0 +1,896 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Office 365 Microsoft Graph Calendar Users API
+  description: The Microsoft Graph API provides a unified programmability model to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security. It serves as the gateway to data and intelligence in Microsoft 365, enabling applications to interact with users, groups, mail, calendars, files, and other organizational resources through a single REST endpoint.
+  version: 1.0.0
+  termsOfService: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  contact:
+    name: Microsoft Graph Support
+    url: https://developer.microsoft.com/en-us/graph/support
+  license:
+    name: Microsoft API License
+    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  x-documentation:
+    url: https://learn.microsoft.com/en-us/graph/overview
+  x-api-explorer:
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+servers:
+- url: https://graph.microsoft.com/v1.0
+  description: Microsoft Graph v1.0 production endpoint
+- url: https://graph.microsoft.com/beta
+  description: Microsoft Graph beta endpoint (preview features)
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Users
+  description: Manage users in Azure Active Directory. Users are the core identity resource representing a person, including their profile, organizational relationships, and access to services.
+  externalDocs:
+    url: https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: Microsoft Office 365 List Users
+      description: Retrieve a list of user objects. By default, only a limited set of properties are returned. To return additional properties, use the $select OData query parameter. Returns up to 100 users per page by default. Requires User.ReadBasic.All, User.Read.All, or Directory.Read.All permission.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/search'
+      - $ref: '#/components/parameters/count'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: A collection of user objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCollectionResponse'
+              examples:
+                Listusers200Example:
+                  summary: Default listUsers 200 response
+                  x-microcks-default: true
+                  value:
+                    '@odata.context': example_value
+                    '@odata.count': 10
+                    '@odata.nextLink': https://www.example.com
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      givenName: example_value
+                      surname: example_value
+                      mail: example_value
+                      userPrincipalName: example_value
+                      jobTitle: example_value
+                      department: example_value
+                      officeLocation: example_value
+                      companyName: example_value
+                      businessPhones: {}
+                      mobilePhone: example_value
+                      streetAddress: example_value
+                      city: example_value
+                      state: example_value
+                      postalCode: example_value
+                      country: example_value
+                      preferredLanguage: example_value
+                      accountEnabled: true
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      lastSignInDateTime: '2026-01-15T10:30:00Z'
+                      usageLocation: example_value
+                      identities: {}
+                      assignedLicenses: {}
+                      memberOf: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createUser
+      summary: Microsoft Office 365 Create User
+      description: Create a new user object. The request body must contain the required properties for the user. You can optionally specify other writable properties. Requires User.ReadWrite.All or Directory.ReadWrite.All permission.
+      tags:
+      - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+            examples:
+              CreateuserRequestExample:
+                summary: Default createUser request
+                x-microcks-default: true
+                value:
+                  accountEnabled: true
+                  displayName: example_value
+                  mailNickname: example_value
+                  userPrincipalName: example_value
+                  passwordProfile:
+                    forceChangePasswordNextSignIn: true
+                    forceChangePasswordNextSignInWithMfa: true
+                    password: example_value
+                  givenName: example_value
+                  surname: example_value
+                  jobTitle: example_value
+                  department: example_value
+                  officeLocation: example_value
+                  mobilePhone: example_value
+                  usageLocation: example_value
+      responses:
+        '201':
+          description: The created user object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Createuser201Example:
+                  summary: Default createUser 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    givenName: example_value
+                    surname: example_value
+                    mail: example_value
+                    userPrincipalName: example_value
+                    jobTitle: example_value
+                    department: example_value
+                    officeLocation: example_value
+                    companyName: example_value
+                    businessPhones:
+                    - example_value
+                    mobilePhone: example_value
+                    streetAddress: example_value
+                    city: example_value
+                    state: example_value
+                    postalCode: example_value
+                    country: example_value
+                    preferredLanguage: example_value
+                    accountEnabled: true
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastSignInDateTime: '2026-01-15T10:30:00Z'
+                    usageLocation: example_value
+                    passwordProfile:
+                      forceChangePasswordNextSignIn: true
+                      forceChangePasswordNextSignInWithMfa: true
+                      password: example_value
+                    identities:
+                    - signInType: example_value
+                      issuer: example_value
+                      issuerAssignedId: '500123'
+                    assignedLicenses:
+                    - disabledPlans: {}
+                      skuId: '500123'
+                    manager:
+                      '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    memberOf:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{user-id}:
+    get:
+      operationId: getUser
+      summary: Microsoft Office 365 Get User
+      description: Retrieve the properties and relationships of a user object. Returns a limited set of properties by default; use $select to request additional properties. Requires User.Read, User.ReadBasic.All, User.Read.All, or Directory.Read.All permission.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The requested user object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Getuser200Example:
+                  summary: Default getUser 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    givenName: example_value
+                    surname: example_value
+                    mail: example_value
+                    userPrincipalName: example_value
+                    jobTitle: example_value
+                    department: example_value
+                    officeLocation: example_value
+                    companyName: example_value
+                    businessPhones:
+                    - example_value
+                    mobilePhone: example_value
+                    streetAddress: example_value
+                    city: example_value
+                    state: example_value
+                    postalCode: example_value
+                    country: example_value
+                    preferredLanguage: example_value
+                    accountEnabled: true
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastSignInDateTime: '2026-01-15T10:30:00Z'
+                    usageLocation: example_value
+                    passwordProfile:
+                      forceChangePasswordNextSignIn: true
+                      forceChangePasswordNextSignInWithMfa: true
+                      password: example_value
+                    identities:
+                    - signInType: example_value
+                      issuer: example_value
+                      issuerAssignedId: '500123'
+                    assignedLicenses:
+                    - disabledPlans: {}
+                      skuId: '500123'
+                    manager:
+                      '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    memberOf:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: updateUser
+      summary: Microsoft Office 365 Update User
+      description: Update the properties of a user object. Not all properties can be updated by Member or Guest users with their default permissions without administrator roles. Requires User.ReadWrite, User.ReadWrite.All, or Directory.ReadWrite.All permission.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+            examples:
+              UpdateuserRequestExample:
+                summary: Default updateUser request
+                x-microcks-default: true
+                value:
+                  displayName: example_value
+                  givenName: example_value
+                  surname: example_value
+                  jobTitle: example_value
+                  department: example_value
+                  officeLocation: example_value
+                  mobilePhone: example_value
+                  businessPhones:
+                  - example_value
+                  streetAddress: example_value
+                  city: example_value
+                  state: example_value
+                  postalCode: example_value
+                  country: example_value
+                  preferredLanguage: example_value
+                  accountEnabled: true
+                  usageLocation: example_value
+                  passwordProfile:
+                    forceChangePasswordNextSignIn: true
+                    forceChangePasswordNextSignInWithMfa: true
+                    password: example_value
+      responses:
+        '204':
+          description: User updated successfully. No content returned.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteUser
+      summary: Microsoft Office 365 Delete User
+      description: Delete a user object. When deleted, user resources are moved to a temporary container and can be restored within 30 days. After 30 days, they are permanently deleted. Requires User.ReadWrite.All or Directory.ReadWrite.All permission.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '204':
+          description: User deleted successfully. No content returned.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /me:
+    get:
+      operationId: getSignedInUser
+      summary: Microsoft Office 365 Get Signed-in User
+      description: Retrieve the properties and relationships of the currently signed-in user. The /me endpoint resolves to the signed-in user based on the access token. Requires User.Read permission at minimum.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: The signed-in user object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Getsignedinuser200Example:
+                  summary: Default getSignedInUser 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    givenName: example_value
+                    surname: example_value
+                    mail: example_value
+                    userPrincipalName: example_value
+                    jobTitle: example_value
+                    department: example_value
+                    officeLocation: example_value
+                    companyName: example_value
+                    businessPhones:
+                    - example_value
+                    mobilePhone: example_value
+                    streetAddress: example_value
+                    city: example_value
+                    state: example_value
+                    postalCode: example_value
+                    country: example_value
+                    preferredLanguage: example_value
+                    accountEnabled: true
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    lastSignInDateTime: '2026-01-15T10:30:00Z'
+                    usageLocation: example_value
+                    passwordProfile:
+                      forceChangePasswordNextSignIn: true
+                      forceChangePasswordNextSignInWithMfa: true
+                      password: example_value
+                    identities:
+                    - signInType: example_value
+                      issuer: example_value
+                      issuerAssignedId: '500123'
+                    assignedLicenses:
+                    - disabledPlans: {}
+                      skuId: '500123'
+                    manager:
+                      '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+                    memberOf:
+                    - '@odata.type': example_value
+                      id: abc123
+                      displayName: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ODataError:
+      type: object
+      description: The error response from the Microsoft Graph API following OData conventions.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code string.
+            message:
+              type: string
+              description: A human-readable error message.
+            innerError:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                request-id:
+                  type: string
+                client-request-id:
+                  type: string
+          example: example_value
+    AssignedLicense:
+      type: object
+      description: Represents a license assigned to a user.
+      properties:
+        disabledPlans:
+          type: array
+          items:
+            type: string
+          description: A collection of unique identifiers for disabled plans.
+          example: []
+        skuId:
+          type: string
+          description: The unique identifier for the SKU.
+          example: '500123'
+    UserUpdateRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: example_value
+        givenName:
+          type: string
+          example: example_value
+        surname:
+          type: string
+          example: example_value
+        jobTitle:
+          type: string
+          example: example_value
+        department:
+          type: string
+          example: example_value
+        officeLocation:
+          type: string
+          example: example_value
+        mobilePhone:
+          type: string
+          example: example_value
+        businessPhones:
+          type: array
+          items:
+            type: string
+          example: []
+        streetAddress:
+          type: string
+          example: example_value
+        city:
+          type: string
+          example: example_value
+        state:
+          type: string
+          example: example_value
+        postalCode:
+          type: string
+          example: example_value
+        country:
+          type: string
+          example: example_value
+        preferredLanguage:
+          type: string
+          example: example_value
+        accountEnabled:
+          type: boolean
+          example: true
+        usageLocation:
+          type: string
+          example: example_value
+        passwordProfile:
+          $ref: '#/components/schemas/PasswordProfile'
+    UserCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          description: The OData context URL for the collection.
+          example: example_value
+        '@odata.count':
+          type: integer
+          description: The total count of items in the collection (if requested).
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          description: The URL to retrieve the next page of results.
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+          example: []
+    PasswordProfile:
+      type: object
+      description: Contains the password profile associated with a user.
+      properties:
+        forceChangePasswordNextSignIn:
+          type: boolean
+          description: Whether the user must change the password on the next sign-in.
+          default: true
+          example: true
+        forceChangePasswordNextSignInWithMfa:
+          type: boolean
+          description: Whether the user must perform multi-factor authentication before being forced to change their password.
+          default: false
+          example: true
+        password:
+          type: string
+          format: password
+          description: The password for the user. Must satisfy the tenant's password complexity requirements. Minimum of 8 characters.
+          example: example_value
+    DirectoryObject:
+      type: object
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      properties:
+        '@odata.type':
+          type: string
+          description: The OData type of the directory object.
+          example: example_value
+        id:
+          type: string
+          description: The unique identifier for the directory object.
+          example: abc123
+        displayName:
+          type: string
+          description: The name displayed for the directory object.
+          example: example_value
+    ObjectIdentity:
+      type: object
+      description: Represents an identity used to sign in to a user account.
+      properties:
+        signInType:
+          type: string
+          description: Specifies the type of user sign-in (e.g. emailAddress, userName, userPrincipalName).
+          example: example_value
+        issuer:
+          type: string
+          description: Specifies the issuer of the identity, for example contoso.onmicrosoft.com.
+          example: example_value
+        issuerAssignedId:
+          type: string
+          description: Specifies the unique value associated with the issuer- signInType combination.
+          example: '500123'
+    User:
+      type: object
+      description: Represents an Azure Active Directory user account. Inherits from directoryObject. Contains the user's profile information, organizational hierarchy, assigned licenses, and managed resources.
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The unique identifier for the user. Inherited from directoryObject. GUID format.
+          example: abc123
+        displayName:
+          type: string
+          description: The name displayed in the address book for the user.
+          example: example_value
+        givenName:
+          type: string
+          description: The given name (first name) of the user.
+          example: example_value
+        surname:
+          type: string
+          description: The user's surname (family name or last name).
+          example: example_value
+        mail:
+          type: string
+          format: email
+          description: The SMTP address for the user. This property cannot contain accent characters.
+          example: example_value
+        userPrincipalName:
+          type: string
+          description: The user principal name (UPN) of the user. The UPN is an Internet-style login name based on RFC 822. By convention, this should map to the user's email name.
+          example: example_value
+        jobTitle:
+          type: string
+          description: The user's job title.
+          example: example_value
+        department:
+          type: string
+          description: The name of the department in which the user works.
+          example: example_value
+        officeLocation:
+          type: string
+          description: The office location in the user's place of business.
+          example: example_value
+        companyName:
+          type: string
+          description: The company name associated with the user.
+          example: example_value
+        businessPhones:
+          type: array
+          items:
+            type: string
+          description: The telephone numbers for the user.
+          example: []
+        mobilePhone:
+          type: string
+          description: The primary cellular telephone number for the user.
+          example: example_value
+        streetAddress:
+          type: string
+          description: The street address of the user's place of business.
+          example: example_value
+        city:
+          type: string
+          description: The city in which the user is located.
+          example: example_value
+        state:
+          type: string
+          description: The state or province in the user's address.
+          example: example_value
+        postalCode:
+          type: string
+          description: The postal code for the user's postal address.
+          example: example_value
+        country:
+          type: string
+          description: The country or region in which the user is located; for example, US or UK.
+          example: example_value
+        preferredLanguage:
+          type: string
+          description: The preferred language for the user. Should follow ISO 639-1 Code; for example en-US.
+          example: example_value
+        accountEnabled:
+          type: boolean
+          description: True if the account is enabled; otherwise, false. Required when creating a user.
+          example: true
+        createdDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time the user was created in ISO 8601 format.
+          example: '2026-01-15T10:30:00Z'
+        lastSignInDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time of the user's most recent interactive or non-interactive sign-in.
+          example: '2026-01-15T10:30:00Z'
+        usageLocation:
+          type: string
+          description: A two-letter country code (ISO 3166) required for users who will be assigned licenses. Not nullable.
+          example: example_value
+        passwordProfile:
+          $ref: '#/components/schemas/PasswordProfile'
+        identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectIdentity'
+          description: Represents the identities that can be used to sign in to this user account.
+          example: []
+        assignedLicenses:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AssignedLicense'
+          description: The licenses assigned to the user.
+          example: []
+        manager:
+          $ref: '#/components/schemas/DirectoryObject'
+        memberOf:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DirectoryObject'
+          description: The groups, directory roles, and administrative units the user is a member of.
+          example: []
+    UserCreateRequest:
+      type: object
+      required:
+      - accountEnabled
+      - displayName
+      - mailNickname
+      - userPrincipalName
+      - passwordProfile
+      properties:
+        accountEnabled:
+          type: boolean
+          description: True if the account is enabled; otherwise, false.
+          example: true
+        displayName:
+          type: string
+          description: The name to display in the address book for the user.
+          example: example_value
+        mailNickname:
+          type: string
+          description: The mail alias for the user.
+          example: example_value
+        userPrincipalName:
+          type: string
+          description: The user principal name (someuser@contoso.com).
+          example: example_value
+        passwordProfile:
+          $ref: '#/components/schemas/PasswordProfile'
+        givenName:
+          type: string
+          example: example_value
+        surname:
+          type: string
+          example: example_value
+        jobTitle:
+          type: string
+          example: example_value
+        department:
+          type: string
+          example: example_value
+        officeLocation:
+          type: string
+          example: example_value
+        mobilePhone:
+          type: string
+          example: example_value
+        usageLocation:
+          type: string
+          example: example_value
+  responses:
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    InternalServerError:
+      description: Internal server error. An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    TooManyRequests:
+      description: Too many requests. The application has been throttled.
+      headers:
+        Retry-After:
+          description: The number of seconds to wait before retrying the request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. A valid access token is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+  parameters:
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: The number of items to return in a result set. Maximum value depends on the API.
+      schema:
+        type: integer
+        minimum: 1
+    search:
+      name: $search
+      in: query
+      description: Search expression to filter results. Uses KQL syntax for directory objects.
+      schema:
+        type: string
+    userId:
+      name: user-id
+      in: path
+      required: true
+      description: The unique identifier of the user (GUID) or the userPrincipalName.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: The number of items to skip in the result set.
+      schema:
+        type: integer
+        minimum: 0
+    count:
+      name: $count
+      in: query
+      description: Include a count of the total number of items in a collection alongside the page of data values.
+      schema:
+        type: boolean
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of relationships to expand and include in the response.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of items returned.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties for sorting results.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Microsoft identity platform OAuth 2.0 authorization. Supports delegated (user) and application-only permissions. Microsoft Graph uses scopes to control access to resources.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            User.Read: Sign in and read user profile
+            User.ReadBasic.All: Read all users' basic profiles
+            User.Read.All: Read all users' full profiles
+            User.ReadWrite: Read and update your profile
+            User.ReadWrite.All: Read and write all users' full profiles
+            Directory.Read.All: Read directory data
+            Directory.ReadWrite.All: Read and write directory data
+            Group.Read.All: Read all groups
+            Group.ReadWrite.All: Read and write all groups
+            GroupMember.Read.All: Read all group memberships
+            GroupMember.ReadWrite.All: Read and write all group memberships
+            Mail.ReadBasic: Read user basic mail
+            Mail.Read: Read user mail
+            Mail.ReadWrite: Read and write user mail
+            Mail.Send: Send mail as a user
+            Calendars.Read: Read user calendars
+            Calendars.ReadWrite: Read and write user calendars
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+          scopes:
+            https://graph.microsoft.com/.default: Default scope for application permissions
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token obtained from the Microsoft identity platform. Use an access token in the Authorization header of each request.
