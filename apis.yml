@@ -1,6 +1,19 @@
 aid: microsoft-office-365
 name: Microsoft Office 365
 description: A collection of APIs provided by Microsoft Office 365 for productivity, collaboration, and enterprise services.
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.microsoft.com/en-us/microsoft-365/blog/wp-content/uploads/sites/2/2020/04/Microsoft-365.png
 url: https://www.microsoft.com/en-us/microsoft-365
 created: '2024-01-15'
@@ -13,305 +26,377 @@ tags:
   - Microsoft
   - Productivity
 apis:
-  - name: Microsoft Graph API
-    description: >-
-      Unified API endpoint to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise
-      Mobility + Security.
-    image: https://docs.microsoft.com/en-us/graph/images/microsoft-graph.png
-    humanURL: https://developer.microsoft.com/en-us/graph
-    baseURL: https://graph.microsoft.com
-    tags:
-      - Calendar
-      - Graph
-      - Groups
-      - Mail
-      - Unified
-      - Users
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/graph/overview
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/openapi.yaml
-      - type: OpenAPI
-        url: openapi/microsoft-graph-api-openapi.yml
-      - type: JSONLD
-        url: json-ld/microsoft-office-365-context.jsonld
-      - type: Pricing
-        url: https://azure.microsoft.com/en-us/pricing/details/active-directory/
-      - type: Authentication
-        url: https://docs.microsoft.com/en-us/graph/auth/
-      - type: Documentation
-        url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
-        title: Postman Collection
-      - type: TermsOfService
-        url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
-      - type: RateLimits
-        url: https://docs.microsoft.com/en-us/graph/throttling
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/graph/use-the-api
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/change-notifications-overview
-        title: Change Notifications
-      - type: Versioning
-        url: https://learn.microsoft.com/en-us/graph/versioning-and-support
-      - type: Console
-        url: https://developer.microsoft.com/en-us/graph/graph-explorer
-        title: Graph Explorer
-  - name: Outlook Mail API
-    description: Access to Outlook email, including reading, sending, and managing messages.
-    humanURL: https://docs.microsoft.com/en-us/graph/api/resources/mail-api-overview
-    baseURL: https://graph.microsoft.com/v1.0/me/messages
-    tags:
-      - Email
-      - Mail
-      - Messages
-      - Outlook
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/graph/api/resources/message
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/mail.yaml
-      - type: OpenAPI
-        url: openapi/microsoft-graph-api-openapi.yml
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/outlook-change-notifications-overview
-        title: Change Notifications
-  - name: Outlook Calendar API
-    description: Access to Outlook calendar events, scheduling, and meeting management.
-    humanURL: https://docs.microsoft.com/en-us/graph/api/resources/calendar
-    baseURL: https://graph.microsoft.com/v1.0/me/calendar
-    tags:
-      - Calendar
-      - Events
-      - Meetings
-      - Scheduling
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/graph/api/resources/event
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/calendar.yaml
-      - type: OpenAPI
-        url: openapi/microsoft-graph-api-openapi.yml
-  - name: Outlook Contacts API
-    description: >-
-      Access to Outlook personal contacts for managing contact information, creating contact folders, and organizing
-      people data.
-    humanURL: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
-    baseURL: https://graph.microsoft.com/v1.0/me/contacts
-    tags:
-      - Address-Book
-      - Contacts
-      - Outlook
-      - People
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
-  - name: OneDrive API
-    description: Access to OneDrive file storage, sharing, and collaboration features.
-    humanURL: https://docs.microsoft.com/en-us/graph/api/resources/onedrive
-    baseURL: https://graph.microsoft.com/v1.0/me/drive
-    tags:
-      - Files
-      - Onedrive
-      - Sharing
-      - Storage
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/graph/api/resources/driveitem
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/files.yaml
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/onedrive/developer/rest-api/?view=odsp-graph-online
-  - name: SharePoint API
-    description: Access to SharePoint sites, lists, and document libraries.
-    humanURL: https://docs.microsoft.com/en-us/graph/api/resources/sharepoint
-    baseURL: https://graph.microsoft.com/v1.0/sites
-    tags:
-      - Collaboration
-      - Lists
-      - Sharepoint
-      - Sites
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/graph/api/resources/site
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/sites.yaml
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
-        title: SharePoint REST v2
-  - name: Microsoft Teams API
-    description: Access to Microsoft Teams channels, messages, and collaboration features.
-    humanURL: https://docs.microsoft.com/en-us/graph/api/resources/teams-api-overview
-    baseURL: https://graph.microsoft.com/v1.0/teams
-    tags:
-      - Channels
-      - Chat
-      - Collaboration
-      - Teams
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/graph/api/resources/team
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/teams.yaml
-  - name: Office 365 Users API
-    description: Manage Office 365 users, profiles, and organizational information.
-    humanURL: https://docs.microsoft.com/en-us/graph/api/resources/user
-    baseURL: https://graph.microsoft.com/v1.0/users
-    tags:
-      - Directory
-      - Identity
-      - Profiles
-      - Users
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/graph/api/resources/user
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/users.yaml
-      - type: JSONSchema
-        url: json-schema/microsoft-office-365-user-schema.json
-  - name: Planner API
-    description: Access to Microsoft Planner tasks, plans, and project management features.
-    humanURL: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
-    baseURL: https://graph.microsoft.com/v1.0/planner
-    tags:
-      - Planner
-      - Planning
-      - Projects
-      - Tasks
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/planner.yaml
-  - name: OneNote API
-    description: Access to OneNote notebooks, sections, and pages for creating and managing notes and structured content.
-    humanURL: https://learn.microsoft.com/en-us/graph/integrate-with-onenote
-    baseURL: https://graph.microsoft.com/v1.0/me/onenote
-    tags:
-      - Notebooks
-      - Notes
-      - Onenote
-      - Pages
-      - Sections
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/onenote-api-overview?view=graph-rest-1.0
-  - name: Excel Workbooks and Charts API
-    description: >-
-      Read and modify Excel workbooks stored in OneDrive and SharePoint, including managing worksheets, tables, charts,
-      ranges, and sessions.
-    humanURL: https://learn.microsoft.com/en-us/graph/excel-concept-overview
-    baseURL: https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
-    tags:
-      - Charts
-      - Excel
-      - Spreadsheets
-      - Tables
-      - Workbooks
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/excel?view=graph-rest-1.0
-      - type: BestPractices
-        url: https://learn.microsoft.com/en-us/graph/workbook-best-practice
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/excel-manage-sessions
-        title: Session Management
-  - name: Microsoft To Do API
-    description: >-
-      Manage tasks and task lists across To Do clients, Outlook, and Teams for personal task management and day
-      planning.
-    humanURL: https://learn.microsoft.com/en-us/graph/todo-concept-overview
-    baseURL: https://graph.microsoft.com/v1.0/me/todo
-    tags:
-      - Productivity
-      - Task-Lists
-      - Tasks
-      - Todo
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/todo-concept-overview
-  - name: Microsoft Bookings API
-    description: >-
-      Manage customer bookings, appointment scheduling, business services, and staff information for enterprise and
-      small business owners.
-    humanURL: https://learn.microsoft.com/en-us/graph/booking-concept-overview
-    baseURL: https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
-    tags:
-      - Appointments
-      - Bookings
-      - Business
-      - Scheduling
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/booking-api-overview?view=graph-rest-1.0
-  - name: Office 365 Groups API
-    description: Manage Microsoft 365 groups, group membership, conversations, and group-related resources for collaboration.
-    humanURL: https://learn.microsoft.com/en-us/graph/api/resources/groups-overview?view=graph-rest-1.0
-    baseURL: https://graph.microsoft.com/v1.0/groups
-    tags:
-      - Collaboration
-      - Groups
-      - Membership
-      - Teams
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
-      - type: OpenAPI
-        url: openapi/microsoft-graph-api-openapi.yml
-  - name: Microsoft Graph Security API
-    description: >-
-      Connect security products, services, and partners to streamline security operations and improve threat protection,
-      detection, and response.
-    humanURL: https://learn.microsoft.com/en-us/graph/security-concept-overview
-    baseURL: https://graph.microsoft.com/v1.0/security
-    tags:
-      - Alerts
-      - Compliance
-      - Security
-      - Threats
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview?view=graph-rest-1.0
-  - name: Microsoft Graph Communications API
-    description: >-
-      Create and join online meetings, manage call records, and enable cloud communications capabilities for
-      applications.
-    humanURL: https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings
-    baseURL: https://graph.microsoft.com/v1.0/communications
-    tags:
-      - Calls
-      - Communications
-      - Meetings
-      - Online-Meetings
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings
-  - name: Office Add-ins Platform
-    description: >-
-      Platform for building solutions that extend Office applications including Excel, Outlook, Word, PowerPoint, and
-      OneNote using web technologies and the Office JavaScript API.
-    humanURL: https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins
-    tags:
-      - Add-Ins
-      - Excel
-      - Extensions
-      - Office-Js
-      - Outlook
-      - Powerpoint
-      - Word
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/office/dev/add-ins/
-      - type: APIReference
-        url: https://learn.microsoft.com/en-us/office/dev/add-ins/reference/javascript-api-for-office
-        title: JavaScript API Reference
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/office/dev/add-ins/overview/learning-path-beginner
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/office/dev/add-ins/develop/develop-overview
-        title: Development Guide
+- name: Outlook Contacts API
+  description: >-
+    Access to Outlook personal contacts for managing contact information, creating contact folders, and
+    organizing people data.
+  humanURL: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
+  baseURL: https://graph.microsoft.com/v1.0/me/contacts
+  tags:
+  - Address-Book
+  - Contacts
+  - Outlook
+  - People
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+- name: OneNote API
+  description: >-
+    Access to OneNote notebooks, sections, and pages for creating and managing notes and structured content.
+  humanURL: https://learn.microsoft.com/en-us/graph/integrate-with-onenote
+  baseURL: https://graph.microsoft.com/v1.0/me/onenote
+  tags:
+  - Notebooks
+  - Notes
+  - Onenote
+  - Pages
+  - Sections
+  properties:
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/onenote-api-overview?view=graph-rest-1.0
+- name: Excel Workbooks and Charts API
+  description: >-
+    Read and modify Excel workbooks stored in OneDrive and SharePoint, including managing worksheets,
+    tables, charts, ranges, and sessions.
+  humanURL: https://learn.microsoft.com/en-us/graph/excel-concept-overview
+  baseURL: https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
+  tags:
+  - Charts
+  - Excel
+  - Spreadsheets
+  - Tables
+  - Workbooks
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/excel?view=graph-rest-1.0
+  - type: BestPractices
+    url: https://learn.microsoft.com/en-us/graph/workbook-best-practice
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/excel-manage-sessions
+    title: Session Management
+- name: Microsoft To Do API
+  description: >-
+    Manage tasks and task lists across To Do clients, Outlook, and Teams for personal task management
+    and day planning.
+  humanURL: https://learn.microsoft.com/en-us/graph/todo-concept-overview
+  baseURL: https://graph.microsoft.com/v1.0/me/todo
+  tags:
+  - Productivity
+  - Task-Lists
+  - Tasks
+  - Todo
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/todo-concept-overview
+- name: Microsoft Bookings API
+  description: >-
+    Manage customer bookings, appointment scheduling, business services, and staff information for enterprise
+    and small business owners.
+  humanURL: https://learn.microsoft.com/en-us/graph/booking-concept-overview
+  baseURL: https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
+  tags:
+  - Appointments
+  - Bookings
+  - Business
+  - Scheduling
+  properties:
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/booking-api-overview?view=graph-rest-1.0
+- name: Microsoft Graph Security API
+  description: >-
+    Connect security products, services, and partners to streamline security operations and improve threat
+    protection, detection, and response.
+  humanURL: https://learn.microsoft.com/en-us/graph/security-concept-overview
+  baseURL: https://graph.microsoft.com/v1.0/security
+  tags:
+  - Alerts
+  - Compliance
+  - Security
+  - Threats
+  properties:
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview?view=graph-rest-1.0
+- name: Microsoft Graph Communications API
+  description: >-
+    Create and join online meetings, manage call records, and enable cloud communications capabilities
+    for applications.
+  humanURL: https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings
+  baseURL: https://graph.microsoft.com/v1.0/communications
+  tags:
+  - Calls
+  - Communications
+  - Meetings
+  - Online-Meetings
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings
+- name: Office Add-ins Platform
+  description: >-
+    Platform for building solutions that extend Office applications including Excel, Outlook, Word, PowerPoint,
+    and OneNote using web technologies and the Office JavaScript API.
+  humanURL: https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins
+  tags:
+  - Add-Ins
+  - Excel
+  - Extensions
+  - Office-Js
+  - Outlook
+  - Powerpoint
+  - Word
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/reference/javascript-api-for-office
+    title: JavaScript API Reference
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/overview/learning-path-beginner
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/office/dev/add-ins/develop/develop-overview
+    title: Development Guide
+- aid: microsoft-office-365:microsoft-office-365-calendar-api
+  name: Microsoft Office 365 Calendar API
+  description: >-
+    Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling, meeting
+    management, and free/busy lookups.
+  humanURL: https://developer.microsoft.com/en-us/graph
+  baseURL: https://graph.microsoft.com
+  tags:
+  - Calendar
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-365-calendar-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/overview
+  - type: JSONLD
+    url: json-ld/microsoft-office-365-context.jsonld
+  - type: Pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/active-directory/
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+  - type: Documentation
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: TermsOfService
+    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/graph/throttling
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/use-the-api
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/change-notifications-overview
+  - type: Versioning
+    url: https://learn.microsoft.com/en-us/graph/versioning-and-support
+  - type: Console
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/message
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-change-notifications-overview
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/event
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/driveitem
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/onedrive/developer/rest-api/?view=odsp-graph-online
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/site
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/team
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/user
+  - type: JSONSchema
+    url: json-schema/microsoft-office-365-user-schema.json
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
+- aid: microsoft-office-365:microsoft-office-365-groups-api
+  name: Microsoft Office 365 Groups API
+  description: >-
+    Manage Microsoft 365 groups and security groups. Groups provide shared access to resources such as
+    SharePoint sites, shared mailboxes, Planner plans, OneNote notebooks, and conversations.
+  humanURL: https://developer.microsoft.com/en-us/graph
+  baseURL: https://graph.microsoft.com
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-365-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/overview
+  - type: JSONLD
+    url: json-ld/microsoft-office-365-context.jsonld
+  - type: Pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/active-directory/
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+  - type: Documentation
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: TermsOfService
+    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/graph/throttling
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/use-the-api
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/change-notifications-overview
+  - type: Versioning
+    url: https://learn.microsoft.com/en-us/graph/versioning-and-support
+  - type: Console
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/message
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-change-notifications-overview
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/event
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/driveitem
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/onedrive/developer/rest-api/?view=odsp-graph-online
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/site
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/team
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/user
+  - type: JSONSchema
+    url: json-schema/microsoft-office-365-user-schema.json
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
+- aid: microsoft-office-365:microsoft-office-365-mail-api
+  name: Microsoft Office 365 Mail API
+  description: >-
+    Access and manage Outlook mail messages, mail folders, and message attachments. Supports reading,
+    creating, sending, replying, forwarding, and organizing email.
+  humanURL: https://developer.microsoft.com/en-us/graph
+  baseURL: https://graph.microsoft.com
+  tags:
+  - Mail
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-365-mail-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/overview
+  - type: JSONLD
+    url: json-ld/microsoft-office-365-context.jsonld
+  - type: Pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/active-directory/
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+  - type: Documentation
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: TermsOfService
+    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/graph/throttling
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/use-the-api
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/change-notifications-overview
+  - type: Versioning
+    url: https://learn.microsoft.com/en-us/graph/versioning-and-support
+  - type: Console
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/message
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-change-notifications-overview
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/event
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/driveitem
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/onedrive/developer/rest-api/?view=odsp-graph-online
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/site
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/team
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/user
+  - type: JSONSchema
+    url: json-schema/microsoft-office-365-user-schema.json
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
+- aid: microsoft-office-365:microsoft-office-365-users-api
+  name: Microsoft Office 365 Users API
+  description: >-
+    Manage users in Azure Active Directory. Users are the core identity resource representing a person,
+    including their profile, organizational relationships, and access to services.
+  humanURL: https://developer.microsoft.com/en-us/graph
+  baseURL: https://graph.microsoft.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-365-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/overview
+  - type: JSONLD
+    url: json-ld/microsoft-office-365-context.jsonld
+  - type: Pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/active-directory/
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/graph/auth/
+  - type: Documentation
+    url: https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview
+  - type: TermsOfService
+    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/graph/throttling
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/graph/use-the-api
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/change-notifications-overview
+  - type: Versioning
+    url: https://learn.microsoft.com/en-us/graph/versioning-and-support
+  - type: Console
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/message
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/outlook-change-notifications-overview
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/event
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/driveitem
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/onedrive/developer/rest-api/?view=odsp-graph-online
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/site
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/team
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/user
+  - type: JSONSchema
+    url: json-schema/microsoft-office-365-user-schema.json
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
 integrations:
   - name: Microsoft
   - name: Two people looking at a computer.
