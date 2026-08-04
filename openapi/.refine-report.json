@@ -1,0 +1,20 @@
+{
+  "provider": "microsoft-office-365",
+  "sources": [
+    "microsoft-office-365-calendar-api-openapi.yml",
+    "microsoft-office-365-groups-api-openapi.yml",
+    "microsoft-office-365-mail-api-openapi.yml",
+    "microsoft-office-365-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-office-365-calendar-api-openapi.yml",
+    "microsoft-office-365-groups-api-openapi.yml",
+    "microsoft-office-365-mail-api-openapi.yml",
+    "microsoft-office-365-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
