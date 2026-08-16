@@ -5,7 +5,7 @@
       "source": "https://devblogs.microsoft.com/microsoft365dev/feed",
       "feed_url": "https://devblogs.microsoft.com/microsoft365dev/feed",
       "title": "",
-      "saved": 0,
+      "saved": 2,
       "method": "feed"
     },
     {
@@ -13,9 +13,10 @@
       "feed_url": "https://developer.microsoft.com/en-us/graph/support",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     }
   ],
-  "post_count": 34,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 36,
+  "fetched": "2026-08-15T12:11:08Z"
 }
