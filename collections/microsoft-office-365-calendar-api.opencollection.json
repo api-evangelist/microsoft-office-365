@@ -1,0 +1,298 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office 365 Microsoft Graph Calendar API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calendar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office 365 List Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/events",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties for sorting results."
+              }
+            ]
+          },
+          "docs": "Get the events in the signed-in user's default calendar or from a specified calendar. The list contains single instance meetings and series masters. To get expanded event instances, you can get the calendar view or the instances of an event. Requires Calendars.Read or Calendars.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Create Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an event in the signed-in user's default calendar or a specified calendar. By default, the allowNewTimeProposals property is set to true when an event is created. Requires Calendars.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Get Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to expand and include in the response."
+              }
+            ]
+          },
+          "docs": "Get the properties and relationships of the specified event object. Returns the event body in HTML format by default. Requires Calendars.Read or Calendars.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Update Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of an event object. Only the properties you specify are changed. Requires Calendars.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Delete Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event."
+              }
+            ]
+          },
+          "docs": "Remove the specified event from the user's calendar. If the event is a meeting, deleting it on the organizer's calendar sends a cancellation message to attendees. Requires Calendars.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 List Calendars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/calendars",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              }
+            ]
+          },
+          "docs": "Get all the signed-in user's calendars from the default calendar group or from a specific calendar group. Requires Calendars.Read or Calendars.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Get Calendar View",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/calendarView",
+            "params": [
+              {
+                "name": "startDateTime",
+                "value": "2026-01-15T10:30:00Z",
+                "type": "query",
+                "description": "The start date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T19:00:00-08:00)."
+              },
+              {
+                "name": "endDateTime",
+                "value": "2026-01-15T10:30:00Z",
+                "type": "query",
+                "description": "The end date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T20:00:00-08:00)."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties for sorting results."
+              }
+            ]
+          },
+          "docs": "Get the occurrences, exceptions, and single instances of events in a calendar view defined by a time range, from the user's default calendar or from a specified calendar. Requires Calendars.Read or Calendars.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Accept Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/accept",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accept the specified event in a user calendar. Requires Calendars.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Decline Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/events/:event-id/decline",
+            "params": [
+              {
+                "name": "event-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the event."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decline invitation to the specified event in a user calendar. Requires Calendars.ReadWrite permission."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

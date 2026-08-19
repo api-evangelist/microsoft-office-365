@@ -1,0 +1,203 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office 365 Microsoft Graph Calendar Users API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office 365 List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/users",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties for sorting results."
+              },
+              {
+                "name": "$search",
+                "value": "",
+                "type": "query",
+                "description": "Search expression to filter results. Uses KQL syntax for directory objects."
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "Include a count of the total number of items in a collection alongside the page of data values."
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to expand and include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of user objects. By default, only a limited set of properties are returned. To return additional properties, use the $select OData query parameter. Returns up to 100 users per page by default. Requires User.ReadBasic.All, User.Read.All, or Directory.Read.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new user object. The request body must contain the required properties for the user. You can optionally specify other writable properties. Requires User.ReadWrite.All or Directory.ReadWrite.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/users/:user-id",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the user (GUID) or the userPrincipalName."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to expand and include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve the properties and relationships of a user object. Returns a limited set of properties by default; use $select to request additional properties. Requires User.Read, User.ReadBasic.All, User.Read.All, or Directory.Read.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/users/:user-id",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the user (GUID) or the userPrincipalName."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a user object. Not all properties can be updated by Member or Guest users with their default permissions without administrator roles. Requires User.ReadWrite, User.ReadWrite.All, or Directory.ReadWrite.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Delete User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/users/:user-id",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the user (GUID) or the userPrincipalName."
+              }
+            ]
+          },
+          "docs": "Delete a user object. When deleted, user resources are moved to a temporary container and can be restored within 30 days. After 30 days, they are permanently deleted. Requires User.ReadWrite.All or Directory.ReadWrite.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Get Signed-in User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me",
+            "params": [
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to expand and include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve the properties and relationships of the currently signed-in user. The /me endpoint resolves to the signed-in user based on the access token. Requires User.Read permission at minimum."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

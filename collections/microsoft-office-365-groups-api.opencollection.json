@@ -1,0 +1,275 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office 365 Microsoft Graph Calendar Groups API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office 365 List Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/groups",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties for sorting results."
+              },
+              {
+                "name": "$search",
+                "value": "",
+                "type": "query",
+                "description": "Search expression to filter results. Uses KQL syntax for directory objects."
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "Include a count of the total number of items in a collection alongside the page of data values."
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to expand and include in the response."
+              }
+            ]
+          },
+          "docs": "List all groups in an organization, including Microsoft 365 groups, security groups, and distribution groups. Returns up to 100 objects by default. To return additional properties, use $select. Requires GroupMember.Read.All, Group.Read.All, or Directory.Read.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Create Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Microsoft 365 group or security group. You can create Microsoft 365 groups with a team, a channel, or both by specifying the resourceProvisioningOptions. Requires Group.ReadWrite.All or Directory.ReadWrite.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Get Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/groups/:group-id",
+            "params": [
+              {
+                "name": "group-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the group (GUID)."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to expand and include in the response."
+              }
+            ]
+          },
+          "docs": "Get the properties and relationships of a group object. Returns a default set of properties; use $select to request additional properties. Requires GroupMember.Read.All, Group.Read.All, or Directory.Read.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Update Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/groups/:group-id",
+            "params": [
+              {
+                "name": "group-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the group (GUID)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a group object. Requires Group.ReadWrite.All or Directory.ReadWrite.All permission. Not every property can be updated."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Delete Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/groups/:group-id",
+            "params": [
+              {
+                "name": "group-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the group (GUID)."
+              }
+            ]
+          },
+          "docs": "Delete a group. When deleted, Microsoft 365 groups are moved to a temporary container and can be restored within 30 days. Security groups and distribution groups are permanently deleted immediately. Requires Group.ReadWrite.All or Directory.ReadWrite.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 List Group Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/groups/:group-id/members",
+            "params": [
+              {
+                "name": "group-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the group (GUID)."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "Include a count of the total number of items in a collection alongside the page of data values."
+              }
+            ]
+          },
+          "docs": "Get a list of the group's direct members. A group can have users, organizational contacts, devices, service principals, and other groups as members. Requires GroupMember.Read.All, Group.Read.All, or Directory.Read.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Add Group Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/groups/:group-id/members/$ref",
+            "params": [
+              {
+                "name": "group-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the group (GUID)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a member to a Microsoft 365 group or a security group through the members navigation property. You can add users, organizational contacts, service principals, or other groups. Requires GroupMember.ReadWrite.All, Group.ReadWrite.All, or Directory.ReadWrite.All permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Remove Group Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/groups/:group-id/members/:directoryObject-id/$ref",
+            "params": [
+              {
+                "name": "group-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the group (GUID)."
+              },
+              {
+                "name": "directoryObject-id",
+                "value": "500123",
+                "type": "path",
+                "description": "The unique identifier of the directory object (member) to remove."
+              }
+            ]
+          },
+          "docs": "Remove a member from a group via the members navigation property. Requires GroupMember.ReadWrite.All, Group.ReadWrite.All, or Directory.ReadWrite.All permission."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

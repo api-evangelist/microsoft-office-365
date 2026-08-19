@@ -1,0 +1,285 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office 365 Microsoft Graph Calendar Mail API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mail",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office 365 List Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/messages",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties for sorting results."
+              },
+              {
+                "name": "$search",
+                "value": "",
+                "type": "query",
+                "description": "Search expression to filter results. Uses KQL syntax for directory objects."
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "Include a count of the total number of items in a collection alongside the page of data values."
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to expand and include in the response."
+              }
+            ]
+          },
+          "docs": "Get the messages in the signed-in user's mailbox (including Deleted Items and Clutter folders). Depending on the page size and mailbox data, getting messages may incur multiple requests. The default page size is 10. Requires Mail.ReadBasic, Mail.Read, or Mail.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Create Draft Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a draft of a new message in the signed-in user's mailbox. The draft can then be updated and sent. The message is saved in the Drafts folder by default. Requires Mail.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Get Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to expand and include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve the properties and relationships of a message object. You can use $select to return specific properties and $expand to expand relationships such as attachments. Requires Mail.ReadBasic, Mail.Read, or Mail.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Update Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the properties of a message object. Requires Mail.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Delete Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.microsoft.com/v1.0/me/messages/:message-id",
+            "params": [
+              {
+                "name": "message-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the message."
+              }
+            ]
+          },
+          "docs": "Delete a message in the signed-in user's mailbox. Requires Mail.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 Send Mail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.microsoft.com/v1.0/me/sendMail",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send the message specified in the request body using either JSON or MIME format. The message is saved in the Sent Items folder by default. You can include an attachment with the send action. Requires Mail.Send permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 List Mail Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders",
+            "params": [
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              }
+            ]
+          },
+          "docs": "Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. Requires Mail.ReadBasic, Mail.Read, or Mail.ReadWrite permission."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office 365 List Messages in Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.microsoft.com/v1.0/me/mailFolders/:mailFolder-id/messages",
+            "params": [
+              {
+                "name": "mailFolder-id",
+                "value": "500123",
+                "type": "path",
+                "description": "The unique identifier of the mail folder, or a well-known folder name (inbox, drafts, sentitems, deleteditems)."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return in a result set. Maximum value depends on the API."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip in the result set."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression to restrict the set of items returned."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to include in the response."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties for sorting results."
+              },
+              {
+                "name": "$search",
+                "value": "",
+                "type": "query",
+                "description": "Search expression to filter results. Uses KQL syntax for directory objects."
+              }
+            ]
+          },
+          "docs": "Get the message collection in the specified mail folder. Requires Mail.ReadBasic, Mail.Read, or Mail.ReadWrite permission."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

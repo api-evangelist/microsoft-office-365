@@ -1,0 +1,3320 @@
+{
+  "item": [
+    {
+      "id": "bf8a23ba-1597-4358-b662-6b0b6b87af42",
+      "name": "Calendar",
+      "description": {
+        "content": "Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling, meeting management, and free/busy lookups.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "14a5d1fe-efae-42b2-9813-26be74268f00",
+          "name": "Microsoft Office 365 List Events",
+          "request": {
+            "name": "Microsoft Office 365 List Events",
+            "description": {
+              "content": "Get the events in the signed-in user's default calendar or from a specified calendar. The list contains single instance meetings and series masters. To get expanded event instances, you can get the calendar view or the instances of an event. Requires Calendars.Read or Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return in a result set. Maximum value depends on the API."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip in the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict the set of items returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties for sorting results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da417d2a-310d-4ab6-bb6b-0c94c0c07e31",
+              "name": "A collection of event objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"example_value\",\n  \"@odata.count\": 10,\n  \"@odata.nextLink\": \"https://www.example.com\",\n  \"value\": [\n    {\n      \"id\": \"abc123\",\n      \"subject\": \"example_value\",\n      \"bodyPreview\": \"example_value\",\n      \"locations\": {},\n      \"attendees\": {},\n      \"isAllDay\": true,\n      \"isCancelled\": true,\n      \"isOrganizer\": true,\n      \"isOnlineMeeting\": true,\n      \"onlineMeetingProvider\": \"unknown\",\n      \"onlineMeetingUrl\": \"https://www.example.com\",\n      \"seriesMasterId\": \"500123\",\n      \"type\": \"singleInstance\",\n      \"showAs\": \"free\",\n      \"importance\": \"low\",\n      \"sensitivity\": \"normal\",\n      \"responseRequested\": true,\n      \"allowNewTimeProposals\": true,\n      \"categories\": {},\n      \"hasAttachments\": true,\n      \"iCalUId\": \"500123\",\n      \"webLink\": \"https://www.example.com\",\n      \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n      \"lastModifiedDateTime\": \"2026-01-15T10:30:00Z\",\n      \"reminderMinutesBeforeStart\": 10,\n      \"transactionId\": \"500123\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c04cb2e-28e9-4be1-9fa9-b705eb38985e",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63a7145a-0607-4df6-9c4f-99888f52ec32",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03c8e488-ef6e-4362-865f-c8675d299910",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64b51f06-b9a0-4d1e-b16d-b5930e76d6ff",
+          "name": "Microsoft Office 365 Create Event",
+          "request": {
+            "name": "Microsoft Office 365 Create Event",
+            "description": {
+              "content": "Create an event in the signed-in user's default calendar or a specified calendar. By default, the allowNewTimeProposals property is set to true when an event is created. Requires Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"start\": {\n    \"dateTime\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  \"end\": {\n    \"dateTime\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  \"body\": {\n    \"contentType\": \"<string>\",\n    \"content\": \"<string>\"\n  },\n  \"location\": {\n    \"displayName\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"locationUri\": \"<string>\",\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"countryOrRegion\": \"<string>\",\n      \"postalCode\": \"<string>\"\n    },\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"accuracy\": \"<double>\",\n      \"altitude\": \"<double>\",\n      \"altitudeAccuracy\": \"<double>\"\n    },\n    \"uniqueId\": \"<string>\",\n    \"uniqueIdType\": \"<string>\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"<string>\",\n      \"locationType\": \"<string>\",\n      \"locationUri\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"countryOrRegion\": \"<string>\",\n        \"postalCode\": \"<string>\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"accuracy\": \"<double>\",\n        \"altitude\": \"<double>\",\n        \"altitudeAccuracy\": \"<double>\"\n      },\n      \"uniqueId\": \"<string>\",\n      \"uniqueIdType\": \"<string>\"\n    },\n    {\n      \"displayName\": \"<string>\",\n      \"locationType\": \"<string>\",\n      \"locationUri\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"countryOrRegion\": \"<string>\",\n        \"postalCode\": \"<string>\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"accuracy\": \"<double>\",\n        \"altitude\": \"<double>\",\n        \"altitudeAccuracy\": \"<double>\"\n      },\n      \"uniqueId\": \"<string>\",\n      \"uniqueIdType\": \"<string>\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"<string>\",\n        \"address\": \"<email>\"\n      },\n      \"type\": \"<string>\",\n      \"status\": {\n        \"response\": \"<string>\",\n        \"time\": \"<dateTime>\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"end\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"<string>\",\n        \"address\": \"<email>\"\n      },\n      \"type\": \"<string>\",\n      \"status\": {\n        \"response\": \"<string>\",\n        \"time\": \"<dateTime>\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"end\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"isAllDay\": \"<boolean>\",\n  \"isOnlineMeeting\": \"<boolean>\",\n  \"onlineMeetingProvider\": \"<string>\",\n  \"recurrence\": {\n    \"pattern\": {\n      \"type\": \"<string>\",\n      \"interval\": \"<integer>\",\n      \"daysOfWeek\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dayOfMonth\": \"<integer>\",\n      \"month\": \"<integer>\",\n      \"firstDayOfWeek\": \"<string>\",\n      \"index\": \"<string>\"\n    },\n    \"range\": {\n      \"type\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"numberOfOccurrences\": \"<integer>\",\n      \"recurrenceTimeZone\": \"<string>\"\n    }\n  },\n  \"showAs\": \"<string>\",\n  \"importance\": \"<string>\",\n  \"sensitivity\": \"<string>\",\n  \"responseRequested\": \"<boolean>\",\n  \"allowNewTimeProposals\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"reminderMinutesBeforeStart\": \"<integer>\",\n  \"transactionId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3d93441-a135-4896-bad5-ec5b062b8d9f",
+              "name": "The created event object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"responseRequested\": true,\n  \"allowNewTimeProposals\": true,\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10,\n  \"transactionId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"bodyPreview\": \"example_value\",\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"organizer\": {},\n  \"isAllDay\": true,\n  \"isCancelled\": true,\n  \"isOrganizer\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"unknown\",\n  \"onlineMeetingUrl\": \"https://www.example.com\",\n  \"onlineMeeting\": {\n    \"joinUrl\": \"https://www.example.com\",\n    \"conferenceId\": \"500123\",\n    \"tollNumber\": \"example_value\",\n    \"tollFreeNumbers\": [\n      {}\n    ],\n    \"quickDial\": \"example_value\",\n    \"phones\": [\n      {}\n    ]\n  },\n  \"recurrence\": {},\n  \"seriesMasterId\": \"500123\",\n  \"type\": \"singleInstance\",\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"responseStatus\": {\n    \"response\": \"none\",\n    \"time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"responseRequested\": true,\n  \"allowNewTimeProposals\": true,\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"hasAttachments\": true,\n  \"iCalUId\": \"500123\",\n  \"webLink\": \"https://www.example.com\",\n  \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDateTime\": \"2026-01-15T10:30:00Z\",\n  \"reminderMinutesBeforeStart\": 10,\n  \"transactionId\": \"500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1a686d5-b03a-46ff-89c1-8cc9206174db",
+              "name": "Bad request. The request body or parameters are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"responseRequested\": true,\n  \"allowNewTimeProposals\": true,\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10,\n  \"transactionId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abced95e-58e8-47da-8900-db68289b6e1d",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"responseRequested\": true,\n  \"allowNewTimeProposals\": true,\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10,\n  \"transactionId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ede6957-177a-41bc-8d11-969c07e1731c",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"responseRequested\": true,\n  \"allowNewTimeProposals\": true,\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10,\n  \"transactionId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03a4506d-58a6-43e1-871a-0fc6ca21ed1f",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"responseRequested\": true,\n  \"allowNewTimeProposals\": true,\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10,\n  \"transactionId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1cede82-6e3a-4e79-9074-b4100e890dc5",
+          "name": "Microsoft Office 365 Get Event",
+          "request": {
+            "name": "Microsoft Office 365 Get Event",
+            "description": {
+              "content": "Get the properties and relationships of the specified event object. Returns the event body in HTML format by default. Requires Calendars.Read or Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "events",
+                ":event-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of relationships to expand and include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event-id",
+                  "description": "(Required) The unique identifier of the event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f71f90e-1448-4103-948d-49a2e4ce47b8",
+              "name": "The requested event object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"bodyPreview\": \"example_value\",\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"organizer\": {},\n  \"isAllDay\": true,\n  \"isCancelled\": true,\n  \"isOrganizer\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"unknown\",\n  \"onlineMeetingUrl\": \"https://www.example.com\",\n  \"onlineMeeting\": {\n    \"joinUrl\": \"https://www.example.com\",\n    \"conferenceId\": \"500123\",\n    \"tollNumber\": \"example_value\",\n    \"tollFreeNumbers\": [\n      {}\n    ],\n    \"quickDial\": \"example_value\",\n    \"phones\": [\n      {}\n    ]\n  },\n  \"recurrence\": {},\n  \"seriesMasterId\": \"500123\",\n  \"type\": \"singleInstance\",\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"responseStatus\": {\n    \"response\": \"none\",\n    \"time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"responseRequested\": true,\n  \"allowNewTimeProposals\": true,\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"hasAttachments\": true,\n  \"iCalUId\": \"500123\",\n  \"webLink\": \"https://www.example.com\",\n  \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDateTime\": \"2026-01-15T10:30:00Z\",\n  \"reminderMinutesBeforeStart\": 10,\n  \"transactionId\": \"500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b324752-9746-48f1-9b55-8a5a878ea934",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "781afca7-ad03-4308-b53b-d48eac414b7d",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fffa39e7-c248-4d90-8dca-c6496c90321a",
+              "name": "Not found. The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "502db99b-a5c6-4637-8b92-15dd9ea8652e",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96d77ecf-604b-469b-bd5d-ce6ddb020d7f",
+          "name": "Microsoft Office 365 Update Event",
+          "request": {
+            "name": "Microsoft Office 365 Update Event",
+            "description": {
+              "content": "Update the properties of an event object. Only the properties you specify are changed. Requires Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "events",
+                ":event-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event-id",
+                  "description": "(Required) The unique identifier of the event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"body\": {\n    \"contentType\": \"<string>\",\n    \"content\": \"<string>\"\n  },\n  \"start\": {\n    \"dateTime\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  \"end\": {\n    \"dateTime\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  \"location\": {\n    \"displayName\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"locationUri\": \"<string>\",\n    \"address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"countryOrRegion\": \"<string>\",\n      \"postalCode\": \"<string>\"\n    },\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"accuracy\": \"<double>\",\n      \"altitude\": \"<double>\",\n      \"altitudeAccuracy\": \"<double>\"\n    },\n    \"uniqueId\": \"<string>\",\n    \"uniqueIdType\": \"<string>\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"<string>\",\n      \"locationType\": \"<string>\",\n      \"locationUri\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"countryOrRegion\": \"<string>\",\n        \"postalCode\": \"<string>\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"accuracy\": \"<double>\",\n        \"altitude\": \"<double>\",\n        \"altitudeAccuracy\": \"<double>\"\n      },\n      \"uniqueId\": \"<string>\",\n      \"uniqueIdType\": \"<string>\"\n    },\n    {\n      \"displayName\": \"<string>\",\n      \"locationType\": \"<string>\",\n      \"locationUri\": \"<string>\",\n      \"address\": {\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"countryOrRegion\": \"<string>\",\n        \"postalCode\": \"<string>\"\n      },\n      \"coordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"accuracy\": \"<double>\",\n        \"altitude\": \"<double>\",\n        \"altitudeAccuracy\": \"<double>\"\n      },\n      \"uniqueId\": \"<string>\",\n      \"uniqueIdType\": \"<string>\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"emailAddress\": {\n        \"name\": \"<string>\",\n        \"address\": \"<email>\"\n      },\n      \"type\": \"<string>\",\n      \"status\": {\n        \"response\": \"<string>\",\n        \"time\": \"<dateTime>\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"end\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"emailAddress\": {\n        \"name\": \"<string>\",\n        \"address\": \"<email>\"\n      },\n      \"type\": \"<string>\",\n      \"status\": {\n        \"response\": \"<string>\",\n        \"time\": \"<dateTime>\"\n      },\n      \"proposedNewTime\": {\n        \"start\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"end\": {\n          \"dateTime\": \"<string>\",\n          \"timeZone\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"isAllDay\": \"<boolean>\",\n  \"isOnlineMeeting\": \"<boolean>\",\n  \"onlineMeetingProvider\": \"<string>\",\n  \"recurrence\": {\n    \"pattern\": {\n      \"type\": \"<string>\",\n      \"interval\": \"<integer>\",\n      \"daysOfWeek\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"dayOfMonth\": \"<integer>\",\n      \"month\": \"<integer>\",\n      \"firstDayOfWeek\": \"<string>\",\n      \"index\": \"<string>\"\n    },\n    \"range\": {\n      \"type\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"numberOfOccurrences\": \"<integer>\",\n      \"recurrenceTimeZone\": \"<string>\"\n    }\n  },\n  \"showAs\": \"<string>\",\n  \"importance\": \"<string>\",\n  \"sensitivity\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"reminderMinutesBeforeStart\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0778178-9399-4e9b-85ae-aaec893c49d7",
+              "name": "The updated event object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"bodyPreview\": \"example_value\",\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"organizer\": {},\n  \"isAllDay\": true,\n  \"isCancelled\": true,\n  \"isOrganizer\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"unknown\",\n  \"onlineMeetingUrl\": \"https://www.example.com\",\n  \"onlineMeeting\": {\n    \"joinUrl\": \"https://www.example.com\",\n    \"conferenceId\": \"500123\",\n    \"tollNumber\": \"example_value\",\n    \"tollFreeNumbers\": [\n      {}\n    ],\n    \"quickDial\": \"example_value\",\n    \"phones\": [\n      {}\n    ]\n  },\n  \"recurrence\": {},\n  \"seriesMasterId\": \"500123\",\n  \"type\": \"singleInstance\",\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"responseStatus\": {\n    \"response\": \"none\",\n    \"time\": \"2026-01-15T10:30:00Z\"\n  },\n  \"responseRequested\": true,\n  \"allowNewTimeProposals\": true,\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"hasAttachments\": true,\n  \"iCalUId\": \"500123\",\n  \"webLink\": \"https://www.example.com\",\n  \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n  \"lastModifiedDateTime\": \"2026-01-15T10:30:00Z\",\n  \"reminderMinutesBeforeStart\": 10,\n  \"transactionId\": \"500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d9f7585-03f8-4330-895e-c9f4ba8f7714",
+              "name": "Bad request. The request body or parameters are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e149dfdb-da40-46ba-a798-681d8ea38cee",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48ff3904-e5a4-47f7-b5ce-6e72c88b6696",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5605fe2d-bc49-46f4-a35d-f948eb5aed70",
+              "name": "Not found. The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b44d3c78-564b-412d-bdbc-ce0d1ef4df69",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"example_value\",\n  \"body\": {\n    \"contentType\": \"text\",\n    \"content\": \"example_value\"\n  },\n  \"start\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"end\": {\n    \"dateTime\": \"example_value\",\n    \"timeZone\": \"example_value\"\n  },\n  \"location\": {\n    \"displayName\": \"example_value\",\n    \"locationType\": \"default\",\n    \"locationUri\": \"example_value\",\n    \"uniqueId\": \"500123\",\n    \"uniqueIdType\": \"unknown\"\n  },\n  \"locations\": [\n    {\n      \"displayName\": \"example_value\",\n      \"locationType\": \"default\",\n      \"locationUri\": \"example_value\",\n      \"uniqueId\": \"500123\",\n      \"uniqueIdType\": \"unknown\"\n    }\n  ],\n  \"attendees\": [\n    {\n      \"type\": \"required\"\n    }\n  ],\n  \"isAllDay\": true,\n  \"isOnlineMeeting\": true,\n  \"onlineMeetingProvider\": \"teamsForBusiness\",\n  \"recurrence\": {},\n  \"showAs\": \"free\",\n  \"importance\": \"low\",\n  \"sensitivity\": \"normal\",\n  \"categories\": [\n    \"example_value\"\n  ],\n  \"reminderMinutesBeforeStart\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a038e426-4f8d-43fd-97d8-6a5e2f48d3f4",
+          "name": "Microsoft Office 365 Delete Event",
+          "request": {
+            "name": "Microsoft Office 365 Delete Event",
+            "description": {
+              "content": "Remove the specified event from the user's calendar. If the event is a meeting, deleting it on the organizer's calendar sends a cancellation message to attendees. Requires Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "events",
+                ":event-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event-id",
+                  "description": "(Required) The unique identifier of the event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bde8e3e5-8900-409d-930e-d05e17082c9f",
+              "name": "Event deleted successfully. No content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e94c44b-778f-438d-9af5-329ec58eecbf",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "359f00dd-1ac4-442b-9782-52c620ea5777",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8664e55-1487-4c4a-a2b5-4232e466e25f",
+              "name": "Not found. The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4538588-dcd4-4692-a66d-2561f962f842",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2544d7b-3a48-4778-a0c5-5fcecc81da38",
+          "name": "Microsoft Office 365 List Calendars",
+          "request": {
+            "name": "Microsoft Office 365 List Calendars",
+            "description": {
+              "content": "Get all the signed-in user's calendars from the default calendar group or from a specific calendar group. Requires Calendars.Read or Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendars"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return in a result set. Maximum value depends on the API."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip in the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict the set of items returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38028c12-37ba-424c-9590-446a039ea79e",
+              "name": "A collection of calendar objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"example_value\",\n  \"@odata.nextLink\": \"https://www.example.com\",\n  \"value\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"color\": \"auto\",\n      \"changeKey\": \"example_value\",\n      \"canEdit\": true,\n      \"canShare\": true,\n      \"canViewPrivateItems\": true,\n      \"isDefaultCalendar\": true,\n      \"hexColor\": \"example_value\",\n      \"isRemovable\": true,\n      \"isTallyingResponses\": true,\n      \"allowedOnlineMeetingProviders\": {},\n      \"defaultOnlineMeetingProvider\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5446da5d-ddb7-41fc-bae5-9cf96e133974",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5be8447-b8b6-4be5-a564-4faeb5592e2d",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bc7a4b3-bd8b-4c24-a8c6-4d3a0aa28ac3",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "534c9d9b-8ef2-47b3-baeb-e026e8493b45",
+          "name": "Microsoft Office 365 Get Calendar View",
+          "request": {
+            "name": "Microsoft Office 365 Get Calendar View",
+            "description": {
+              "content": "Get the occurrences, exceptions, and single instances of events in a calendar view defined by a time range, from the user's default calendar or from a specified calendar. Requires Calendars.Read or Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "calendarView"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDateTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The start date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T19:00:00-08:00)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDateTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The end date and time of the time range, in ISO 8601 format (e.g. 2019-11-08T20:00:00-08:00)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return in a result set. Maximum value depends on the API."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip in the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict the set of items returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties for sorting results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f024581a-e60a-4f18-924b-6c8aae0ffa78",
+              "name": "A collection of event objects within the specified time range.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendarView"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"example_value\",\n  \"@odata.count\": 10,\n  \"@odata.nextLink\": \"https://www.example.com\",\n  \"value\": [\n    {\n      \"id\": \"abc123\",\n      \"subject\": \"example_value\",\n      \"bodyPreview\": \"example_value\",\n      \"locations\": {},\n      \"attendees\": {},\n      \"isAllDay\": true,\n      \"isCancelled\": true,\n      \"isOrganizer\": true,\n      \"isOnlineMeeting\": true,\n      \"onlineMeetingProvider\": \"unknown\",\n      \"onlineMeetingUrl\": \"https://www.example.com\",\n      \"seriesMasterId\": \"500123\",\n      \"type\": \"singleInstance\",\n      \"showAs\": \"free\",\n      \"importance\": \"low\",\n      \"sensitivity\": \"normal\",\n      \"responseRequested\": true,\n      \"allowNewTimeProposals\": true,\n      \"categories\": {},\n      \"hasAttachments\": true,\n      \"iCalUId\": \"500123\",\n      \"webLink\": \"https://www.example.com\",\n      \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n      \"lastModifiedDateTime\": \"2026-01-15T10:30:00Z\",\n      \"reminderMinutesBeforeStart\": 10,\n      \"transactionId\": \"500123\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af8537f3-32d0-4244-861e-06bc52aaaf61",
+              "name": "Bad request. The request body or parameters are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendarView"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b6b96ae-dc7e-4321-aabf-9b33ee8f0bab",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendarView"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6517ef4c-4abf-4eca-9816-35585aa24185",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendarView"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8253e4b9-3f9d-46d1-b9f8-391e9748ccf9",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "calendarView"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "endDateTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecb919af-c051-4a15-b58f-c94cc6b86043",
+          "name": "Microsoft Office 365 Accept Event",
+          "request": {
+            "name": "Microsoft Office 365 Accept Event",
+            "description": {
+              "content": "Accept the specified event in a user calendar. Requires Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "events",
+                ":event-id",
+                "accept"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event-id",
+                  "description": "(Required) The unique identifier of the event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\",\n  \"sendResponse\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c62e592e-e304-4d04-8883-d40a977782b9",
+              "name": "Event accepted. No content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7da972e9-3179-482b-b057-0e4f18a64e8f",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "548c7278-31ea-4747-adf6-6ce473bb5004",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b51543e-0ac6-48d5-bed2-ebe9cf5c376c",
+              "name": "Not found. The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0416925f-ab6b-46ce-8bcb-bbb5b549b681",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20fbc801-6b1b-428e-a045-6d5b7491f170",
+          "name": "Microsoft Office 365 Decline Event",
+          "request": {
+            "name": "Microsoft Office 365 Decline Event",
+            "description": {
+              "content": "Decline invitation to the specified event in a user calendar. Requires Calendars.ReadWrite permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me",
+                "events",
+                ":event-id",
+                "decline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event-id",
+                  "description": "(Required) The unique identifier of the event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\",\n  \"sendResponse\": true,\n  \"proposedNewTime\": {\n    \"start\": {\n      \"dateTime\": \"<string>\",\n      \"timeZone\": \"<string>\"\n    },\n    \"end\": {\n      \"dateTime\": \"<string>\",\n      \"timeZone\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c36625bc-b60a-4c51-81df-8c50a7ab2b6c",
+              "name": "Event declined. No content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true,\n  \"proposedNewTime\": {\n    \"start\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    },\n    \"end\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "251d0940-3eb6-4e98-83a8-036c1d1c632e",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true,\n  \"proposedNewTime\": {\n    \"start\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    },\n    \"end\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9976b04-2c36-488b-965f-e23e5c900452",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true,\n  \"proposedNewTime\": {\n    \"start\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    },\n    \"end\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61a08005-980f-4bc2-b663-9b6230b036d3",
+              "name": "Not found. The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true,\n  \"proposedNewTime\": {\n    \"start\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    },\n    \"end\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c33b98e-29fc-42fc-8994-f8648882260f",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me",
+                    "events",
+                    ":event-id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event-id",
+                      "description": "(Required) The unique identifier of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"example_value\",\n  \"sendResponse\": true,\n  \"proposedNewTime\": {\n    \"start\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    },\n    \"end\": {\n      \"dateTime\": \"example_value\",\n      \"timeZone\": \"example_value\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "1437"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"2012-05-17T16:48:52.432Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.microsoft.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "User.Read User.ReadBasic.All User.Read.All User.ReadWrite User.ReadWrite.All Directory.Read.All Directory.ReadWrite.All Group.Read.All Group.ReadWrite.All GroupMember.Read.All GroupMember.ReadWrite.All Mail.ReadBasic Mail.Read Mail.ReadWrite Mail.Send Calendars.Read Calendars.ReadWrite"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9626f042-ac09-4a1d-89f4-a17a4c6cf850",
+    "name": "Microsoft Office 365 Microsoft Graph Calendar API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Microsoft Graph API provides a unified programmability model to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security. It serves as the gateway to data and intelligence in Microsoft 365, enabling applications to interact with users, groups, mail, calendars, files, and other organizational resources through a single REST endpoint.\n\nContact Support:\n Name: Microsoft Graph Support",
+      "type": "text/plain"
+    }
+  }
+}

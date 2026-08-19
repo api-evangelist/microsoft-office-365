@@ -1,0 +1,2187 @@
+{
+  "item": [
+    {
+      "id": "83ba88c2-79e6-4e17-8eb2-fb80e3e38922",
+      "name": "Users",
+      "description": {
+        "content": "Manage users in Azure Active Directory. Users are the core identity resource representing a person, including their profile, organizational relationships, and access to services.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0270d1b5-7c7b-4094-a490-5ece398f0053",
+          "name": "Microsoft Office 365 List Users",
+          "request": {
+            "name": "Microsoft Office 365 List Users",
+            "description": {
+              "content": "Retrieve a list of user objects. By default, only a limited set of properties are returned. To return additional properties, use the $select OData query parameter. Returns up to 100 users per page by default. Requires User.ReadBasic.All, User.Read.All, or Directory.Read.All permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of items to return in a result set. Maximum value depends on the API."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip in the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression to restrict the set of items returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties for sorting results."
+                },
+                {
+                  "disabled": false,
+                  "key": "$search",
+                  "value": "<string>",
+                  "description": "Search expression to filter results. Uses KQL syntax for directory objects."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "<boolean>",
+                  "description": "Include a count of the total number of items in a collection alongside the page of data values."
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of relationships to expand and include in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4985a456-0654-404c-922d-f44c17b4deb7",
+              "name": "A collection of user objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"example_value\",\n  \"@odata.count\": 10,\n  \"@odata.nextLink\": \"https://www.example.com\",\n  \"value\": [\n    {\n      \"id\": \"abc123\",\n      \"displayName\": \"example_value\",\n      \"givenName\": \"example_value\",\n      \"surname\": \"example_value\",\n      \"mail\": \"example_value\",\n      \"userPrincipalName\": \"example_value\",\n      \"jobTitle\": \"example_value\",\n      \"department\": \"example_value\",\n      \"officeLocation\": \"example_value\",\n      \"companyName\": \"example_value\",\n      \"businessPhones\": {},\n      \"mobilePhone\": \"example_value\",\n      \"streetAddress\": \"example_value\",\n      \"city\": \"example_value\",\n      \"state\": \"example_value\",\n      \"postalCode\": \"example_value\",\n      \"country\": \"example_value\",\n      \"preferredLanguage\": \"example_value\",\n      \"accountEnabled\": true,\n      \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n      \"lastSignInDateTime\": \"2026-01-15T10:30:00Z\",\n      \"usageLocation\": \"example_value\",\n      \"identities\": {},\n      \"assignedLicenses\": {},\n      \"memberOf\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04a67fab-dd44-4ad2-a914-7985090a0e45",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e9d4ee7-eecc-446e-8085-bdc8e0aa2275",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe180520-4d22-4081-8b57-395f67f367bc",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "606"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c69de32b-241b-46ee-981a-430dcac18de0",
+              "name": "Internal server error. An unexpected error occurred on the server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4f940db-5f2a-4cd8-b6fc-8aa11481a8ea",
+          "name": "Microsoft Office 365 Create User",
+          "request": {
+            "name": "Microsoft Office 365 Create User",
+            "description": {
+              "content": "Create a new user object. The request body must contain the required properties for the user. You can optionally specify other writable properties. Requires User.ReadWrite.All or Directory.ReadWrite.All permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountEnabled\": \"<boolean>\",\n  \"displayName\": \"<string>\",\n  \"mailNickname\": \"<string>\",\n  \"userPrincipalName\": \"<string>\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": false,\n    \"password\": \"<password>\"\n  },\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"usageLocation\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1211dc44-0230-44d6-8c57-f1e35add3d74",
+              "name": "The created user object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountEnabled\": true,\n  \"displayName\": \"example_value\",\n  \"mailNickname\": \"example_value\",\n  \"userPrincipalName\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  },\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"usageLocation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"mail\": \"example_value\",\n  \"userPrincipalName\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"companyName\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"mobilePhone\": \"example_value\",\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n  \"lastSignInDateTime\": \"2026-01-15T10:30:00Z\",\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  },\n  \"identities\": [\n    {\n      \"signInType\": \"example_value\",\n      \"issuer\": \"example_value\",\n      \"issuerAssignedId\": \"500123\"\n    }\n  ],\n  \"assignedLicenses\": [\n    {\n      \"disabledPlans\": {},\n      \"skuId\": \"500123\"\n    }\n  ],\n  \"manager\": {\n    \"@odata.type\": \"example_value\",\n    \"id\": \"abc123\",\n    \"displayName\": \"example_value\"\n  },\n  \"memberOf\": [\n    {\n      \"@odata.type\": \"example_value\",\n      \"id\": \"abc123\",\n      \"displayName\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d961a319-2360-4f87-80bf-0da7561b67e5",
+              "name": "Bad request. The request body or parameters are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountEnabled\": true,\n  \"displayName\": \"example_value\",\n  \"mailNickname\": \"example_value\",\n  \"userPrincipalName\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  },\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"usageLocation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6c82d86-a552-4705-a4d0-333e0cfe488a",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountEnabled\": true,\n  \"displayName\": \"example_value\",\n  \"mailNickname\": \"example_value\",\n  \"userPrincipalName\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  },\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"usageLocation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70a212dd-0519-42cf-9ec9-2b3616fac99f",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountEnabled\": true,\n  \"displayName\": \"example_value\",\n  \"mailNickname\": \"example_value\",\n  \"userPrincipalName\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  },\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"usageLocation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad7bed35-53f4-47b9-8919-4ee88ce81a84",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountEnabled\": true,\n  \"displayName\": \"example_value\",\n  \"mailNickname\": \"example_value\",\n  \"userPrincipalName\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  },\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"usageLocation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "606"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af5a3b93-dfcc-4d9f-904f-9510aba3b6b4",
+          "name": "Microsoft Office 365 Get User",
+          "request": {
+            "name": "Microsoft Office 365 Get User",
+            "description": {
+              "content": "Retrieve the properties and relationships of a user object. Returns a limited set of properties by default; use $select to request additional properties. Requires User.Read, User.ReadBasic.All, User.Read.All, or Directory.Read.All permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of relationships to expand and include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user-id",
+                  "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f36bc07-23c8-40f3-8273-3f03c20601ac",
+              "name": "The requested user object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"mail\": \"example_value\",\n  \"userPrincipalName\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"companyName\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"mobilePhone\": \"example_value\",\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n  \"lastSignInDateTime\": \"2026-01-15T10:30:00Z\",\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  },\n  \"identities\": [\n    {\n      \"signInType\": \"example_value\",\n      \"issuer\": \"example_value\",\n      \"issuerAssignedId\": \"500123\"\n    }\n  ],\n  \"assignedLicenses\": [\n    {\n      \"disabledPlans\": {},\n      \"skuId\": \"500123\"\n    }\n  ],\n  \"manager\": {\n    \"@odata.type\": \"example_value\",\n    \"id\": \"abc123\",\n    \"displayName\": \"example_value\"\n  },\n  \"memberOf\": [\n    {\n      \"@odata.type\": \"example_value\",\n      \"id\": \"abc123\",\n      \"displayName\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2692058-6a3f-4bb3-b61e-35c37c72ccb7",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcb046a3-7947-427e-8b59-54103d143957",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4008a924-c978-4173-9b65-16f83a6f771b",
+              "name": "Not found. The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfc3593f-c057-4198-9ffc-a1df56207ce1",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "606"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7469057d-b9db-4dac-83c6-347cee9f759d",
+          "name": "Microsoft Office 365 Update User",
+          "request": {
+            "name": "Microsoft Office 365 Update User",
+            "description": {
+              "content": "Update the properties of a user object. Not all properties can be updated by Member or Guest users with their default permissions without administrator roles. Requires User.ReadWrite, User.ReadWrite.All, or Directory.ReadWrite.All permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user-id",
+                  "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"givenName\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"department\": \"<string>\",\n  \"officeLocation\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"businessPhones\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"streetAddress\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"preferredLanguage\": \"<string>\",\n  \"accountEnabled\": \"<boolean>\",\n  \"usageLocation\": \"<string>\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": false,\n    \"password\": \"<password>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "999b31ad-d3b7-423e-87a7-ea54c2071579",
+              "name": "User updated successfully. No content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cca94f7-10e7-4db7-ab62-69ae06d820e9",
+              "name": "Bad request. The request body or parameters are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4c16a71-38db-4bed-bf6d-306e177524c5",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca8ec9f8-0bbd-4415-94c3-b04643b21586",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "765b1400-48a6-444b-933f-7041a9458925",
+              "name": "Not found. The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d166f55c-fb49-4b9d-835f-b24b96359d11",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"mobilePhone\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "606"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8be2b89-5939-4881-a8fa-bc4cbd6acf7a",
+          "name": "Microsoft Office 365 Delete User",
+          "request": {
+            "name": "Microsoft Office 365 Delete User",
+            "description": {
+              "content": "Delete a user object. When deleted, user resources are moved to a temporary container and can be restored within 30 days. After 30 days, they are permanently deleted. Requires User.ReadWrite.All or Directory.ReadWrite.All permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user-id",
+                  "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f2ecc85-0ebe-4cc7-b24b-3edd4cc1b5e0",
+              "name": "User deleted successfully. No content returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "309d87c7-a11b-4ec6-8bd7-c8de9d55a506",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e0918df-ae2c-404b-8b23-36658be762b8",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c481f964-6a10-4088-84b9-56a978e8a481",
+              "name": "Not found. The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b660c71-9786-4fe2-a513-042c62cb5e28",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user-id",
+                      "description": "(Required) The unique identifier of the user (GUID) or the userPrincipalName."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "606"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d6144ae-8d29-43af-ad0a-7535120d1c36",
+          "name": "Microsoft Office 365 Get Signed-in User",
+          "request": {
+            "name": "Microsoft Office 365 Get Signed-in User",
+            "description": {
+              "content": "Retrieve the properties and relationships of the currently signed-in user. The /me endpoint resolves to the signed-in user based on the access token. Requires User.Read permission at minimum.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of relationships to expand and include in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36792047-8eff-420c-b3b9-e33f7d28ae13",
+              "name": "The signed-in user object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"displayName\": \"example_value\",\n  \"givenName\": \"example_value\",\n  \"surname\": \"example_value\",\n  \"mail\": \"example_value\",\n  \"userPrincipalName\": \"example_value\",\n  \"jobTitle\": \"example_value\",\n  \"department\": \"example_value\",\n  \"officeLocation\": \"example_value\",\n  \"companyName\": \"example_value\",\n  \"businessPhones\": [\n    \"example_value\"\n  ],\n  \"mobilePhone\": \"example_value\",\n  \"streetAddress\": \"example_value\",\n  \"city\": \"example_value\",\n  \"state\": \"example_value\",\n  \"postalCode\": \"example_value\",\n  \"country\": \"example_value\",\n  \"preferredLanguage\": \"example_value\",\n  \"accountEnabled\": true,\n  \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n  \"lastSignInDateTime\": \"2026-01-15T10:30:00Z\",\n  \"usageLocation\": \"example_value\",\n  \"passwordProfile\": {\n    \"forceChangePasswordNextSignIn\": true,\n    \"forceChangePasswordNextSignInWithMfa\": true,\n    \"password\": \"example_value\"\n  },\n  \"identities\": [\n    {\n      \"signInType\": \"example_value\",\n      \"issuer\": \"example_value\",\n      \"issuerAssignedId\": \"500123\"\n    }\n  ],\n  \"assignedLicenses\": [\n    {\n      \"disabledPlans\": {},\n      \"skuId\": \"500123\"\n    }\n  ],\n  \"manager\": {\n    \"@odata.type\": \"example_value\",\n    \"id\": \"abc123\",\n    \"displayName\": \"example_value\"\n  },\n  \"memberOf\": [\n    {\n      \"@odata.type\": \"example_value\",\n      \"id\": \"abc123\",\n      \"displayName\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bb36d12-fe5d-4fa9-a5f3-846d3fb192bb",
+              "name": "Unauthorized. A valid access token is required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02260595-f410-4a32-a0dd-26d9e8d35250",
+              "name": "Forbidden. Insufficient permissions to complete the operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f852ae9b-0f86-4b78-b53c-ebc2c1b84013",
+              "name": "Too many requests. The application has been throttled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before retrying the request.",
+                  "key": "Retry-After",
+                  "value": "606"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"innerError\": {\n      \"date\": \"1969-04-20T19:06:19.463Z\",\n      \"request-id\": \"string\",\n      \"client-request-id\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.microsoft.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "User.Read User.ReadBasic.All User.Read.All User.ReadWrite User.ReadWrite.All Directory.Read.All Directory.ReadWrite.All Group.Read.All Group.ReadWrite.All GroupMember.Read.All GroupMember.ReadWrite.All Mail.ReadBasic Mail.Read Mail.ReadWrite Mail.Send Calendars.Read Calendars.ReadWrite"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c170c728-51c3-4129-86db-5fd72f7a6dd5",
+    "name": "Microsoft Office 365 Microsoft Graph Calendar Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Microsoft Graph API provides a unified programmability model to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security. It serves as the gateway to data and intelligence in Microsoft 365, enabling applications to interact with users, groups, mail, calendars, files, and other organizational resources through a single REST endpoint.\n\nContact Support:\n Name: Microsoft Graph Support",
+      "type": "text/plain"
+    }
+  }
+}
