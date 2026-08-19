@@ -18,7 +18,7 @@ image: https://www.microsoft.com/en-us/microsoft-365/blog/wp-content/uploads/sit
 url: https://www.microsoft.com/en-us/microsoft-365
 created: '2024-01-15'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 tags:
   - Cloud
   - Collaboration
