@@ -33,6 +33,11 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/contacts
   tags:
+  - Address Book
+  - Contacts
+  - Outlook
+  - People
+  tags_raw:
   - Address-Book
   - Contacts
   - Outlook
@@ -46,6 +51,12 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/integrate-with-onenote
   baseURL: https://graph.microsoft.com/v1.0/me/onenote
   tags:
+  - Notebooks
+  - Notes
+  - OneNote
+  - Pages
+  - Sections
+  tags_raw:
   - Notebooks
   - Notes
   - Onenote
@@ -82,6 +93,11 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/todo-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/todo
   tags:
+  - Productivity
+  - TaskLists
+  - Task
+  - To-Do
+  tags_raw:
   - Productivity
   - Task-Lists
   - Tasks
@@ -129,6 +145,11 @@ apis:
   - Calls
   - Communications
   - Meetings
+  - Online Meetings
+  tags_raw:
+  - Calls
+  - Communications
+  - Meetings
   - Online-Meetings
   properties:
   - type: Documentation
@@ -139,6 +160,14 @@ apis:
     and OneNote using web technologies and the Office JavaScript API.
   humanURL: https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins
   tags:
+  - Add-Ins
+  - Excel
+  - Extensions
+  - Office-Js
+  - Outlook
+  - PowerPoint
+  - Word
+  tags_raw:
   - Add-Ins
   - Excel
   - Extensions
@@ -225,6 +254,8 @@ apis:
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -345,6 +376,8 @@ apis:
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
