@@ -10,8 +10,8 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: graphApi
-  url: ../openapi/microsoft-graph-api-openapi.yml
+- name: mailApi
+  url: ../openapi/microsoft-office-365-mail-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: update-draft-and-send
