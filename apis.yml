@@ -1,6 +1,18 @@
 aid: microsoft-office-365
 name: Microsoft Office 365
 description: A collection of APIs provided by Microsoft Office 365 for productivity, collaboration, and enterprise services.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -445,6 +457,9 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: CapabilityMap
+    url: capabilities/microsoft-office-365-capability-edges.yml
+    name: Microsoft Office 365 Business Capability Map
   - type: AgenticAccess
     url: agentic-access/microsoft-office-365-agentic-access.yml
   - type: VulnerabilityDisclosure
