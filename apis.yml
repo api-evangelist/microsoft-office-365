@@ -45,7 +45,7 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/contacts
   tags:
-  - Address Book
+  - Address-Book
   - Contacts
   - Outlook
   - People
@@ -65,7 +65,7 @@ apis:
   tags:
   - Notebooks
   - Notes
-  - OneNote
+  - Onenote
   - Pages
   - Sections
   tags_raw:
@@ -106,9 +106,8 @@ apis:
   baseURL: https://graph.microsoft.com/v1.0/me/todo
   tags:
   - Productivity
-  - TaskLists
+  - Task-Lists
   - Task
-  - To-Do
   tags_raw:
   - Productivity
   - Task-Lists
@@ -157,7 +156,7 @@ apis:
   - Calls
   - Communications
   - Meetings
-  - Online Meetings
+  - Online-Meetings
   tags_raw:
   - Calls
   - Communications
@@ -177,7 +176,7 @@ apis:
   - Extensions
   - Office-Js
   - Outlook
-  - PowerPoint
+  - Powerpoint
   - Word
   tags_raw:
   - Add-Ins
