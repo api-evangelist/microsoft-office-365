@@ -457,6 +457,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: Website
+    url: https://www.microsoft.com/
   - type: CapabilityMap
     url: capabilities/microsoft-office-365-capability-edges.yml
     name: Microsoft Office 365 Business Capability Map
@@ -623,3 +625,5 @@ common:
         description: Access SharePoint sites, lists, and document libraries for enterprise content management.
       - name: Outlook
         description: Integrate with Outlook mail, calendar, and contacts for personal and shared mailbox management.
+x-parent: microsoft
+x-relationship: product

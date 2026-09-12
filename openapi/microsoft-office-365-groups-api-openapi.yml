@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Office 365 Microsoft Graph Calendar Groups API
   description: The Microsoft Graph API provides a unified programmability model to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security. It serves as the gateway to data and intelligence in Microsoft 365, enabling applications to interact with users, groups, mail, calendars, files, and other organizational resources through a single REST endpoint.
@@ -405,6 +405,64 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    search:
+      name: $search
+      in: query
+      description: Search expression to filter results. Uses KQL syntax for directory objects.
+      schema:
+        type: string
+    groupId:
+      name: group-id
+      in: path
+      required: true
+      description: The unique identifier of the group (GUID).
+      schema:
+        type: string
+    count:
+      name: $count
+      in: query
+      description: Include a count of the total number of items in a collection alongside the page of data values.
+      schema:
+        type: boolean
+    orderby:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties for sorting results.
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: The number of items to return in a result set. Maximum value depends on the API.
+      schema:
+        type: integer
+        minimum: 1
+    skip:
+      name: $skip
+      in: query
+      description: The number of items to skip in the result set.
+      schema:
+        type: integer
+        minimum: 0
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of items returned.
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of relationships to expand and include in the response.
+      schema:
+        type: string
   schemas:
     ODataError:
       type: object
@@ -430,95 +488,6 @@ components:
                 client-request-id:
                   type: string
           example: example_value
-    GroupUpdateRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        mailNickname:
-          type: string
-          example: example_value
-        visibility:
-          type: string
-          enum:
-          - Public
-          - Private
-          - HiddenMembership
-          example: Public
-        classification:
-          type: string
-          example: example_value
-    GroupCollectionResponse:
-      type: object
-      properties:
-        '@odata.context':
-          type: string
-          example: example_value
-        '@odata.count':
-          type: integer
-          example: 10
-        '@odata.nextLink':
-          type: string
-          format: uri
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-          example: []
-    GroupCreateRequest:
-      type: object
-      required:
-      - displayName
-      - mailEnabled
-      - mailNickname
-      - securityEnabled
-      properties:
-        displayName:
-          type: string
-          description: The display name for the group.
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        mailEnabled:
-          type: boolean
-          example: true
-        mailNickname:
-          type: string
-          example: example_value
-        securityEnabled:
-          type: boolean
-          example: true
-        groupTypes:
-          type: array
-          items:
-            type: string
-          description: Set to ["Unified"] to create a Microsoft 365 group.
-          example: []
-        visibility:
-          type: string
-          enum:
-          - Public
-          - Private
-          - HiddenMembership
-          example: Public
-        owners@odata.bind:
-          type: array
-          items:
-            type: string
-          description: URLs of user objects to set as owners at creation time.
-          example: []
-        members@odata.bind:
-          type: array
-          items:
-            type: string
-          description: URLs of user objects to set as members at creation time.
-          example: []
     Group:
       type: object
       description: Represents an Azure Active Directory group. Can be a Microsoft 365 group, a security group, a mail-enabled security group, or a distribution group.
@@ -615,22 +584,6 @@ components:
             $ref: '#/components/schemas/DirectoryObject'
           description: The owners of the group.
           example: []
-    DirectoryObject:
-      type: object
-      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-      properties:
-        '@odata.type':
-          type: string
-          description: The OData type of the directory object.
-          example: example_value
-        id:
-          type: string
-          description: The unique identifier for the directory object.
-          example: abc123
-        displayName:
-          type: string
-          description: The name displayed for the directory object.
-          example: example_value
     DirectoryObjectCollectionResponse:
       type: object
       properties:
@@ -649,15 +602,132 @@ components:
           items:
             $ref: '#/components/schemas/DirectoryObject'
           example: []
+    GroupCreateRequest:
+      type: object
+      required:
+      - displayName
+      - mailEnabled
+      - mailNickname
+      - securityEnabled
+      properties:
+        displayName:
+          type: string
+          description: The display name for the group.
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        mailEnabled:
+          type: boolean
+          example: true
+        mailNickname:
+          type: string
+          example: example_value
+        securityEnabled:
+          type: boolean
+          example: true
+        groupTypes:
+          type: array
+          items:
+            type: string
+          description: Set to ["Unified"] to create a Microsoft 365 group.
+          example: []
+        visibility:
+          type: string
+          enum:
+          - Public
+          - Private
+          - HiddenMembership
+          example: Public
+        owners@odata.bind:
+          type: array
+          items:
+            type: string
+          description: URLs of user objects to set as owners at creation time.
+          example: []
+        members@odata.bind:
+          type: array
+          items:
+            type: string
+          description: URLs of user objects to set as members at creation time.
+          example: []
+    DirectoryObject:
+      type: object
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      properties:
+        '@odata.type':
+          type: string
+          description: The OData type of the directory object.
+          example: example_value
+        id:
+          type: string
+          description: The unique identifier for the directory object.
+          example: abc123
+        displayName:
+          type: string
+          description: The name displayed for the directory object.
+          example: example_value
+    GroupUpdateRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        mailNickname:
+          type: string
+          example: example_value
+        visibility:
+          type: string
+          enum:
+          - Public
+          - Private
+          - HiddenMembership
+          example: Public
+        classification:
+          type: string
+          example: example_value
+    GroupCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+          example: []
   responses:
-    BadRequest:
-      description: Bad request. The request body or parameters are invalid.
+    NotFound:
+      description: Not found. The requested resource does not exist.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
     InternalServerError:
       description: Internal server error. An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. A valid access token is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
       content:
         application/json:
           schema:
@@ -673,82 +743,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found. The requested resource does not exist.
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden. Insufficient permissions to complete the operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. A valid access token is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-  parameters:
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: The number of items to return in a result set. Maximum value depends on the API.
-      schema:
-        type: integer
-        minimum: 1
-    search:
-      name: $search
-      in: query
-      description: Search expression to filter results. Uses KQL syntax for directory objects.
-      schema:
-        type: string
-    count:
-      name: $count
-      in: query
-      description: Include a count of the total number of items in a collection alongside the page of data values.
-      schema:
-        type: boolean
-    skip:
-      name: $skip
-      in: query
-      description: The number of items to skip in the result set.
-      schema:
-        type: integer
-        minimum: 0
-    expand:
-      name: $expand
-      in: query
-      description: Comma-separated list of relationships to expand and include in the response.
-      schema:
-        type: string
-    groupId:
-      name: group-id
-      in: path
-      required: true
-      description: The unique identifier of the group (GUID).
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of items returned.
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties for sorting results.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2
