@@ -625,5 +625,5 @@ common:
         description: Access SharePoint sites, lists, and document libraries for enterprise content management.
       - name: Outlook
         description: Integrate with Outlook mail, calendar, and contacts for personal and shared mailbox management.
-x-parent: microsoft
+x-parent: microsoft-365
 x-relationship: product
