@@ -1,6 +1,7 @@
 aid: microsoft-office-365
 name: Microsoft Office 365
-description: A collection of APIs provided by Microsoft Office 365 for productivity, collaboration, and enterprise services.
+description: A collection of APIs provided by Microsoft Office 365 for productivity, collaboration, and
+  enterprise services.
 deliveryModel:
   model: saas
   open_source: false
@@ -29,19 +30,18 @@ accessModel:
 image: ''
 url: https://www.microsoft.com/en-us/microsoft-365
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-09-15'
 specificationVersion: '0.23'
 tags:
-  - Cloud
-  - Collaboration
-  - Enterprise
-  - Microsoft
-  - Productivity
+- Cloud
+- Collaboration
+- Enterprise
+- Microsoft
+- Productivity
 apis:
 - name: Outlook Contacts API
-  description: >-
-    Access to Outlook personal contacts for managing contact information, creating contact folders, and
-    organizing people data.
+  description: Access to Outlook personal contacts for managing contact information, creating contact
+    folders, and organizing people data.
   humanURL: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/contacts
   tags:
@@ -58,8 +58,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
 - name: OneNote API
-  description: >-
-    Access to OneNote notebooks, sections, and pages for creating and managing notes and structured content.
+  description: Access to OneNote notebooks, sections, and pages for creating and managing notes and structured
+    content.
   humanURL: https://learn.microsoft.com/en-us/graph/integrate-with-onenote
   baseURL: https://graph.microsoft.com/v1.0/me/onenote
   tags:
@@ -76,11 +76,9 @@ apis:
   - Sections
   properties:
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/graph/api/resources/onenote-api-overview?view=graph-rest-1.0
+    url: https://learn.microsoft.com/en-us/graph/api/resources/onenote-api-overview?view=graph-rest-1.0
 - name: Excel Workbooks and Charts API
-  description: >-
-    Read and modify Excel workbooks stored in OneDrive and SharePoint, including managing worksheets,
+  description: Read and modify Excel workbooks stored in OneDrive and SharePoint, including managing worksheets,
     tables, charts, ranges, and sessions.
   humanURL: https://learn.microsoft.com/en-us/graph/excel-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
@@ -99,9 +97,8 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/excel-manage-sessions
     title: Session Management
 - name: Microsoft To Do API
-  description: >-
-    Manage tasks and task lists across To Do clients, Outlook, and Teams for personal task management
-    and day planning.
+  description: Manage tasks and task lists across To Do clients, Outlook, and Teams for personal task
+    management and day planning.
   humanURL: https://learn.microsoft.com/en-us/graph/todo-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/todo
   tags:
@@ -118,9 +115,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/todo-concept-overview
 - name: Microsoft Bookings API
-  description: >-
-    Manage customer bookings, appointment scheduling, business services, and staff information for enterprise
-    and small business owners.
+  description: Manage customer bookings, appointment scheduling, business services, and staff information
+    for enterprise and small business owners.
   humanURL: https://learn.microsoft.com/en-us/graph/booking-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
   tags:
@@ -130,12 +126,10 @@ apis:
   - Scheduling
   properties:
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/graph/api/resources/booking-api-overview?view=graph-rest-1.0
+    url: https://learn.microsoft.com/en-us/graph/api/resources/booking-api-overview?view=graph-rest-1.0
 - name: Microsoft Graph Security API
-  description: >-
-    Connect security products, services, and partners to streamline security operations and improve threat
-    protection, detection, and response.
+  description: Connect security products, services, and partners to streamline security operations and
+    improve threat protection, detection, and response.
   humanURL: https://learn.microsoft.com/en-us/graph/security-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/security
   tags:
@@ -145,11 +139,9 @@ apis:
   - Threats
   properties:
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview?view=graph-rest-1.0
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview?view=graph-rest-1.0
 - name: Microsoft Graph Communications API
-  description: >-
-    Create and join online meetings, manage call records, and enable cloud communications capabilities
+  description: Create and join online meetings, manage call records, and enable cloud communications capabilities
     for applications.
   humanURL: https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings
   baseURL: https://graph.microsoft.com/v1.0/communications
@@ -167,9 +159,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings
 - name: Office Add-ins Platform
-  description: >-
-    Platform for building solutions that extend Office applications including Excel, Outlook, Word, PowerPoint,
-    and OneNote using web technologies and the Office JavaScript API.
+  description: Platform for building solutions that extend Office applications including Excel, Outlook,
+    Word, PowerPoint, and OneNote using web technologies and the Office JavaScript API.
   humanURL: https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins
   tags:
   - Add-Ins
@@ -200,9 +191,8 @@ apis:
     title: Development Guide
 - aid: microsoft-office-365:microsoft-office-365-calendar-api
   name: Microsoft Office 365 Calendar API
-  description: >-
-    Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling, meeting
-    management, and free/busy lookups.
+  description: Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling,
+    meeting management, and free/busy lookups.
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
@@ -260,9 +250,8 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
 - aid: microsoft-office-365:microsoft-office-365-groups-api
   name: Microsoft Office 365 Groups API
-  description: >-
-    Manage Microsoft 365 groups and security groups. Groups provide shared access to resources such as
-    SharePoint sites, shared mailboxes, Planner plans, OneNote notebooks, and conversations.
+  description: Manage Microsoft 365 groups and security groups. Groups provide shared access to resources
+    such as SharePoint sites, shared mailboxes, Planner plans, OneNote notebooks, and conversations.
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
@@ -322,9 +311,8 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
 - aid: microsoft-office-365:microsoft-office-365-mail-api
   name: Microsoft Office 365 Mail API
-  description: >-
-    Access and manage Outlook mail messages, mail folders, and message attachments. Supports reading,
-    creating, sending, replying, forwarding, and organizing email.
+  description: Access and manage Outlook mail messages, mail folders, and message attachments. Supports
+    reading, creating, sending, replying, forwarding, and organizing email.
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
@@ -382,9 +370,8 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
 - aid: microsoft-office-365:microsoft-office-365-users-api
   name: Microsoft Office 365 Users API
-  description: >-
-    Manage users in Azure Active Directory. Users are the core identity resource representing a person,
-    including their profile, organizational relationships, and access to services.
+  description: Manage users in Azure Active Directory. Users are the core identity resource representing
+    a person, including their profile, organizational relationships, and access to services.
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
@@ -442,188 +429,286 @@ apis:
     url: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
-integrations:
-  - name: Microsoft
-  - name: Two people looking at a computer.
-  - name: This is placeholder text for
-  - name: IDC
-  - name: Nationwide
-  - name: RSA company
-  - name: Teleperformance
-  - name: A woman smiling at a laptop
-  - name: A man holding a laptop.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-common:
-  - type: Website
-    url: https://www.microsoft.com/
-  - type: CapabilityMap
-    url: capabilities/microsoft-office-365-capability-edges.yml
-    name: Microsoft Office 365 Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/microsoft-office-365-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/microsoft-office-365-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/microsoft-office-365-domain-security.yml
+- name: Microsoft Graph API
+  description: The primary API for Office 365, providing access to data and intelligence in Microsoft
+    365, Windows 10, and Enterprise Mobility + Security.
+  humanURL: https://developer.microsoft.com/en-us/graph
+  baseURL: https://graph.microsoft.com/v1.0
+  tags:
+  - Calendar
+  - Graph
+  - Mail
+  - SharePoint
+  - Team
+  - User
+  tags_raw:
+  - Calendar
+  - Graph
+  - Mail
+  - SharePoint
+  - Teams
+  - Users
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/overview
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
   - type: Authentication
-    url: authentication/microsoft-office-365-authentication.yml
-  - type: OAuthScopes
-    url: scopes/microsoft-office-365-scopes.yml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/microsoft-office-365/overview
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-cancel-event-workflow.yml
-    name: Microsoft Office 365 Cancel Event
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-cleanup-draft-message-workflow.yml
-    name: Microsoft Office 365 Cleanup Draft Message
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-create-group-with-members-workflow.yml
-    name: Microsoft Office 365 Create Group With Members
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-deprovision-user-workflow.yml
-    name: Microsoft Office 365 Deprovision User
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-draft-and-send-mail-workflow.yml
-    name: Microsoft Office 365 Draft and Send Mail
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-find-event-in-window-workflow.yml
-    name: Microsoft Office 365 Find Event in Window
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-find-or-create-group-workflow.yml
-    name: Microsoft Office 365 Find or Create Group
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-notify-new-user-workflow.yml
-    name: Microsoft Office 365 Notify New User
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-onboard-user-to-group-workflow.yml
-    name: Microsoft Office 365 Onboard User to Group
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-provision-user-workflow.yml
-    name: Microsoft Office 365 Provision User
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-reschedule-event-workflow.yml
-    name: Microsoft Office 365 Reschedule Event
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-respond-to-invitation-workflow.yml
-    name: Microsoft Office 365 Respond to Invitation
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-rotate-group-member-workflow.yml
-    name: Microsoft Office 365 Rotate Group Member
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-schedule-and-accept-event-workflow.yml
-    name: Microsoft Office 365 Schedule and Accept Event
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-schedule-event-workflow.yml
-    name: Microsoft Office 365 Schedule Event
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-triage-inbox-message-workflow.yml
-    name: Microsoft Office 365 Triage Inbox Message
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-update-draft-and-send-workflow.yml
-    name: Microsoft Office 365 Update Draft and Send
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-update-group-and-verify-workflow.yml
-    name: Microsoft Office 365 Update Group and Verify
-  - type: Arazzo
-    url: arazzo/microsoft-office-365-update-user-profile-workflow.yml
-    name: Microsoft Office 365 Update User Profile
-  - type: LinkedIn
-    url: https://www.linkedin.com/showcase/microsoft-365
-  - type: DeveloperPortal
-    url: https://developer.microsoft.com/en-us/microsoft-365
-  - type: StatusPage
-    url: https://status.office365.com/
-  - type: Support
-    url: https://developer.microsoft.com/en-us/graph/support
-  - type: Blog
-    url: https://developer.microsoft.com/en-us/graph/blogs/
-  - type: GitHubOrganization
-    url: https://github.com/microsoftgraph
-  - type: PrivacyPolicy
-    url: https://privacy.microsoft.com/en-us/privacystatement
-  - type: Console
-    url: https://developer.microsoft.com/en-us/graph/graph-explorer
-    title: Graph Explorer
+    url: https://learn.microsoft.com/en-us/graph/auth/
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
   - type: ChangeLog
     url: https://developer.microsoft.com/en-us/graph/changelog
-  - type: ReleaseNotes
-    url: https://learn.microsoft.com/en-us/graph/whats-new-overview
-    title: What's New
-  - type: Authentication
-    url: https://learn.microsoft.com/en-us/graph/auth/
-  - type: TermsOfService
-    url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
-  - type: RateLimits
-    url: https://learn.microsoft.com/en-us/graph/throttling
+- name: Outlook Mail API
+  description: Access email, manage folders, send mail, and manage mail settings via Microsoft Graph.
+  humanURL: https://learn.microsoft.com/en-us/graph/outlook-mail-concept-overview
+  baseURL: https://graph.microsoft.com/v1.0/me/messages
+  tags:
+  - Email
+  - Mail
+  - Outlook
+  properties:
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/graph/change-notifications-delivery-webhooks
-    title: Webhooks
-  - type: GettingStarted
-    url: https://developer.microsoft.com/en-us/graph/quick-start
-  - type: APIReference
-    url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
-  - type: Compliance
-    url: https://learn.microsoft.com/en-us/graph/compliance-concept-overview
-  - type: SpectralRules
-    url: rules/microsoft-office-365-spectral-rules.yml
-  - type: Features
-    url: https://developer.microsoft.com/en-us/graph
-    data:
-      - name: Unified API Endpoint
-        description: >-
-          Access Microsoft 365 data through a single REST endpoint at graph.microsoft.com covering mail, calendar,
-          files, users, and groups.
-      - name: Real-Time Notifications
-        description: >-
-          Subscribe to change notifications via webhooks to receive real-time updates when data changes across Microsoft
-          365 services.
-      - name: Batch Requests
-        description: Combine multiple API requests into a single HTTP call to reduce network overhead and improve performance.
-      - name: Delta Queries
-        description: Track incremental changes to resources efficiently using delta links without polling entire datasets.
-      - name: Rich Mail Management
-        description: Read, send, reply, forward, and organize email messages with full attachment and folder support.
-      - name: Calendar and Scheduling
-        description: Create events, manage calendars, check free/busy availability, and handle meeting responses programmatically.
-      - name: File Storage and Sharing
-        description: Access OneDrive and SharePoint files with upload, download, sharing, and real-time collaboration capabilities.
-      - name: Team Collaboration
-        description: Manage Microsoft Teams channels, messages, tabs, and apps for team communication and collaboration.
-      - name: User and Group Management
-        description: Create, update, and manage users, groups, and organizational directory resources.
-  - type: UseCases
-    url: https://developer.microsoft.com/en-us/graph
-    data:
-      - name: Enterprise Productivity Integration
-        description: Build applications that integrate email, calendar, and file management into unified productivity workflows.
-      - name: Automated Reporting
-        description: Generate automated reports by pulling data from mail, calendar, and user profiles across the organization.
-      - name: Identity and Access Management
-        description: Manage user provisioning, group membership, and directory synchronization for enterprise identity workflows.
-      - name: Team Communication Automation
-        description: Automate team notifications, channel management, and messaging workflows across Microsoft Teams.
-      - name: Document Collaboration
-        description: Enable multi-user document editing, sharing, and version tracking through OneDrive and SharePoint APIs.
-  - type: Integrations
-    url: https://developer.microsoft.com/en-us/graph
-    data:
-      - name: Azure Active Directory
-        description: Integrate with Azure AD for user authentication, authorization, and directory management.
-      - name: Microsoft Teams
-        description: Build bots, tabs, and messaging extensions that integrate with Microsoft Teams collaboration platform.
-      - name: Power Automate
-        description: Connect Microsoft Graph data to Power Automate flows for no-code/low-code automation.
-      - name: Power BI
-        description: Feed Microsoft 365 data into Power BI dashboards for business intelligence and reporting.
-      - name: SharePoint
-        description: Access SharePoint sites, lists, and document libraries for enterprise content management.
-      - name: Outlook
-        description: Integrate with Outlook mail, calendar, and contacts for personal and shared mailbox management.
+    url: https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview
+- name: Outlook Calendar API
+  description: Access and manage calendar events, meeting requests, and calendar groups.
+  humanURL: https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview
+  baseURL: https://graph.microsoft.com/v1.0/me/calendar
+  tags:
+  - Calendar
+  - Event
+  - Meetings
+  tags_raw:
+  - Calendar
+  - Events
+  - Meetings
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/calendar
+- name: OneDrive API
+  description: Access and manage files stored in OneDrive and SharePoint.
+  humanURL: https://learn.microsoft.com/en-us/onedrive/developer/
+  baseURL: https://graph.microsoft.com/v1.0/me/drive
+  tags:
+  - File
+  - OneDrive
+  - Storage
+  tags_raw:
+  - Files
+  - OneDrive
+  - Storage
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/onedrive
+- name: Microsoft Teams API
+  description: Integrate with Microsoft Teams for chat, channels, meetings, and collaboration.
+  humanURL: https://learn.microsoft.com/en-us/graph/teams-concept-overview
+  baseURL: https://graph.microsoft.com/v1.0/teams
+  tags:
+  - Chat
+  - Collaboration
+  - Team
+  tags_raw:
+  - Chat
+  - Collaboration
+  - Teams
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/teams-api-overview
+integrations:
+- name: Microsoft
+- name: Two people looking at a computer.
+- name: This is placeholder text for
+- name: IDC
+- name: Nationwide
+- name: RSA company
+- name: Teleperformance
+- name: A woman smiling at a laptop
+- name: A man holding a laptop.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
+common:
+- type: Website
+  url: https://www.microsoft.com/
+- type: CapabilityMap
+  url: capabilities/microsoft-office-365-capability-edges.yml
+  name: Microsoft Office 365 Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/microsoft-office-365-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/microsoft-office-365-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/microsoft-office-365-domain-security.yml
+- type: Authentication
+  url: authentication/microsoft-office-365-authentication.yml
+- type: OAuthScopes
+  url: scopes/microsoft-office-365-scopes.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/microsoft-office-365/overview
+- type: Arazzo
+  url: arazzo/microsoft-office-365-cancel-event-workflow.yml
+  name: Microsoft Office 365 Cancel Event
+- type: Arazzo
+  url: arazzo/microsoft-office-365-cleanup-draft-message-workflow.yml
+  name: Microsoft Office 365 Cleanup Draft Message
+- type: Arazzo
+  url: arazzo/microsoft-office-365-create-group-with-members-workflow.yml
+  name: Microsoft Office 365 Create Group With Members
+- type: Arazzo
+  url: arazzo/microsoft-office-365-deprovision-user-workflow.yml
+  name: Microsoft Office 365 Deprovision User
+- type: Arazzo
+  url: arazzo/microsoft-office-365-draft-and-send-mail-workflow.yml
+  name: Microsoft Office 365 Draft and Send Mail
+- type: Arazzo
+  url: arazzo/microsoft-office-365-find-event-in-window-workflow.yml
+  name: Microsoft Office 365 Find Event in Window
+- type: Arazzo
+  url: arazzo/microsoft-office-365-find-or-create-group-workflow.yml
+  name: Microsoft Office 365 Find or Create Group
+- type: Arazzo
+  url: arazzo/microsoft-office-365-notify-new-user-workflow.yml
+  name: Microsoft Office 365 Notify New User
+- type: Arazzo
+  url: arazzo/microsoft-office-365-onboard-user-to-group-workflow.yml
+  name: Microsoft Office 365 Onboard User to Group
+- type: Arazzo
+  url: arazzo/microsoft-office-365-provision-user-workflow.yml
+  name: Microsoft Office 365 Provision User
+- type: Arazzo
+  url: arazzo/microsoft-office-365-reschedule-event-workflow.yml
+  name: Microsoft Office 365 Reschedule Event
+- type: Arazzo
+  url: arazzo/microsoft-office-365-respond-to-invitation-workflow.yml
+  name: Microsoft Office 365 Respond to Invitation
+- type: Arazzo
+  url: arazzo/microsoft-office-365-rotate-group-member-workflow.yml
+  name: Microsoft Office 365 Rotate Group Member
+- type: Arazzo
+  url: arazzo/microsoft-office-365-schedule-and-accept-event-workflow.yml
+  name: Microsoft Office 365 Schedule and Accept Event
+- type: Arazzo
+  url: arazzo/microsoft-office-365-schedule-event-workflow.yml
+  name: Microsoft Office 365 Schedule Event
+- type: Arazzo
+  url: arazzo/microsoft-office-365-triage-inbox-message-workflow.yml
+  name: Microsoft Office 365 Triage Inbox Message
+- type: Arazzo
+  url: arazzo/microsoft-office-365-update-draft-and-send-workflow.yml
+  name: Microsoft Office 365 Update Draft and Send
+- type: Arazzo
+  url: arazzo/microsoft-office-365-update-group-and-verify-workflow.yml
+  name: Microsoft Office 365 Update Group and Verify
+- type: Arazzo
+  url: arazzo/microsoft-office-365-update-user-profile-workflow.yml
+  name: Microsoft Office 365 Update User Profile
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/microsoft-365
+- type: DeveloperPortal
+  url: https://developer.microsoft.com/en-us/microsoft-365
+- type: StatusPage
+  url: https://status.office365.com/
+- type: Support
+  url: https://developer.microsoft.com/en-us/graph/support
+- type: Blog
+  url: https://developer.microsoft.com/en-us/graph/blogs/
+- type: GitHubOrganization
+  url: https://github.com/microsoftgraph
+- type: PrivacyPolicy
+  url: https://privacy.microsoft.com/en-us/privacystatement
+- type: Console
+  url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  title: Graph Explorer
+- type: SDKs
+  url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+- type: ChangeLog
+  url: https://developer.microsoft.com/en-us/graph/changelog
+- type: ReleaseNotes
+  url: https://learn.microsoft.com/en-us/graph/whats-new-overview
+  title: What's New
+- type: Authentication
+  url: https://learn.microsoft.com/en-us/graph/auth/
+- type: TermsOfService
+  url: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
+- type: RateLimits
+  url: https://learn.microsoft.com/en-us/graph/throttling
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/graph/change-notifications-delivery-webhooks
+  title: Webhooks
+- type: GettingStarted
+  url: https://developer.microsoft.com/en-us/graph/quick-start
+- type: APIReference
+  url: https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0
+- type: Compliance
+  url: https://learn.microsoft.com/en-us/graph/compliance-concept-overview
+- type: SpectralRules
+  url: rules/microsoft-office-365-spectral-rules.yml
+- type: Features
+  url: https://developer.microsoft.com/en-us/graph
+  data:
+  - name: Unified API Endpoint
+    description: Access Microsoft 365 data through a single REST endpoint at graph.microsoft.com covering
+      mail, calendar, files, users, and groups.
+  - name: Real-Time Notifications
+    description: Subscribe to change notifications via webhooks to receive real-time updates when data
+      changes across Microsoft 365 services.
+  - name: Batch Requests
+    description: Combine multiple API requests into a single HTTP call to reduce network overhead and
+      improve performance.
+  - name: Delta Queries
+    description: Track incremental changes to resources efficiently using delta links without polling
+      entire datasets.
+  - name: Rich Mail Management
+    description: Read, send, reply, forward, and organize email messages with full attachment and folder
+      support.
+  - name: Calendar and Scheduling
+    description: Create events, manage calendars, check free/busy availability, and handle meeting responses
+      programmatically.
+  - name: File Storage and Sharing
+    description: Access OneDrive and SharePoint files with upload, download, sharing, and real-time collaboration
+      capabilities.
+  - name: Team Collaboration
+    description: Manage Microsoft Teams channels, messages, tabs, and apps for team communication and
+      collaboration.
+  - name: User and Group Management
+    description: Create, update, and manage users, groups, and organizational directory resources.
+- type: UseCases
+  url: https://developer.microsoft.com/en-us/graph
+  data:
+  - name: Enterprise Productivity Integration
+    description: Build applications that integrate email, calendar, and file management into unified productivity
+      workflows.
+  - name: Automated Reporting
+    description: Generate automated reports by pulling data from mail, calendar, and user profiles across
+      the organization.
+  - name: Identity and Access Management
+    description: Manage user provisioning, group membership, and directory synchronization for enterprise
+      identity workflows.
+  - name: Team Communication Automation
+    description: Automate team notifications, channel management, and messaging workflows across Microsoft
+      Teams.
+  - name: Document Collaboration
+    description: Enable multi-user document editing, sharing, and version tracking through OneDrive and
+      SharePoint APIs.
+- type: Integrations
+  url: https://developer.microsoft.com/en-us/graph
+  data:
+  - name: Azure Active Directory
+    description: Integrate with Azure AD for user authentication, authorization, and directory management.
+  - name: Microsoft Teams
+    description: Build bots, tabs, and messaging extensions that integrate with Microsoft Teams collaboration
+      platform.
+  - name: Power Automate
+    description: Connect Microsoft Graph data to Power Automate flows for no-code/low-code automation.
+  - name: Power BI
+    description: Feed Microsoft 365 data into Power BI dashboards for business intelligence and reporting.
+  - name: SharePoint
+    description: Access SharePoint sites, lists, and document libraries for enterprise content management.
+  - name: Outlook
+    description: Integrate with Outlook mail, calendar, and contacts for personal and shared mailbox management.
 x-parent: microsoft-365
 x-relationship: product
+x-aliases:
+- Office 365
