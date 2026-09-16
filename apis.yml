@@ -40,8 +40,9 @@ tags:
 - Productivity
 apis:
 - name: Outlook Contacts API
-  description: Access to Outlook personal contacts for managing contact information, creating contact
-    folders, and organizing people data.
+  description: >-
+    Access to Outlook personal contacts for managing contact information, creating contact folders, and
+    organizing people data.
   humanURL: https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/contacts
   tags:
@@ -58,8 +59,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
 - name: OneNote API
-  description: Access to OneNote notebooks, sections, and pages for creating and managing notes and structured
-    content.
+  description: >-
+    Access to OneNote notebooks, sections, and pages for creating and managing notes and structured content.
   humanURL: https://learn.microsoft.com/en-us/graph/integrate-with-onenote
   baseURL: https://graph.microsoft.com/v1.0/me/onenote
   tags:
@@ -76,9 +77,11 @@ apis:
   - Sections
   properties:
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/graph/api/resources/onenote-api-overview?view=graph-rest-1.0
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/onenote-api-overview?view=graph-rest-1.0
 - name: Excel Workbooks and Charts API
-  description: Read and modify Excel workbooks stored in OneDrive and SharePoint, including managing worksheets,
+  description: >-
+    Read and modify Excel workbooks stored in OneDrive and SharePoint, including managing worksheets,
     tables, charts, ranges, and sessions.
   humanURL: https://learn.microsoft.com/en-us/graph/excel-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook
@@ -97,8 +100,9 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/excel-manage-sessions
     title: Session Management
 - name: Microsoft To Do API
-  description: Manage tasks and task lists across To Do clients, Outlook, and Teams for personal task
-    management and day planning.
+  description: >-
+    Manage tasks and task lists across To Do clients, Outlook, and Teams for personal task management
+    and day planning.
   humanURL: https://learn.microsoft.com/en-us/graph/todo-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/me/todo
   tags:
@@ -115,8 +119,9 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/todo-concept-overview
 - name: Microsoft Bookings API
-  description: Manage customer bookings, appointment scheduling, business services, and staff information
-    for enterprise and small business owners.
+  description: >-
+    Manage customer bookings, appointment scheduling, business services, and staff information for enterprise
+    and small business owners.
   humanURL: https://learn.microsoft.com/en-us/graph/booking-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
   tags:
@@ -126,10 +131,12 @@ apis:
   - Scheduling
   properties:
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/graph/api/resources/booking-api-overview?view=graph-rest-1.0
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/booking-api-overview?view=graph-rest-1.0
 - name: Microsoft Graph Security API
-  description: Connect security products, services, and partners to streamline security operations and
-    improve threat protection, detection, and response.
+  description: >-
+    Connect security products, services, and partners to streamline security operations and improve threat
+    protection, detection, and response.
   humanURL: https://learn.microsoft.com/en-us/graph/security-concept-overview
   baseURL: https://graph.microsoft.com/v1.0/security
   tags:
@@ -139,9 +146,11 @@ apis:
   - Threats
   properties:
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview?view=graph-rest-1.0
+    url: >-
+      https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview?view=graph-rest-1.0
 - name: Microsoft Graph Communications API
-  description: Create and join online meetings, manage call records, and enable cloud communications capabilities
+  description: >-
+    Create and join online meetings, manage call records, and enable cloud communications capabilities
     for applications.
   humanURL: https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings
   baseURL: https://graph.microsoft.com/v1.0/communications
@@ -159,8 +168,9 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings
 - name: Office Add-ins Platform
-  description: Platform for building solutions that extend Office applications including Excel, Outlook,
-    Word, PowerPoint, and OneNote using web technologies and the Office JavaScript API.
+  description: >-
+    Platform for building solutions that extend Office applications including Excel, Outlook, Word, PowerPoint,
+    and OneNote using web technologies and the Office JavaScript API.
   humanURL: https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins
   tags:
   - Add-Ins
@@ -191,8 +201,9 @@ apis:
     title: Development Guide
 - aid: microsoft-office-365:microsoft-office-365-calendar-api
   name: Microsoft Office 365 Calendar API
-  description: Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling,
-    meeting management, and free/busy lookups.
+  description: >-
+    Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling, meeting
+    management, and free/busy lookups.
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
@@ -250,8 +261,9 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
 - aid: microsoft-office-365:microsoft-office-365-groups-api
   name: Microsoft Office 365 Groups API
-  description: Manage Microsoft 365 groups and security groups. Groups provide shared access to resources
-    such as SharePoint sites, shared mailboxes, Planner plans, OneNote notebooks, and conversations.
+  description: >-
+    Manage Microsoft 365 groups and security groups. Groups provide shared access to resources such as
+    SharePoint sites, shared mailboxes, Planner plans, OneNote notebooks, and conversations.
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
@@ -311,8 +323,9 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
 - aid: microsoft-office-365:microsoft-office-365-mail-api
   name: Microsoft Office 365 Mail API
-  description: Access and manage Outlook mail messages, mail folders, and message attachments. Supports
-    reading, creating, sending, replying, forwarding, and organizing email.
+  description: >-
+    Access and manage Outlook mail messages, mail folders, and message attachments. Supports reading,
+    creating, sending, replying, forwarding, and organizing email.
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
@@ -370,8 +383,9 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
 - aid: microsoft-office-365:microsoft-office-365-users-api
   name: Microsoft Office 365 Users API
-  description: Manage users in Azure Active Directory. Users are the core identity resource representing
-    a person, including their profile, organizational relationships, and access to services.
+  description: >-
+    Manage users in Azure Active Directory. Users are the core identity resource representing a person,
+    including their profile, organizational relationships, and access to services.
   humanURL: https://developer.microsoft.com/en-us/graph
   baseURL: https://graph.microsoft.com
   tags:
@@ -429,36 +443,6 @@ apis:
     url: https://docs.microsoft.com/en-us/graph/api/resources/planner-overview
   - type: Documentation
     url: https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0
-- name: Microsoft Graph API
-  description: The primary API for Office 365, providing access to data and intelligence in Microsoft
-    365, Windows 10, and Enterprise Mobility + Security.
-  humanURL: https://developer.microsoft.com/en-us/graph
-  baseURL: https://graph.microsoft.com/v1.0
-  tags:
-  - Calendar
-  - Graph
-  - Mail
-  - SharePoint
-  - Team
-  - User
-  tags_raw:
-  - Calendar
-  - Graph
-  - Mail
-  - SharePoint
-  - Teams
-  - Users
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/graph/overview
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/microsoftgraph/msgraph-metadata/master/openapi/v1.0/openapi.yaml
-  - type: Authentication
-    url: https://learn.microsoft.com/en-us/graph/auth/
-  - type: SDKs
-    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-  - type: ChangeLog
-    url: https://developer.microsoft.com/en-us/graph/changelog
 - name: Outlook Mail API
   description: Access email, manage folders, send mail, and manage mail settings via Microsoft Graph.
   humanURL: https://learn.microsoft.com/en-us/graph/outlook-mail-concept-overview
