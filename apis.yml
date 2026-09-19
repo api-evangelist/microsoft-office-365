@@ -126,6 +126,11 @@ apis:
   baseURL: https://graph.microsoft.com/v1.0/solutions/bookingBusinesses
   tags:
   - Appointments
+  - Booking
+  - Business
+  - Scheduling
+  tags_raw:
+  - Appointments
   - Bookings
   - Business
   - Scheduling
