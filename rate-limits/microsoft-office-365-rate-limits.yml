@@ -1,88 +1,19 @@
-specification: API Commons Rate Limits
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
-provider: Microsoft Office 365
-providerId: microsoft-office-365
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: true
-tags:
-  - Rate Limiting
-  - Microsoft 365
-  - Microsoft Graph
-  - Microsoft
-description: Microsoft Office 365 / Microsoft 365 programmatic access is provided through Microsoft Graph,
-  Exchange Web Services, and the legacy Outlook REST API. The dominant throttling regime is the Microsoft
-  Graph per-app-per-tenant and per-app-across-all-tenants quotas, with a global ceiling of 130,000 requests
-  per 10 seconds per app. Each Office 365 service (Exchange, SharePoint / OneDrive, Teams, Excel) has
-  its own service-specific quota.
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://learn.microsoft.com/en-us/graph/throttling
 sources:
-  - https://learn.microsoft.com/en-us/graph/throttling
-  - https://learn.microsoft.com/en-us/graph/throttling-limits
-  - https://learn.microsoft.com/en-us/sharepoint/dev/general-development/how-to-avoid-getting-throttled-or-blocked-in-sharepoint-online
+- https://learn.microsoft.com/en-us/graph/throttling
+provenance:
+  tool: planning/api-economics/harvest_ratelimits.py
+  run: 20260920T133210
+  grounding: every limit_text was found verbatim in the fetched page text
+published: false
+note: Page describes Microsoft Graph throttling behavior and best practices but states no numeric rate
+  limits; it links to service-specific limits elsewhere. Documents 429 Too Many Requests and Retry-After
+  header.
+limit_count: 0
+limits: []
 headers:
-  retryAfter: Retry-After
-  requestId: request-id
-  throttleScope: x-ms-throttle-scope
-  throttleLimit: x-ms-throttle-limit-percentage
-responseCodes:
-  throttled: 429
-  serviceUnavailable: 503
-limits:
-  - name: Microsoft Graph global ceiling
-    scope: application
-    metric: requests_per_10_seconds
-    limit: 130000
-    timeFrame: second
-  - name: Excel — per app/tenant
-    scope: app/tenant
-    metric: requests_per_10_seconds
-    limit: 1500
-    timeFrame: second
-  - name: Excel — per app across tenants
-    scope: application
-    metric: requests_per_10_seconds
-    limit: 5000
-    timeFrame: second
-  - name: Teams Calls per app/tenant
-    scope: app/tenant
-    metric: requests_per_15_seconds
-    limit: 50000
-    timeFrame: second
-  - name: Teams Presence per app/tenant
-    scope: app/tenant
-    metric: requests_per_30_seconds
-    limit: 10000
-    timeFrame: second
-  - name: Exchange Message Trace
-    scope: tenant
-    metric: requests_per_5_minutes
-    limit: 100
-    timeFrame: minute
-  - name: SharePoint / OneDrive
-    scope: app/tenant
-    metric: varies
-    limit: see SharePoint Online throttling guidance — no fixed numeric per-app per-second quota published
-  - name: Identity & Access (read) per app/tenant
-    scope: app/tenant
-    metric: resource_units_per_10_seconds
-    limit: 3500–8000 RU per 10s based on tenant size
-    timeFrame: second
-policies:
-  - name: Backoff Strategy
-    description: Honour Retry-After on 429 / 503; the Microsoft Graph SDK handlers do this by default.
-  - name: Use change notifications
-    description: Subscribe to change notifications instead of polling.
-  - name: Use $batch
-    description: Combine up to 20 requests in a single $batch envelope.
-  - name: Service-specific guidance
-    description: SharePoint / OneDrive throttling is handled separately by the SharePoint Online service;
-      always implement client-side backoff and avoid generic User-Agent strings.
-  - name: Microsoft Graph Data Connect for bulk
-    description: For tenant-scale exports, use Data Connect to bypass REST throttling.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- Retry-After
+exceeded_status: 429

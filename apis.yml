@@ -519,6 +519,8 @@ maintainers:
   email: kin@apievangelist.com
   url: https://apievangelist.com
 common:
+- type: RateLimits
+  url: rate-limits/microsoft-office-365-rate-limits.yml
 - type: Plans
   url: plans/microsoft-office-365-plans-pricing.yml
 - type: Website
