@@ -11,6 +11,11 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: per-seat
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
+  managed_tier: Microsoft Entra ID P1
 published: true
 note: Microsoft Entra plans/pricing page; per-user monthly prices with annual commitment. Some items (Verified
   ID, External ID, Domain Services) link out without numeric prices on this page.
