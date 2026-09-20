@@ -1,183 +1,81 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Microsoft Office 365
-providerId: microsoft-office-365
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: true
-tags:
-  - Productivity
-  - Office
-  - Microsoft 365
-  - Email
-  - Microsoft
-description: Microsoft Office 365 has been folded into the Microsoft 365 brand. Pricing is per-user-per-month
-  with annual commitment across Business (Basic / Standard / Premium / Apps for Business) and Enterprise
-  (E3 / E5 / E7) tiers, with frontline (F1 / F3) and education SKUs available separately. Programmatic
-  access is via Microsoft Graph and is included with every seat at no incremental per-call charge.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing
 sources:
-  - https://www.microsoft.com/en-us/microsoft-365/business/compare-all-plans
-  - https://www.microsoft.com/en-us/microsoft-365/enterprise/microsoft365-plans-and-pricing
-  - https://www.microsoft.com/en-us/microsoft-365/exchange/compare-microsoft-exchange-online-plans
+- https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing
+- https://azure.microsoft.com/en-us/pricing/details/active-directory/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-seat
+published: true
+note: Microsoft Entra plans/pricing page; per-user monthly prices with annual commitment. Some items (Verified
+  ID, External ID, Domain Services) link out without numeric prices on this page.
+plan_count: 11
+currency: USD
 plans:
-  - id: microsoft-office-365-business-basic
-    name: Microsoft 365 Business Basic
-    type: subscription
-    description: Web + mobile Office apps, Exchange, Teams, OneDrive, SharePoint. $6.00/user/month with
-      Teams, $4.40/user/month without Teams (annual).
-    entries:
-      - label: Per user, paid yearly (with Teams)
-        name: business_basic
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '6.00'
-        userMultiplied: true
-      - label: Per user, paid yearly (no Teams)
-        name: business_basic_no_teams
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '4.40'
-        userMultiplied: true
-    elements:
-      - name: Web + mobile Office apps
-      - name: 50 GB Exchange Online mailbox
-      - name: 1 TB OneDrive
-      - name: SharePoint and Teams
-  - id: microsoft-office-365-business-standard
-    name: Microsoft 365 Business Standard
-    type: subscription
-    description: Adds desktop Office apps and webinars. $12.50/user/month with Teams, $9.29 without (annual).
-    entries:
-      - label: Per user, paid yearly (with Teams)
-        name: business_standard
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '12.50'
-        userMultiplied: true
-      - label: Per user, paid yearly (no Teams)
-        name: business_standard_no_teams
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '9.29'
-        userMultiplied: true
-    elements:
-      - name: Desktop Office apps
-      - name: Webinars and bookings
-      - name: Loop and Clipchamp
-  - id: microsoft-office-365-e3
-    name: Microsoft 365 E3
-    type: subscription
-    description: Enterprise tier including desktop Office, Exchange Plan 2, Entra ID P1, Intune, Information
-      Protection. $36.00/user/month, paid yearly (with Teams) or $27.45 without.
-    entries:
-      - label: Per user, paid yearly (with Teams)
-        name: m365_e3
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '36.00'
-        userMultiplied: true
-      - label: Per user, paid yearly (no Teams)
-        name: m365_e3_no_teams
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '27.45'
-        userMultiplied: true
-    elements:
-      - name: Desktop and web Office
-      - name: Exchange Online Plan 2
-      - name: Entra ID P1
-      - name: Intune Plan 1
-      - name: Information Protection
-  - id: microsoft-office-365-e5
-    name: Microsoft 365 E5
-    type: subscription
-    description: Top enterprise tier; adds Power BI Pro, Defender for Office 365 P2, Entra ID P2, advanced
-      eDiscovery, voice. $57.00/user/month, paid yearly (with Teams) or $48.45 without.
-    entries:
-      - label: Per user, paid yearly (with Teams)
-        name: m365_e5
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '57.00'
-        userMultiplied: true
-      - label: Per user, paid yearly (no Teams)
-        name: m365_e5_no_teams
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '48.45'
-        userMultiplied: true
-    elements:
-      - name: Power BI Pro
-      - name: Defender for Office 365 P2
-      - name: Entra ID P2
-      - name: Advanced eDiscovery
-      - name: Microsoft Teams Phone (with Teams variant)
-  - id: microsoft-office-365-e7
-    name: Microsoft 365 E7
-    type: subscription
-    description: Premium SKU with Copilot for Microsoft 365 and additional value bundling. $99.00/user/month
-      with Teams, $90.45 without (annual).
-    entries:
-      - label: Per user, paid yearly (with Teams)
-        name: m365_e7
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '99.00'
-        userMultiplied: true
-      - label: Per user, paid yearly (no Teams)
-        name: m365_e7_no_teams
-        type: subscription
-        metric: seat
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '90.45'
-        userMultiplied: true
-    elements:
-      - name: Copilot for Microsoft 365
-      - name: Premium support
-      - name: All E5 capabilities
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- name: Microsoft Entra ID P1
+  price_text: $7.00 user/month, paid yearly (annual commitment)
+  price: 7.0
+  currency: USD
+  period: month
+  unit: user
+  included_quota: Available as standalone or included with Microsoft 365 E3 / Business Premium
+- name: Microsoft Entra ID P2
+  price_text: $10.00 user/month, paid yearly (annual commitment)
+  price: 10.0
+  currency: USD
+  period: month
+  unit: user
+  included_quota: Available as standalone or included with Microsoft 365 E5
+- name: Microsoft Entra Suite
+  price_text: $12.00 user/month, paid yearly (annual commitment)
+  price: 12.0
+  currency: USD
+  period: month
+  unit: user
+  included_quota: Requires subscription to Microsoft Entra ID P1 or package including it
+- name: Microsoft Entra ID Free
+  price_text: Microsoft Entra ID Free is included with Microsoft cloud subscriptions, such as Microsoft
+    Azure and Microsoft 365.
+  period: none
+  included_quota: MFA, unlimited SSO across any SaaS app, basic reports, self-service password change
+- name: Microsoft Entra Internet Access
+  price_text: $5.00 user/month, paid yearly (annual commitment)
+  price: 5.0
+  currency: USD
+  period: month
+  unit: user
+- name: Microsoft Entra Private Access
+  price_text: $5.00 user/month, paid yearly (annual commitment)
+  price: 5.0
+  currency: USD
+  period: month
+  unit: user
+- name: Microsoft Entra ID Governance
+  price_text: $7.00 user/month, paid yearly (annual commitment)
+  price: 7.0
+  currency: USD
+  period: month
+  unit: user
+  included_quota: Available for Microsoft Entra ID P1 and P2 customers
+- name: Microsoft Entra Verified ID
+  price_text: Explore standalone pricing
+  period: none
+  included_quota: Included with any Microsoft Entra ID subscription; Face Check premium
+- name: Microsoft Entra External ID
+  price_text: See pricing
+  period: none
+  included_quota: Core features free for your first 50,000 monthly active users
+- name: Microsoft Entra Workload ID
+  price_text: $3.00 workload identity/month, paid yearly (annual commitment)
+  price: 3.0
+  currency: USD
+  period: month
+  unit: workload identity
+- name: Microsoft Entra Domain Services
+  price_text: Contact Sales
+  period: none

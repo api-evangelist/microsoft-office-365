@@ -519,6 +519,8 @@ maintainers:
   email: kin@apievangelist.com
   url: https://apievangelist.com
 common:
+- type: Plans
+  url: plans/microsoft-office-365-plans-pricing.yml
 - type: Website
   url: https://www.microsoft.com/
 - type: CapabilityMap
