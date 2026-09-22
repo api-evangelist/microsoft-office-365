@@ -2,16 +2,16 @@
 kin_checks:
   slug: microsoft-office-365
   schema_version: 0.22.0
-  scored_at: '2026-09-19'
-  run_ts: 2026-09-19T193153
+  scored_at: '2026-09-21'
+  run_ts: 2026-09-21T233935
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 136
-    earned: 54
-    partial: 14
-    missed: 42
+    earned: 56
+    partial: 10
+    missed: 44
     na: 26
   checks:
   - id: description_substantive
@@ -46,6 +46,10 @@ kin_checks:
   - id: conformance_declared
     status: missed
   - id: overlay_published
+    status: missed
+  - id: rate_limits_documented
+    status: missed
+  - id: rate_limits_rich
     status: missed
   - id: deprecation_policy
     status: missed
@@ -117,12 +121,6 @@ kin_checks:
     status: partial
     earned: 3.0
     detail: pointer liveness 0.5
-  - id: rate_limits_documented
-    status: partial
-    earned: 2.0
-  - id: rate_limits_rich
-    status: partial
-    earned: 1.0
   - id: github_org_present
     status: partial
     earned: 1.0
@@ -130,12 +128,6 @@ kin_checks:
   - id: postman_present
     status: partial
     earned: 0.5
-  - id: plans_present
-    status: partial
-    earned: 2.0
-  - id: plans_multiple
-    status: partial
-    earned: 1.0
   - id: agentic_access
     status: partial
     earned: 2.5
