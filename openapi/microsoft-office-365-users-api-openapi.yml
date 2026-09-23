@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Office 365 Microsoft Graph Calendar Users API
+  title: Microsoft Office 365 Microsoft Graph Users API
   description: The Microsoft Graph API provides a unified programmability model to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security. It serves as the gateway to data and intelligence in Microsoft 365, enabling applications to interact with users, groups, mail, calendars, files, and other organizational resources through a single REST endpoint.
   version: 1.0.0
   termsOfService: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
@@ -422,28 +422,10 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    search:
-      name: $search
-      in: query
-      description: Search expression to filter results. Uses KQL syntax for directory objects.
-      schema:
-        type: string
-    count:
-      name: $count
-      in: query
-      description: Include a count of the total number of items in a collection alongside the page of data values.
-      schema:
-        type: boolean
     orderby:
       name: $orderby
       in: query
       description: Comma-separated list of properties for sorting results.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
       schema:
         type: string
     top:
@@ -453,6 +435,18 @@ components:
       schema:
         type: integer
         minimum: 1
+    search:
+      name: $search
+      in: query
+      description: Search expression to filter results. Uses KQL syntax for directory objects.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of items returned.
+      schema:
+        type: string
     skip:
       name: $skip
       in: query
@@ -460,16 +454,22 @@ components:
       schema:
         type: integer
         minimum: 0
+    count:
+      name: $count
+      in: query
+      description: Include a count of the total number of items in a collection alongside the page of data values.
+      schema:
+        type: boolean
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
     expand:
       name: $expand
       in: query
       description: Comma-separated list of relationships to expand and include in the response.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of items returned.
       schema:
         type: string
     userId:
@@ -480,6 +480,89 @@ components:
       schema:
         type: string
   schemas:
+    PasswordProfile:
+      type: object
+      description: Contains the password profile associated with a user.
+      properties:
+        forceChangePasswordNextSignIn:
+          type: boolean
+          description: Whether the user must change the password on the next sign-in.
+          default: true
+          example: true
+        forceChangePasswordNextSignInWithMfa:
+          type: boolean
+          description: Whether the user must perform multi-factor authentication before being forced to change their password.
+          default: false
+          example: true
+        password:
+          type: string
+          format: password
+          description: The password for the user. Must satisfy the tenant's password complexity requirements. Minimum of 8 characters.
+          example: example_value
+    UserCreateRequest:
+      type: object
+      required:
+      - accountEnabled
+      - displayName
+      - mailNickname
+      - userPrincipalName
+      - passwordProfile
+      properties:
+        accountEnabled:
+          type: boolean
+          description: True if the account is enabled; otherwise, false.
+          example: true
+        displayName:
+          type: string
+          description: The name to display in the address book for the user.
+          example: example_value
+        mailNickname:
+          type: string
+          description: The mail alias for the user.
+          example: example_value
+        userPrincipalName:
+          type: string
+          description: The user principal name (someuser@contoso.com).
+          example: example_value
+        passwordProfile:
+          $ref: '#/components/schemas/PasswordProfile'
+        givenName:
+          type: string
+          example: example_value
+        surname:
+          type: string
+          example: example_value
+        jobTitle:
+          type: string
+          example: example_value
+        department:
+          type: string
+          example: example_value
+        officeLocation:
+          type: string
+          example: example_value
+        mobilePhone:
+          type: string
+          example: example_value
+        usageLocation:
+          type: string
+          example: example_value
+    ObjectIdentity:
+      type: object
+      description: Represents an identity used to sign in to a user account.
+      properties:
+        signInType:
+          type: string
+          description: Specifies the type of user sign-in (e.g. emailAddress, userName, userPrincipalName).
+          example: example_value
+        issuer:
+          type: string
+          description: Specifies the issuer of the identity, for example contoso.onmicrosoft.com.
+          example: example_value
+        issuerAssignedId:
+          type: string
+          description: Specifies the unique value associated with the issuer- signInType combination.
+          example: '500123'
     User:
       type: object
       description: Represents an Azure Active Directory user account. Inherits from directoryObject. Contains the user's profile information, organizational hierarchy, assigned licenses, and managed resources.
@@ -604,29 +687,21 @@ components:
             $ref: '#/components/schemas/DirectoryObject'
           description: The groups, directory roles, and administrative units the user is a member of.
           example: []
-    ODataError:
+    DirectoryObject:
       type: object
-      description: The error response from the Microsoft Graph API following OData conventions.
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code string.
-            message:
-              type: string
-              description: A human-readable error message.
-            innerError:
-              type: object
-              properties:
-                date:
-                  type: string
-                  format: date-time
-                request-id:
-                  type: string
-                client-request-id:
-                  type: string
+        '@odata.type':
+          type: string
+          description: The OData type of the directory object.
+          example: example_value
+        id:
+          type: string
+          description: The unique identifier for the directory object.
+          example: abc123
+        displayName:
+          type: string
+          description: The name displayed for the directory object.
           example: example_value
     UserUpdateRequest:
       type: object
@@ -683,119 +758,6 @@ components:
           example: example_value
         passwordProfile:
           $ref: '#/components/schemas/PasswordProfile'
-    PasswordProfile:
-      type: object
-      description: Contains the password profile associated with a user.
-      properties:
-        forceChangePasswordNextSignIn:
-          type: boolean
-          description: Whether the user must change the password on the next sign-in.
-          default: true
-          example: true
-        forceChangePasswordNextSignInWithMfa:
-          type: boolean
-          description: Whether the user must perform multi-factor authentication before being forced to change their password.
-          default: false
-          example: true
-        password:
-          type: string
-          format: password
-          description: The password for the user. Must satisfy the tenant's password complexity requirements. Minimum of 8 characters.
-          example: example_value
-    ObjectIdentity:
-      type: object
-      description: Represents an identity used to sign in to a user account.
-      properties:
-        signInType:
-          type: string
-          description: Specifies the type of user sign-in (e.g. emailAddress, userName, userPrincipalName).
-          example: example_value
-        issuer:
-          type: string
-          description: Specifies the issuer of the identity, for example contoso.onmicrosoft.com.
-          example: example_value
-        issuerAssignedId:
-          type: string
-          description: Specifies the unique value associated with the issuer- signInType combination.
-          example: '500123'
-    AssignedLicense:
-      type: object
-      description: Represents a license assigned to a user.
-      properties:
-        disabledPlans:
-          type: array
-          items:
-            type: string
-          description: A collection of unique identifiers for disabled plans.
-          example: []
-        skuId:
-          type: string
-          description: The unique identifier for the SKU.
-          example: '500123'
-    DirectoryObject:
-      type: object
-      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-      properties:
-        '@odata.type':
-          type: string
-          description: The OData type of the directory object.
-          example: example_value
-        id:
-          type: string
-          description: The unique identifier for the directory object.
-          example: abc123
-        displayName:
-          type: string
-          description: The name displayed for the directory object.
-          example: example_value
-    UserCreateRequest:
-      type: object
-      required:
-      - accountEnabled
-      - displayName
-      - mailNickname
-      - userPrincipalName
-      - passwordProfile
-      properties:
-        accountEnabled:
-          type: boolean
-          description: True if the account is enabled; otherwise, false.
-          example: true
-        displayName:
-          type: string
-          description: The name to display in the address book for the user.
-          example: example_value
-        mailNickname:
-          type: string
-          description: The mail alias for the user.
-          example: example_value
-        userPrincipalName:
-          type: string
-          description: The user principal name (someuser@contoso.com).
-          example: example_value
-        passwordProfile:
-          $ref: '#/components/schemas/PasswordProfile'
-        givenName:
-          type: string
-          example: example_value
-        surname:
-          type: string
-          example: example_value
-        jobTitle:
-          type: string
-          example: example_value
-        department:
-          type: string
-          example: example_value
-        officeLocation:
-          type: string
-          example: example_value
-        mobilePhone:
-          type: string
-          example: example_value
-        usageLocation:
-          type: string
-          example: example_value
     UserCollectionResponse:
       type: object
       properties:
@@ -817,27 +779,53 @@ components:
           items:
             $ref: '#/components/schemas/User'
           example: []
+    ODataError:
+      type: object
+      description: The error response from the Microsoft Graph API following OData conventions.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code string.
+            message:
+              type: string
+              description: A human-readable error message.
+            innerError:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                request-id:
+                  type: string
+                client-request-id:
+                  type: string
+          example: example_value
+    AssignedLicense:
+      type: object
+      description: Represents a license assigned to a user.
+      properties:
+        disabledPlans:
+          type: array
+          items:
+            type: string
+          description: A collection of unique identifiers for disabled plans.
+          example: []
+        skuId:
+          type: string
+          description: The unique identifier for the SKU.
+          example: '500123'
   responses:
-    NotFound:
-      description: Not found. The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    InternalServerError:
-      description: Internal server error. An unexpected error occurred on the server.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
     Unauthorized:
       description: Unauthorized. A valid access token is required.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden. Insufficient permissions to complete the operation.
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
       content:
         application/json:
           schema:
@@ -853,8 +841,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request. The request body or parameters are invalid.
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    InternalServerError:
+      description: Internal server error. An unexpected error occurred on the server.
       content:
         application/json:
           schema:

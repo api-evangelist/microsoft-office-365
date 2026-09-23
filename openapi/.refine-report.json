@@ -1,10 +1,7 @@
 {
   "provider": "microsoft-office-365",
   "sources": [
-    "microsoft-office-365-calendar-api-openapi.yml",
-    "microsoft-office-365-groups-api-openapi.yml",
-    "microsoft-office-365-mail-api-openapi.yml",
-    "microsoft-office-365-users-api-openapi.yml"
+    "_original/microsoft-graph-api-openapi.yml"
   ],
   "outputs": [
     "microsoft-office-365-calendar-api-openapi.yml",
@@ -16,11 +13,14 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "microsoft-office-365-calendar-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-office-365-groups-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-office-365-mail-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-office-365-users-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "microsoft-graph-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "microsoft-office-365-calendar-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-office-365-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-office-365-mail-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-office-365-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

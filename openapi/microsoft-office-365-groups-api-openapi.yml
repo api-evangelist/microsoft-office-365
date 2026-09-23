@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Office 365 Microsoft Graph Calendar Groups API
+  title: Microsoft Office 365 Microsoft Graph Groups API
   description: The Microsoft Graph API provides a unified programmability model to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security. It serves as the gateway to data and intelligence in Microsoft 365, enabling applications to interact with users, groups, mail, calendars, files, and other organizational resources through a single REST endpoint.
   version: 1.0.0
   termsOfService: https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use
@@ -406,6 +406,19 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    orderby:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties for sorting results.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: The number of items to return in a result set. Maximum value depends on the API.
+      schema:
+        type: integer
+        minimum: 1
     search:
       name: $search
       in: query
@@ -419,31 +432,12 @@ components:
       description: The unique identifier of the group (GUID).
       schema:
         type: string
-    count:
-      name: $count
+    filter:
+      name: $filter
       in: query
-      description: Include a count of the total number of items in a collection alongside the page of data values.
-      schema:
-        type: boolean
-    orderby:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties for sorting results.
+      description: OData filter expression to restrict the set of items returned.
       schema:
         type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: The number of items to return in a result set. Maximum value depends on the API.
-      schema:
-        type: integer
-        minimum: 1
     skip:
       name: $skip
       in: query
@@ -451,10 +445,16 @@ components:
       schema:
         type: integer
         minimum: 0
-    filter:
-      name: $filter
+    count:
+      name: $count
       in: query
-      description: OData filter expression to restrict the set of items returned.
+      description: Include a count of the total number of items in a collection alongside the page of data values.
+      schema:
+        type: boolean
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
       schema:
         type: string
     expand:
@@ -463,30 +463,106 @@ components:
       description: Comma-separated list of relationships to expand and include in the response.
       schema:
         type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized. A valid access token is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    TooManyRequests:
+      description: Too many requests. The application has been throttled.
+      headers:
+        Retry-After:
+          description: The number of seconds to wait before retrying the request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    InternalServerError:
+      description: Internal server error. An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
-    ODataError:
+    GroupCollectionResponse:
       type: object
-      description: The error response from the Microsoft Graph API following OData conventions.
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code string.
-            message:
-              type: string
-              description: A human-readable error message.
-            innerError:
-              type: object
-              properties:
-                date:
-                  type: string
-                  format: date-time
-                request-id:
-                  type: string
-                client-request-id:
-                  type: string
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+          example: []
+    DirectoryObjectCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectoryObject'
+          example: []
+    GroupUpdateRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        mailNickname:
+          type: string
+          example: example_value
+        visibility:
+          type: string
+          enum:
+          - Public
+          - Private
+          - HiddenMembership
+          example: Public
+        classification:
+          type: string
           example: example_value
     Group:
       type: object
@@ -584,24 +660,22 @@ components:
             $ref: '#/components/schemas/DirectoryObject'
           description: The owners of the group.
           example: []
-    DirectoryObjectCollectionResponse:
+    DirectoryObject:
       type: object
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
       properties:
-        '@odata.context':
+        '@odata.type':
           type: string
+          description: The OData type of the directory object.
           example: example_value
-        '@odata.count':
-          type: integer
-          example: 10
-        '@odata.nextLink':
+        id:
           type: string
-          format: uri
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DirectoryObject'
-          example: []
+          description: The unique identifier for the directory object.
+          example: abc123
+        displayName:
+          type: string
+          description: The name displayed for the directory object.
+          example: example_value
     GroupCreateRequest:
       type: object
       required:
@@ -651,104 +725,30 @@ components:
             type: string
           description: URLs of user objects to set as members at creation time.
           example: []
-    DirectoryObject:
+    ODataError:
       type: object
-      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      description: The error response from the Microsoft Graph API following OData conventions.
       properties:
-        '@odata.type':
-          type: string
-          description: The OData type of the directory object.
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code string.
+            message:
+              type: string
+              description: A human-readable error message.
+            innerError:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                request-id:
+                  type: string
+                client-request-id:
+                  type: string
           example: example_value
-        id:
-          type: string
-          description: The unique identifier for the directory object.
-          example: abc123
-        displayName:
-          type: string
-          description: The name displayed for the directory object.
-          example: example_value
-    GroupUpdateRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        mailNickname:
-          type: string
-          example: example_value
-        visibility:
-          type: string
-          enum:
-          - Public
-          - Private
-          - HiddenMembership
-          example: Public
-        classification:
-          type: string
-          example: example_value
-    GroupCollectionResponse:
-      type: object
-      properties:
-        '@odata.context':
-          type: string
-          example: example_value
-        '@odata.count':
-          type: integer
-          example: 10
-        '@odata.nextLink':
-          type: string
-          format: uri
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-          example: []
-  responses:
-    NotFound:
-      description: Not found. The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    InternalServerError:
-      description: Internal server error. An unexpected error occurred on the server.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. A valid access token is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden. Insufficient permissions to complete the operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    TooManyRequests:
-      description: Too many requests. The application has been throttled.
-      headers:
-        Retry-After:
-          description: The number of seconds to wait before retrying the request.
-          schema:
-            type: integer
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request. The request body or parameters are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
   securitySchemes:
     oauth2:
       type: oauth2
