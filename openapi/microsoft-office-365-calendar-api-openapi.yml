@@ -719,6 +719,12 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of relationships to expand and include in the response.
+      schema:
+        type: string
     eventId:
       name: event-id
       in: path
@@ -726,22 +732,10 @@ components:
       description: The unique identifier of the event.
       schema:
         type: string
-    filter:
-      name: $filter
+    orderby:
+      name: $orderby
       in: query
-      description: OData filter expression to restrict the set of items returned.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      description: Comma-separated list of relationships to expand and include in the response.
+      description: Comma-separated list of properties for sorting results.
       schema:
         type: string
     top:
@@ -751,10 +745,16 @@ components:
       schema:
         type: integer
         minimum: 1
-    orderby:
-      name: $orderby
+    select:
+      name: $select
       in: query
-      description: Comma-separated list of properties for sorting results.
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of items returned.
       schema:
         type: string
     skip:
@@ -765,54 +765,30 @@ components:
         type: integer
         minimum: 0
   schemas:
-    RecurrenceRange:
+    OutlookGeoCoordinates:
       type: object
-      description: Describes a date range over which a recurring event repeats.
+      description: The geographic coordinates and elevation of a location.
       properties:
-        type:
-          type: string
-          enum:
-          - endDate
-          - noEnd
-          - numbered
-          description: The recurrence range type.
-          example: endDate
-        startDate:
-          type: string
-          format: date
-          description: The start date of the series (first occurrence).
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          description: The date to stop applying the recurrence pattern.
-          example: '2026-01-15'
-        numberOfOccurrences:
-          type: integer
-          description: The number of times to repeat the event.
-          example: 10
-        recurrenceTimeZone:
-          type: string
-          description: Time zone for the startDate and endDate properties.
-          example: example_value
-    Attendee:
-      type: object
-      description: An event attendee that can be a person or resource.
-      properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-        type:
-          type: string
-          enum:
-          - required
-          - optional
-          - resource
-          description: The type of attendee.
-          example: required
-        status:
-          $ref: '#/components/schemas/ResponseStatus'
-        proposedNewTime:
-          $ref: '#/components/schemas/TimeSlot'
+        latitude:
+          type: number
+          format: double
+          example: 42.5
+        longitude:
+          type: number
+          format: double
+          example: 42.5
+        accuracy:
+          type: number
+          format: double
+          example: 42.5
+        altitude:
+          type: number
+          format: double
+          example: 42.5
+        altitudeAccuracy:
+          type: number
+          format: double
+          example: 42.5
     EventCreateRequest:
       type: object
       required:
@@ -898,6 +874,111 @@ components:
         transactionId:
           type: string
           example: '500123'
+    ResponseStatus:
+      type: object
+      description: The response status of an attendee or organizer for a meeting request.
+      properties:
+        response:
+          type: string
+          enum:
+          - none
+          - organizer
+          - tentativelyAccepted
+          - accepted
+          - declined
+          - notResponded
+          description: The response type.
+          example: none
+        time:
+          type: string
+          format: date-time
+          description: The date and time the response was returned.
+          example: '2026-01-15T10:30:00Z'
+    ItemBody:
+      type: object
+      description: Represents properties of the body of a message or event.
+      properties:
+        contentType:
+          type: string
+          enum:
+          - text
+          - html
+          description: The type of the content. Possible values are text and html.
+          example: text
+        content:
+          type: string
+          description: The content of the item.
+          example: example_value
+    PatternedRecurrence:
+      type: object
+      description: The recurrence pattern and range.
+      properties:
+        pattern:
+          $ref: '#/components/schemas/RecurrencePattern'
+        range:
+          $ref: '#/components/schemas/RecurrenceRange'
+    EmailAddress:
+      type: object
+      description: The name and email address of a contact or message recipient.
+      properties:
+        name:
+          type: string
+          description: The display name of the person or entity.
+          example: Example Title
+        address:
+          type: string
+          format: email
+          description: The email address of the person or entity.
+          example: example_value
+    RecurrenceRange:
+      type: object
+      description: Describes a date range over which a recurring event repeats.
+      properties:
+        type:
+          type: string
+          enum:
+          - endDate
+          - noEnd
+          - numbered
+          description: The recurrence range type.
+          example: endDate
+        startDate:
+          type: string
+          format: date
+          description: The start date of the series (first occurrence).
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: The date to stop applying the recurrence pattern.
+          example: '2026-01-15'
+        numberOfOccurrences:
+          type: integer
+          description: The number of times to repeat the event.
+          example: 10
+        recurrenceTimeZone:
+          type: string
+          description: Time zone for the startDate and endDate properties.
+          example: example_value
+    PhysicalAddress:
+      type: object
+      description: Represents the street address of a resource such as a contact or event.
+      properties:
+        street:
+          type: string
+          example: example_value
+        city:
+          type: string
+          example: example_value
+        state:
+          type: string
+          example: example_value
+        countryOrRegion:
+          type: string
+          example: example_value
+        postalCode:
+          type: string
+          example: example_value
     ODataError:
       type: object
       description: The error response from the Microsoft Graph API following OData conventions.
@@ -922,136 +1003,15 @@ components:
                 client-request-id:
                   type: string
           example: example_value
-    PhysicalAddress:
-      type: object
-      description: Represents the street address of a resource such as a contact or event.
-      properties:
-        street:
-          type: string
-          example: example_value
-        city:
-          type: string
-          example: example_value
-        state:
-          type: string
-          example: example_value
-        countryOrRegion:
-          type: string
-          example: example_value
-        postalCode:
-          type: string
-          example: example_value
-    RecurrencePattern:
-      type: object
-      description: Describes the frequency by which a recurring event repeats.
-      properties:
-        type:
-          type: string
-          enum:
-          - daily
-          - weekly
-          - absoluteMonthly
-          - relativeMonthly
-          - absoluteYearly
-          - relativeYearly
-          description: The recurrence pattern type.
-          example: daily
-        interval:
-          type: integer
-          description: The number of units between occurrences, where units can be in days, weeks, months, or years.
-          example: 10
-        daysOfWeek:
-          type: array
-          items:
-            type: string
-            enum:
-            - sunday
-            - monday
-            - tuesday
-            - wednesday
-            - thursday
-            - friday
-            - saturday
-          description: A collection of the days of the week on which the event occurs.
-          example: []
-        dayOfMonth:
-          type: integer
-          description: The day of the month on which the event occurs.
-          example: 10
-        month:
-          type: integer
-          description: The month in which the event occurs (1-12).
-          example: 10
-        firstDayOfWeek:
-          type: string
-          enum:
-          - sunday
-          - monday
-          - tuesday
-          - wednesday
-          - thursday
-          - friday
-          - saturday
-          description: The first day of the week.
-          example: sunday
-        index:
-          type: string
-          enum:
-          - first
-          - second
-          - third
-          - fourth
-          - last
-          description: The week index for relative monthly and yearly patterns.
-          example: first
-    EmailAddress:
-      type: object
-      description: The name and email address of a contact or message recipient.
-      properties:
-        name:
-          type: string
-          description: The display name of the person or entity.
-          example: Example Title
-        address:
-          type: string
-          format: email
-          description: The email address of the person or entity.
-          example: example_value
-    ItemBody:
-      type: object
-      description: Represents properties of the body of a message or event.
-      properties:
-        contentType:
-          type: string
-          enum:
-          - text
-          - html
-          description: The type of the content. Possible values are text and html.
-          example: text
-        content:
-          type: string
-          description: The content of the item.
-          example: example_value
-    TimeSlot:
-      type: object
-      description: A time period.
-      properties:
-        start:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-        end:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-    Recipient:
-      type: object
-      description: Represents information about a user in the sending or receiving end of a message or event.
-      properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-    CalendarCollectionResponse:
+    EventCollectionResponse:
       type: object
       properties:
         '@odata.context':
           type: string
           example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
         '@odata.nextLink':
           type: string
           format: uri
@@ -1059,108 +1019,8 @@ components:
         value:
           type: array
           items:
-            $ref: '#/components/schemas/Calendar'
+            $ref: '#/components/schemas/Event'
           example: []
-    Calendar:
-      type: object
-      description: A calendar which is a container for events.
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: The unique identifier for the calendar.
-          example: abc123
-        name:
-          type: string
-          description: The calendar name.
-          example: Example Title
-        color:
-          type: string
-          enum:
-          - auto
-          - lightBlue
-          - lightGreen
-          - lightOrange
-          - lightGray
-          - lightYellow
-          - lightTeal
-          - lightPink
-          - lightBrown
-          - lightRed
-          - maxColor
-          description: Specifies the color theme for the calendar.
-          example: auto
-        changeKey:
-          type: string
-          readOnly: true
-          description: Identifies the version of the calendar object.
-          example: example_value
-        canEdit:
-          type: boolean
-          readOnly: true
-          description: Whether the user can write to the calendar.
-          example: true
-        canShare:
-          type: boolean
-          readOnly: true
-          description: Whether the user has permission to share the calendar.
-          example: true
-        canViewPrivateItems:
-          type: boolean
-          readOnly: true
-          description: Whether the user can read calendar items marked as private.
-          example: true
-        isDefaultCalendar:
-          type: boolean
-          readOnly: true
-          description: Whether this is the default calendar.
-          example: true
-        owner:
-          $ref: '#/components/schemas/EmailAddress'
-        hexColor:
-          type: string
-          description: The calendar color expressed in hex format of three six-digit values.
-          example: example_value
-        isRemovable:
-          type: boolean
-          readOnly: true
-          description: Whether the calendar can be deleted from the user's mailbox.
-          example: true
-        isTallyingResponses:
-          type: boolean
-          description: Whether the calendar supports tracking of meeting responses.
-          example: true
-        allowedOnlineMeetingProviders:
-          type: array
-          readOnly: true
-          items:
-            type: string
-          description: The online meeting service providers available for events in this calendar.
-          example: []
-        defaultOnlineMeetingProvider:
-          type: string
-          description: The default online meeting provider for meetings sent from this calendar.
-          example: example_value
-    ResponseStatus:
-      type: object
-      description: The response status of an attendee or organizer for a meeting request.
-      properties:
-        response:
-          type: string
-          enum:
-          - none
-          - organizer
-          - tentativelyAccepted
-          - accepted
-          - declined
-          - notResponded
-          description: The response type.
-          example: none
-        time:
-          type: string
-          format: date-time
-          description: The date and time the response was returned.
-          example: '2026-01-15T10:30:00Z'
     EventUpdateRequest:
       type: object
       properties:
@@ -1233,83 +1093,6 @@ components:
         reminderMinutesBeforeStart:
           type: integer
           example: 10
-    OutlookGeoCoordinates:
-      type: object
-      description: The geographic coordinates and elevation of a location.
-      properties:
-        latitude:
-          type: number
-          format: double
-          example: 42.5
-        longitude:
-          type: number
-          format: double
-          example: 42.5
-        accuracy:
-          type: number
-          format: double
-          example: 42.5
-        altitude:
-          type: number
-          format: double
-          example: 42.5
-        altitudeAccuracy:
-          type: number
-          format: double
-          example: 42.5
-    DateTimeTimeZone:
-      type: object
-      description: Describes the date, time, and time zone of a point in time.
-      properties:
-        dateTime:
-          type: string
-          description: A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
-          example: example_value
-        timeZone:
-          type: string
-          description: The time zone for the time. For example, Pacific Standard Time. See https://learn.microsoft.com/en-us/graph/api/resources/datetimetimezone
-          example: example_value
-    OnlineMeetingInfo:
-      type: object
-      description: Details for an attendee to join the meeting online.
-      properties:
-        joinUrl:
-          type: string
-          format: uri
-          description: The URL to join the meeting online.
-          example: https://www.example.com
-        conferenceId:
-          type: string
-          description: The ID of the conference.
-          example: '500123'
-        tollNumber:
-          type: string
-          description: The toll number to dial for audio conference.
-          example: example_value
-        tollFreeNumbers:
-          type: array
-          items:
-            type: string
-          description: The toll-free numbers to dial.
-          example: []
-        quickDial:
-          type: string
-          description: The pre-formatted quick-dial for this call.
-          example: example_value
-        phones:
-          type: array
-          items:
-            type: object
-            properties:
-              number:
-                type: string
-              type:
-                type: string
-                enum:
-                - toll
-                - tollFree
-          description: All phone numbers associated with this conference.
-          example: []
     Event:
       type: object
       description: An event in a user calendar or the default calendar of a Microsoft 365 group. Contains event details, scheduling, recurrence, attendees, and location information.
@@ -1482,23 +1265,71 @@ components:
           type: string
           description: A custom identifier for the client to avoid redundant POST operations when client retries.
           example: '500123'
-    PatternedRecurrence:
+    OnlineMeetingInfo:
       type: object
-      description: The recurrence pattern and range.
+      description: Details for an attendee to join the meeting online.
       properties:
-        pattern:
-          $ref: '#/components/schemas/RecurrencePattern'
-        range:
-          $ref: '#/components/schemas/RecurrenceRange'
-    EventCollectionResponse:
+        joinUrl:
+          type: string
+          format: uri
+          description: The URL to join the meeting online.
+          example: https://www.example.com
+        conferenceId:
+          type: string
+          description: The ID of the conference.
+          example: '500123'
+        tollNumber:
+          type: string
+          description: The toll number to dial for audio conference.
+          example: example_value
+        tollFreeNumbers:
+          type: array
+          items:
+            type: string
+          description: The toll-free numbers to dial.
+          example: []
+        quickDial:
+          type: string
+          description: The pre-formatted quick-dial for this call.
+          example: example_value
+        phones:
+          type: array
+          items:
+            type: object
+            properties:
+              number:
+                type: string
+              type:
+                type: string
+                enum:
+                - toll
+                - tollFree
+          description: All phone numbers associated with this conference.
+          example: []
+    Recipient:
+      type: object
+      description: Represents information about a user in the sending or receiving end of a message or event.
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+    DateTimeTimeZone:
+      type: object
+      description: Describes the date, time, and time zone of a point in time.
+      properties:
+        dateTime:
+          type: string
+          description: A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
+          example: example_value
+        timeZone:
+          type: string
+          description: The time zone for the time. For example, Pacific Standard Time. See https://learn.microsoft.com/en-us/graph/api/resources/datetimetimezone
+          example: example_value
+    CalendarCollectionResponse:
       type: object
       properties:
         '@odata.context':
           type: string
           example: example_value
-        '@odata.count':
-          type: integer
-          example: 10
         '@odata.nextLink':
           type: string
           format: uri
@@ -1506,8 +1337,71 @@ components:
         value:
           type: array
           items:
-            $ref: '#/components/schemas/Event'
+            $ref: '#/components/schemas/Calendar'
           example: []
+    RecurrencePattern:
+      type: object
+      description: Describes the frequency by which a recurring event repeats.
+      properties:
+        type:
+          type: string
+          enum:
+          - daily
+          - weekly
+          - absoluteMonthly
+          - relativeMonthly
+          - absoluteYearly
+          - relativeYearly
+          description: The recurrence pattern type.
+          example: daily
+        interval:
+          type: integer
+          description: The number of units between occurrences, where units can be in days, weeks, months, or years.
+          example: 10
+        daysOfWeek:
+          type: array
+          items:
+            type: string
+            enum:
+            - sunday
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+          description: A collection of the days of the week on which the event occurs.
+          example: []
+        dayOfMonth:
+          type: integer
+          description: The day of the month on which the event occurs.
+          example: 10
+        month:
+          type: integer
+          description: The month in which the event occurs (1-12).
+          example: 10
+        firstDayOfWeek:
+          type: string
+          enum:
+          - sunday
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          - saturday
+          description: The first day of the week.
+          example: sunday
+        index:
+          type: string
+          enum:
+          - first
+          - second
+          - third
+          - fourth
+          - last
+          description: The week index for relative monthly and yearly patterns.
+          example: first
     Location:
       type: object
       description: Represents location information of an event.
@@ -1553,9 +1447,115 @@ components:
           - bing
           description: For internal use only.
           example: unknown
+    Attendee:
+      type: object
+      description: An event attendee that can be a person or resource.
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+        type:
+          type: string
+          enum:
+          - required
+          - optional
+          - resource
+          description: The type of attendee.
+          example: required
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        proposedNewTime:
+          $ref: '#/components/schemas/TimeSlot'
+    Calendar:
+      type: object
+      description: A calendar which is a container for events.
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The unique identifier for the calendar.
+          example: abc123
+        name:
+          type: string
+          description: The calendar name.
+          example: Example Title
+        color:
+          type: string
+          enum:
+          - auto
+          - lightBlue
+          - lightGreen
+          - lightOrange
+          - lightGray
+          - lightYellow
+          - lightTeal
+          - lightPink
+          - lightBrown
+          - lightRed
+          - maxColor
+          description: Specifies the color theme for the calendar.
+          example: auto
+        changeKey:
+          type: string
+          readOnly: true
+          description: Identifies the version of the calendar object.
+          example: example_value
+        canEdit:
+          type: boolean
+          readOnly: true
+          description: Whether the user can write to the calendar.
+          example: true
+        canShare:
+          type: boolean
+          readOnly: true
+          description: Whether the user has permission to share the calendar.
+          example: true
+        canViewPrivateItems:
+          type: boolean
+          readOnly: true
+          description: Whether the user can read calendar items marked as private.
+          example: true
+        isDefaultCalendar:
+          type: boolean
+          readOnly: true
+          description: Whether this is the default calendar.
+          example: true
+        owner:
+          $ref: '#/components/schemas/EmailAddress'
+        hexColor:
+          type: string
+          description: The calendar color expressed in hex format of three six-digit values.
+          example: example_value
+        isRemovable:
+          type: boolean
+          readOnly: true
+          description: Whether the calendar can be deleted from the user's mailbox.
+          example: true
+        isTallyingResponses:
+          type: boolean
+          description: Whether the calendar supports tracking of meeting responses.
+          example: true
+        allowedOnlineMeetingProviders:
+          type: array
+          readOnly: true
+          items:
+            type: string
+          description: The online meeting service providers available for events in this calendar.
+          example: []
+        defaultOnlineMeetingProvider:
+          type: string
+          description: The default online meeting provider for meetings sent from this calendar.
+          example: example_value
+    TimeSlot:
+      type: object
+      description: A time period.
+      properties:
+        start:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        end:
+          $ref: '#/components/schemas/DateTimeTimeZone'
   responses:
-    Forbidden:
-      description: Forbidden. Insufficient permissions to complete the operation.
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
       content:
         application/json:
           schema:
@@ -1572,8 +1572,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request. The request body or parameters are invalid.
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
       content:
         application/json:
           schema:

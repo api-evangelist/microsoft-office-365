@@ -551,114 +551,101 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of relationships to expand and include in the response.
+      schema:
+        type: string
+    messageId:
+      name: message-id
+      in: path
+      required: true
+      description: The unique identifier of the message.
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Comma-separated list of properties for sorting results.
+      schema:
+        type: string
+    search:
+      name: $search
+      in: query
+      description: Search expression to filter results. Uses KQL syntax for directory objects.
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: The number of items to return in a result set. Maximum value depends on the API.
+      schema:
+        type: integer
+        minimum: 1
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of items returned.
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      description: The number of items to skip in the result set.
+      schema:
+        type: integer
+        minimum: 0
+    count:
+      name: $count
+      in: query
+      description: Include a count of the total number of items in a collection alongside the page of data values.
+      schema:
+        type: boolean
+  responses:
+    BadRequest:
+      description: Bad request. The request body or parameters are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. A valid access token is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    TooManyRequests:
+      description: Too many requests. The application has been throttled.
+      headers:
+        Retry-After:
+          description: The number of seconds to wait before retrying the request.
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
   schemas:
-    MailFolderCollectionResponse:
-      type: object
-      properties:
-        '@odata.context':
-          type: string
-          example: example_value
-        '@odata.nextLink':
-          type: string
-          format: uri
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/MailFolder'
-          example: []
-    MailFolder:
-      type: object
-      description: A mail folder in a user's mailbox, such as Inbox and Drafts.
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: The unique identifier for the mail folder.
-          example: abc123
-        displayName:
-          type: string
-          description: The mail folder's display name.
-          example: example_value
-        parentFolderId:
-          type: string
-          readOnly: true
-          description: The unique identifier for the mail folder's parent.
-          example: '500123'
-        childFolderCount:
-          type: integer
-          readOnly: true
-          description: The number of immediate child folders in the current folder.
-          example: 10
-        totalItemCount:
-          type: integer
-          readOnly: true
-          description: The number of items in the mail folder.
-          example: 10
-        unreadItemCount:
-          type: integer
-          readOnly: true
-          description: The number of unread items in the folder.
-          example: 10
-        isHidden:
-          type: boolean
-          description: Indicates whether the mail folder is hidden.
-          example: true
-    ODataError:
-      type: object
-      description: The error response from the Microsoft Graph API following OData conventions.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code string.
-            message:
-              type: string
-              description: A human-readable error message.
-            innerError:
-              type: object
-              properties:
-                date:
-                  type: string
-                  format: date-time
-                request-id:
-                  type: string
-                client-request-id:
-                  type: string
-          example: example_value
-    EmailAddress:
-      type: object
-      description: The name and email address of a contact or message recipient.
-      properties:
-        name:
-          type: string
-          description: The display name of the person or entity.
-          example: Example Title
-        address:
-          type: string
-          format: email
-          description: The email address of the person or entity.
-          example: example_value
-    FollowupFlag:
-      type: object
-      description: Allows setting a flag on an item for the user to follow up on later.
-      properties:
-        completedDateTime:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-        dueDateTime:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-        startDateTime:
-          $ref: '#/components/schemas/DateTimeTimeZone'
-        flagStatus:
-          type: string
-          enum:
-          - notFlagged
-          - complete
-          - flagged
-          description: The status of the follow-up flag.
-          example: notFlagged
     ItemBody:
       type: object
       description: Represents properties of the body of a message or event.
@@ -818,6 +805,37 @@ components:
           - other
           description: The classification of the message based on inferred relevance.
           example: focused
+    FollowupFlag:
+      type: object
+      description: Allows setting a flag on an item for the user to follow up on later.
+      properties:
+        completedDateTime:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        dueDateTime:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        startDateTime:
+          $ref: '#/components/schemas/DateTimeTimeZone'
+        flagStatus:
+          type: string
+          enum:
+          - notFlagged
+          - complete
+          - flagged
+          description: The status of the follow-up flag.
+          example: notFlagged
+    EmailAddress:
+      type: object
+      description: The name and email address of a contact or message recipient.
+      properties:
+        name:
+          type: string
+          description: The display name of the person or entity.
+          example: Example Title
+        address:
+          type: string
+          format: email
+          description: The email address of the person or entity.
+          example: example_value
     MessageUpdateRequest:
       type: object
       properties:
@@ -864,42 +882,67 @@ components:
           - focused
           - other
           example: focused
-    Recipient:
+    ODataError:
       type: object
-      description: Represents information about a user in the sending or receiving end of a message or event.
+      description: The error response from the Microsoft Graph API following OData conventions.
       properties:
-        emailAddress:
-          $ref: '#/components/schemas/EmailAddress'
-    MessageCollectionResponse:
-      type: object
-      properties:
-        '@odata.context':
-          type: string
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code string.
+            message:
+              type: string
+              description: A human-readable error message.
+            innerError:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                request-id:
+                  type: string
+                client-request-id:
+                  type: string
           example: example_value
-        '@odata.count':
+    MailFolder:
+      type: object
+      description: A mail folder in a user's mailbox, such as Inbox and Drafts.
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: The unique identifier for the mail folder.
+          example: abc123
+        displayName:
+          type: string
+          description: The mail folder's display name.
+          example: example_value
+        parentFolderId:
+          type: string
+          readOnly: true
+          description: The unique identifier for the mail folder's parent.
+          example: '500123'
+        childFolderCount:
           type: integer
+          readOnly: true
+          description: The number of immediate child folders in the current folder.
           example: 10
-        '@odata.nextLink':
-          type: string
-          format: uri
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
-          example: []
-    DateTimeTimeZone:
-      type: object
-      description: Describes the date, time, and time zone of a point in time.
-      properties:
-        dateTime:
-          type: string
-          description: A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
-          example: example_value
-        timeZone:
-          type: string
-          description: The time zone for the time. For example, Pacific Standard Time. See https://learn.microsoft.com/en-us/graph/api/resources/datetimetimezone
-          example: example_value
+        totalItemCount:
+          type: integer
+          readOnly: true
+          description: The number of items in the mail folder.
+          example: 10
+        unreadItemCount:
+          type: integer
+          readOnly: true
+          description: The number of unread items in the folder.
+          example: 10
+        isHidden:
+          type: boolean
+          description: Indicates whether the mail folder is hidden.
+          example: true
     MessageCreateRequest:
       type: object
       properties:
@@ -947,100 +990,57 @@ components:
           items:
             type: string
           example: []
-  parameters:
-    messageId:
-      name: message-id
-      in: path
-      required: true
-      description: The unique identifier of the message.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of items returned.
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    search:
-      name: $search
-      in: query
-      description: Search expression to filter results. Uses KQL syntax for directory objects.
-      schema:
-        type: string
-    expand:
-      name: $expand
-      in: query
-      description: Comma-separated list of relationships to expand and include in the response.
-      schema:
-        type: string
-    count:
-      name: $count
-      in: query
-      description: Include a count of the total number of items in a collection alongside the page of data values.
-      schema:
-        type: boolean
-    top:
-      name: $top
-      in: query
-      description: The number of items to return in a result set. Maximum value depends on the API.
-      schema:
-        type: integer
-        minimum: 1
-    orderby:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties for sorting results.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: The number of items to skip in the result set.
-      schema:
-        type: integer
-        minimum: 0
-  responses:
-    Forbidden:
-      description: Forbidden. Insufficient permissions to complete the operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found. The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. A valid access token is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    BadRequest:
-      description: Bad request. The request body or parameters are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    TooManyRequests:
-      description: Too many requests. The application has been throttled.
-      headers:
-        Retry-After:
-          description: The number of seconds to wait before retrying the request.
-          schema:
-            type: integer
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
+    MessageCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+          example: []
+    Recipient:
+      type: object
+      description: Represents information about a user in the sending or receiving end of a message or event.
+      properties:
+        emailAddress:
+          $ref: '#/components/schemas/EmailAddress'
+    DateTimeTimeZone:
+      type: object
+      description: Describes the date, time, and time zone of a point in time.
+      properties:
+        dateTime:
+          type: string
+          description: A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
+          example: example_value
+        timeZone:
+          type: string
+          description: The time zone for the time. For example, Pacific Standard Time. See https://learn.microsoft.com/en-us/graph/api/resources/datetimetimezone
+          example: example_value
+    MailFolderCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/MailFolder'
+          example: []
   securitySchemes:
     oauth2:
       type: oauth2
