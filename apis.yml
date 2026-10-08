@@ -519,6 +519,8 @@ maintainers:
   email: kin@apievangelist.com
   url: https://apievangelist.com
 common:
+- type: FinOps
+  url: finops/microsoft-office-365-finops.yml
 - type: Pricing
   url: https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing
 - type: RateLimits
