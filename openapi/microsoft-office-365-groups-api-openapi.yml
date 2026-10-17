@@ -406,18 +406,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    expand:
-      name: $expand
-      in: query
-      description: Comma-separated list of relationships to expand and include in the response.
-      schema:
-        type: string
-    orderby:
-      name: $orderby
-      in: query
-      description: Comma-separated list of properties for sorting results.
-      schema:
-        type: string
     groupId:
       name: group-id
       in: path
@@ -425,10 +413,34 @@ components:
       description: The unique identifier of the group (GUID).
       schema:
         type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to include in the response.
+      schema:
+        type: string
     search:
       name: $search
       in: query
       description: Search expression to filter results. Uses KQL syntax for directory objects.
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of relationships to expand and include in the response.
+      schema:
+        type: string
+    count:
+      name: $count
+      in: query
+      description: Include a count of the total number of items in a collection alongside the page of data values.
+      schema:
+        type: boolean
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression to restrict the set of items returned.
       schema:
         type: string
     top:
@@ -438,16 +450,10 @@ components:
       schema:
         type: integer
         minimum: 1
-    select:
-      name: $select
+    orderby:
+      name: $orderby
       in: query
-      description: Comma-separated list of properties to include in the response.
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression to restrict the set of items returned.
+      description: Comma-separated list of properties for sorting results.
       schema:
         type: string
     skip:
@@ -457,39 +463,9 @@ components:
       schema:
         type: integer
         minimum: 0
-    count:
-      name: $count
-      in: query
-      description: Include a count of the total number of items in a collection alongside the page of data values.
-      schema:
-        type: boolean
   responses:
     BadRequest:
       description: Bad request. The request body or parameters are invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    NotFound:
-      description: Not found. The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    InternalServerError:
-      description: Internal server error. An unexpected error occurred on the server.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Unauthorized:
-      description: Unauthorized. A valid access token is required.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ODataError'
-    Forbidden:
-      description: Forbidden. Insufficient permissions to complete the operation.
       content:
         application/json:
           schema:
@@ -501,6 +477,30 @@ components:
           description: The number of seconds to wait before retrying the request.
           schema:
             type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Unauthorized:
+      description: Unauthorized. A valid access token is required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    InternalServerError:
+      description: Internal server error. An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    NotFound:
+      description: Not found. The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ODataError'
+    Forbidden:
+      description: Forbidden. Insufficient permissions to complete the operation.
       content:
         application/json:
           schema:
@@ -528,56 +528,7 @@ components:
         classification:
           type: string
           example: example_value
-    GroupCreateRequest:
-      type: object
-      required:
-      - displayName
-      - mailEnabled
-      - mailNickname
-      - securityEnabled
-      properties:
-        displayName:
-          type: string
-          description: The display name for the group.
-          example: example_value
-        description:
-          type: string
-          example: A sample description.
-        mailEnabled:
-          type: boolean
-          example: true
-        mailNickname:
-          type: string
-          example: example_value
-        securityEnabled:
-          type: boolean
-          example: true
-        groupTypes:
-          type: array
-          items:
-            type: string
-          description: Set to ["Unified"] to create a Microsoft 365 group.
-          example: []
-        visibility:
-          type: string
-          enum:
-          - Public
-          - Private
-          - HiddenMembership
-          example: Public
-        owners@odata.bind:
-          type: array
-          items:
-            type: string
-          description: URLs of user objects to set as owners at creation time.
-          example: []
-        members@odata.bind:
-          type: array
-          items:
-            type: string
-          description: URLs of user objects to set as members at creation time.
-          example: []
-    GroupCollectionResponse:
+    DirectoryObjectCollectionResponse:
       type: object
       properties:
         '@odata.context':
@@ -593,32 +544,8 @@ components:
         value:
           type: array
           items:
-            $ref: '#/components/schemas/Group'
+            $ref: '#/components/schemas/DirectoryObject'
           example: []
-    ODataError:
-      type: object
-      description: The error response from the Microsoft Graph API following OData conventions.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: The error code string.
-            message:
-              type: string
-              description: A human-readable error message.
-            innerError:
-              type: object
-              properties:
-                date:
-                  type: string
-                  format: date-time
-                request-id:
-                  type: string
-                client-request-id:
-                  type: string
-          example: example_value
     Group:
       type: object
       description: Represents an Azure Active Directory group. Can be a Microsoft 365 group, a security group, a mail-enabled security group, or a distribution group.
@@ -715,24 +642,6 @@ components:
             $ref: '#/components/schemas/DirectoryObject'
           description: The owners of the group.
           example: []
-    DirectoryObjectCollectionResponse:
-      type: object
-      properties:
-        '@odata.context':
-          type: string
-          example: example_value
-        '@odata.count':
-          type: integer
-          example: 10
-        '@odata.nextLink':
-          type: string
-          format: uri
-          example: https://www.example.com
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DirectoryObject'
-          example: []
     DirectoryObject:
       type: object
       description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
@@ -749,6 +658,97 @@ components:
           type: string
           description: The name displayed for the directory object.
           example: example_value
+    ODataError:
+      type: object
+      description: The error response from the Microsoft Graph API following OData conventions.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code string.
+            message:
+              type: string
+              description: A human-readable error message.
+            innerError:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                request-id:
+                  type: string
+                client-request-id:
+                  type: string
+          example: example_value
+    GroupCollectionResponse:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+          example: example_value
+        '@odata.count':
+          type: integer
+          example: 10
+        '@odata.nextLink':
+          type: string
+          format: uri
+          example: https://www.example.com
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+          example: []
+    GroupCreateRequest:
+      type: object
+      required:
+      - displayName
+      - mailEnabled
+      - mailNickname
+      - securityEnabled
+      properties:
+        displayName:
+          type: string
+          description: The display name for the group.
+          example: example_value
+        description:
+          type: string
+          example: A sample description.
+        mailEnabled:
+          type: boolean
+          example: true
+        mailNickname:
+          type: string
+          example: example_value
+        securityEnabled:
+          type: boolean
+          example: true
+        groupTypes:
+          type: array
+          items:
+            type: string
+          description: Set to ["Unified"] to create a Microsoft 365 group.
+          example: []
+        visibility:
+          type: string
+          enum:
+          - Public
+          - Private
+          - HiddenMembership
+          example: Public
+        owners@odata.bind:
+          type: array
+          items:
+            type: string
+          description: URLs of user objects to set as owners at creation time.
+          example: []
+        members@odata.bind:
+          type: array
+          items:
+            type: string
+          description: URLs of user objects to set as members at creation time.
+          example: []
   securitySchemes:
     oauth2:
       type: oauth2
