@@ -1,4 +1,4 @@
-# Microsoft Office 365 (microsoft-office-365)
+# Microsoft Office 365
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,429 +66,291 @@
 
 A collection of APIs provided by Microsoft Office 365 for productivity, collaboration, and enterprise services.
 
-**APIs.json:** [https://www.microsoft.com/en-us/microsoft-365](https://www.microsoft.com/en-us/microsoft-365)
+**Areas:** Cloud · Collaboration · Enterprise · Microsoft · Productivity
+
+## Microsoft Office 365 on APIs.io
+
+Everything profiled for Microsoft Office 365 is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/microsoft-office-365/](https://apis.io/providers/microsoft-office-365/)** — or go straight to one of the APIs or properties below.
+
+### APIs (16)
+
+- [Outlook Contacts API](https://apis.io/apis/microsoft-office-365/outlook-contacts-api/) — Access to Outlook personal contacts for managing contact information, creating contact folders, and organizing people data.
+- [OneNote API](https://apis.io/apis/microsoft-office-365/onenote-api/) — Access to OneNote notebooks, sections, and pages for creating and managing notes and structured content.
+- [Excel Workbooks and Charts API](https://apis.io/apis/microsoft-office-365/excel-workbooks-and-charts-api/) — Read and modify Excel workbooks stored in OneDrive and SharePoint, including managing worksheets, tables, charts, ranges, and sessions.
+- [Microsoft To Do API](https://apis.io/apis/microsoft-office-365/microsoft-to-do-api/) — Manage tasks and task lists across To Do clients, Outlook, and Teams for personal task management and day planning.
+- [Microsoft Bookings API](https://apis.io/apis/microsoft-office-365/microsoft-bookings-api/) — Manage customer bookings, appointment scheduling, business services, and staff information for enterprise and small business owners.
+- [Microsoft Graph Security API](https://apis.io/apis/microsoft-office-365/microsoft-graph-security-api/) — Connect security products, services, and partners to streamline security operations and improve threat protection, detection, and response.
+- [Microsoft Graph Communications API](https://apis.io/apis/microsoft-office-365/microsoft-graph-communications-api/) — Create and join online meetings, manage call records, and enable cloud communications capabilities for applications.
+- [Office Add-ins Platform](https://apis.io/apis/microsoft-office-365/office-add-ins-platform/) — Platform for building solutions that extend Office applications including Excel, Outlook, Word, PowerPoint, and OneNote using web technologies and the…
+- [Microsoft Office 365 Calendar API](https://apis.io/apis/microsoft-office-365/microsoft-office-365-calendar-api/) — Access and manage Outlook calendar events, calendars, and calendar groups. Supports scheduling, meeting management, and free/busy lookups.
+- [Microsoft Office 365 Groups API](https://apis.io/apis/microsoft-office-365/microsoft-office-365-groups-api/) — Manage Microsoft 365 groups and security groups. Groups provide shared access to resources such as SharePoint sites, shared mailboxes, Planner plans,…
+- [Microsoft Office 365 Mail API](https://apis.io/apis/microsoft-office-365/microsoft-office-365-mail-api/) — Access and manage Outlook mail messages, mail folders, and message attachments. Supports reading, creating, sending, replying, forwarding, and organizing email.
+- [Microsoft Office 365 Users API](https://apis.io/apis/microsoft-office-365/microsoft-office-365-users-api/) — Manage users in Azure Active Directory. Users are the core identity resource representing a person, including their profile, organizational relationships,…
+- [Outlook Mail API](https://apis.io/apis/microsoft-office-365/outlook-mail-api/) — Access email, manage folders, send mail, and manage mail settings via Microsoft Graph.
+- [Outlook Calendar API](https://apis.io/apis/microsoft-office-365/outlook-calendar-api/) — Access and manage calendar events, meeting requests, and calendar groups.
+- [OneDrive API](https://apis.io/apis/microsoft-office-365/onedrive-api/) — Access and manage files stored in OneDrive and SharePoint.
+- [Microsoft Teams API](https://apis.io/apis/microsoft-office-365/microsoft-teams-api/) — Integrate with Microsoft Teams for chat, channels, meetings, and collaboration.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (19)
+
+Multi-step workflows that chain operations into a business task.
+
+- [Microsoft Office 365 Cancel Event](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-cancel-event-workflow/)
+- [Microsoft Office 365 Cleanup Draft Message](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-cleanup-draft-message-workflow/)
+- [Microsoft Office 365 Create Group With Members](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-create-group-with-members-workflow/)
+- [Microsoft Office 365 Deprovision User](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-deprovision-user-workflow/)
+- [Microsoft Office 365 Draft and Send Mail](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-draft-and-send-mail-workflow/)
+- [Microsoft Office 365 Find Event in Window](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-find-event-in-window-workflow/)
+- [Microsoft Office 365 Find or Create Group](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-find-or-create-group-workflow/)
+- [Microsoft Office 365 Notify New User](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-notify-new-user-workflow/)
+- [Microsoft Office 365 Onboard User to Group](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-onboard-user-to-group-workflow/)
+- [Microsoft Office 365 Provision User](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-provision-user-workflow/)
+- [Microsoft Office 365 Reschedule Event](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-reschedule-event-workflow/)
+- [Microsoft Office 365 Respond to Invitation](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-respond-to-invitation-workflow/)
+- [Microsoft Office 365 Rotate Group Member](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-rotate-group-member-workflow/)
+- [Microsoft Office 365 Schedule and Accept Event](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-schedule-and-accept-event-workflow/)
+- [Microsoft Office 365 Schedule Event](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-schedule-event-workflow/)
+- [Microsoft Office 365 Triage Inbox Message](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-triage-inbox-message-workflow/)
+- [Microsoft Office 365 Update Draft and Send](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-update-draft-and-send-workflow/)
+- [Microsoft Office 365 Update Group and Verify](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-update-group-and-verify-workflow/)
+- [Microsoft Office 365 Update User Profile](https://apis.io/arazzos/microsoft-office-365/microsoft-office-365-update-user-profile-workflow/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Microsoft Office 365 Agentic Access](https://apis.io/agentic-access/microsoft-office-365/microsoft-office-365-agentic-access/)
+
+#### JSON Schema (82)
+
+The data models the API reads and writes.
+
+- [AssignedLicense](https://apis.io/schemas/microsoft-office-365/microsoft-graph-assigned-license/)
+- [Attendee](https://apis.io/schemas/microsoft-office-365/microsoft-graph-attendee/)
+- [Calendar](https://apis.io/schemas/microsoft-office-365/microsoft-graph-calendar/)
+- [CalendarCollectionResponse](https://apis.io/schemas/microsoft-office-365/microsoft-graph-calendar-collection-response/)
+- [DateTimeTimeZone](https://apis.io/schemas/microsoft-office-365/microsoft-graph-date-time-time-zone/)
+- [DirectoryObject](https://apis.io/schemas/microsoft-office-365/microsoft-graph-directory-object/)
+- [DirectoryObjectCollectionResponse](https://apis.io/schemas/microsoft-office-365/microsoft-graph-directory-object-collection-response/)
+- [EmailAddress](https://apis.io/schemas/microsoft-office-365/microsoft-graph-email-address/)
+- [Event](https://apis.io/schemas/microsoft-office-365/microsoft-graph-event/)
+- [EventCollectionResponse](https://apis.io/schemas/microsoft-office-365/microsoft-graph-event-collection-response/)
+- [EventCreateRequest](https://apis.io/schemas/microsoft-office-365/microsoft-graph-event-create-request/)
+- [EventUpdateRequest](https://apis.io/schemas/microsoft-office-365/microsoft-graph-event-update-request/)
+- [FollowupFlag](https://apis.io/schemas/microsoft-office-365/microsoft-graph-followup-flag/)
+- [Group](https://apis.io/schemas/microsoft-office-365/microsoft-graph-group/)
+- [GroupCollectionResponse](https://apis.io/schemas/microsoft-office-365/microsoft-graph-group-collection-response/)
+- [GroupCreateRequest](https://apis.io/schemas/microsoft-office-365/microsoft-graph-group-create-request/)
+- [GroupUpdateRequest](https://apis.io/schemas/microsoft-office-365/microsoft-graph-group-update-request/)
+- [ItemBody](https://apis.io/schemas/microsoft-office-365/microsoft-graph-item-body/)
+- [Location](https://apis.io/schemas/microsoft-office-365/microsoft-graph-location/)
+- [MailFolder](https://apis.io/schemas/microsoft-office-365/microsoft-graph-mail-folder/)
+- [MailFolderCollectionResponse](https://apis.io/schemas/microsoft-office-365/microsoft-graph-mail-folder-collection-response/)
+- [Message](https://apis.io/schemas/microsoft-office-365/microsoft-graph-message/)
+- [MessageCollectionResponse](https://apis.io/schemas/microsoft-office-365/microsoft-graph-message-collection-response/)
+- [MessageCreateRequest](https://apis.io/schemas/microsoft-office-365/microsoft-graph-message-create-request/)
+- [MessageUpdateRequest](https://apis.io/schemas/microsoft-office-365/microsoft-graph-message-update-request/)
+- …and 57 more published on APIs.io
+
+#### JSON Structure (42)
+
+Data models expressed in JSON Structure.
+
+- [Microsoft Graph Assigned License Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-assigned-license-structure/)
+- [Microsoft Graph Attendee Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-attendee-structure/)
+- [Microsoft Graph Calendar Collection Response Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-calendar-collection-response-structure/)
+- [Microsoft Graph Calendar Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-calendar-structure/)
+- [Microsoft Graph Date Time Time Zone Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-date-time-time-zone-structure/)
+- [Microsoft Graph Directory Object Collection Response Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-directory-object-collection-response-structure/)
+- [Microsoft Graph Directory Object Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-directory-object-structure/)
+- [Microsoft Graph Email Address Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-email-address-structure/)
+- [Microsoft Graph Event Collection Response Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-event-collection-response-structure/)
+- [Microsoft Graph Event Create Request Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-event-create-request-structure/)
+- [Microsoft Graph Event Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-event-structure/)
+- [Microsoft Graph Event Update Request Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-event-update-request-structure/)
+- [Microsoft Graph Followup Flag Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-followup-flag-structure/)
+- [Microsoft Graph Group Collection Response Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-group-collection-response-structure/)
+- [Microsoft Graph Group Create Request Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-group-create-request-structure/)
+- [Microsoft Graph Group Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-group-structure/)
+- [Microsoft Graph Group Update Request Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-group-update-request-structure/)
+- [Microsoft Graph Item Body Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-item-body-structure/)
+- [Microsoft Graph Location Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-location-structure/)
+- [Microsoft Graph Mail Folder Collection Response Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-mail-folder-collection-response-structure/)
+- [Microsoft Graph Mail Folder Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-mail-folder-structure/)
+- [Microsoft Graph Message Collection Response Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-message-collection-response-structure/)
+- [Microsoft Graph Message Create Request Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-message-create-request-structure/)
+- [Microsoft Graph Message Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-message-structure/)
+- [Microsoft Graph Message Update Request Structure](https://apis.io/json-structure/microsoft-office-365/microsoft-graph-message-update-request-structure/)
+- …and 17 more published on APIs.io
 
-## Tags
+#### JSON-LD (2)
 
-- Cloud
-- Collaboration
-- Enterprise
-- Microsoft
-- Productivity
+Linked-data contexts for the provider's vocabulary.
 
-## Timestamps
+- [Microsoft Graph Context](https://apis.io/jsonld/microsoft-office-365/microsoft-graph-context/)
+- [Microsoft Office 365 Context](https://apis.io/jsonld/microsoft-office-365/microsoft-office-365-context/)
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+#### Vocabulary (1)
 
-## APIs
+The provider's domain terms, defined.
 
-### Microsoft Graph API
+- [Microsoft Office 365 Domain Vocabulary](https://apis.io/vocabularies/microsoft-office-365/microsoft-office-365-vocabulary/)
 
-Unified API endpoint to access data, intelligence, and insights from Microsoft 365, Windows, and Enterprise Mobility + Security.
+#### Examples (67)
 
-- **Human URL:** [https://developer.microsoft.com/en-us/graph](https://developer.microsoft.com/en-us/graph)
-- **Base URL:** `https://graph.microsoft.com`
+Example requests and responses.
 
-#### Tags
+- [Microsoft Graph Assigned License Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-assigned-license-example/)
+- [Microsoft Graph Attendee Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-attendee-example/)
+- [Microsoft Graph Calendar Collection Response Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-calendar-collection-response-example/)
+- [Microsoft Graph Calendar Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-calendar-example/)
+- [Microsoft Graph Date Time Time Zone Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-date-time-time-zone-example/)
+- [Microsoft Graph Directory Object Collection Response Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-directory-object-collection-response-example/)
+- [Microsoft Graph Directory Object Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-directory-object-example/)
+- [Microsoft Graph Email Address Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-email-address-example/)
+- [Microsoft Graph Event Collection Response Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-event-collection-response-example/)
+- [Microsoft Graph Event Create Request Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-event-create-request-example/)
+- [Microsoft Graph Event Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-event-example/)
+- [Microsoft Graph Event Update Request Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-event-update-request-example/)
+- [Microsoft Graph Followup Flag Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-followup-flag-example/)
+- [Microsoft Graph Group Collection Response Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-group-collection-response-example/)
+- [Microsoft Graph Group Create Request Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-group-create-request-example/)
+- [Microsoft Graph Group Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-group-example/)
+- [Microsoft Graph Group Update Request Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-group-update-request-example/)
+- [Microsoft Graph Item Body Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-item-body-example/)
+- [Microsoft Graph Location Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-location-example/)
+- [Microsoft Graph Mail Folder Collection Response Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-mail-folder-collection-response-example/)
+- [Microsoft Graph Mail Folder Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-mail-folder-example/)
+- [Microsoft Graph Message Collection Response Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-message-collection-response-example/)
+- [Microsoft Graph Message Create Request Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-message-create-request-example/)
+- [Microsoft Graph Message Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-message-example/)
+- [Microsoft Graph Message Update Request Example](https://apis.io/examples/microsoft-office-365/microsoft-graph-message-update-request-example/)
+- …and 42 more published on APIs.io
 
-- Calendar
-- Graph
-- Groups
-- Mail
-- Unified
-- Users
+#### Collections (6)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.microsoft.com/en-us/graph/overview)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/microsoft-graph-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON-LD](json-ld/microsoft-office-365-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Pricing](https://azure.microsoft.com/en-us/pricing/details/active-directory/)
-- [Authentication](https://docs.microsoft.com/en-us/graph/auth/)
-- [Documentation](https://www.postman.com/microsoftgraph/workspace/microsoft-graph/overview)
-- [Terms of Service](https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use)
-- [Rate Limits](https://docs.microsoft.com/en-us/graph/throttling)
-- [Getting Started](https://learn.microsoft.com/en-us/graph/use-the-api)
-- [SDK](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
-- [Documentation](https://learn.microsoft.com/en-us/graph/change-notifications-overview)
-- [Versioning](https://learn.microsoft.com/en-us/graph/versioning-and-support)
-- [Console](https://developer.microsoft.com/en-us/graph/graph-explorer)
+- [Microsoft Office 365 Microsoft Graph API](https://apis.io/collections/microsoft-office-365/open-microsoft-graph-api/)
+- [Microsoft Office 365 Microsoft Graph Calendar API](https://apis.io/collections/microsoft-office-365/open-microsoft-office-365-calendar-api/)
+- [Microsoft Office 365 Microsoft Graph Calendar Groups API](https://apis.io/collections/microsoft-office-365/open-microsoft-office-365-groups-api/)
+- [Microsoft Office 365 Microsoft Graph Calendar Mail API](https://apis.io/collections/microsoft-office-365/open-microsoft-office-365-mail-api/)
+- [Microsoft Office 365 Microsoft Graph Calendar Users API](https://apis.io/collections/microsoft-office-365/open-microsoft-office-365-users-api/)
+- [Microsoft Office 365 Microsoft Graph API](https://apis.io/collections/microsoft-office-365/postman-microsoft-graph-api/)
 
-### Outlook Mail API
+#### Governance rules (2)
 
-Access to Outlook email, including reading, sending, and managing messages.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://docs.microsoft.com/en-us/graph/api/resources/mail-api-overview](https://docs.microsoft.com/en-us/graph/api/resources/mail-api-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0/me/messages`
+- [Microsoft Office 365 — jsonschema rules](https://apis.io/rules/microsoft-office-365/microsoft-office-365-jsonschema-spectral-rules/)
+- [Microsoft Office 365 API Rules](https://apis.io/rules/microsoft-office-365/microsoft-office-365-spectral-rules/)
 
-#### Tags
+#### Security (3)
 
-- Email
-- Mail
-- Messages
-- Outlook
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Microsoft Office 365 Authentication](https://apis.io/security/microsoft-office-365/microsoft-office-365-authentication/)
+- [Microsoft Office 365 Domain Security](https://apis.io/security/microsoft-office-365/microsoft-office-365-domain-security/)
+- [Microsoft Office 365 Vulnerability Disclosure](https://apis.io/security/microsoft-office-365/microsoft-office-365-vulnerability-disclosure/)
 
-- [Documentation](https://docs.microsoft.com/en-us/graph/api/resources/message)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/mail.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/microsoft-graph-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://learn.microsoft.com/en-us/graph/outlook-change-notifications-overview)
+#### OAuth scopes (1)
 
-### Outlook Calendar API
+The permissions the API asks for.
 
-Access to Outlook calendar events, scheduling, and meeting management.
+- [Microsoft Office 365 Scopes](https://apis.io/scopes/microsoft-office-365/microsoft-office-365-scopes/)
 
-- **Human URL:** [https://docs.microsoft.com/en-us/graph/api/resources/calendar](https://docs.microsoft.com/en-us/graph/api/resources/calendar)
-- **Base URL:** `https://graph.microsoft.com/v1.0/me/calendar`
+#### Plans and pricing (2)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Calendar
-- Events
-- Meetings
-- Scheduling
+- [Microsoft Office 365 Plans Pricing](https://apis.io/plans/microsoft-office-365/microsoft-office-365-plans-pricing/)
+- [Microsoft Office 365 Price Estimates](https://apis.io/plans/microsoft-office-365/microsoft-office-365-price-estimates/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://docs.microsoft.com/en-us/graph/api/resources/event)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/calendar.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/microsoft-graph-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### Outlook Contacts API
+- [Microsoft Office 365 Rate Limits](https://apis.io/rate-limits/microsoft-office-365/microsoft-office-365-rate-limits/)
 
-Access to Outlook personal contacts for managing contact information, creating contact folders, and organizing people data.
+#### FinOps (1)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview](https://learn.microsoft.com/en-us/graph/outlook-contacts-concept-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0/me/contacts`
+What the API costs to run, by operation.
 
-#### Tags
+- [Microsoft Office 365 Finops](https://apis.io/finops/microsoft-office-365/microsoft-office-365-finops/)
 
-- Address-Book
-- Contacts
-- Outlook
-- People
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### OneDrive API
-
-Access to OneDrive file storage, sharing, and collaboration features.
-
-- **Human URL:** [https://docs.microsoft.com/en-us/graph/api/resources/onedrive](https://docs.microsoft.com/en-us/graph/api/resources/onedrive)
-- **Base URL:** `https://graph.microsoft.com/v1.0/me/drive`
-
-#### Tags
-
-- Files
-- Onedrive
-- Sharing
-- Storage
-
-#### Properties
-
-- [Documentation](https://docs.microsoft.com/en-us/graph/api/resources/driveitem)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/files.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://learn.microsoft.com/en-us/onedrive/developer/rest-api/?view=odsp-graph-online)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### SharePoint API
-
-Access to SharePoint sites, lists, and document libraries.
-
-- **Human URL:** [https://docs.microsoft.com/en-us/graph/api/resources/sharepoint](https://docs.microsoft.com/en-us/graph/api/resources/sharepoint)
-- **Base URL:** `https://graph.microsoft.com/v1.0/sites`
-
-#### Tags
-
-- Collaboration
-- Lists
-- Sharepoint
-- Sites
-
-#### Properties
-
-- [Documentation](https://docs.microsoft.com/en-us/graph/api/resources/site)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/sites.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Documentation](https://learn.microsoft.com/en-us/sharepoint/dev/apis/sharepoint-rest-graph)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Microsoft Teams API
-
-Access to Microsoft Teams channels, messages, and collaboration features.
-
-- **Human URL:** [https://docs.microsoft.com/en-us/graph/api/resources/teams-api-overview](https://docs.microsoft.com/en-us/graph/api/resources/teams-api-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0/teams`
-
-#### Tags
-
-- Channels
-- Chat
-- Collaboration
-- Teams
-
-#### Properties
-
-- [Documentation](https://docs.microsoft.com/en-us/graph/api/resources/team)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/teams.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Office 365 Users API
-
-Manage Office 365 users, profiles, and organizational information.
-
-- **Human URL:** [https://docs.microsoft.com/en-us/graph/api/resources/user](https://docs.microsoft.com/en-us/graph/api/resources/user)
-- **Base URL:** `https://graph.microsoft.com/v1.0/users`
-
-#### Tags
-
-- Directory
-- Identity
-- Profiles
-- Users
-
-#### Properties
-
-- [Documentation](https://docs.microsoft.com/en-us/graph/api/resources/user)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/users.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/microsoft-office-365-user-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Planner API
-
-Access to Microsoft Planner tasks, plans, and project management features.
-
-- **Human URL:** [https://docs.microsoft.com/en-us/graph/api/resources/planner-overview](https://docs.microsoft.com/en-us/graph/api/resources/planner-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0/planner`
-
-#### Tags
-
-- Planner
-- Planning
-- Projects
-- Tasks
-
-#### Properties
-
-- [Documentation](https://docs.microsoft.com/en-us/graph/api/resources/planner-overview)
-- [OpenAPI](https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-openapi/master/openapi/v1.0/planner.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### OneNote API
-
-Access to OneNote notebooks, sections, and pages for creating and managing notes and structured content.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/integrate-with-onenote](https://learn.microsoft.com/en-us/graph/integrate-with-onenote)
-- **Base URL:** `https://graph.microsoft.com/v1.0/me/onenote`
-
-#### Tags
-
-- Notebooks
-- Notes
-- Onenote
-- Pages
-- Sections
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/onenote-api-overview?view=graph-rest-1.0)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Excel Workbooks and Charts API
-
-Read and modify Excel workbooks stored in OneDrive and SharePoint, including managing worksheets, tables, charts, ranges, and sessions.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/excel-concept-overview](https://learn.microsoft.com/en-us/graph/excel-concept-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0/me/drive/items/{id}/workbook`
-
-#### Tags
-
-- Charts
-- Excel
-- Spreadsheets
-- Tables
-- Workbooks
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/excel?view=graph-rest-1.0)
-- [Best Practices](https://learn.microsoft.com/en-us/graph/workbook-best-practice)
-- [Documentation](https://learn.microsoft.com/en-us/graph/excel-manage-sessions)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Microsoft To Do API
-
-Manage tasks and task lists across To Do clients, Outlook, and Teams for personal task management and day planning.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/todo-concept-overview](https://learn.microsoft.com/en-us/graph/todo-concept-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0/me/todo`
-
-#### Tags
-
-- Productivity
-- Task-Lists
-- Tasks
-- Todo
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/todo-concept-overview)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Microsoft Bookings API
-
-Manage customer bookings, appointment scheduling, business services, and staff information for enterprise and small business owners.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/booking-concept-overview](https://learn.microsoft.com/en-us/graph/booking-concept-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0/solutions/bookingBusinesses`
-
-#### Tags
-
-- Appointments
-- Bookings
-- Business
-- Scheduling
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/booking-api-overview?view=graph-rest-1.0)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Office 365 Groups API
-
-Manage Microsoft 365 groups, group membership, conversations, and group-related resources for collaboration.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/api/resources/groups-overview?view=graph-rest-1.0](https://learn.microsoft.com/en-us/graph/api/resources/groups-overview?view=graph-rest-1.0)
-- **Base URL:** `https://graph.microsoft.com/v1.0/groups`
-
-#### Tags
-
-- Collaboration
-- Groups
-- Membership
-- Teams
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0)
-- [OpenAPI](openapi/microsoft-graph-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Microsoft Graph Security API
-
-Connect security products, services, and partners to streamline security operations and improve threat protection, detection, and response.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/security-concept-overview](https://learn.microsoft.com/en-us/graph/security-concept-overview)
-- **Base URL:** `https://graph.microsoft.com/v1.0/security`
-
-#### Tags
-
-- Alerts
-- Compliance
-- Security
-- Threats
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview?view=graph-rest-1.0)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Microsoft Graph Communications API
-
-Create and join online meetings, manage call records, and enable cloud communications capabilities for applications.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings](https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings)
-- **Base URL:** `https://graph.microsoft.com/v1.0/communications`
-
-#### Tags
-
-- Calls
-- Communications
-- Meetings
-- Online-Meetings
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/graph/cloud-communications-online-meetings)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Office Add-ins Platform
-
-Platform for building solutions that extend Office applications including Excel, Outlook, Word, PowerPoint, and OneNote using web technologies and the Office JavaScript API.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins](https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins)
-
-#### Tags
-
-- Add-Ins
-- Excel
-- Extensions
-- Office-Js
-- Outlook
-- Powerpoint
-- Word
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/office/dev/add-ins/)
-- [API Reference](https://learn.microsoft.com/en-us/office/dev/add-ins/reference/javascript-api-for-office)
-- [Getting Started](https://learn.microsoft.com/en-us/office/dev/add-ins/overview/learning-path-beginner)
-- [Documentation](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/develop-overview)
-- [Postman Collection](collections/microsoft-graph-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-graph-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [LinkedIn](https://www.linkedin.com/showcase/microsoft-365)
-- [Developer Portal](https://developer.microsoft.com/en-us/microsoft-365)
-- [Status Page](https://status.office365.com/)
-- [Support](https://developer.microsoft.com/en-us/graph/support)
-- [Blog](https://developer.microsoft.com/en-us/graph/blogs/)
-- [GitHub Organization](https://github.com/microsoftgraph)
-- [Privacy Policy](https://privacy.microsoft.com/en-us/privacystatement)
-- [Console](https://developer.microsoft.com/en-us/graph/graph-explorer)
-- [SDK](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview)
-- [Changelog](https://developer.microsoft.com/en-us/graph/changelog)
-- [Release Notes](https://learn.microsoft.com/en-us/graph/whats-new-overview)
-- [Authentication](https://learn.microsoft.com/en-us/graph/auth/)
-- [Terms of Service](https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use)
-- [Rate Limits](https://learn.microsoft.com/en-us/graph/throttling)
+- [Website](https://www.microsoft.com/)
 - [Documentation](https://learn.microsoft.com/en-us/graph/change-notifications-delivery-webhooks)
-- [Quickstart](https://developer.microsoft.com/en-us/graph/quick-start)
-- [API Reference](https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0)
+- [Getting started](https://developer.microsoft.com/en-us/graph/quick-start)
+- [API reference](https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0)
+- [Pricing](https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing)
+- [Support](https://developer.microsoft.com/en-us/graph/support)
+- [Changelog](https://developer.microsoft.com/en-us/graph/changelog)
+- [Blog](https://developer.microsoft.com/en-us/graph/blogs/)
 - [Compliance](https://learn.microsoft.com/en-us/graph/compliance-concept-overview)
-- [Spectral Rules](rules/microsoft-office-365-spectral-rules.yml)
-- [Features](https://developer.microsoft.com/en-us/graph)
-- [Use Cases](https://developer.microsoft.com/en-us/graph)
-- [Integrations](https://developer.microsoft.com/en-us/graph)
+- [Terms of service](https://docs.microsoft.com/en-us/legal/microsoft-apis/terms-of-use)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+- [GitHub](https://github.com/microsoftgraph)
+- [Status](https://status.office365.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 61.8** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 51.8 |
+| Contract quality | 70.6 |
+| Contract governance | 13.6 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 72.6 |
+| Access clarity | 71.1 |
+
+**Agent readiness 33.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | verified |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 45.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/microsoft-office-365/](https://apis.io/providers/microsoft-office-365/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Microsoft Office 365: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/microsoft-office-365/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
